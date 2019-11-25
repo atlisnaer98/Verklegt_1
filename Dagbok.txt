@@ -1,6 +1,7 @@
 Dagur 1
 markmið vikunnar:
-1. gera kröfulista. virkni kröfur, nytsemis og notendaupplifun. usability og user experiance
+
+1. gera kröfulista. virkni kröfur, nytsemis og notendaupplifun. usability goals og user experiance goals
 2. gera notkunartilvik
 3. gera klasarit
 4. gera stöðurit
@@ -8,8 +9,9 @@ markmið vikunnar:
 6. útlitshönnun - sett sem happy path
 
 plan vikunnar:
-mánudagur:
-þriðjudagur:
-miðvikudagur:
-fimmtudagur:
-föstudagur:
+
+mánudagur: kröfulisti, notendahópagreining, notkunartilvik
+þriðjudagur: klára notkunartilvik ef það náðist ekki, byrja á klasarit, stöðurit.
+miðvikudagur: klára klasarit og stöðurit, byrja á hönnun.
+fimmtudagur: vera búnir með grunn design, wireframe, útlitshönnun
+föstudagur:litir, fínpússa og klára skýrslu
