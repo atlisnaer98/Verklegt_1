@@ -1,2 +1,15 @@
 Dagur 1
-Prufa
+markmið vikunnar:
+1. gera kröfulista. virkni kröfur, nytsemis og notendaupplifun. usability og user experiance
+2. gera notkunartilvik
+3. gera klasarit
+4. gera stöðurit
+5. notendahópgreiningu - who,what,when og það
+6. útlitshönnun - sett sem happy path
+
+plan vikunnar:
+mánudagur:
+þriðjudagur:
+miðvikudagur:
+fimmtudagur:
+föstudagur:
