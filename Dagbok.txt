@@ -10,7 +10,8 @@ markmið vikunnar:
 
 plan vikunnar:
 
-mánudagur: kröfulisti, notendahópagreining, notkunartilvik
+mánudagur: kröfulisti, notendahópagreining, notkunartilvik. allir taka að sér 2-3 notkunartilvik. Atli og Gísli gera notendahópagreining
+    Júlíus, Hjalti og Guðjón gera kröfulista. 
 þriðjudagur: klára notkunartilvik ef það náðist ekki, byrja á klasarit, stöðurit.
 miðvikudagur: klára klasarit og stöðurit, byrja á hönnun.
 fimmtudagur: vera búnir með grunn design, wireframe, útlitshönnun
