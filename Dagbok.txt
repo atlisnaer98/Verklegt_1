@@ -16,3 +16,7 @@ mánudagur: kröfulisti, notendahópagreining, notkunartilvik. allir taka að s�
 miðvikudagur: klára klasarit og stöðurit, byrja á hönnun.
 fimmtudagur: vera búnir með grunn design, wireframe, útlitshönnun
 föstudagur:litir, fínpússa og klára skýrslu
+
+mánudagur - lokafundur:
+Gekk mjög vel, kláruðum kröfulistana, notendahópagreininguna og komum áleiðis í notkunartilvikunum. Það er kynning á morgun
+kl 11:30 og við ætlum að vera búnir með notkunartilvikin fyrir það. Það er mæting 9:00
