@@ -48,5 +48,7 @@ Fimmtudagur - lokafundur:
 Kláruðum Wireframe. Gísli og Guðjón teiknuðu í tölvunni. Atli, Hjalti og Júlíus teiknuðu á töfluna og tókum ákvarðanir saman
 morgundagurinn fer í að klára skýrsluna.
 
-
-
+föstudagur - morgunfundur:
+gleymdum að commita í morgun :/
+Við klárum skýrsluna í dag, þannig allir eru að vinna í því að láta inn í skýrsluna. Gísli og Júlíus eru að taka viðtöl og sjá 
+hvort eitthvað sé hægt að gera betur.
