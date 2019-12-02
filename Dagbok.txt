@@ -52,3 +52,7 @@ föstudagur - morgunfundur:
 gleymdum að commita í morgun :/
 Við klárum skýrsluna í dag, þannig allir eru að vinna í því að láta inn í skýrsluna. Gísli og Júlíus eru að taka viðtöl og sjá 
 hvort eitthvað sé hægt að gera betur.
+
+mánudagur - morgunfundur:
+Gísli er veikur í dag, ætlum að byrja á því að kommenta föllin og svo er fyrirlestur kl. 12 og þá fáum við gögnin. Atli fer og
+lærir á Git á meðan Hjalti og Júlíus fara að kommenta föllin.
