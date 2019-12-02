@@ -12,4 +12,4 @@ class airplane():
     
 
 airplane1 = airplane("a203", 10000, 250, 1, "yes", "hans")
-print(airplane1)
+print(airplane1) 
