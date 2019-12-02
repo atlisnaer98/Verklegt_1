@@ -56,3 +56,7 @@ hvort eitthvað sé hægt að gera betur.
 mánudagur - morgunfundur:
 Gísli er veikur í dag, ætlum að byrja á því að kommenta föllin og svo er fyrirlestur kl. 12 og þá fáum við gögnin. Atli fer og
 lærir á Git á meðan Hjalti og Júlíus fara að kommenta föllin.
+
+mánudagur - lokafundur:
+Við mættum á fyrirlestur í hádeiginu og skoðuðum gögnin eftir hann. Ræddum hvernig best væri að útfæra forritið og hvað við
+stefnum á að gera næstu daga. Stefnum á að útfæra ýmsa klasa til þess auðvelda lestur á gögnum. 
