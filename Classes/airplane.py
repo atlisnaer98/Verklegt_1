@@ -17,8 +17,3 @@ class Airplane():
 
     def get_active(self):
         return self.active
-
-    
-
-airplane1 = airplane("a203", 10000, 250,)
-print(airplane1) 
