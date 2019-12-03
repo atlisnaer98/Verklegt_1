@@ -20,5 +20,5 @@ class Airplane():
 
     
 
-airplane1 = airplane("a203", 10000, 250,)
+airplane1 = Airplane("a203", 10000, 250,)
 print(airplane1) 
