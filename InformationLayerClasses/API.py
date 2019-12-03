@@ -1,4 +1,4 @@
-from InformationLayerClasses.Airplanes import Airplane_repository
+from InformationLayerClasses.Airplane_repository import Airplane_repository
 from InformationLayerClasses.Destination_repositories import Destination_repository
-from InformationLayerClasses.employees import Employee_repository
+from InformationLayerClasses.Employee_repositories import Employee_repository
 from InformationLayerClasses.Voyage_repositories import Voyage_repository
