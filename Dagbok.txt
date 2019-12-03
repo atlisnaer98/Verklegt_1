@@ -60,3 +60,7 @@ lærir á Git á meðan Hjalti og Júlíus fara að kommenta föllin.
 mánudagur - lokafundur:
 Við mættum á fyrirlestur í hádeiginu og skoðuðum gögnin eftir hann. Ræddum hvernig best væri að útfæra forritið og hvað við
 stefnum á að gera næstu daga. Stefnum á að útfæra ýmsa klasa til þess auðvelda lestur á gögnum. 
+
+þriðjudagur - morgunfundur:
+við erum búnir að skipta niður verkum, Atli sér um Employee hlutann, Júlíus sér um Aircraft, Hjalti sér um destination, Guðjón
+og Gísli sjá um Voyages.
