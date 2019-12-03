@@ -10,6 +10,13 @@ class Airplane_repository:
         with open("Aircraft.csv", "a+") as aircraft:
             registration_number = airplane.get_registration_number
             model = airplane.get_model
-            active = airplane.get_active
 
-        aircraft.write("{},{},{}".format(registration_number, model, active))
+        aircraft.write("{},{}".format(registration_number, model))
+
+    def get_airplane(self):
+        pass
+
+    def change_attribute():
+        pass
+
+
