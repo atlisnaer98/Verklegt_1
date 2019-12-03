@@ -1,4 +1,4 @@
-from Classes.airplane import Airplane
+from InformationLayerClasses.API import Airplane
 import csv
 
 class Airplane_repository:
