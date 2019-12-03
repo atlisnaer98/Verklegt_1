@@ -1,8 +1,9 @@
 class Employee():
     
     def __init__(self, name, ID_number, address, home_phone, mobile_number, email_address, job_title, active, available):
-        self.name = name
+        #ssn,name,role,rank,licence
         self.ID_number = ID_number
+        self.name = name
         self.address = address
         self.home_phone = home_phone
         self.mobile_number = mobile_number
@@ -13,3 +14,5 @@ class Employee():
 
     def __str__(self):
         return "{},{},{},{},{},{},{},{},{}".format(self.name, self.ID_number, self.address, self.home_phone,self.mobile_number, self.email_address, self.job_title, self.active, self.available)
+
+    def get_name()
