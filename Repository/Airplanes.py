@@ -1,4 +1,4 @@
-from models.Car import Car
+from Classes.airplane import Airplane
 import csv
 
 class Airplane_repository:
