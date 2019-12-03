@@ -11,7 +11,7 @@ class User:
 
     def add_destination(self):
         dest = Destination()
-        dest.setCountry(input("Country: "))
+        dest.set_Country(input("Country: "))
         airport = input("Airport: ")
         flight_time = input("Time of flight: ")
         name_of_contact = input("Emergency contact: ")

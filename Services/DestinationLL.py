@@ -6,6 +6,7 @@ class DestinationLL():
         self.dl = sending
 
     def add_dest(self, dest):
+        pass
         
 
 
