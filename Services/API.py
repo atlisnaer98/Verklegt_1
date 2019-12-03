@@ -15,5 +15,5 @@ class LLApi:
     def GetAllAirplanes(self):
         return self.aLL.GetAllAirplanes()
 
-    def add_destination(self, dest):
+    def add_dest(self, dest):
         self.dLL.add_dest(dest)

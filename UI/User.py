@@ -16,5 +16,5 @@ class User:
         flight_time = input("Time of flight: ")
         name_of_contact = input("Emergency contact: ")
         emergency_phone_number = input("Emergency contact number: ")
-        self.ll.add_destination(dest)
+        self.ll.add_dest(dest)
         return country, airport, flight_time, name_of_contact, emergency_phone_number

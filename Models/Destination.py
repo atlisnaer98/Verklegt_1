@@ -14,8 +14,8 @@ class Destination():
     def get_country(self):
         return self.__country
 
-    def setCountry(self, someStr):
-        self.__country = someStr
+    def setCountry(self, new_country):
+        self.__country = new_country
     
     def get_airport(self):
         return self.__airport
