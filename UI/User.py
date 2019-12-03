@@ -1,5 +1,5 @@
 from Models.Destination import Destination
-
+import csv
 from Services.API import LLApi
 
 class User:
@@ -25,4 +25,4 @@ class User:
     def get_airplane(self):
         airplane_obj = self.ll.Get_all_airplanes()
         for line in airplane_obj:
-            print(line) 
+            print(line)
