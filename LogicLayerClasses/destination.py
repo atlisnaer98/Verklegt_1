@@ -10,3 +10,6 @@ class Destination():
 
     def __str__(self):
         return "{},{},{},{},{},{}".format(self.country, self.airport, self.flight_time, self.distance, self.name_of_contact, self.emergency_phone_number)
+
+    def get_country(self,):
+        pass
