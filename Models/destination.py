@@ -9,7 +9,7 @@ class Destination():
         self.__emergency_phone_number = emergency_phone_number
 
     def __str__(self):
-        return "{},{},{},{},{},{}".format(self.country, self.airport, self.flight_time, self.distance, self.name_of_contact, self.emergency_phone_number)
+        return "{},{},{},{},{},{}".format(self.__country, self.__airport, self.__flight_time, self.__distance, self.__name_of_contact, self.__emergency_phone_number)
 
     def get_country(self):
         return self.__country
