@@ -1,4 +1,4 @@
-from InformationLayerClasses.API import Destination
+from Models.Destination import Destination
 import csv
 
 class Destination_repository():
