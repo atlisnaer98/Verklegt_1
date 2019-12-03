@@ -3,7 +3,8 @@ from UI.User import User
 
 def main():
     ui = User()
-    ui.start()
+    ui.get_airplane()
+
 
 if __name__ == '__main__':
     main()

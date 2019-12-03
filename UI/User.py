@@ -18,3 +18,11 @@ class User:
         emergency_phone_number = input("Emergency contact number: ")
         self.ll.add_dest(dest)
         return country, airport, flight_time, name_of_contact, emergency_phone_number
+
+    def get_dest(self):
+        dest = Destination()
+
+    def get_airplane(self):
+        airplane_obj = self.ll.Get_all_airplanes()
+        for line in airplane_obj:
+            print(line) 

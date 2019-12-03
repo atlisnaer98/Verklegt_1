@@ -3,6 +3,9 @@ from InformationLayerClasses.Destination_repository import Destination_repositor
 from InformationLayerClasses.Employee_repository import Employee_repository
 from InformationLayerClasses.Voyage_repository import Voyage_repository
 
-class dataMain:
+class Data_main:
     def __init__(self):
-        pass
+        self.aDL = Airplane_repository()
+    
+    def get_airplane(self):
+        return self.aDL.get_airplane()

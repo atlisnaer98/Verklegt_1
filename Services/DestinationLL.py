@@ -1,4 +1,4 @@
-from Models.destination import Destination
+from Models.Destination import Destination
 
 class DestinationLL():
    

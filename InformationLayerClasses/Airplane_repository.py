@@ -14,9 +14,9 @@ class Airplane_repository:
         aircraft.write("{},{}".format(registration_number, model))
 
     def get_airplane(self):
-        pass
-
-    def change_attribute(self):
-        pass
+        with open("./DATA/Aircraft.csv", "r") as aircraft:
+            reader = csv.reader(aircraft)
+            next(reader)
+            return reader
 
 
