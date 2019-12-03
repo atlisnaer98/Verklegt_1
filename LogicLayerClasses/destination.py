@@ -14,4 +14,17 @@ class Destination():
     def get_country(self):
         return self.__country
     
-    def 
+    def get_airport(self):
+        return self.__airport
+
+    def get_flight_time(self):
+        return self.__flight_time
+    
+    def get_distance(self):
+        return self.__distance
+
+    def get_name_of_contact(self):
+        return self.__name_of_contact
+
+    def get_emergency_phone_number(self):
+        return self.__emergency_phone_number
