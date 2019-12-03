@@ -1,6 +1,6 @@
 
 
-class Employees:
+class Employee_repository:
 
     def create_employee_list(self):
         '''creates a list of all employees working for the company'''
