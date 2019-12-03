@@ -16,7 +16,7 @@ class Airplane_repository:
     def get_airplane(self):
         pass
 
-    def change_attribute():
+    def change_attribute(self):
         pass
 
 
