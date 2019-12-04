@@ -12,12 +12,12 @@ class User:
     def add_destination(self):
         dest = Destination()
         dest.set_Country(input("Country: "))
-        airport = input("Airport: ")
-        flight_time = input("Time of flight: ")
-        name_of_contact = input("Emergency contact: ")
-        emergency_phone_number = input("Emergency contact number: ")
+        dest.set_airport(input("Airport: "))
+        dest.set_flight_time(input("Time of flight: "))
+        dest.set_name_of_contact(input("Emergency contact: "))
+        dest.set_emergency_phone_number(input("Emergency contact number: "))
         self.ll.add_dest(dest)
-        return country, airport, flight_time, name_of_contact, emergency_phone_number
+        #return country, airport, flight_time, name_of_contact, emergency_phone_number
 
     def get_all_dest(self):
         dest_obj = self.ll.get_all_dest()
