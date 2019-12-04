@@ -43,5 +43,10 @@ class User:
 
     def get_pilots(self):
         pilot_list = self.ll.get_pilots()
+        print("{:<20}{:<20}{:<20}".format("Name","SSN","Licence"))
         for line in pilot_list:
-            print(line)
+            sting = str(line)
+            lis = sting.split(",")
+            print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[8]))
+
+            
