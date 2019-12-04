@@ -9,7 +9,7 @@ class User:
     def start(self):
         pass
 
-    def add_destination(self):
+    def add_dest(self):
         dest = Destination()
         dest.set_Country(input("Country: "))
         dest.set_airport(input("Airport: "))

@@ -1,6 +1,6 @@
 class Destination():
 
-    def __init__(self, destination,country, airport, flight_time, distance, name_of_contact, emergency_phone_number,  ):
+    def __init__(self, destination="",country="", airport="", flight_time="", distance=0, name_of_contact="", emergency_phone_number=""):
         self.__destination = destination
         self.__country = country
         self.__airport = airport

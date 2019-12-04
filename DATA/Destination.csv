@@ -1,7 +1,7 @@
 Destination,country,airport,flight time (one-way),distance from Reykjavik,contact,contact phonenumber
 Reykjavík,Iceland,KEF,0,0,Atli Snær Jóhannsson,+3544244000
-Nuuk,Greenland,GOH,1428,03:00,Gísli Þór Gunnarsson,+299326005
-Kulusuk,Greenland,KUS,735,02:00,Guðjón Erlendur Björnsson,+299986988 
-Thorshavn,Faroe Islands,FAE,795,01:00,Hjalti Sigurgeirsson,+298354400
-Tingwall,Shetland,LWK,1152,02:00,Júlíus Helgi Júlíusson,+441595840246
-Longyearbyen,Svalbard,LYR,1991,04:00,Gylfi Þór Guðmundsson,+4767035400
+Nuuk,Greenland,GOH,03:00,1428,Gísli Þór Gunnarsson,+299326005
+Kulusuk,Greenland,KUS,02:00,735,Guðjón Erlendur Björnsson,+299986988 
+Thorshavn,Faroe Islands,FAE,01:00,795,Hjalti Sigurgeirsson,+298354400
+Tingwall,Shetland,LWK,02:00,1152,Júlíus Helgi Júlíusson,+441595840246
+Longyearbyen,Svalbard,LYR,04:00,1991,Gylfi Þór Guðmundsson,+4767035400
