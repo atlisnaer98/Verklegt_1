@@ -24,12 +24,12 @@ class User:
         for line in dest_obj:
             print(line)
 
-    def get_airplane(self):
+    def get_all_airplane(self):
         airplane_obj = self.ll.get_all_airplanes()
         for line in airplane_obj:
             print(line)
 
-    def get_employee(self):
+    def get_all_employee(self):
         employee_list = self.ll.get_all_employees()
         for line in employee_list:
             print(line)
