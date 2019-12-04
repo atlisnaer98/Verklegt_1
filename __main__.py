@@ -2,9 +2,9 @@ from UI.User import User
 
 def main():
     ui = User()
-    ui.get_airplane()
+    ui.get_all_airplane()
     ui.get_all_dest()
-    ui.get_employee()
+    ui.get_all_employee()
     
 
 
