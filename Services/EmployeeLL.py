@@ -18,3 +18,13 @@ class EmployeeLL():
             if lis[6] == "Cabincrew":
                 cabin_crew_list.append(sting)
         return cabin_crew_list
+    
+    def get_pilots(self):
+        pilot_list = []
+        all_employee_list = self.dl.get_all_employee()
+        for line in all_employee_list:
+            sting = str(line)
+            lis = sting.split(',')
+            if lis[6] == "pilot":
+                pilot_list.append(sting)
+        return pilot_list

@@ -41,4 +41,8 @@ class User:
         for line in cabin_crew_list:
             print(line)
 
+    def get_pilots(self):
+        pilot_list = self.ll.get_pilots()
+        for line in pilot_list:
+            print(line)
 print("asdf")
