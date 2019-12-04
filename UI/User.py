@@ -22,9 +22,12 @@ class User:
         #return country, airport, flight_time, name_of_contact, emergency_phone_number
 
     def get_all_dest(self):
+        print("{:<20}{:<20}{:<20}".format("Airport","Country","Distance(km)"))
         dest_obj = self.ll.get_all_dest()
         for line in dest_obj:
-            print(line)
+            sting = str(line)
+            lis = sting.split(",")
+            print("{:<20}{:<20}{:<20}".format(lis[2], lis[1], lis[4]+'km'))
 
     def get_all_airplane(self):
         airplane_obj = self.ll.get_all_airplanes()
