@@ -40,3 +40,5 @@ class User:
         cabin_crew_list = self.ll.get_cabin_crew()
         for line in cabin_crew_list:
             print(line)
+
+print("asdf")
