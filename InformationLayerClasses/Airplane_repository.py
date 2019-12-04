@@ -14,11 +14,13 @@ class Airplane_repository:
         aircraft.write("{},{}".format(registration_number, model))
 
     def get_airplane(self):
-        with open("./DATA/Aircraft.csv", "r") as aircraft:
-            reader = csv.reader(aircraft)
-            next(reader)
+        lis = []
+        with open("./DATA/Aircraft.csv", "r", newline="") as aircraft:
+            reader = csv.DictReader(aircraft)
+            #next(reader)
             for line in reader:
-                print(line)
-        return reader
+                plane = Airplane(line["planeInsignia"], line["planeTypeId"], line["active"])
+                lis.append(plane)
+        return lis
 
 
