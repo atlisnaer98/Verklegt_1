@@ -22,5 +22,5 @@ class Destination_repository():
             #next(reader)
             for line in reader:
                 dest = Destination(line["Destination"], line["country"], line["airport"], line["flight time (one-way)"], line["distance from Reykjavík"], line["contact"], line["contact phonenumber"])
-                lis.append(plane)
+                lis.append(dest)
         return lis
