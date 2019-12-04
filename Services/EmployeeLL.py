@@ -14,7 +14,7 @@ class EmployeeLL():
         all_employee_list = self.dl.get_all_employee()
         for line in all_employee_list:
             sting = str(line)
-            lis = sting.split()
+            lis = sting.split(',')
             if lis[6] == "Cabincrew":
                 cabin_crew_list.append(sting)
         return cabin_crew_list
