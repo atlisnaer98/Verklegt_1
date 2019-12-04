@@ -64,3 +64,7 @@ stefnum á að gera næstu daga. Stefnum á að útfæra ýmsa klasa til þess a
 þriðjudagur - morgunfundur:
 við erum búnir að skipta niður verkum, Atli sér um Employee hlutann, Júlíus sér um Aircraft, Hjalti sér um destination, Guðjón
 og Gísli sjá um Voyages.
+
+Miðvikudagur - morgunfundur:
+Erum að reyna að byrja á einhverju auðveldu eins og að prenta út allar staðsetningar. Erum að reyna að búa til leiðina í gegn
+og svo byggt ofan á það. 

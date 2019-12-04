@@ -23,6 +23,6 @@ class User:
         dest = Destination()
 
     def get_airplane(self):
-        airplane_obj = self.ll.Get_all_airplanes()
+        airplane_obj = self.ll.get_all_airplanes()
         for line in airplane_obj:
             print(line)

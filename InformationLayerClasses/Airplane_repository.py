@@ -16,9 +16,9 @@ class Airplane_repository:
     def get_airplane(self):
         with open("./DATA/Aircraft.csv", "r") as aircraft:
             reader = csv.reader(aircraft)
-            #next(reader)
+            next(reader)
             for line in reader:
                 print(line)
-            return reader
+        return reader
 
 

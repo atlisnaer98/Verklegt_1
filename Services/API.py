@@ -12,7 +12,7 @@ class LLApi:
         self.eLL = EmployeeLL(self.dl)
         self.vLL = VoyageLL(self.dl)
 
-    def Get_all_airplanes(self):
+    def get_all_airplanes(self):
         return self.aLL.get_all_airplanes()
 
     def add_dest(self, dest):
