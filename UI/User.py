@@ -11,7 +11,7 @@ class User:
 
     def add_dest(self):
         dest = Destination()
-        dest.set_Country(input("Country: "))
+        dest.set_country(input("Country: "))
         dest.set_airport(input("Airport: "))
         dest.set_flight_time(input("Time of flight: "))
         dest.set_name_of_contact(input("Emergency contact: "))
