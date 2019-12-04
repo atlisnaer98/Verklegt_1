@@ -4,3 +4,5 @@ class EmployeeLL():
         
     def __init__(self, sending):
         self.dl = sending
+    
+    
