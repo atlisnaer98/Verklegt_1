@@ -17,4 +17,7 @@ class LLApi:
 
     def add_dest(self, dest):
         self.dLL.add_dest(dest)
+
+    def get_all_dest(self):
+        return self.dLL.get_all_dest()
     

@@ -20,7 +20,9 @@ class User:
         return country, airport, flight_time, name_of_contact, emergency_phone_number
 
     def get_dest(self):
-        dest = Destination()
+        dest_obj = self.ll.get_all_dest()
+        for line in dest_obj:
+            print(line)
 
     def get_airplane(self):
         airplane_obj = self.ll.get_all_airplanes()

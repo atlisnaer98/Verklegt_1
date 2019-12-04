@@ -15,4 +15,12 @@ class Destination_repository():
             name_of_contact = new_dest.get_name_of_contact()
             emergency_phone_number = new_dest.get_emergency_phone_number()
             
-
+    def get_all_dest(self):
+        lis = []
+        with open("./DATA/Destination.csv", "r", newline="") as destinations:
+            reader = csv.DictReader(destinations)
+            #next(reader)
+            for line in reader:
+                dest = Destination(line["Destination"], line["country"], line["airport"], line["flight time (one-way)"], line["distance from Reykjavík"], line["contact"], line["contact phonenumber"])
+                lis.append(plane)
+        return lis

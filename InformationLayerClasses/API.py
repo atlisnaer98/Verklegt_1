@@ -9,3 +9,6 @@ class Data_main:
     
     def get_airplane(self):
         return self.aDL.get_airplane()
+    
+    def get_all_dest(self):
+        return self.dDL.get_all_dest()
