@@ -68,3 +68,7 @@ og Gísli sjá um Voyages.
 Miðvikudagur - morgunfundur:
 Erum að reyna að byrja á einhverju auðveldu eins og að prenta út allar staðsetningar. Erum að reyna að búa til leiðina í gegn
 og svo byggt ofan á það. 
+
+miðvikudagur - lokafundur:
+náðum að búa til leiðir í gegnum forritið. getum prentað út gögnin á þann hátt sem við viljum. Við höldum okkur áfram við skipulagið
+sem við höfðum búið til í byrjun, Júlíus sér um aricrafts, atli sér um employee, hjalti sér um destination, guðjón og gísli um voyages
