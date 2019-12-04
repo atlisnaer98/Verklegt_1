@@ -17,4 +17,4 @@ class Data_main:
         return self.dDL.get_all_dest()
     
     def get_employee(self):
-        return self.eDL.get_all_employees
+        return self.eDL.get_all_employees()
