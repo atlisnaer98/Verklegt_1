@@ -1,4 +1,4 @@
-
+from Models.Employee import Employee
 
 class Employee_repository:
 
@@ -13,6 +13,17 @@ class Employee_repository:
     def get_cabin_crew(self):
         ''' gets all the cabin crew members and returns a list of them'''
         pass
+
+    def get_all_employees(self):
+        """gets all the crew member"""
+        all_employee_list = []
+        with open("./DATA/Crew.csv","r",newline="") as all_crew:
+            reader = csv.DictReader(all_crew)
+            for line in reader:
+                crew = Employee(line["ssn"], line["name"], line["address"], line["home_phone"],line["mobile_phone"], line["email_address"], line["role"], line["rank"], line["licence"], line["active"])
+                all_employee_list.append(crew)
+        return all_employee_list
+
 
     def change_employee_attribute(self):
         ''' changes a specific attribute for an employee'''
