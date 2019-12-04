@@ -7,14 +7,6 @@ class Employee_repository:
         '''creates a list of all employees working for the company'''
         pass
 
-    def get_pilots(self):
-        ''' gets all the pilots working in the company and returns a list of them '''
-        pass
-
-    def get_cabin_crew(self):
-        ''' gets all the cabin crew members and returns a list of them'''
-        pass
-
     def get_all_employees(self):
         """gets all the crew member"""
         all_employee_list = []

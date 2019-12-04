@@ -7,4 +7,7 @@ class EmployeeLL():
         self.dl = sending
     
     def get_all_employees(self):
-        return self.dl.get_employee()
+        return self.dl.get_all_employee()
+
+    def get_cabin_crew(self):
+        
