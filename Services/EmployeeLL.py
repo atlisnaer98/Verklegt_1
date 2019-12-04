@@ -10,4 +10,9 @@ class EmployeeLL():
         return self.dl.get_all_employee()
 
     def get_cabin_crew(self):
-        
+        cabin_crew_list = []
+        all_employee_list = self.dl.get_all_employee()
+        for line in all_employee_list:
+            if line[6] = "Cabincrew"
+                cabin_crew_list.append(line)
+        return cabin_crew_list
