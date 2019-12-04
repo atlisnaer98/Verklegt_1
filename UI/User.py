@@ -45,4 +45,3 @@ class User:
         pilot_list = self.ll.get_pilots()
         for line in pilot_list:
             print(line)
-print("asdf")

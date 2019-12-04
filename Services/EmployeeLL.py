@@ -25,6 +25,6 @@ class EmployeeLL():
         for line in all_employee_list:
             sting = str(line)
             lis = sting.split(',')
-            if lis[6] == "pilot":
+            if lis[6] == "Pilot":
                 pilot_list.append(sting)
         return pilot_list
