@@ -28,3 +28,8 @@ class User:
         airplane_obj = self.ll.get_all_airplanes()
         for line in airplane_obj:
             print(line)
+
+    def get_employee(self):
+        employee_list = self.ll.get_all_employees()
+        for line in employee_list:
+            print(line)
