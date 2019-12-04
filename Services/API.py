@@ -21,3 +21,6 @@ class LLApi:
     def get_all_dest(self):
         return self.dLL.get_all_dest()
     
+    def get_all_employees(self):
+        return self.eLL.get_all_employees()
+    
