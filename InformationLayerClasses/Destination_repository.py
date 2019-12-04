@@ -21,6 +21,6 @@ class Destination_repository():
             reader = csv.DictReader(destinations)
             #next(reader)
             for line in reader:
-                dest = Destination(line["Destination"], line["country"], line["airport"], line["flight time (one-way)"], line["distance from Reykjavík"], line["contact"], line["contact phonenumber"])
+                dest = Destination(line["Destination"], line["country"], line["airport"], line["flight time (one-way)"], line["distance from Reykjavik"], line["contact"], line["contact phonenumber"])
                 lis.append(dest)
         return lis
