@@ -17,3 +17,5 @@ class Airplane():
 
     def get_active(self):
         return self.__active
+
+    # Hæ
