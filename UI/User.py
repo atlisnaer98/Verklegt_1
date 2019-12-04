@@ -19,7 +19,7 @@ class User:
         self.ll.add_dest(dest)
         return country, airport, flight_time, name_of_contact, emergency_phone_number
 
-    def get_dest(self):
+    def get_all_dest(self):
         dest_obj = self.ll.get_all_dest()
         for line in dest_obj:
             print(line)
