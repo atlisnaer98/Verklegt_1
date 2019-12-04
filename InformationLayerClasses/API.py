@@ -15,6 +15,9 @@ class Data_main:
     
     def get_all_dest(self):
         return self.dDL.get_all_dest()
+
+    def add_dest(self, dest):
+        self.dDL.add_dest(dest)
     
     def get_all_employee(self):
         return self.eDL.get_all_employees()

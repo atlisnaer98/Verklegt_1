@@ -24,3 +24,7 @@ class Destination_repository():
                 dest = Destination(line["Destination"], line["country"], line["airport"], line["flight time (one-way)"], line["distance from Reykjavik"], line["contact"], line["contact phonenumber"])
                 lis.append(dest)
         return lis
+
+    def add_dest(self,dest):
+        with open("./DATA/Destination.csv", "a", newline="") as destinations:
+            destinations.write(dest)

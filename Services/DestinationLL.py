@@ -6,7 +6,7 @@ class DestinationLL():
         self.dl = sending
 
     def add_dest(self, dest):
-        pass
+        self.dl.add_dest(dest)
         
     def get_all_dest(self):
         return self.dl.get_all_dest()
