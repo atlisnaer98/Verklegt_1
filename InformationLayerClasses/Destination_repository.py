@@ -30,4 +30,4 @@ class Destination_repository():
             #writer = csv.writer(destinations,delimiter=' ',quotechar='|', quoting=csv.QUOTE_MINIMAL)
             #lis = (str(dest)).split(",")
             #string = "".join(lis)
-            destinations.write("\n{}".format(str(dest)))
+            destinations.write("{}\n".format(str(dest)))

@@ -8,7 +8,7 @@ class Airplane_repository:
 
     def add_plane(self, plane):
         with open("./DATA/Aircraft.csv", "a", newline="") as airplanes:
-            airplanes.write("\n{}".format(str(plane)))
+            airplanes.write("{}\n".format(str(plane)))
 
     def get_airplane(self):
         lis = []
