@@ -26,6 +26,7 @@ LV = 'List voyage'
 GA = "Get all employees"
 GP = "Get all pilots"
 GC = "Get all cabincrew"
+CE = "Change employee"
 
 
 
@@ -111,8 +112,10 @@ class Appearance:
     
     def print_change_employee_info(self):
         print(DASH*LENGTH)
-        print("{:^60}".format(CEI))
+        print("{:^60}".format(CE))
         print(DASH*LENGTH)
+        
+        
 
     def print_employee_list(self):
         pass
