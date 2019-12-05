@@ -10,7 +10,10 @@ M = "Menu"
 D = "Destination"
 C = 'Create'
 CH = 'Change info'
+CEI = 'Change Employee Info'
+CNE = 'Create new Employee'
 CND = 'Create new Destination'
+CNV = 'Create new Voyage'
 CV = 'Change voyage'
 A = 'Airplanes'
 AC = 'Assign crew'
@@ -98,8 +101,12 @@ class Appearance:
 
 
     def print_create_employee(self):
-        pass
-        
+        print(DASH*LENGTH)
+        print("{:^60}".format(CNE))
+        print(DASH*LENGTH)
+        print("Please input necessary information:")
+        #Input upplýsingar
+        self.back_quit()
 
     def print_show_schedule(self):
         pass
@@ -132,8 +139,10 @@ class Appearance:
         print("{:^60}".format(CND))
         print(DASH*LENGTH)
         print("Please input necessary information:")
+        # Input Upplýsingar
+        self.back_quit()
 
-    
+
     def print_voyage_menu(self):
         print(DASH*LENGTH)
         print("{:^60}".format(V))
@@ -146,7 +155,13 @@ class Appearance:
         
 
     def print_add_voyage(self):
-        pass
+        print(DASH*LENGTH)
+        print("{:^60}".format(CNV))
+        print(DASH*LENGTH)
+        print("Please input necessary information:")
+        #Input upplýsingar
+        self.back_quit()
+
 
     def print_assign_crew(self):
         pass
