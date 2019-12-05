@@ -16,18 +16,18 @@ class Employee():
 
     def __str__(self):
         return "{},{},{},{},{},{},{},{},{},{}".format(self.__ssn, self.__name, self.__address, self.__home_phone,self.__mobile_phone, self.__email_address, self.__role, self.__rank, self.__licence, self.__active)
+        
+    def get_ID_number(self):
+        return self.__ssn
+
+    def set_ssn(self, new_ssn):
+        self.__ssn = new_ssn
 
     def get_name(self):
         return self.__name
 
     def set_name(self, new_name):
         self.__name = new_name
-
-    def get_ID_number(self):
-        return self.__ssn
-
-    def set_ID_number(self, new_ssn):
-        self.__ssn = new_ssn
 
     def get_address(self):
         return self.__address

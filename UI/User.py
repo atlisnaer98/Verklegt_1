@@ -54,7 +54,10 @@ class User:
             print(line)
 
     def add_employee(self):
-        employee = Employee()
+        #self.app.print_add_employee()
+        emp = Employee()
+        emp.set_ssn(input("ID number: "))
+        
     
     def get_cabin_crew(self):
         cabin_crew_list = self.ll.get_cabin_crew()
