@@ -101,7 +101,8 @@ class User:
                 pass
             elif action == "3":
                 self.get_all_dest()
-                self.app.back_quit()
+                action = self.back_quit(action)
+                """self.app.back_quit()
                 action = input("select an option: ")
                 if action in BACK:
                     self.dest_menu(action)
@@ -109,9 +110,19 @@ class User:
                     return action
                 else:
                     action = input("not a valid input, please re-enter: ")
-                    self.dest_menu(action)
+                    self.dest_menu(action)"""
                     
-
+    def back_quit(self,action):
+        self.app.back_quit()
+        action = input("select an option: ")
+        if action in BACK:
+            self.dest_menu(action)
+        elif action in QUIT:
+            return action
+        else:
+            action = input("not a valid input, please re-enter: ")
+            self.dest_menu(action)
+            return action
 
     def employee_menu(self,action):
         self.app.print_employee_menu()
