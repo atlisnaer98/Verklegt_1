@@ -56,13 +56,18 @@ class Appearance:
                 /_/ |_/\__,_/_/ |_/_/  |_/_/_/     
                                    
             """)
-
+    def back_quit(self):
+        print("{:15}{}".format(EMPTY,DASH*30))
+        print("{:17}{}{:10}{}".format(EMPTY,B,EMPTY,Q))
+        print("{:15}{}".format(EMPTY,DASH*30))
+    
     def print_main_menu(self):
         print(DASH*LENGTH)
         print("{:^60}".format(M))
         print(DASH*LENGTH)
-        print("{:>8} {:<30}{} {} ".format('[1]', E, '[2]', V))
-        print("{:>8} {:<30}{} {} ".format('[3]', D, '[4]', A))
+        print("{:>5} {:<27}{} {} ".format('[1]', E, '[2]', V))
+        print("{:>5} {:<27}{} {} ".format('[3]', D, '[4]', A))
+        #setja inn back_quit fallið
         print("{:15}{}".format(EMPTY,DASH*30))
         print("{:17}{}{:10}{}".format(EMPTY,B,EMPTY,Q))
         print("{:15}{}".format(EMPTY,DASH*30))
@@ -71,8 +76,8 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(E))
         print(DASH*LENGTH)
-        print("{:>8} {:<30}{} {} ".format('[1]', C, '[2]', CH))
-        print("{:>8} {:<30}{} {} ".format('[3]', S, '[4]', L))
+        print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', CH))
+        print("{:>5} {:<27}{} {} ".format('[3]', S, '[4]', L))
         print("{:15}{}".format(EMPTY,DASH*30))
         print("{:17}{}{:10}{}".format(EMPTY,B,EMPTY,Q))
         print("{:15}{}".format(EMPTY,DASH*30))

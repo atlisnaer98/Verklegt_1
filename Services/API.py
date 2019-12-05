@@ -27,6 +27,9 @@ class LLApi:
     def get_all_employees(self):
         return self.eLL.get_all_employees()
     
+    def add_employee(self, emp):
+        self.eLL.add_employee(emp)
+    
     def get_cabin_crew(self):
         return self.eLL.get_cabin_crew()
 

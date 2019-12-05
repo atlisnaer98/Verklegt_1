@@ -3,9 +3,7 @@ import csv
 
 class Employee_repository:
 
-    def create_employee_list(self):
-        '''creates a list of all employees working for the company'''
-        pass
+    
 
     def get_all_employees(self):
         """gets all the crew member"""
@@ -16,6 +14,10 @@ class Employee_repository:
                 crew = Employee(line["ssn"], line["name"], line["address"], line["home_phone"],line["mobile_phone"], line["email_address"], line["role"], line["rank"], line["licence"], line["active"])
                 all_employee_list.append(crew)
         return all_employee_list
+
+    def add_employee(self, emp):
+        with open("./DATA/Employee.csv", "a", newline="") as employees:
+            employee.write("{}\n".format(str(emp)))
 
 
     def change_employee_attribute(self):
