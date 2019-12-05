@@ -6,7 +6,7 @@ class Destination_repository():
     def __init__(self):
         self.__destination = []
 
-    def add_destination(self,new_dest):
+    """def add_destination(self,new_dest):
         with open("./DATA/Destination.csv", "a+") as f_object:
             country = new_dest.get_country()
             airport = new_dest.get_airport()
@@ -14,7 +14,7 @@ class Destination_repository():
             distance = new_dest.get_distance()
             name_of_contact = new_dest.get_name_of_contact()
             emergency_phone_number = new_dest.get_emergency_phone_number()
-            
+            """
     def get_all_dest(self):
         lis = []
         with open("./DATA/Destination.csv", "r", newline="") as destinations:
@@ -28,4 +28,4 @@ class Destination_repository():
     def add_dest(self,dest):
         with open("./DATA/Destination.csv", "a", newline="") as destinations:
             writer = csv.writer(destinations)
-            writer.writerow(dest)
+            writer.writerow(str(dest))
