@@ -89,7 +89,7 @@ class User:
     def dest_menu(self,action):
         self.app.print_dest_menu()
         action =""
-        while action != "q":
+        while action not in QUIT:
             action = input("select an option: ")
             if action == "1":
                 self.add_dest()
@@ -104,7 +104,7 @@ class User:
     def employee_menu(self,action):
         self.app.print_employee_menu()
         action =""
-        while action != "q" or action != "Q":
+        while action not in QUIT:
             action = input("select an option: ")
             if action == "1":
                 pass
@@ -118,7 +118,7 @@ class User:
     def Voyage_menu(self,action):
         self.app.print_voyage_menu()
         action = ""
-        while action != "q":
+        while action not in QUIT:
             action = input("select an option: ")
             # if action == "1":
             #     #create
@@ -132,7 +132,7 @@ class User:
 
     def main_menu(self):
         action = ""
-        while action != "q":
+        while action not in QUIT:
             self.app.print_main_menu()
             action = input("select an option: ") # muna að villutjékka þetta
 
