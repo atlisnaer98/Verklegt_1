@@ -64,17 +64,17 @@ class Appearance:
         print("{:>8} {:<30}{} {} ".format('[1]', E, '[2]', V))
         print("{:>8} {:<30}{} {} ".format('[3]', D, '[4]', A))
         print("{:15}{}".format(EMPTY,DASH*30))
-        print("{:20}{}{}{:5}{}{}".format(EMPTY,'[B]',B,EMPTY,'[Q]',Q))
+        print("{:17}{}{:10}{}".format(EMPTY,B,EMPTY,Q))
         print("{:15}{}".format(EMPTY,DASH*30))
 
     def print_employee_menu(self):
         print(DASH*LENGTH)
-        print("{:>32}".format(E))
+        print("{:^60}".format(E))
         print(DASH*LENGTH)
         print("{:>8} {:<30}{} {} ".format('[1]', C, '[2]', CH))
         print("{:>8} {:<30}{} {} ".format('[3]', S, '[4]', L))
         print("{:15}{}".format(EMPTY,DASH*30))
-        print("{:20}{}{}{:5}{}{}".format(EMPTY,'[B]',B,EMPTY,'[Q]',Q))
+        print("{:17}{}{:10}{}".format(EMPTY,B,EMPTY,Q))
         print("{:15}{}".format(EMPTY,DASH*30))
 
 
