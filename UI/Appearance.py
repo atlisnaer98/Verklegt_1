@@ -1,4 +1,5 @@
 # DASH = "-"
+#Len af forritinu er 54!!!
 # hastag = "#"
 
 
@@ -32,8 +33,25 @@
 # print("{:<16} {}".format(empty, DASH*24))
 # print("{:<18} {} {} {} {} ".format(empty, '[B]',B, '[Q]',Q))
 # print("{:<16} {}".format(empty, DASH*24))
-from UI.User import User
 class Appearance:
+    def __init__(self):
+        pass
 
-    def __init__():
+    def picture(self):
+        print(""" 
+           ______
+            _\ _~-\___
+    =  = ==(____AA____D
+                \_____\___________________,-~~~~~~~`-.._
+                /     o O o o o o O O o o o o o o O o  |\_
+                `~-.__        ___..----..                  )
+                      `---~~\___________/------------`````
+                      =  ===(_________D                      
+                    _   __      _   _____    _     
+                   / | / /___ _/ | / /   |  (_)____
+                  /  |/ / __ `/  |/ / /| | / / ___/
+                 / /|  / /_/ / /|  / ___ |/ / /    
+                /_/ |_/\__,_/_/ |_/_/  |_/_/_/     
+                                   
+            """)
 

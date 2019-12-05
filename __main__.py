@@ -8,7 +8,7 @@ def main():
     #ui.get_cabin_crew()
     #ui.add_dest()
     #ui.get_pilots()
-    
+    #ui.printing_picture()
 
 
 if __name__ == '__main__':

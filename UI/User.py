@@ -1,10 +1,12 @@
 from Models.Destination import Destination
 import csv
 from Services.API import LLApi
+from UI.Appearance import Appearance
 
 class User:
     def __init__(self):
         self.ll = LLApi()
+        self.app = Appearance()
 
     def start(self):
         pass
@@ -52,4 +54,7 @@ class User:
             lis = sting.split(",")
             print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[8]))
 
+
+    def main_menu(self):
+        self.app.picture()
             
