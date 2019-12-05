@@ -72,3 +72,7 @@ og svo byggt ofan á það.
 miðvikudagur - lokafundur:
 náðum að búa til leiðir í gegnum forritið. getum prentað út gögnin á þann hátt sem við viljum. Við höldum okkur áfram við skipulagið
 sem við höfðum búið til í byrjun, Júlíus sér um aricrafts, atli sér um employee, hjalti sér um destination, guðjón og gísli um voyages
+
+fimmtudagur - morgunfundur:
+markmiðið okkar er núna að læra hvernig á að bæta við í skjalið. að geta appendað við csv file. Við munum byrja á að útfæra hönnunina líka
+í dag.
