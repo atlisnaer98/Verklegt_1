@@ -6,6 +6,8 @@ import csv
 from Services.API import LLApi
 from UI.Appearance import Appearance
 
+QUIT = ["q","Q"]
+
 class User:
     def __init__(self):
         self.ll = LLApi()
@@ -90,7 +92,7 @@ class User:
     def dest_menu(self,action):
         self.app.print_dest_menu()
         action =""
-        while action != "q":
+        while action not in QUIT:
             action = input("select an option: ")
             if action == "1":
                 self.add_dest()
@@ -99,13 +101,14 @@ class User:
                 pass
             elif action == "3":
                 self.get_all_dest()
+                self.app.back_quit()
                 return input("select an option: ")
 
 
     def employee_menu(self,action):
         self.app.print_employee_menu()
         action =""
-        while action != "q":
+        while action not in QUIT:
             action = input("select an option: ")
             if action == "1":
                 self.add_employee()
@@ -126,7 +129,7 @@ class User:
     def Voyage_menu(self,action):
         self.app.print_voyage_menu()
         action = ""
-        while action != "q":
+        while action not in QUIT:
             action = input("select an option: ")
             # if action == "1":
             #     #create
@@ -140,7 +143,7 @@ class User:
 
     def main_menu(self):
         action = ""
-        while action != "q":
+        while action not in QUIT:
             self.app.print_main_menu()
             action = input("select an option: ") # muna að villutjékka þetta
 
@@ -152,7 +155,6 @@ class User:
                 action = input("select an option: ")
             elif action == "3":
                 action = self.dest_menu(action)
-
 
             # elif action == "4":
             #     #sækja appearance

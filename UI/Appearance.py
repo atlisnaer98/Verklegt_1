@@ -70,10 +70,8 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:>5} {:<27}{} {} ".format('[1]', E, '[2]', V))
         print("{:>5} {:<27}{} {} ".format('[3]', D, '[4]', A))
-        #setja inn back_quit fallið
-        print("{:15}{}".format(EMPTY,DASH*30))
-        print("{:17}{}{:10}{}".format(EMPTY,B,EMPTY,Q))
-        print("{:15}{}".format(EMPTY,DASH*30))
+        self.back_quit()
+ 
 
     def print_employee_menu(self):
         print(DASH*LENGTH)
@@ -81,9 +79,7 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', CH))
         print("{:>5} {:<27}{} {} ".format('[3]', S, '[4]', L))
-        print("{:15}{}".format(EMPTY,DASH*30))
-        print("{:17}{}{:10}{}".format(EMPTY,B,EMPTY,Q))
-        print("{:15}{}".format(EMPTY,DASH*30))
+        self.back_quit()
 
     def print_select_employee_menu(self):
         print(DASH*LENGTH)
@@ -114,9 +110,7 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', CH))
         print("{:>5} {} ".format('[3]', LD ))
-        print("{:15}{}".format(EMPTY,DASH*30))
-        print("{:17}{}{:10}{}".format(EMPTY,B,EMPTY,Q))
-        print("{:15}{}".format(EMPTY,DASH*30))
+        self.back_quit()
 
     def print_add_dest(self):
         pass
