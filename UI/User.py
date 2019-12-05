@@ -85,7 +85,7 @@ class User:
             if action == lis[0]:
                 #changee = employee
                 #print("I liiike")
-                self.get_employee(employee)
+                self.ll.change_employee(employee)
         # self.get_employee(action)
 
     
