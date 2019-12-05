@@ -66,13 +66,13 @@ class User:
             action = input("select an option: ") # muna að villutjékka þetta
 
             if action == "1":
-                self.appearance.print_employee_menu()
-            elif action == "2":
-                #sækja appearance
-            elif action == "3":
-                #sækja appearance
+                self.app.print_employee_menu()
+            # elif action == "2":
+            #     #sækja appearance
+            # elif action == "3":
+            #     #sækja appearance
 
-            elif action == "4":
-                #sækja appearance
+            # elif action == "4":
+            #     #sækja appearance
 
             
