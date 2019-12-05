@@ -17,7 +17,6 @@ class User:
         pass
 
     def add_dest(self):
-        self.app.print_add_dest()
         dest = Destination()
         dest.set_destination(input("Destination: "))
         dest.set_country(input("Country: "))
@@ -115,7 +114,8 @@ class User:
             if action == "1":
                 self.app.print_add_dest()
                 self.add_dest()
-                action = ("select an option: ")
+                print("You have created a new destination ")
+                self.dest_menu(action)
             elif action == "2": #change dest
                 pass
             elif action == "3":
