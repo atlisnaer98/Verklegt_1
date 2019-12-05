@@ -96,6 +96,7 @@ class User:
                 pass
             elif action == "3":
                 self.get_all_dest()
+                self.app.back_quit()
                 return input("select an option: ")
 
 
