@@ -83,7 +83,6 @@ class User:
             sting = str(line)
             lis = sting.split(",")
             if action == lis[0]:
-<<<<<<< HEAD
                 employee.append(lis)
                 for x in employee:
                     print(x) # breyta því hvernig þetta prentast út
@@ -91,11 +90,6 @@ class User:
     
         
 
-=======
-                #changee = employee
-                #print("I liiike")
-                self.ll.change_employee(employee)
->>>>>>> 8f501c4d4903930e9856deddf08add8156cf4f9f
         # self.get_employee(action)
 
     
