@@ -10,6 +10,7 @@ M = "Menu"
 D = "Destination"
 C = 'Create'
 CH = 'Change info'
+CND = 'Create new Destination'
 CV = 'Change voyage'
 A = 'Airplanes'
 AC = 'Assign crew'
@@ -19,12 +20,6 @@ S = "Show schedule "
 L = "List employee"
 LD = 'List destination'
 LV = 'List voyage'
-<<<<<<< HEAD
-=======
-GA = "Get all employees"
-GP = "Get all pilots"
-GC = "Get all cabincrew"
->>>>>>> 8cf0031ea21c943eb87852529028003fb58feba9
 
 
 
@@ -117,8 +112,11 @@ class Appearance:
         print("{:>5} {} ".format('[3]', LD ))
         self.back_quit()
 
-    def print_add_dest(self): # Vinna í þessu 
-        pass
+    def print_add_dest(self): 
+        print(DASH*LENGTH)
+        print("{:^60}".format(CND))
+        print(DASH*LENGTH)
+        print("Please input necessary information:")
 
     
     def print_voyage_menu(self):
