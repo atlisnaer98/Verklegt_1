@@ -10,15 +10,15 @@ M = "Menu"
 D = "Destination"
 C = 'Create'
 CH = 'Change info'
-# CV = 'Change voyage'
+CV = 'Change voyage'
 A = 'Airplanes'
-# AC = 'Assign crew'
+AC = 'Assign crew'
 E = "Employees"
 V = "Voyage"
 S = "Show schedule "
 L = "List employee"
-# LD = 'List destination'
-# LV = 'list voyage'
+LD = 'List destination'
+LV = 'list voyage'
 
 
 

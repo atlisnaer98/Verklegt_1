@@ -104,19 +104,26 @@ class User:
         action =""
         while action != "q":
             action = input("select an option: ")
-            # if action == "1":
-            #     self.get_all_employees()
-                
-            # elif action == "2":
-            #     pass
-            # elif action == "3":
-            #     #self.get_all_employees()
+            if action == "1":
+                pass
+            elif action == "2":
+                pass
+            elif action == "3":
+                self.get_all_employee()
                 
     def Voyage_menu(self,action):
         self.app.print_voyage_menu()
         action = ""
         while action != "q":
             action = input("select an option: ")
+            # if action == "1":
+            #     #create
+            # elif action == "2":
+            #     #assign crew
+            # elif action == "3":
+            #     #list voyages
+            # elif action == "4":
+            #     #change voyage
 
 
     def main_menu(self):
