@@ -10,15 +10,15 @@ M = "Menu"
 D = "Destination"
 C = 'Create'
 CH = 'Change info'
-# CV = 'Change voyage'
+CV = 'Change voyage'
 A = 'Airplanes'
-# AC = 'Assign crew'
+AC = 'Assign crew'
 E = "Employees"
 V = "Voyage"
 S = "Show schedule "
 L = "List employee"
-# LD = 'List destination'
-# LV = 'list voyage'
+LD = 'List destination'
+LV = 'list voyage'
 
 
 
@@ -95,14 +95,14 @@ class Appearance:
         pass
 
     def print_dest_menu(self):
-        #DASH
-        print("destination")
-        #DASH
-        print("[1] Create [2] change info")
-        print("[3] list")
-        #SUBDASH
-        #BACK OG QUIT
-        #SUBDASH
+        print(DASH*LENGTH)
+        print("{:^60}".format(D))
+        print(DASH*LENGTH)
+        print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', CH))
+        print("{:>5} {} ".format('[3]', LD ))
+        print("{:15}{}".format(EMPTY,DASH*30))
+        print("{:17}{}{:10}{}".format(EMPTY,B,EMPTY,Q))
+        print("{:15}{}".format(EMPTY,DASH*30))
 
     def print_add_dest(self):
         pass
@@ -112,8 +112,8 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(V))
         print(DASH*LENGTH)
-        print("{:>8} {:<30}{} {} ".format('[1]', C, '[2]', AC))
-        print("{:>8} {:<30}{} {} ".format('[3]', LV, '[4]', CV))
+        print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', AC))
+        print("{:>5} {:<27}{} {} ".format('[3]', LV, '[4]', CV))
         print("{:15}{}".format(EMPTY,DASH*30))
         print("{:17}{}{:10}{}".format(EMPTY,B,EMPTY,Q))
         print("{:15}{}".format(EMPTY,DASH*30))
