@@ -6,6 +6,8 @@ import csv
 from Services.API import LLApi
 from UI.Appearance import Appearance
 
+QUIT = ["q","Q"]
+
 class User:
     def __init__(self):
         self.ll = LLApi()
