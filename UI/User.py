@@ -83,18 +83,15 @@ class User:
             sting = str(employee)
             lis = sting.split(",")
             if action == lis[0]:
-<<<<<<< HEAD
-                changee = employee
-                print("I liiike")
-
-=======
                 #changee = employee
                 print("{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n".format(emp.get_id))
                 self.ll.change_employee(emp)
                 #print("I liiike")
                 self.ll.change_employee(employee)
->>>>>>> 2acc5d8f32d9bc3b8e4defb5c4227574870e90e9
         # self.get_employee(action)
+
+    def change_dest_info(self):
+        self.app.print_change_dest_info()
 
     
     def get_cabin_crew(self):
@@ -128,7 +125,7 @@ class User:
                 print()
                 self.dest_menu(action)
             elif action == "2": #change dest
-                pass
+                self.change_dest_info()
             elif action == "3":
                 self.get_all_dest()
                 action = self.back_quit(action)

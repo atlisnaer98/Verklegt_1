@@ -113,7 +113,7 @@ class Appearance:
         print(DASH*LENGTH)
         print("{}".format(WC))
 
-        
+   
         
 
     def print_employee_list(self):
@@ -133,7 +133,9 @@ class Appearance:
         print(DASH*LENGTH)
         print("Please input necessary information:")
 
-    
+    def print_change_dest_info(self):
+        pass
+
     def print_voyage_menu(self):
         print(DASH*LENGTH)
         print("{:^60}".format(V))
