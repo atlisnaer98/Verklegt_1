@@ -7,11 +7,8 @@ class Airplane_repository:
         self.__airplanes = []
 
     def add_airplane(self, airplane):
-        with open("Aircraft.csv", "a+") as aircraft:
-            registration_number = airplane.get_registration_number
-            model = airplane.get_model
-
-        aircraft.write("{},{}".format(registration_number, model))
+        with open("Aircraft.csv", "a+") as airplanes:
+            airplanes.write(str(plane))
 
     def get_airplane(self):
         lis = []
@@ -23,7 +20,4 @@ class Airplane_repository:
                 lis.append(plane)
         return lis
 
-    def add_dest(self,plane):
-        with open("./DATA/Destination.csv", "a", newline="") as airplanes:
-            airplanes.write(str(plane))
 
