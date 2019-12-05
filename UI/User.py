@@ -109,6 +109,8 @@ class User:
             elif action == "2":
                 pass
             elif action == "3":
+                pass
+            elif action == "4":
                 self.get_all_employee()
                 
     def Voyage_menu(self,action):
