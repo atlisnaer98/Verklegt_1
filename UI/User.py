@@ -73,10 +73,6 @@ class User:
         emp.set_activity(input("Activity: "))
         self.ll.add_employee(emp)
 
-    def get_employee(self, action):
-        employee_list = self.ll.get_all_employees()
-        print(employee_list)
-
 
 
     def change_employee_info(self):
