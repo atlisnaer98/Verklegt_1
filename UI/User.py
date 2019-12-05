@@ -76,6 +76,7 @@ class User:
 
     def change_employee_info(self):
         self.app.print_change_employee_info()
+        employee = []
         employee_list = self.ll.get_all_employees()
         action = input("Enter ID number: ")
         for emp in employee_list:
@@ -85,6 +86,8 @@ class User:
                 #changee = employee
                 print("{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n".format(emp.get_id))
                 self.ll.change_employee(emp)
+                #print("I liiike")
+                self.ll.change_employee(employee)
         # self.get_employee(action)
 
     
