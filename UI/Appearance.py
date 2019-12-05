@@ -79,7 +79,14 @@ class Appearance:
 
 
     def print_dest_menu(self):
-        pass
+        #DASH
+        print("destination")
+        #DASH
+        print("[1] Create [2] change info")
+        print("[3] list destination")
+        #SUBDASH
+        #BACK OG QUIT
+        #SUBDASH
 
     def print_add_dest(self):
         pass

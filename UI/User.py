@@ -59,6 +59,9 @@ class User:
     def printing_picture(self):
         self.app.picture()
 
+    def dest_menu(self):
+        pass
+
     def main_menu(self):
         action = ""
         while action != "q":
@@ -67,11 +70,20 @@ class User:
 
             if action == "1":
                 self.app.print_employee_menu()
-                option = input("select an option: ")
+                action = input("select an option: ")
             # elif action == "2":
             #     #sækja appearance
             elif action == "3":
                 self.app.print_dest_menu()
+                action = input("select an option: ")
+                if action == "1":
+                    self.add_dest()
+                elif action == "2": #change dest
+                    pass
+                elif action == "3":
+                    self.get_all_dest()
+                    action = input("select an option: ")
+
 
             # elif action == "4":
             #     #sækja appearance
