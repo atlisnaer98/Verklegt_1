@@ -178,8 +178,8 @@ class User:
         action = ""
         while action not in QUIT:
             action = input("select an option: ")
-            # if action == "1":
-            #     #create
+            if action == "1":
+                self.app.print_add_voyage()
             # elif action == "2":
             #     #assign crew
             # elif action == "3":
