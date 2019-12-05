@@ -9,7 +9,7 @@ class EmployeeLL():
     def get_all_employees(self):
         return self.dl.get_all_employee()
     
-    def change_employee(self,emp):
+    def change_employee(self,emp,changed):
         pass
 
     def add_employee(self,emp):
