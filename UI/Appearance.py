@@ -77,9 +77,36 @@ class Appearance:
         print("{:20}{}{}{:5}{}{}".format(EMPTY,'[B]',B,EMPTY,'[Q]',Q))
         print("{:15}{}".format(EMPTY,DASH*30))
 
+    def print_create_employee(self):
+        pass
+
+    def print_show_schedule(self):
+        pass
+    
+    def print_change_employee_info(self):
+        pass
+
+    def print_employee_list(self):
+        pass
 
     def print_dest_menu(self):
         pass
 
     def print_add_dest(self):
+        pass
+
+    
+    def print_voyage_menu(self):
+        pass
+
+    def print_add_voyage(self):
+        pass
+
+    def print_assign_crew(self):
+        pass
+
+    def print_voyage_list(self):
+        pass
+
+    def print_change_voyage(self):
         pass
