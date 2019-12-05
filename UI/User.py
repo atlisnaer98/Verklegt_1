@@ -1,4 +1,7 @@
+from Models.Airplane import Airplane
 from Models.Destination import Destination
+from Models.Employee import Employee
+from Models.Voyage import Voyage
 import csv
 from Services.API import LLApi
 from UI.Appearance import Appearance
@@ -37,6 +40,12 @@ class User:
         airplane_obj = self.ll.get_all_airplanes()
         for line in airplane_obj:
             print(line)
+    
+    def add_plane(self):
+        #self.app.print_add_plane()
+        plane = Airplane()
+        plane.set_registration_number(input("Registration number: "))
+        plane.set_model(input("Model: "))
 
     def get_all_employee(self):
         employee_list = self.ll.get_all_employees()
