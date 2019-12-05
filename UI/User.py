@@ -83,9 +83,9 @@ class User:
             sting = str(employee)
             lis = sting.split(",")
             if action == lis[0]:
-                changee = employee
-                print("I liiike")
-
+                #changee = employee
+                #print("I liiike")
+                self.get_employee(employee)
         # self.get_employee(action)
 
     
