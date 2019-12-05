@@ -18,7 +18,7 @@ V = "Voyage"
 S = "Show schedule "
 L = "List employee"
 LD = 'List destination'
-LV = 'list voyage'
+LV = 'List voyage'
 
 
 
@@ -67,7 +67,9 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:>5} {:<27}{} {} ".format('[1]', E, '[2]', V))
         print("{:>5} {:<27}{} {} ".format('[3]', D, '[4]', A))
-        self.back_quit()
+        print("{:15}{}".format(EMPTY,DASH*30))
+        print("{:^60}".format(Q))
+        print("{:15}{}".format(EMPTY,DASH*30))
  
 
     def print_employee_menu(self):
@@ -98,7 +100,7 @@ class Appearance:
         print("{:>5} {} ".format('[3]', LD ))
         self.back_quit()
 
-    def print_add_dest(self):
+    def print_add_dest(self): # Vinna í þessu 
         pass
 
     
