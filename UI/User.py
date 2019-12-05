@@ -105,13 +105,16 @@ class User:
                 action = input("select an option: ")
                 if action in BACK:
                     self.dest_menu(action)
-                return action
+                elif action in QUIT:
+                    return action
+                else:
+                    action = input("not a valid input, please re-enter: ")
+                    self.dest_menu(action)
                     
 
 
     def employee_menu(self,action):
         self.app.print_employee_menu()
-        action =""
         while action not in QUIT:
             action = input("select an option: ")
             if action == "1":
@@ -129,6 +132,7 @@ class User:
                     self.get_pilots()
                 elif action == "3":
                     self.get_cabin_crew()
+            
                 
     def Voyage_menu(self,action):
         self.app.print_voyage_menu()
