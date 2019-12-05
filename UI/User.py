@@ -46,6 +46,7 @@ class User:
         plane = Airplane()
         plane.set_registration_number(input("Registration number: "))
         plane.set_model(input("Model: "))
+        self.ll.add_plane(plane)
 
     def get_all_employee(self):
         employee_list = self.ll.get_all_employees()
