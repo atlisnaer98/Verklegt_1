@@ -12,6 +12,7 @@ class User:
         pass
 
     def add_dest(self):
+        self.app.print_add_dest()
         dest = Destination()
         dest.set_destination(input("Destination: "))
         dest.set_country(input("Country: "))
@@ -20,7 +21,7 @@ class User:
         dest.set_distance(input("Distance: "))
         dest.set_name_of_contact(input("Emergency contact: "))
         dest.set_emergency_phone_number(input("Emergency contact number: "))
-        print(dest)
+        #print(dest)
         self.ll.add_dest(dest)
         #return country, airport, flight_time, name_of_contact, emergency_phone_number
 
