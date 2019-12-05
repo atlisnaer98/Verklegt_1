@@ -8,22 +8,22 @@ LENGTH = 60
 # option = "Select an option"
 M = "Menu"
 D = "Destination"
-# C = 'Create'
-# CH = 'Change info'
+C = 'Create'
+CH = 'Change info'
 # CV = 'Change voyage'
 A = 'Airplanes'
 # AC = 'Assign crew'
 E = "Employees"
 V = "Voyage"
-# S = "Show schedule "
+S = "Show schedule "
 L = "List employee"
 # LD = 'List destination'
 # LV = 'list voyage'
 
 
 
-B = "Back"
-Q = "Quit"
+B = "[B] Back"
+Q = "[Q] Quit"
 EMPTY = ''
 
 
@@ -59,7 +59,7 @@ class Appearance:
 
     def print_main_menu(self):
         print(DASH*LENGTH)
-        print("{:>32}".format(M))
+        print("{:^60}".format(M))
         print(DASH*LENGTH)
         print("{:>8} {:<30}{} {} ".format('[1]', E, '[2]', V))
         print("{:>8} {:<30}{} {} ".format('[3]', D, '[4]', A))
@@ -68,7 +68,15 @@ class Appearance:
         print("{:15}{}".format(EMPTY,DASH*30))
 
     def print_employee_menu(self):
-        pass
+        print(DASH*LENGTH)
+        print("{:>32}".format(E))
+        print(DASH*LENGTH)
+        print("{:>8} {:<30}{} {} ".format('[1]', C, '[2]', CH))
+        print("{:>8} {:<30}{} {} ".format('[3]', S, '[4]', L))
+        print("{:15}{}".format(EMPTY,DASH*30))
+        print("{:20}{}{}{:5}{}{}".format(EMPTY,'[B]',B,EMPTY,'[Q]',Q))
+        print("{:15}{}".format(EMPTY,DASH*30))
+
 
     def print_dest_menu(self):
         pass
