@@ -68,8 +68,19 @@ class User:
     def printing_picture(self):
         self.app.picture()
 
-    def dest_menu(self):
-        pass
+    def dest_menu(self,action):
+        self.app.print_dest_menu()
+        action =""
+        while action != "q":
+            action = input("select an option: ")
+            if action == "1":
+                self.add_dest()
+                action = ("select an option: ")
+            elif action == "2": #change dest
+                pass
+            elif action == "3":
+                self.get_all_dest()
+                action = input("select an option: ")
 
     def main_menu(self):
         action = ""
@@ -83,15 +94,7 @@ class User:
             # elif action == "2":
             #     #sækja appearance
             elif action == "3":
-                self.app.print_dest_menu()
-                action = input("select an option: ")
-                if action == "1":
-                    self.add_dest()
-                elif action == "2": #change dest
-                    pass
-                elif action == "3":
-                    self.get_all_dest()
-                    action = input("select an option: ")
+                self.dest_menu(action)
 
 
             # elif action == "4":

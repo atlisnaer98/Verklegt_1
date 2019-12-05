@@ -83,7 +83,7 @@ class Appearance:
         print("destination")
         #DASH
         print("[1] Create [2] change info")
-        print("[3] list destination")
+        print("[3] list")
         #SUBDASH
         #BACK OG QUIT
         #SUBDASH
