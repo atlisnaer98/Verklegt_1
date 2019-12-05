@@ -81,7 +81,8 @@ class User:
                 pass
             elif action == "3":
                 self.get_all_dest()
-                action = input("select an option: ")
+                return input("select an option: ")
+                
 
     def main_menu(self):
         action = ""
@@ -95,7 +96,7 @@ class User:
             # elif action == "2":
             #     #sækja appearance
             elif action == "3":
-                self.dest_menu(action)
+                action = self.dest_menu(action)
 
 
             # elif action == "4":
