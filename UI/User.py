@@ -54,7 +54,12 @@ class User:
             lis = sting.split(",")
             print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[8]))
 
+    def printing_picture(self):
+        self.app.picture()
 
     def main_menu(self):
-        self.app.picture()
+        action = ""
+        while action != "q":
+            self.app.print_main_menu()
+            action = input("select an option: ")
             

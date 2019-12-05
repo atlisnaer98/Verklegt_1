@@ -1,11 +1,12 @@
-# DASH = "-"
+DASH = "-"
+LENGTH = 54
 #Len af forritinu er 54!!!
 # hastag = "#"
 
 
 # Role = "Select a Role"
 # option = "Select an option"
-# M = "Menu"
+M = "Menu"
 # D = "Destination"
 # C = 'Create'
 # CH = 'Change info'
@@ -55,3 +56,7 @@ class Appearance:
                                    
             """)
 
+    def print_main_menu(self):
+        print(DASH*LENGTH)
+        print("{:>27}".format(M))
+        print(DASH*LENGTH)
