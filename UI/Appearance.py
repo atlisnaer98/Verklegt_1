@@ -10,6 +10,7 @@ M = "Menu"
 D = "Destination"
 C = 'Create'
 CH = 'Change info'
+CND = 'Create new Destination'
 CV = 'Change voyage'
 A = 'Airplanes'
 AC = 'Assign crew'
@@ -19,9 +20,12 @@ S = "Show schedule "
 L = "List employee"
 LD = 'List destination'
 LV = 'List voyage'
+<<<<<<< HEAD
 GA = "Get all employees"
 GP = "Get all pilots"
 GC = "Get all cabincrew"
+=======
+>>>>>>> c43ee0a2085e45052affce51832791bc2f433b86
 
 
 
@@ -70,7 +74,9 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:>5} {:<27}{} {} ".format('[1]', E, '[2]', V))
         print("{:>5} {:<27}{} {} ".format('[3]', D, '[4]', A))
-        self.back_quit()
+        print("{:15}{}".format(EMPTY,DASH*30))
+        print("{:^60}".format(Q))
+        print("{:15}{}".format(EMPTY,DASH*30))
  
 
     def print_employee_menu(self):
@@ -112,8 +118,11 @@ class Appearance:
         print("{:>5} {} ".format('[3]', LD ))
         self.back_quit()
 
-    def print_add_dest(self):
-        pass
+    def print_add_dest(self): 
+        print(DASH*LENGTH)
+        print("{:^60}".format(CND))
+        print(DASH*LENGTH)
+        print("Please input necessary information:")
 
     
     def print_voyage_menu(self):
