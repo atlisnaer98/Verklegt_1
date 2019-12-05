@@ -11,7 +11,7 @@ D = "Destination"
 # C = 'Create'
 # CH = 'Change info'
 # CV = 'Change voyage'
-# A = 'Airplanes'
+A = 'Airplanes'
 # AC = 'Assign crew'
 E = "Employees"
 V = "Voyage"
@@ -62,10 +62,16 @@ class Appearance:
         print("{:>32}".format(M))
         print(DASH*LENGTH)
         print("{:>8} {:<30}{} {} ".format('[1]', E, '[2]', V))
-        print("{:>8} {:<30}{} {} ".format('[3]', D, '[4]', L))
+        print("{:>8} {:<30}{} {} ".format('[3]', D, '[4]', A))
         print("{:15}{}".format(EMPTY,DASH*30))
         print("{:20}{}{}{:5}{}{}".format(EMPTY,'[B]',B,EMPTY,'[Q]',Q))
         print("{:15}{}".format(EMPTY,DASH*30))
 
     def print_employee_menu(self):
+        pass
+
+    def print_dest_menu(self):
+        pass
+
+    def print_add_dest(self):
         pass
