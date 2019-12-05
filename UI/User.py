@@ -52,8 +52,11 @@ class User:
 
     def get_all_employee(self):
         employee_list = self.ll.get_all_employees()
+        print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for line in employee_list:
-            print(line)
+            sting = str(line)
+            lis = sting.split(",")
+            print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[6]))
 
     def add_employee(self):
         #self.app.print_add_employee()
@@ -72,11 +75,11 @@ class User:
     
     def get_cabin_crew(self):
         cabin_crew_list = self.ll.get_cabin_crew()
-        print("{:<20}{:<20}{:<20}".format("Name","SSN","Licence"))
+        print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for line in cabin_crew_list:
             sting = str(line)
             lis = sting.split(",")
-            print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[5]))
+            print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[6]))
 
     def get_pilots(self):
         pilot_list = self.ll.get_pilots()
