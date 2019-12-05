@@ -32,4 +32,8 @@
 # print("{:<16} {}".format(empty, DASH*24))
 # print("{:<18} {} {} {} {} ".format(empty, '[B]',B, '[Q]',Q))
 # print("{:<16} {}".format(empty, DASH*24))
-class Appearance
+from UI.User import User
+class Appearance:
+
+    def __init__():
+
