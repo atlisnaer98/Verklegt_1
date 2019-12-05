@@ -76,15 +76,24 @@ class User:
 
     def change_employee_info(self):
         self.app.print_change_employee_info()
+        employee = []
         employee_list = self.ll.get_all_employees()
         action = input("Enter ID number: ")
-        for employee in employee_list:
+        for emp in employee_list:
             sting = str(employee)
             lis = sting.split(",")
             if action == lis[0]:
+<<<<<<< HEAD
                 changee = employee
                 print("I liiike")
 
+=======
+                #changee = employee
+                print("{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n".format(emp.get_id))
+                self.ll.change_employee(emp)
+                #print("I liiike")
+                self.ll.change_employee(employee)
+>>>>>>> 2acc5d8f32d9bc3b8e4defb5c4227574870e90e9
         # self.get_employee(action)
 
     
