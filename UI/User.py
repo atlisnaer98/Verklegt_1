@@ -67,12 +67,12 @@ class User:
 
             if action == "1":
                 self.appearance.print_employee_menu()
-            elif action ="2":
+            elif action == "2":
                 #sækja appearance
-            elif action = "3":
+            elif action == "3":
                 #sækja appearance
 
-            elif action = "4":
+            elif action == "4":
                 #sækja appearance
 
             
