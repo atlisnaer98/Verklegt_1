@@ -89,6 +89,9 @@ class User:
                 print("I liiike")
         # self.get_employee(action)
 
+    def change_dest_info(self):
+        self.app.print_change_dest_info()
+
     
     def get_cabin_crew(self):
         cabin_crew_list = self.ll.get_cabin_crew()
@@ -121,7 +124,7 @@ class User:
                 print()
                 self.dest_menu(action)
             elif action == "2": #change dest
-                pass
+                self.change_dest_info()
             elif action == "3":
                 self.get_all_dest()
                 action = self.back_quit(action)

@@ -27,6 +27,7 @@ GA = "Get all employees"
 GP = "Get all pilots"
 GC = "Get all cabincrew"
 CE = "Change employee"
+CDI = 'Change destination info'
 WC = "What would you like to change?"
 
 
@@ -120,7 +121,7 @@ class Appearance:
         print(DASH*LENGTH)
         print("{}".format(WC))
 
-        
+   
         
 
     def print_employee_list(self):
@@ -142,6 +143,11 @@ class Appearance:
         # Input Upplýsingar
         self.back_quit()
 
+
+    def print_change_dest_info(self):
+        print(DASH*LENGTH)
+        print("{:^60}".format(CDI))
+        print(DASH*LENGTH)
 
     def print_voyage_menu(self):
         print(DASH*LENGTH)
