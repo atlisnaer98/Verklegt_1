@@ -17,3 +17,9 @@ if selection == 1:
 
 else:
     print("suck a tit")
+    
+"""import datetime
+
+timi = datetime.datetime.now().isoformat()
+
+print(timi)"""
