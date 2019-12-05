@@ -102,7 +102,7 @@ class User:
     def employee_menu(self,action):
         self.app.print_employee_menu()
         action =""
-        while action != "q":
+        while action != "q" or action != "Q":
             action = input("select an option: ")
             if action == "1":
                 pass
@@ -142,7 +142,6 @@ class User:
                 action = input("select an option: ")
             elif action == "3":
                 action = self.dest_menu(action)
-
 
             # elif action == "4":
             #     #sækja appearance
