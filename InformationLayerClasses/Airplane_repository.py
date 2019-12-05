@@ -6,12 +6,9 @@ class Airplane_repository:
     def __init__(self):
         self.__airplanes = []
 
-    def add_airplane(self, airplane):
-        with open("Aircraft.csv", "a+") as aircraft:
-            registration_number = airplane.get_registration_number
-            model = airplane.get_model
-
-        aircraft.write("{},{}".format(registration_number, model))
+    def add_plane(self, plane):
+        with open("./DATA/Aircraft.csv", "a", newline="") as airplanes:
+            airplanes.write("\n{}".format(str(plane)))
 
     def get_airplane(self):
         lis = []

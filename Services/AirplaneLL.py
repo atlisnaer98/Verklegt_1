@@ -8,3 +8,6 @@ class AirplaneLL():
 
     def get_all_airplanes(self):
         return self.dl.get_airplane()
+
+    def add_plane(self, plane):
+        self.dl.add_plane(plane)

@@ -1,4 +1,7 @@
+from Models.Airplane import Airplane
 from Models.Destination import Destination
+from Models.Employee import Employee
+from Models.Voyage import Voyage
 import csv
 from Services.API import LLApi
 from UI.Appearance import Appearance
@@ -37,6 +40,13 @@ class User:
         airplane_obj = self.ll.get_all_airplanes()
         for line in airplane_obj:
             print(line)
+    
+    def add_plane(self):
+        #self.app.print_add_plane()
+        plane = Airplane()
+        plane.set_registration_number(input("Registration number: "))
+        plane.set_model(input("Model: "))
+        self.ll.add_plane(plane)
 
     def get_all_employee(self):
         employee_list = self.ll.get_all_employees()
@@ -59,6 +69,9 @@ class User:
     def printing_picture(self):
         self.app.picture()
 
+    def dest_menu(self):
+        pass
+
     def main_menu(self):
         action = ""
         while action != "q":
@@ -67,11 +80,20 @@ class User:
 
             if action == "1":
                 self.app.print_employee_menu()
-                option = input("select an option: ")
+                action = input("select an option: ")
             # elif action == "2":
             #     #sækja appearance
             elif action == "3":
                 self.app.print_dest_menu()
+                action = input("select an option: ")
+                if action == "1":
+                    self.add_dest()
+                elif action == "2": #change dest
+                    pass
+                elif action == "3":
+                    self.get_all_dest()
+                    action = input("select an option: ")
+
 
             # elif action == "4":
             #     #sækja appearance
