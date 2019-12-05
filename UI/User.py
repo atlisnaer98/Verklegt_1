@@ -72,6 +72,25 @@ class User:
         emp.set_licence(input("Licence: "))
         emp.set_activity(input("Activity: "))
         self.ll.add_employee(emp)
+
+    def get_employee(self, action):
+        employee_list = self.ll.get_all_employees()
+        print(employee_list)
+
+
+
+    def change_employee_info(self):
+        self.app.print_change_employee_info()
+        employee_list = self.ll.get_all_employees()
+        action = input("Enter ID number: ")
+        for employee in employee_list:
+            sting = str(employee)
+            lis = sting.split(",")
+            if action == lis[0]:
+                print("I liiike")
+
+        # self.get_employee(action)
+
     
     def get_cabin_crew(self):
         cabin_crew_list = self.ll.get_cabin_crew()
@@ -123,7 +142,7 @@ class User:
             if action == "1":
                 self.add_employee()
             elif action == "2":
-                pass
+                self.change_employee_info()
             elif action == "3":
                 pass
             elif action == "4":
