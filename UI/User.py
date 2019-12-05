@@ -79,10 +79,11 @@ class User:
         employee = []
         employee_list = self.ll.get_all_employees()
         action = input("Enter ID number: ")
-        for line in employee_list:
-            sting = str(line)
+        for emp in employee_list:
+            sting = str(employee)
             lis = sting.split(",")
             if action == lis[0]:
+<<<<<<< HEAD
                 employee.append(lis)
                 for x in employee:
                     print(x) # breyta því hvernig þetta prentast út
@@ -90,6 +91,19 @@ class User:
     
         
 
+=======
+<<<<<<< HEAD
+                changee = employee
+                print("I liiike")
+
+=======
+                #changee = employee
+                print("{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n".format(emp.get_id))
+                self.ll.change_employee(emp)
+                #print("I liiike")
+                self.ll.change_employee(employee)
+>>>>>>> 2acc5d8f32d9bc3b8e4defb5c4227574870e90e9
+>>>>>>> c019f87aaaca62fdfede44ffb28204bbd8a082d8
         # self.get_employee(action)
 
     
@@ -119,7 +133,9 @@ class User:
             if action == "1":
                 self.app.print_add_dest()
                 self.add_dest()
-                print("You have created a new destination ")
+                print()
+                print("You have created a new destination!")
+                print()
                 self.dest_menu(action)
             elif action == "2": #change dest
                 pass
@@ -135,6 +151,8 @@ class User:
                 else:
                     action = input("not a valid input, please re-enter: ")
                     self.dest_menu(action)"""
+            elif action in BACK:
+                self.main_menu()
                     
     def back_quit(self,action):
         self.app.back_quit()
