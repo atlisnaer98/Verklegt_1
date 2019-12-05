@@ -1,5 +1,5 @@
 DASH = "-"
-LENGTH = 54
+LENGTH = 60
 #Len af forritinu er 54!!!
 # hastag = "#"
 
@@ -58,5 +58,5 @@ class Appearance:
 
     def print_main_menu(self):
         print(DASH*LENGTH)
-        print("{:>27}".format(M))
+        print("{:>30}".format(M))
         print(DASH*LENGTH)
