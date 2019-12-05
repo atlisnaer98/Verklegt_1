@@ -27,9 +27,9 @@ class Destination_repository():
 
     def add_dest(self,dest):
         with open("./DATA/Destination.csv", "a", newline="") as destinations:
-            writer = csv.writer(destinations)
+            #writer = csv.writer(destinations,delimiter=' ',quotechar='|', quoting=csv.QUOTE_MINIMAL)
             #lis = (str(dest)).split(",")
             #string = "".join(lis)
             string = str(dest)
             print(string)
-            writer.writerow(string)
+            destinations.write(string)
