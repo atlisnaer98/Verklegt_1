@@ -30,4 +30,22 @@ class Voyage():
 
     def get_booking_reference(self):
         return self.__booking_reference
+
+    def set_airplane(self, new_airplane):
+        self.__airplane = new_airplane
+
+    def set_destination(self, new_destination):
+        self.__destination = new_destination
+
+    def set_time(self, new_time):
+        self.__time = new_time
+    
+    def set_flight_numbers(self, new_flight_numbers):
+        self.__flight_numbers = new_flight_numbers 
+
+    def set_booking_reference(self, new_booking_reference):
+        self.__booking_reference = new_booking_reference
+
+        
+        
         
