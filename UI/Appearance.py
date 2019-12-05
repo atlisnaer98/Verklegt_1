@@ -19,12 +19,9 @@ S = "Show schedule "
 L = "List employee"
 LD = 'List destination'
 LV = 'List voyage'
-<<<<<<< HEAD
-=======
 GA = "Get all employees"
 GP = "Get all pilots"
 GC = "Get all cabincrew"
->>>>>>> 8cf0031ea21c943eb87852529028003fb58feba9
 
 
 
