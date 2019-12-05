@@ -15,6 +15,10 @@ class Employee_repository:
                 all_employee_list.append(crew)
         return all_employee_list
 
+    def add_employee(self, emp):
+        with open("./DATA/Employee.csv", "a", newline="") as employees:
+            employee.write("{}\n".format(str(emp)))
+
 
     def change_employee_attribute(self):
         ''' changes a specific attribute for an employee'''

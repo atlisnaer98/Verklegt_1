@@ -57,7 +57,16 @@ class User:
         #self.app.print_add_employee()
         emp = Employee()
         emp.set_ssn(input("ID number: "))
-        
+        emp.set_name(input("Name: "))
+        emp.set_address(input("Adress: "))
+        emp.set_home_phone(input("Home phone: "))
+        emp.set_mobile_number(input("Mobile number: "))
+        emp.set_email_address(input("Email: "))
+        emp.set_job_title(input("Job title: "))
+        emp.set_rank(input("Rank: "))
+        emp.set_licence(input("Licence: "))
+        emp.set_activity(input("Activity: "))
+        self.ll.add_employee(emp)
     
     def get_cabin_crew(self):
         cabin_crew_list = self.ll.get_cabin_crew()
