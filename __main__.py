@@ -3,7 +3,7 @@ from UI.User import User
 def main():
     ui = User()
     ui.printing_picture()
-    ui.main_menu() 
+    #ui.main_menu() 
     #ui.get_all_airplane()
     #ui.get_all_dest()
     #ui.get_all_employee()
