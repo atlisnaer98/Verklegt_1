@@ -82,9 +82,9 @@ class User:
             sting = str(employee)
             lis = sting.split(",")
             if action == lis[0]:
-                #changee = employee
-                #print("I liiike")
-                self.get_employee(employee)
+                changee = employee
+                print("I liiike")
+
         # self.get_employee(action)
 
     
@@ -114,7 +114,9 @@ class User:
             if action == "1":
                 self.app.print_add_dest()
                 self.add_dest()
-                print("You have created a new destination ")
+                print()
+                print("You have created a new destination!")
+                print()
                 self.dest_menu(action)
             elif action == "2": #change dest
                 pass
@@ -130,6 +132,8 @@ class User:
                 else:
                     action = input("not a valid input, please re-enter: ")
                     self.dest_menu(action)"""
+            elif action in BACK:
+                self.main_menu()
                     
     def back_quit(self,action):
         self.app.back_quit()
