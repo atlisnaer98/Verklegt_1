@@ -91,7 +91,25 @@ class User:
 
     def change_dest_info(self):
         self.app.print_change_dest_info()
+        self.print_select_dest()
+        dest_list = self.ll.get_all_dest()
+        action = input("select an option: ")
+        for i in range(0,len(dest_list)):
+            if int(action) == (i+1):
+                self.app.print_change_dest_info()
+                print(str(dest_list[i]))
+        
 
+
+    def print_select_dest(self):
+        dest_list = self.ll.get_all_dest()
+        print("Please select destination: ")
+        for i in range(0,len(dest_list)):
+            sting = str(dest_list[i])
+            lis = sting.split(",")
+            numb = i+1
+            dest = lis[0]
+            print("[{}] {}".format(numb,dest))
     
     def get_cabin_crew(self):
         cabin_crew_list = self.ll.get_cabin_crew()
