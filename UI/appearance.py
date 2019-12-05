@@ -32,3 +32,4 @@
 # print("{:<16} {}".format(empty, DASH*24))
 # print("{:<18} {} {} {} {} ".format(empty, '[B]',B, '[Q]',Q))
 # print("{:<16} {}".format(empty, DASH*24))
+class Appearance
