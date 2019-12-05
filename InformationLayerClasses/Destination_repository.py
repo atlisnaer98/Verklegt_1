@@ -28,4 +28,4 @@ class Destination_repository():
     def add_dest(self,dest):
         with open("./DATA/Destination.csv", "a", newline="") as destinations:
             writer = csv.writer(destinations)
-            writer.writerow(dest)
+            writer.writerow(str(dest))
