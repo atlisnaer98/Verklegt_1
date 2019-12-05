@@ -31,4 +31,5 @@ class Destination_repository():
             #lis = (str(dest)).split(",")
             #string = "".join(lis)
             string = str(dest)
+            print(string)
             writer.writerow(string)
