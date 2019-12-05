@@ -84,10 +84,9 @@ class User:
             lis = sting.split(",")
             if action == lis[0]:
                 #changee = employee
-                print("{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n".format(emp.get_id))
+                print("{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n".format(emp.get_ID_number(), emp.get_name(), emp.get_adress(), emp.get_home_phone(), emp.get_mobile_number(), emp.get_email_adress(), emp.get_job_title(), emp.get_rank(), emp.get_licence(), get_activity()))
                 self.ll.change_employee(emp)
                 #print("I liiike")
-                self.ll.change_employee(employee)
         # self.get_employee(action)
 
     
