@@ -12,10 +12,19 @@ class Airplane():
     def get_registration_number(self):
         return self.__registration_number
 
+    def set_registration_number(self,new_regID):
+        self.__registration_number = new_regID
+
     def get_model(self):
         return self.__model
 
+    def set_model(self, new_model):
+        self.__model = new_model
+
     def get_active(self):
         return self.__active
+
+    def set_active(self, new_status):
+        self.__active = new_status
 
     # Hæ
