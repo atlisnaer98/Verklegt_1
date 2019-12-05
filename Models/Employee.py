@@ -1,6 +1,6 @@
 class Employee():
     #ssn,name,address, home_phone, mobile_phone, email_address,role,rank,licence, active
-    def __init__(self, ssn, name, address, home_phone, mobile_phone, email_address, role, rank, licence, active):
+    def __init__(self, ssn = "", name = "", address = "", home_phone = "", mobile_phone = "", email_address = "", role = "", rank = 0, licence = "", active = 1):
         #ssn,name,address, homephone, mobilephone, email_address,job_title,rank,licence, active
         self.__ssn = ssn
         self.__name = name

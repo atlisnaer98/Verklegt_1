@@ -3,9 +3,7 @@ import csv
 
 class Employee_repository:
 
-    def create_employee_list(self):
-        '''creates a list of all employees working for the company'''
-        pass
+    
 
     def get_all_employees(self):
         """gets all the crew member"""

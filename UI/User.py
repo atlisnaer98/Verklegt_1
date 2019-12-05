@@ -52,6 +52,9 @@ class User:
         employee_list = self.ll.get_all_employees()
         for line in employee_list:
             print(line)
+
+    def add_employee(self):
+        employee = Employee()
     
     def get_cabin_crew(self):
         cabin_crew_list = self.ll.get_cabin_crew()
