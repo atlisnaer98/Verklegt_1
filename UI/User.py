@@ -20,6 +20,7 @@ class User:
         dest.set_distance(input("Distance: "))
         dest.set_name_of_contact(input("Emergency contact: "))
         dest.set_emergency_phone_number(input("Emergency contact number: "))
+        print(dest)
         self.ll.add_dest(dest)
         #return country, airport, flight_time, name_of_contact, emergency_phone_number
 
