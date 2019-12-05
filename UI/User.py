@@ -17,7 +17,6 @@ class User:
         pass
 
     def add_dest(self):
-        self.app.print_add_dest()
         dest = Destination()
         dest.set_destination(input("Destination: "))
         dest.set_country(input("Country: "))
@@ -84,6 +83,7 @@ class User:
             sting = str(line)
             lis = sting.split(",")
             if action == lis[0]:
+<<<<<<< HEAD
                 employee.append(lis)
                 for x in employee:
                     print(x) # breyta því hvernig þetta prentast út
@@ -91,6 +91,11 @@ class User:
     
         
 
+=======
+                #changee = employee
+                #print("I liiike")
+                self.ll.change_employee(employee)
+>>>>>>> 8f501c4d4903930e9856deddf08add8156cf4f9f
         # self.get_employee(action)
 
     
@@ -120,7 +125,8 @@ class User:
             if action == "1":
                 self.app.print_add_dest()
                 self.add_dest()
-                action = ("select an option: ")
+                print("You have created a new destination ")
+                self.dest_menu(action)
             elif action == "2": #change dest
                 pass
             elif action == "3":
