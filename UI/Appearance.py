@@ -143,12 +143,9 @@ class Appearance:
         self.back_quit()
 
 
-<<<<<<< HEAD
     def print_change_dest_info(self):
         pass
 
-=======
->>>>>>> 7677f00575986f8e2eaf5e340c3fefeb1812dc52
     def print_voyage_menu(self):
         print(DASH*LENGTH)
         print("{:^60}".format(V))

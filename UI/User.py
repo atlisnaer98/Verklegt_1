@@ -87,10 +87,7 @@ class User:
                 print("{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n".format(emp.get_ID_number(), emp.get_name(), emp.get_adress(), emp.get_home_phone(), emp.get_mobile_number(), emp.get_email_adress(), emp.get_job_title(), emp.get_rank(), emp.get_licence(), get_activity()))
                 self.ll.change_employee(emp)
                 #print("I liiike")
-<<<<<<< HEAD
                 self.ll.change_employee(employee)
-=======
->>>>>>> 7677f00575986f8e2eaf5e340c3fefeb1812dc52
         # self.get_employee(action)
 
     def change_dest_info(self):
