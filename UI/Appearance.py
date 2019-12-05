@@ -22,8 +22,8 @@ L = "List employee"
 
 
 
-B = "Back"
-Q = "Quit"
+B = "[B] Back"
+Q = "[Q] Quit"
 EMPTY = ''
 
 
@@ -59,7 +59,7 @@ class Appearance:
 
     def print_main_menu(self):
         print(DASH*LENGTH)
-        print("{:>32}".format(M))
+        print("{:^60}".format(M))
         print(DASH*LENGTH)
         print("{:>8} {:<30}{} {} ".format('[1]', E, '[2]', V))
         print("{:>8} {:<30}{} {} ".format('[3]', D, '[4]', A))
