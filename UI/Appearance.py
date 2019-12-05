@@ -104,7 +104,15 @@ class Appearance:
 
     
     def print_voyage_menu(self):
-        pass
+        print(DASH*LENGTH)
+        print("{:^60}".format(V))
+        print(DASH*LENGTH)
+        print("{:>8} {:<30}{} {} ".format('[1]', C, '[2]', AC))
+        print("{:>8} {:<30}{} {} ".format('[3]', LV, '[4]', CV))
+        print("{:15}{}".format(EMPTY,DASH*30))
+        print("{:17}{}{:10}{}".format(EMPTY,B,EMPTY,Q))
+        print("{:15}{}".format(EMPTY,DASH*30))
+        
 
     def print_add_voyage(self):
         pass

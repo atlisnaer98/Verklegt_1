@@ -82,7 +82,27 @@ class User:
             elif action == "3":
                 self.get_all_dest()
                 return input("select an option: ")
+
+
+    def employee_menu(self,action):
+        self.app.print_employee_menu()
+        action =""
+        while action != "q":
+            action = input("select an option: ")
+            # if action == "1":
+            #     self.get_all_employees()
                 
+            # elif action == "2":
+            #     pass
+            # elif action == "3":
+            #     #self.get_all_employees()
+                
+    def Voyage_menu(self,action):
+        self.app.print_voyage_menu()
+        action = ""
+        while action != "q":
+            action = input("select an option: ")
+
 
     def main_menu(self):
         action = ""
@@ -91,10 +111,11 @@ class User:
             action = input("select an option: ") # muna að villutjékka þetta
 
             if action == "1":
-                self.app.print_employee_menu()
+                self.employee_menu(action)
+                
+            elif action == "2":
+                self.Voyage_menu(action)
                 action = input("select an option: ")
-            # elif action == "2":
-            #     #sækja appearance
             elif action == "3":
                 action = self.dest_menu(action)
 
