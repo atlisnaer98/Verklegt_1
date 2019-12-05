@@ -23,4 +23,7 @@ class Airplane_repository:
                 lis.append(plane)
         return lis
 
+    def add_dest(self,plane):
+        with open("./DATA/Destination.csv", "a", newline="") as airplanes:
+            airplanes.write(str(plane))
 
