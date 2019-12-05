@@ -84,7 +84,7 @@ class User:
             lis = sting.split(",")
             if action == lis[0]:
                 #changee = employee
-                print("{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n".format(emp.get_ID_number(), emp.get_name(), emp.get_address(), emp.get_home_phone(), emp.get_mobile_number(), emp.get_email_address(), emp.get_job_title(), emp.get_rank(), emp.get_licence(), emp.get_activity()))
+                print("ID Number: {}\nName: {}\nAddress: {}\nHome phone: {}\nMobile number: {}\nEmail address: {}\n Job title: {}\nRank: {}\nLicence: {}\n Activity: {}\n".format(emp.get_ID_number(), emp.get_name(), emp.get_address(), emp.get_home_phone(), emp.get_mobile_number(), emp.get_email_address(), emp.get_job_title(), emp.get_rank(), emp.get_licence(), emp.get_activity()))
                 changed = input("What do you want to change? ")
                 #self.ll.change_employee(emp,changed)
                 print("I liiike")
