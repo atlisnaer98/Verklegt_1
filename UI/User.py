@@ -7,7 +7,7 @@ from Services.API import LLApi
 from UI.Appearance import Appearance
 
 QUIT = ["q","Q"]
-
+BACK = ["b","B"]
 class User:
     def __init__(self):
         self.ll = LLApi()
@@ -91,10 +91,10 @@ class User:
 
     def dest_menu(self,action):
         self.app.print_dest_menu()
-        action =""
         while action not in QUIT:
             action = input("select an option: ")
             if action == "1":
+                self.app.print_add_dest()
                 self.add_dest()
                 action = ("select an option: ")
             elif action == "2": #change dest
@@ -102,12 +102,19 @@ class User:
             elif action == "3":
                 self.get_all_dest()
                 self.app.back_quit()
-                return input("select an option: ")
+                action = input("select an option: ")
+                if action in BACK:
+                    self.dest_menu(action)
+                elif action in QUIT:
+                    return action
+                else:
+                    action = input("not a valid input, please re-enter: ")
+                    self.dest_menu(action)
+                    
 
 
     def employee_menu(self,action):
         self.app.print_employee_menu()
-        action =""
         while action not in QUIT:
             action = input("select an option: ")
             if action == "1":
@@ -125,6 +132,7 @@ class User:
                     self.get_pilots()
                 elif action == "3":
                     self.get_cabin_crew()
+            
                 
     def Voyage_menu(self,action):
         self.app.print_voyage_menu()
@@ -153,7 +161,7 @@ class User:
             elif action == "2":
                 self.Voyage_menu(action)
                 action = input("select an option: ")
-            elif action == "3":
+            elif action == "3": #DESTINATION
                 action = self.dest_menu(action)
 
             # elif action == "4":
