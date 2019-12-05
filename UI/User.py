@@ -77,13 +77,19 @@ class User:
 
     def change_employee_info(self):
         self.app.print_change_employee_info()
+        employee = []
         employee_list = self.ll.get_all_employees()
         action = input("Enter ID number: ")
-        for employee in employee_list:
-            sting = str(employee)
+        for line in employee_list:
+            sting = str(line)
             lis = sting.split(",")
             if action == lis[0]:
-                print("I liiike")
+                employee.append(lis)
+                for x in employee:
+                    print(x) # breyta því hvernig þetta prentast út
+        
+    
+        
 
         # self.get_employee(action)
 

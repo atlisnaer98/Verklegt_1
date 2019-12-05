@@ -24,6 +24,7 @@ GA = "Get all employees"
 GP = "Get all pilots"
 GC = "Get all cabincrew"
 CE = "Change employee"
+WC = "What would you like to change?"
 
 
 
@@ -107,6 +108,11 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(CE))
         print(DASH*LENGTH)
+
+    def print_what_to_change_employee(self):
+        print(DASH*LENGTH)
+        print("{}".format(WC))
+
         
         
 
