@@ -52,6 +52,21 @@ class User:
         employee_list = self.ll.get_all_employees()
         for line in employee_list:
             print(line)
+
+    def add_employee(self):
+        #self.app.print_add_employee()
+        emp = Employee()
+        emp.set_ssn(input("ID number: "))
+        emp.set_name(input("Name: "))
+        emp.set_address(input("Adress: "))
+        emp.set_home_phone(input("Home phone: "))
+        emp.set_mobile_number(input("Mobile number: "))
+        emp.set_email_address(input("Email: "))
+        emp.set_job_title(input("Job title: "))
+        emp.set_rank(input("Rank: "))
+        emp.set_licence(input("Licence: "))
+        emp.set_activity(input("Activity: "))
+        self.ll.add_employee(emp)
     
     def get_cabin_crew(self):
         cabin_crew_list = self.ll.get_cabin_crew()
@@ -69,8 +84,20 @@ class User:
     def printing_picture(self):
         self.app.picture()
 
-    def dest_menu(self):
-        pass
+    def dest_menu(self,action):
+        self.app.print_dest_menu()
+        action =""
+        while action != "q":
+            action = input("select an option: ")
+            if action == "1":
+                self.add_dest()
+                action = ("select an option: ")
+            elif action == "2": #change dest
+                pass
+            elif action == "3":
+                self.get_all_dest()
+                return input("select an option: ")
+                
 
     def main_menu(self):
         action = ""
@@ -84,15 +111,7 @@ class User:
             # elif action == "2":
             #     #sækja appearance
             elif action == "3":
-                self.app.print_dest_menu()
-                action = input("select an option: ")
-                if action == "1":
-                    self.add_dest()
-                elif action == "2": #change dest
-                    pass
-                elif action == "3":
-                    self.get_all_dest()
-                    action = input("select an option: ")
+                action = self.dest_menu(action)
 
 
             # elif action == "4":
