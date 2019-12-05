@@ -76,3 +76,6 @@ sem við höfðum búið til í byrjun, Júlíus sér um aricrafts, atli sér um
 fimmtudagur - morgunfundur:
 markmiðið okkar er núna að læra hvernig á að bæta við í skjalið. að geta appendað við csv file. Við munum byrja á að útfæra hönnunina líka
 í dag.
+
+fimmtudagur - lokafundur:
+Geggjaður dagur í dag að okkar mati, komumst vel á leið með destination og employee. Mætum á morgun og ætlum að byrja á voyages. 
