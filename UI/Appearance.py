@@ -18,7 +18,10 @@ V = "Voyage"
 S = "Show schedule "
 L = "List employee"
 LD = 'List destination'
-LV = 'list voyage'
+LV = 'List voyage'
+GA = "Get all employees"
+GP = "Get all pilots"
+GC = "Get all cabincrew"
 
 
 
@@ -82,6 +85,17 @@ class Appearance:
         print("{:17}{}{:10}{}".format(EMPTY,B,EMPTY,Q))
         print("{:15}{}".format(EMPTY,DASH*30))
 
+    def print_select_employee_menu(self):
+        print(DASH*LENGTH)
+        print("{:^60}".format(E))
+        print(DASH*LENGTH)
+        print("{:>5} {:<27}{} {} ".format('[1]', GA, '[2]', GP))
+        print("{:>5} {:<27}".format('[3]', GC, ))
+        print("{:15}{}".format(EMPTY,DASH*30))
+        print("{:17}{}{:10}{}".format(EMPTY,B,EMPTY,Q))
+        print("{:15}{}".format(EMPTY,DASH*30))
+
+
     def print_create_employee(self):
         pass
 
@@ -112,8 +126,8 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(V))
         print(DASH*LENGTH)
-        print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', AC))
-        print("{:>5} {:<27}{} {} ".format('[3]', LV, '[4]', CV))
+        print("{:>5} {:<27}{} {} ".format('[1]', GA, '[2]', AC))
+        print("{:>5} {:<27} ".format('[3]', LV, ))
         print("{:15}{}".format(EMPTY,DASH*30))
         print("{:17}{}{:10}{}".format(EMPTY,B,EMPTY,Q))
         print("{:15}{}".format(EMPTY,DASH*30))

@@ -70,8 +70,11 @@ class User:
     
     def get_cabin_crew(self):
         cabin_crew_list = self.ll.get_cabin_crew()
+        print("{:<20}{:<20}{:<20}".format("Name","SSN","Licence"))
         for line in cabin_crew_list:
-            print(line)
+            sting = str(line)
+            lis = sting.split(",")
+            print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[5]))
 
     def get_pilots(self):
         pilot_list = self.ll.get_pilots()
@@ -105,13 +108,20 @@ class User:
         while action != "q":
             action = input("select an option: ")
             if action == "1":
-                pass
+                self.add_employee()
             elif action == "2":
                 pass
             elif action == "3":
                 pass
             elif action == "4":
-                self.get_all_employee()
+                self.app.print_select_employee_menu()
+                action = input("select an option: ")
+                if action == "1":
+                    self.get_all_employee()
+                elif action == "2":
+                    self.get_pilots()
+                elif action == "3":
+                    self.get_cabin_crew()
                 
     def Voyage_menu(self,action):
         self.app.print_voyage_menu()
