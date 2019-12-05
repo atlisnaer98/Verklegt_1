@@ -21,9 +21,10 @@ L = "List employee"
 # LV = 'list voyage'
 
 
+
 B = "Back"
 Q = "Quit"
-# empty = ''
+EMPTY = ''
 
 
 # print(DASH*LENGTH)
@@ -58,10 +59,13 @@ class Appearance:
 
     def print_main_menu(self):
         print(DASH*LENGTH)
-        print("{:>30}".format(M))
+        print("{:>32}".format(M))
         print(DASH*LENGTH)
-        print("{} {:<30}{} {} ".format('[1]', E, '[2]', V))
-        print("{} {:<30}{} {} ".format('[3]', D, '[4]', L))
-        #print("{:>30}".format(DASH*(LENGTH/2)))
-        #print("{:<30}  {} {} {} ".format('[B]',B, '[Q]',Q))
-        #print("{:<30}".format(DASH*LENGTH/2))
+        print("{:>8} {:<30}{} {} ".format('[1]', E, '[2]', V))
+        print("{:>8} {:<30}{} {} ".format('[3]', D, '[4]', L))
+        print("{:15}{}".format(EMPTY,DASH*30))
+        print("{:20}{}{}{:5}{}{}".format(EMPTY,'[B]',B,EMPTY,'[Q]',Q))
+        print("{:15}{}".format(EMPTY,DASH*30))
+
+    def print_employee_menu(self):
+        pass
