@@ -80,13 +80,13 @@ class User:
         employee_list = self.ll.get_all_employees()
         action = input("Enter ID number: ")
         for emp in employee_list:
-            sting = str(employee)
+            sting = str(emp)
             lis = sting.split(",")
             if action == lis[0]:
                 #changee = employee
-                print("{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n".format(emp.get_ID_number(), emp.get_name(), emp.get_adress(), emp.get_home_phone(), emp.get_mobile_number(), emp.get_email_adress(), emp.get_job_title(), emp.get_rank(), emp.get_licence(), get_activity()))
-                self.ll.change_employee(emp)
-                #print("I liiike")
+                print("{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n".format(emp.get_ID_number(), emp.get_name(), emp.get_address(), emp.get_home_phone(), emp.get_mobile_number(), emp.get_email_address(), emp.get_job_title(), emp.get_rank(), emp.get_licence(), emp.get_activity()))
+                #self.ll.change_employee(emp)
+                print("I liiike")
         # self.get_employee(action)
 
     
