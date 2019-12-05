@@ -83,27 +83,11 @@ class User:
             sting = str(employee)
             lis = sting.split(",")
             if action == lis[0]:
-<<<<<<< HEAD
-                employee.append(lis)
-                for x in employee:
-                    print(x) # breyta því hvernig þetta prentast út
-        
-    
-        
-
-=======
-<<<<<<< HEAD
-                changee = employee
-                print("I liiike")
-
-=======
                 #changee = employee
                 print("{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n".format(emp.get_id))
                 self.ll.change_employee(emp)
                 #print("I liiike")
                 self.ll.change_employee(employee)
->>>>>>> 2acc5d8f32d9bc3b8e4defb5c4227574870e90e9
->>>>>>> c019f87aaaca62fdfede44ffb28204bbd8a082d8
         # self.get_employee(action)
 
     
