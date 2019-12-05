@@ -2,13 +2,13 @@ from UI.User import User
 
 def main():
     ui = User()
-    ui.printing_picture()
-    ui.main_menu() 
+    #ui.printing_picture()
+    #ui.main_menu() 
     #ui.get_all_airplane()
-    ui.get_all_dest()
+    #ui.get_all_dest()
     #ui.get_all_employee()
     #ui.get_cabin_crew()
-    #ui.add_dest()
+    ui.add_dest()
     #ui.get_pilots()
     
 
