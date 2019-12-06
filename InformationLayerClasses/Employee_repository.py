@@ -1,6 +1,8 @@
 from Models.Employee import Employee
 import csv
 
+
+HEADER = "ssn,name,address,home_phone,mobile_phone,email_address,role,rank,licence,active"
 class Employee_repository:
 
     
@@ -17,8 +19,13 @@ class Employee_repository:
 
     def add_employee(self, emp):
         with open("./DATA/Crew.csv", "a", newline="") as employees:
-            employee.write("{}\n".format(str(emp)))
+            employees.write("{}\n".format(str(emp)))
 
+    def update_employee_file(self,emp_list):
+        with open("./DATA/Crew.csv", "w+", newline="") as employees:
+            employees.write("{}\n".format(HEADER))
+            for emp in emp_list:
+                employees.write("{}\n".format(str(emp)))
 
     def change_employee_attribute(self):
         ''' changes a specific attribute for an employee'''

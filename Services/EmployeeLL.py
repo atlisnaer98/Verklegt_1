@@ -18,7 +18,8 @@ class EmployeeLL():
             lis = []
             lis.append(emp)
     
-    def change_employee(self,emp,option,changed):
+    def change_employee(self,employee_list,index,option,changed):
+        emp = employee_list[index]
         if option == 1:
             emp.set_address(changed)
         elif option == 2:
@@ -37,7 +38,9 @@ class EmployeeLL():
             emp.set_activity(changed)
         else: 
             return False
-        print(emp)
+        employee_list[index] = emp
+        self.dl.update_employee_file(employee_list)
+        return employee_list
 
     def add_employee(self,emp):
         self.dl.add_employee(emp)
