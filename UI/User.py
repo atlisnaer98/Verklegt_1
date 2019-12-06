@@ -199,8 +199,8 @@ class User:
         self.ll.add_dest(dest)
         #return country, airport, flight_time, name_of_contact, emergency_phone_number
 
-    def get_all_voyages(self):
-        employee_list = self.ll.get_all_voyages()
+    def get_all_voyages(self, from_date, to_date):
+        employee_list = self.ll.get_all_voyages(from_date, to_date)
         print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for line in employee_list:
             sting = str(line)
@@ -229,8 +229,8 @@ class User:
                 self.app.print_voyage_selection()
                 action = input("select an option: ")
                 if action =="1": 
-                    # from_date = input("Enter date: dd/mm/yy")
-                    # to_date = input("to dd/mm/yy")
+                    from_date = input("Enter date: dd/mm/yy")
+                    to_date = input("to dd/mm/yy")
                     self.get_all_voyages(from_date, to_date)
                 elif action == "2":
                     ID = input("Enter ID number")
