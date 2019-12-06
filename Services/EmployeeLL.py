@@ -8,6 +8,15 @@ class EmployeeLL():
     
     def get_all_employees(self):
         return self.dl.get_all_employee()
+
+    def get_all_employees_dict(self):
+        return self.dl.get_all_employees_dict()
+
+    """def list_to_dict(self):
+        big_list = self.dl.get_all_employee()
+        for emp in big_list:
+            lis = []
+            lis.append(emp.)"""
     
     def change_employee(self,emp,option,changed):
         if option == 1:
