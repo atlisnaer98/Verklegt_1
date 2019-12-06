@@ -105,9 +105,11 @@ class User:
         for index in range(0,len(dest_list)):
             if int(action) == (index+1):
                 self.app.print_change_dest_info()
-                dest = str(dest_list[index]).split(",")              
+                dest = str(dest_list[index])
+                splitted_dest = dest.split(",")              
                 print("You chose {}, what do you want to change?".format(dest[0]))
-                aciton = input("blbla")
+                
+                self.app.print_emergency
         
     def get_cabin_crew(self):
         cabin_crew_list = self.ll.get_cabin_crew()
