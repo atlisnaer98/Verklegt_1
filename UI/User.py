@@ -80,20 +80,17 @@ class User:
         for index in range(len(employee_list)):
             emp = employee_list[index]
             if action == emp.get_ID_number():
-                print("ID Number: {}\nName: {}\nAddress: {}\nHome phone: {}\nMobile number: {}\nEmail address: {}\nJob title: {}\nRank: {}\nLicence: {}\nActivity: {}\n"
-                .format(emp.get_ID_number(), emp.get_name(), emp.get_address(), emp.get_home_phone(), emp.get_mobile_number(), 
-                emp.get_email_address(), emp.get_job_title(), emp.get_rank(), emp.get_licence(), emp.get_activity()))
+                self.app.print_changing_employee_information(emp)
                 option = int(input("What do you want to change? "))
                 changed = input("Enter new input: ")
                 self.ll.change_employee(employee_list,index,option,changed)
-                #print("tippi")
-            """def change_employee_info(self): # ef við viljum nota dicts
-            self.app.print_change_employee_info()
-            employee_dic = self.ll.get_all_employees_dict()
-            action = input("Enter ID number: ")
-            for key in employee_dic:
+                """def change_employee_info(self): # ef við viljum nota dicts
+                self.app.print_change_employee_info()
+                employee_dic = self.ll.get_all_employees_dict()
+                action = input("Enter ID number: ")
+                for key in employee_dic:
                 if key == action:
-                    print(employee_dic[key]) """
+                print(employee_dic[key]) """
 
     def change_dest_info(self):
         self.app.print_change_dest_info()
@@ -103,17 +100,9 @@ class User:
         for index in range(0,len(dest_list)):
             if int(action) == (index+1):
                 self.app.print_change_dest_info()
-<<<<<<< HEAD
-                dest = str(dest_list[index])
-                splitted_dest = dest.split(",")              
-                print("You chose {}, what do you want to change?".format(dest[0]))
-                
-                self.app.print_emergency
-=======
                 dest = dest_list[index]              
                 print("You chose {}, what do you want to change?".format(dest.get_destination()))
                 aciton = input("blbla")
->>>>>>> 95a6da917027e71d408514513a4d5cb2b91638e1
         
     def get_cabin_crew(self):
         cabin_crew_list = self.ll.get_cabin_crew()
