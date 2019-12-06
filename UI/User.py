@@ -208,7 +208,7 @@ class User:
         for line in employee_list:
             sting = str(line)
             lis = sting.split(",")
-            print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[6]))
+            print(lis)
 
 
 
