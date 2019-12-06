@@ -23,6 +23,9 @@ class LLApi:
 
     def get_all_dest(self):
         return self.dLL.get_all_dest()
+
+    def change_dest(self,dest_list,index,option,changed):
+        self.dLL.change_dest(dest_list,index,option,changed)
     
     def get_all_employees(self):
         return self.eLL.get_all_employees()

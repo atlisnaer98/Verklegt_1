@@ -11,3 +11,5 @@ class DestinationLL():
     def get_all_dest(self):
         return self.dl.get_all_dest()
 
+    def change_dest(self,dest_list,index,option,changed):
+        
