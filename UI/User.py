@@ -103,7 +103,7 @@ class User:
                 dest = dest_list[index]
                 self.app.print_dest_info(dest)             
                 print("You chose {}, what do you want to change?".format(dest.get_destination()))
-                aciton = input("I want to change: ")
+                aciton = int(input("I want to change: "))
                 changed = input("Enter new input: ")
                 self.ll.change_dest(dest_list,index,action,changed)
         

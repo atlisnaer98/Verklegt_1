@@ -21,3 +21,4 @@ class DestinationLL():
             return False
         dest_list[index] = dest
         self.dl.update_dest_file(dest_list)
+        print("Tipp")
