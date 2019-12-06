@@ -205,9 +205,8 @@ class User:
     def get_voyages_for_employee(self, ID):
         employee_list = self.ll.get_voyages_for_employee(ID)
         for line in employee_list:
-            sting = str(line)
-            lis = sting.split(",")
-            print(lis)
+            print(line[0],line[1],line[2])
+            
 
 
 
