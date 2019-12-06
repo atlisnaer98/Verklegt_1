@@ -1,6 +1,6 @@
 from Models.Destination import Destination
 import csv
-
+HEADER = "Destination,country,airport,flight time (one-way),distance from Reykjavik,contact,contact phonenumber"
 class Destination_repository():
 
     def __init__(self):
@@ -28,3 +28,9 @@ class Destination_repository():
     def add_dest(self,dest):
         with open("./DATA/Destination.csv", "a", newline="") as destinations:
             destinations.write("{}\n".format(str(dest)))
+
+    def update_dest_file(self, dest_list):
+        with open("./DATA/Destinations.csv", "w+", newline="") as destinations:
+            destinations.write("{}\n".format(HEADER))
+            for dest in dest_list:
+                destinations.write("{}\n".format(str(dest)))
