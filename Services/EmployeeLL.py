@@ -37,7 +37,6 @@ class EmployeeLL():
             emp.set_activity(changed)
         else: 
             return False
-        print(emp)
 
     def add_employee(self,emp):
         self.dl.add_employee(emp)
