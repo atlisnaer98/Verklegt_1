@@ -1,6 +1,16 @@
-
+import csv
 
 class Voyage_repository:
+
+
+    def get_all_voyages(self):
+        """gets all the voyages"""
+        all_voyages_list = []
+        with open("./DATA/PastFlights.csv","r",newline="") as all_flights:
+            reader = csv.DictReader(all_flights)
+            for line in reader:
+                all_voyages_list.append(line)
+        return all_voyages_list
 
     def add_captains_to_voyage(self):
         ''' adds captains to a specific voyage, each captain can only go on one voyage each day,

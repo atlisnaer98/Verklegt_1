@@ -41,5 +41,5 @@ class LLApi:
 
     
     def get_all_voyages(self):
-        return self.eLL.get_all_voyages()
+        return self.vLL.get_all_voyages()
     
