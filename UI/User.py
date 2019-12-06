@@ -87,8 +87,9 @@ class User:
                 print("ID Number: {}\nName: {}\nAddress: {}\nHome phone: {}\nMobile number: {}\nEmail address: {}\nJob title: {}\nRank: {}\nLicence: {}\nActivity: {}\n"
                 .format(emp.get_ID_number(), emp.get_name(), emp.get_address(), emp.get_home_phone(), emp.get_mobile_number(), 
                 emp.get_email_address(), emp.get_job_title(), emp.get_rank(), emp.get_licence(), emp.get_activity()))
-                changed = input("What do you want to change? ")
-                #self.ll.change_employee(emp,changed)
+                option = int(input("What do you want to change? "))
+                changed = input("Enter new input: ")
+                self.ll.change_employee(emp,option,changed)
                 print("I liiike")
         # self.get_employee(action)
 
