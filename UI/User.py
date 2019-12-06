@@ -184,6 +184,9 @@ class User:
         self.ll.add_dest(dest)
         #return country, airport, flight_time, name_of_contact, emergency_phone_number
 
+    def get_all_voyages(self):
+        pass
+
 
 
     def Voyage_menu(self,action):
@@ -196,8 +199,8 @@ class User:
                 
             # elif action == "2":
             #     #assign crew
-            # elif action == "3":
-            #     #list voyages
+            elif action == "3":
+                #list voyages
             # elif action == "4":
             #     #change voyage
 
