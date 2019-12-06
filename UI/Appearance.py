@@ -150,12 +150,14 @@ class Appearance:
         self.back_quit()
 
     def print_dest_info(self,dest_list):
-        print("Destination: {}\nCountry: {}\nAirport: {}\nflight time(one-way): {}\nDistance from Reykjavik: {}\nContact: {}\nContact phonenumber: {}\n"
+        print("Destination: {}\nCountry: {}\nAirport: {}\nflight time(one-way): {}\nDistance from Reykjavik: {}\nContact: {}\nContact phonenumber: {}"
                 .format(dest_list.get_destination(),dest_list.get_country(),dest_list.get_airport(),dest_list.get_flight_time()
                 ,dest_list.get_distance(),dest_list.get_name_of_contact(),dest_list.get_emergency_phone_number()))
         print(DASH*LENGTH)
         print("What would you like to change?")
+        print()
         print("{:>5} {:<27}{} {} ".format('[1]', "Emergency contact", '[2]', "Emergency phonenumber"))
+        print()
 
 
     def print_add_dest(self): 
