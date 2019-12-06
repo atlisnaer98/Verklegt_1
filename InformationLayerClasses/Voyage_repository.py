@@ -4,6 +4,7 @@ import csv
 class Voyage_repository:
 
 
+
     def get_all_voyages(self):
         """gets all the voyages"""
         all_voyages_list = []

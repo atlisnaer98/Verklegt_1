@@ -200,7 +200,7 @@ class User:
 
     def get_all_voyages(self, from_date, to_date):
         voyage_list = self.ll.get_all_voyages(from_date, to_date)
-        print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
+        #print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for voyage in voyage_list:
             print(str(voyage))
 
