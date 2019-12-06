@@ -170,18 +170,14 @@ class Appearance:
         print("Please input necessary information:")
         #Input upplýsingar
         self.back_quit()
-
-<<<<<<< HEAD
+    
     def print_voyage_selection(self):
         print(DASH*LENGTH)
         print("{:^60}".format(S))
         print(DASH*LENGTH)
         print("{}".format(DOE))
         print("{:>5} {:<27}{} {} ".format('[1]', D, '[2]',E ))
-        
-        
 
-=======
     def print_selection_list(self,selected_list):
         print("Please select an option: ")
         for i in range(0,len(selected_list)):
@@ -192,7 +188,6 @@ class Appearance:
             #self.app.print_selection_list(numb,dest)
             #print("[{}] {}".format(numb,dest))
             print("[{}] {}".format(numb,selected))
->>>>>>> 608c60a6a6be0b48d8a31437b44a3cf638a3ac85
 
     def print_assign_crew(self):
         pass
@@ -202,3 +197,5 @@ class Appearance:
 
     def print_change_voyage(self):
         pass
+
+    
