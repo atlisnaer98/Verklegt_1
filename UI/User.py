@@ -102,7 +102,7 @@ class User:
                 self.app.print_change_dest_info()
                 dest = dest_list[index]
                 self.app.print_dest_info(dest)             
-                aciton = int(input("I want to change: "))
+                action = int(input("I want to change: "))
                 changed = input("Enter new input: ")
                 self.ll.change_dest(dest_list,index,action,changed)
         

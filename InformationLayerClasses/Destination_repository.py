@@ -30,7 +30,7 @@ class Destination_repository():
             destinations.write("{}\n".format(str(dest)))
 
     def update_dest_file(self, dest_list):
-        with open("./DATA/Destinations.csv", "w+", newline="") as destinations:
+        with open("./DATA/Destination.csv", "w+", newline="") as destinations:
             destinations.write("{}\n".format(HEADER))
             for dest in dest_list:
                 destinations.write("{}\n".format(str(dest)))
