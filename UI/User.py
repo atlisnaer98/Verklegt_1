@@ -83,9 +83,9 @@ class User:
                 print("ID Number: {}\nName: {}\nAddress: {}\nHome phone: {}\nMobile number: {}\nEmail address: {}\nJob title: {}\nRank: {}\nLicence: {}\nActivity: {}\n"
                 .format(emp.get_ID_number(), emp.get_name(), emp.get_address(), emp.get_home_phone(), emp.get_mobile_number(), 
                 emp.get_email_address(), emp.get_job_title(), emp.get_rank(), emp.get_licence(), emp.get_activity()))
-                option = int(input("What do you want to change? "))
+                action = int(input("What do you want to change? "))
                 changed = input("Enter new input: ")
-                self.ll.change_employee(employee_list,index,option,changed)
+                self.ll.change_employee(employee_list,index,action,changed)
                 #print("tippi")
             """def change_employee_info(self): # ef við viljum nota dicts
             self.app.print_change_employee_info()
@@ -106,7 +106,9 @@ class User:
                 dest = dest_list[index]
                 self.app.print_dest_info(dest)             
                 print("You chose {}, what do you want to change?".format(dest.get_destination()))
-                aciton = input("blbla")
+                aciton = input("I want to change: ")
+                changed = input("Enter new input: ")
+                self.ll.change_dest(dest_list,index,action,changed)
         
     def get_cabin_crew(self):
         cabin_crew_list = self.ll.get_cabin_crew()
