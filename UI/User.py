@@ -203,7 +203,12 @@ class User:
         #return country, airport, flight_time, name_of_contact, emergency_phone_number
 
     def get_all_voyages(self):
-        pass
+        employee_list = self.ll.get_all_voyages()
+        print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
+        for line in employee_list:
+            sting = str(line)
+            lis = sting.split(",")
+            print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[6]))
 
 
 
@@ -218,7 +223,7 @@ class User:
             # elif action == "2":
             #     #assign crew
             elif action == "3":
-                #list voyages
+                self.get_all_voyages()
             # elif action == "4":
             #     #change voyage
 
