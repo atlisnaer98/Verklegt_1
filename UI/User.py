@@ -253,10 +253,6 @@ class User:
             activity = lis[2]
             self.app.test_print_selection_list(numb,plane,activity)
 
-
-
-
-
     def airplane_menu(self,action):
         self.app.print_airplane_menu()
         while action not in QUIT:
