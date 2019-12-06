@@ -16,7 +16,7 @@ class EmployeeLL():
         big_list = self.dl.get_all_employee()
         for emp in big_list:
             lis = []
-            lis.append(emp.)
+            lis.append(emp)
     
     def change_employee(self,emp,option,changed):
         if option == 1:
