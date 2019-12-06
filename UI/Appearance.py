@@ -21,6 +21,7 @@ E = "Employees"
 V = "Voyage"
 S = "Show schedule "
 L = "List employee"
+LA = "List airplane"
 LD = 'List destination'
 LV = 'List voyage'
 GA = "Get all employees"
@@ -28,6 +29,7 @@ GP = "Get all pilots"
 GC = "Get all cabincrew"
 CE = "Change employee"
 CV = "Change voyage"
+CS = "Change status"
 CDI = 'Change destination info'
 WC = "What would you like to change?"
 DOE = "Are you looking for a specific date or a specific employee?"
@@ -197,5 +199,14 @@ class Appearance:
 
     def print_change_voyage(self):
         pass
+
+    def print_airplane_menu(self):
+        print(DASH*LENGTH)
+        print("{:^60}".format(A))
+        print(DASH*LENGTH)
+        print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', CS))
+        print("{:>5} {} ".format('[3]', LA ))
+        self.back_quit()
+    
 
     

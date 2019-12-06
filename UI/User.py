@@ -230,14 +230,25 @@ class User:
             # elif action == "4":
             #     #change voyage
         
-    def Airplane_menu(self,action):
-        self.app.print_dest_menu()
+    def airplane_menu(self,action):
+        self.app.print_airplane()
+        
+        '''
+        self.app.print_airplane()
         while action not in QUIT:
             action = input("select an option: ")
             if action == "1":
                 self.app.print_add_plane()
-            
-
+                self.add_plane()
+                print()
+                print("You have added a new airplane!")
+                print()
+                self.dest_menu(action)
+            elif action == "2": #Change satus
+                pass
+            elif action == "3": #List airplane
+                pass
+        '''
 
     def main_menu(self):
         action = ""
@@ -254,7 +265,7 @@ class User:
             elif action == "3": #DESTINATION
                 self.dest_menu(action)
 
-            # elif action == "4":
-            #     #sækja appearance
+            #elif action == "4":
+               # self.airplane_menu(action)
 
             
