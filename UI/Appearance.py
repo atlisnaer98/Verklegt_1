@@ -1,3 +1,7 @@
+
+
+
+
 DASH = "-"
 LENGTH = 60
 #Len af forritinu er 54!!!
