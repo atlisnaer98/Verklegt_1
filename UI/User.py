@@ -142,7 +142,7 @@ class User:
                 self.dest_menu(action)
             elif action == "2": #change dest
                 self.change_dest_info()
-            elif action == "3":
+            elif action == "3": #list dest
                 self.get_all_dest()
                 action = self.back_quit(action)
                 """self.app.back_quit()
@@ -282,6 +282,6 @@ class User:
             elif action == "3": #DESTINATION
                 self.dest_menu(action)
             elif action == "4":
-               self.airplane_menu(action)
+                self.airplane_menu(action)
 
             
