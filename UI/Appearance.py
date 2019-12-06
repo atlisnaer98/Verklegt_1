@@ -135,8 +135,8 @@ class Appearance:
 
    def print_changing_employee_information(self, emp):
        print("ID Number: {}\nName: {}\nAddress: {}\nHome phone: {}\nMobile number: {}\nEmail address: {}\nJob title: {}\nRank: {}\nLicence: {}\nActivity: {}\n"
-        .format(emp.get_ID_number(), emp.get_name(), emp.get_address(), emp.get_home_phone(), emp.get_mobile_number(), 
-        emp.get_email_address(), emp.get_job_title(), emp.get_rank(), emp.get_licence(), emp.get_activity()))
+       .format(emp.get_ID_number(), emp.get_name(), emp.get_address(), emp.get_home_phone(), emp.get_mobile_number(),
+       emp.get_email_address(), emp.get_job_title(), emp.get_rank(), emp.get_licence(), emp.get_activity()))
                 
 
                
