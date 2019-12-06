@@ -33,7 +33,7 @@ CS = "Change status"
 CDI = 'Change destination info'
 WC = "What would you like to change?"
 DOE = "Are you looking for a specific date or a specific employee?"
-D = "Date"
+DATE = "Date"
 EM = "Employee"
 
 
@@ -178,7 +178,7 @@ class Appearance:
         print("{:^60}".format(S))
         print(DASH*LENGTH)
         print("{}".format(DOE))
-        print("{:>5} {:<27}{} {} ".format('[1]', D, '[2]',E ))
+        print("{:>5} {:<27}{} {} ".format('[1]', DATE, '[2]',E ))
 
     def print_selection_list(self,selected_list):
         print("Please select an option: ")

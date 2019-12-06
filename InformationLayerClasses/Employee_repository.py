@@ -35,3 +35,22 @@ class Employee_repository:
     def employee_working_schedudule(self):
         '''returns working schedule for a specific employee for a specific week'''
         pass
+
+    def get_all_employees_dict(self):
+        """gets all the crew member"""
+        all_employee_dict = {}
+        with open("./DATA/Crew.csv","r",newline="") as all_crew:
+            reader = csv.DictReader(all_crew)
+            for line in reader:
+                lis = []
+                lis.append(line["name"])
+                lis.append(line["address"])
+                lis.append(line["home_phone"])
+                lis.append(line["mobile_phone"])
+                lis.append(line["email_address"])
+                lis.append(line["role"])
+                lis.append(line["rank"])
+                lis.append(line["licence"])
+                lis.append(line["active"])
+                all_employee_dict[line["ssn"]] = lis
+        return all_employee_dict
