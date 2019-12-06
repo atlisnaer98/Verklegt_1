@@ -73,8 +73,6 @@ class User:
         emp.set_activity(input("Activity: "))
         self.ll.add_employee(emp)
 
-
-
     def change_employee_info(self):
         self.app.print_change_employee_info()
         employee_list = self.ll.get_all_employees()
@@ -91,8 +89,7 @@ class User:
                 changed = input("Enter new input: ")
                 self.ll.change_employee(employee_list,index,option,changed)
                 print("tippi")
-
-    """def change_employee_info(self): # ef við viljum nota dicts
+            """def change_employee_info(self): # ef við viljum nota dicts
             self.app.print_change_employee_info()
             employee_dic = self.ll.get_all_employees_dict()
             action = input("Enter ID number: ")
@@ -105,12 +102,13 @@ class User:
         dest_list = self.ll.get_all_dest()
         self.app.print_selection_list(dest_list)
         action = input("select an option: ")
-        for i in range(0,len(dest_list)):
-            if int(action) == (i+1):
+        for index in range(0,len(dest_list)):
+            if int(action) == (index+1):
                 self.app.print_change_dest_info()
-                print(str(dest_list[i]))
+                dest = str(dest_list[index]).split(",")              
+                print("You chose {}, what do you want to change?".format(dest[0]))
+                aciton = input("blbla")
         
-    
     def get_cabin_crew(self):
         cabin_crew_list = self.ll.get_cabin_crew()
         print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
@@ -190,7 +188,6 @@ class User:
                 elif action == "3":
                     self.get_cabin_crew()
             
-    
     def add_voyage(self):
         dest = Destination()
         dest.set_destination(input("date of departure: "))
@@ -215,9 +212,6 @@ class User:
         for line in employee_list:
             print(line[0],line[1],line[2])
             
-
-
-
     def Voyage_menu(self,action):
         self.app.print_voyage_menu()
         action = ""
