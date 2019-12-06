@@ -36,7 +36,7 @@ WC = "What would you like to change?"
 DOE = "Are you looking for a specific date or a specific employee?"
 DATE = "Date"
 EM = "Employee"
-
+ASS = "Assign crew"
 
 
 B = "[B] Back"
@@ -200,7 +200,10 @@ class Appearance:
         print("[{}] {}\t{}".format(numb,selected,activity))
 
     def print_assign_crew(self):
-        pass
+        print(DASH*LENGTH)
+        print("{:^60}".format(ASS))
+        print(DASH*LENGTH)
+        
 
     def print_voyage_list(self):
         pass
