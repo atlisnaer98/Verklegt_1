@@ -135,7 +135,7 @@ class User:
         self.app.print_dest_menu()
         while action not in QUIT:
             action = input("select an option: ")
-            if action == "1":
+            if action == "1": #create new dest
                 self.app.print_add_dest()
                 self.add_dest()
                 print()
