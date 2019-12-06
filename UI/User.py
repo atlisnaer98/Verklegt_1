@@ -76,14 +76,12 @@ class User:
 
     def change_employee_info(self):
         self.app.print_change_employee_info()
-        employee = []
         employee_list = self.ll.get_all_employees()
         action = input("Enter ID number: ")
         for emp in employee_list:
             sting = str(emp)
             lis = sting.split(",")
             if action == lis[0]:
-                #changee = employee
                 print("ID Number: {}\nName: {}\nAddress: {}\nHome phone: {}\nMobile number: {}\nEmail address: {}\nJob title: {}\nRank: {}\nLicence: {}\nActivity: {}\n"
                 .format(emp.get_ID_number(), emp.get_name(), emp.get_address(), emp.get_home_phone(), emp.get_mobile_number(), 
                 emp.get_email_address(), emp.get_job_title(), emp.get_rank(), emp.get_licence(), emp.get_activity()))
@@ -91,7 +89,14 @@ class User:
                 changed = input("Enter new input: ")
                 self.ll.change_employee(emp,option,changed)
                 print("I liiike")
-        # self.get_employee(action)
+
+    """def change_employee_info(self): # ef við viljum nota dicts
+            self.app.print_change_employee_info()
+            employee_dic = self.ll.get_all_employees_dict()
+            action = input("Enter ID number: ")
+            for key in employee_dic:
+                if key == action:
+                    print(employee_dic[key]) """
 
     def change_dest_info(self):
         self.app.print_change_dest_info()
