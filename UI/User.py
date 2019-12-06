@@ -79,7 +79,8 @@ class User:
         self.app.print_change_employee_info()
         employee_list = self.ll.get_all_employees()
         action = input("Enter ID number: ")
-        for emp in employee_list:
+        for index in range(len(employee_list)):
+            emp = employee_list[index]
             sting = str(emp)
             lis = sting.split(",")
             if action == lis[0]:
@@ -88,8 +89,8 @@ class User:
                 emp.get_email_address(), emp.get_job_title(), emp.get_rank(), emp.get_licence(), emp.get_activity()))
                 option = int(input("What do you want to change? "))
                 changed = input("Enter new input: ")
-                self.ll.change_employee(emp,option,changed)
-                print("I liiike")
+                self.ll.change_employee(employee_list,index,option,changed)
+                print("tippi")
 
     """def change_employee_info(self): # ef við viljum nota dicts
             self.app.print_change_employee_info()
@@ -142,7 +143,7 @@ class User:
                 self.dest_menu(action)
             elif action == "2": #change dest
                 self.change_dest_info()
-            elif action == "3":
+            elif action == "3": #list dest
                 self.get_all_dest()
                 action = self.back_quit(action)
                 """self.app.back_quit()
@@ -279,17 +280,14 @@ class User:
         while action not in QUIT:
             self.app.print_main_menu()
             action = input("select an option: ") # muna að villutjékka þetta
-
             if action == "1":
-                self.employee_menu(action)
-                
+                self.employee_menu(action)  
             elif action == "2":
                 self.Voyage_menu(action)
                 action = input("select an option: ")
             elif action == "3": #DESTINATION
                 self.dest_menu(action)
-
             elif action == "4":
-               self.airplane_menu(action)
+                self.airplane_menu(action)
 
             
