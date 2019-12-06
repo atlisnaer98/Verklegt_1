@@ -76,14 +76,12 @@ class User:
 
     def change_employee_info(self):
         self.app.print_change_employee_info()
-        employee = []
         employee_list = self.ll.get_all_employees()
         action = input("Enter ID number: ")
         for emp in employee_list:
             sting = str(emp)
             lis = sting.split(",")
             if action == lis[0]:
-                #changee = employee
                 print("ID Number: {}\nName: {}\nAddress: {}\nHome phone: {}\nMobile number: {}\nEmail address: {}\nJob title: {}\nRank: {}\nLicence: {}\nActivity: {}\n"
                 .format(emp.get_ID_number(), emp.get_name(), emp.get_address(), emp.get_home_phone(), emp.get_mobile_number(), 
                 emp.get_email_address(), emp.get_job_title(), emp.get_rank(), emp.get_licence(), emp.get_activity()))
@@ -91,7 +89,14 @@ class User:
                 changed = input("Enter new input: ")
                 self.ll.change_employee(emp,option,changed)
                 print("I liiike")
-        # self.get_employee(action)
+
+    """def change_employee_info(self): # ef við viljum nota dicts
+            self.app.print_change_employee_info()
+            employee_dic = self.ll.get_all_employees_dict()
+            action = input("Enter ID number: ")
+            for key in employee_dic:
+                if key == action:
+                    print(employee_dic[key]) """
 
     def change_dest_info(self):
         self.app.print_change_dest_info()
@@ -205,9 +210,8 @@ class User:
     def get_voyages_for_employee(self, ID):
         employee_list = self.ll.get_voyages_for_employee(ID)
         for line in employee_list:
-            sting = str(line)
-            lis = sting.split(",")
-            print(lis)
+            print(line[0],line[1],line[2])
+            
 
 
 
@@ -237,14 +241,25 @@ class User:
             # elif action == "4":
             #     #change voyage
         
-    def Airplane_menu(self,action):
-        self.app.print_dest_menu()
+    def airplane_menu(self,action):
+        self.app.print_airplane()
+        
+        '''
+        self.app.print_airplane()
         while action not in QUIT:
             action = input("select an option: ")
             if action == "1":
                 self.app.print_add_plane()
-            
-
+                self.add_plane()
+                print()
+                print("You have added a new airplane!")
+                print()
+                self.dest_menu(action)
+            elif action == "2": #Change satus
+                pass
+            elif action == "3": #List airplane
+                pass
+        '''
 
     def main_menu(self):
         action = ""
@@ -261,7 +276,7 @@ class User:
             elif action == "3": #DESTINATION
                 self.dest_menu(action)
 
-            # elif action == "4":
-            #     #sækja appearance
+            #elif action == "4":
+               # self.airplane_menu(action)
 
             

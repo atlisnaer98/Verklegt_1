@@ -1,3 +1,4 @@
+from Models.Voyage import Voyage
 import csv
 
 class Voyage_repository:
@@ -9,7 +10,8 @@ class Voyage_repository:
         with open("./DATA/PastFlights.csv","r",newline="") as all_flights:
             reader = csv.DictReader(all_flights)
             for line in reader:
-                all_voyages_list.append(line)
+                voyages = (line["flightNumber"],line["departingFrom"],line["arrivingAt"],line["departure"],line["arrival"],line["aircraftID"],line["captain"],line["copilot"],line["fsm"],line["fa1"],line["fa2"])
+                all_voyages_list.append(voyages)
         return all_voyages_list
 
     def add_captains_to_voyage(self):

@@ -25,6 +25,9 @@ class Data_main:
     def get_all_employee(self):
         return self.eDL.get_all_employees()
 
+    def get_all_employees_dict(self):
+        return self.eDL.get_all_employees_dict()
+
     def add_employee(self,emp):
         self.eDL.add_employee(emp)
 
