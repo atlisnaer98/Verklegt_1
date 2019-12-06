@@ -242,8 +242,15 @@ class User:
             #     #change voyage
         
     def airplane_menu(self,action):
-        self.app.print_airplane()
-        
+        self.app.print_airplane_menu()
+        while action not in QUIT:
+            action = input("select an option: ")
+            if action == "1":
+                self.app.print_add_plane()
+                self.add_plane()
+                print()
+                print("You have added a new airplane!")
+                print()      
         '''
         self.app.print_airplane()
         while action not in QUIT:
@@ -276,7 +283,7 @@ class User:
             elif action == "3": #DESTINATION
                 self.dest_menu(action)
 
-            #elif action == "4":
-               # self.airplane_menu(action)
+            elif action == "4":
+               self.airplane_menu(action)
 
             
