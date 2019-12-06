@@ -1,4 +1,5 @@
 from Models.Voyage import Voyage
+import datetime
 
 class VoyageLL():
         
@@ -12,7 +13,9 @@ class VoyageLL():
         for line in all_voyage_list:
             sting = str(line)
             lis = sting.split(',')
-            if from_date <= line[3] and line[3] <= to_date:
+            print(lis[3])
+            if from_date <= lis[3] and lis[3] <= to_date:
+                print("yes")
                 employee_list.append(lis)
         return employee_list
         

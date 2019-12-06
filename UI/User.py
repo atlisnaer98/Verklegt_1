@@ -5,6 +5,7 @@ from Models.Voyage import Voyage
 import csv
 from Services.API import LLApi
 from UI.Appearance import Appearance
+import datetime
 
 QUIT = ["q","Q"]
 BACK = ["b","B"]
@@ -206,6 +207,7 @@ class User:
             sting = str(line)
             lis = sting.split(",")
             print(lis)
+            print('yes')
 
     def get_voyages_for_employee(self, ID):
         employee_list = self.ll.get_voyages_for_employee(ID)
@@ -229,14 +231,18 @@ class User:
                 self.app.print_voyage_selection()
                 action = input("select an option: ")
                 if action =="1": 
-                    from_date = input("Enter date: dd/mm/yy")
-                    to_date = input("to dd/mm/yy")
+                    #from_date = input("Enter date: YYYY-MM-DD:") 2019-11-24T14:43:00
+                    year,month,day,hour,minute = 2019,11,10,6,0
+                    from_date = datetime.datetime(year,month,day,hour,minute,0).isoformat()
+                    #to_date = input("to YYYY-MM-DD:") 2019-11-24T03:00:00
+                    year,month,day,hour,minute = 2019,12,20,6,0
+                    to_date = datetime.datetime(year,month,day,hour,minute,0).isoformat()
                     self.get_all_voyages(from_date, to_date)
                 elif action == "2":
                     ID = input("Enter ID number")
                     print("Enter timeperiod")
-                    # from_date = input("From dd/mm/yy")
-                    # to_date = input("to dd/mm/yy")
+                    # from_date = input("From YYYY-MM-DD:")
+                    # to_date = input("to YYYY-MM-DD:")
                     self.get_voyages_for_employee(ID)
             # elif action == "4":
             #     #change voyage
