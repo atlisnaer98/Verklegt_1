@@ -1,4 +1,4 @@
-
+from Models.Destination import Destination
 
 
 
@@ -145,6 +145,11 @@ class Appearance:
         print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', CH))
         print("{:>5} {} ".format('[3]', LD ))
         self.back_quit()
+
+    def print_dest_info(self,dest_list):
+        print("Destination: {}\nCountry: {}\nAirport: {}\nflight time(one-way): {}\nDistance from Reykjavik: {}\nContact: {}\nContact phonenumber: {}\n"
+                .format(dest_list.get_destination(),dest_list.get_country(),dest_list.get_airport(),dest_list.get_flight_time()
+                ,dest_list.get_distance(),dest_list.get_name_of_contact(),dest_list.get_emergency_phone_number()))
 
     def print_add_dest(self): 
         print(DASH*LENGTH)
