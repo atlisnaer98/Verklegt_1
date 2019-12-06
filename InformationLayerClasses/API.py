@@ -27,3 +27,6 @@ class Data_main:
 
     def add_employee(self,emp):
         self.eDL.add_employee(emp)
+
+    def get_all_voyages(self):
+        return self.vDL.get_all_voyages()

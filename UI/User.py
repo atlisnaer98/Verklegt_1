@@ -84,7 +84,9 @@ class User:
             lis = sting.split(",")
             if action == lis[0]:
                 #changee = employee
-                print("ID Number: {}\nName: {}\nAddress: {}\nHome phone: {}\nMobile number: {}\nEmail address: {}\nJob title: {}\nRank: {}\nLicence: {}\nActivity: {}\n".format(emp.get_ID_number(), emp.get_name(), emp.get_address(), emp.get_home_phone(), emp.get_mobile_number(), emp.get_email_address(), emp.get_job_title(), emp.get_rank(), emp.get_licence(), emp.get_activity()))
+                print("ID Number: {}\nName: {}\nAddress: {}\nHome phone: {}\nMobile number: {}\nEmail address: {}\nJob title: {}\nRank: {}\nLicence: {}\nActivity: {}\n"
+                .format(emp.get_ID_number(), emp.get_name(), emp.get_address(), emp.get_home_phone(), emp.get_mobile_number(), 
+                emp.get_email_address(), emp.get_job_title(), emp.get_rank(), emp.get_licence(), emp.get_activity()))
                 changed = input("What do you want to change? ")
                 #self.ll.change_employee(emp,changed)
                 print("I liiike")
@@ -135,7 +137,7 @@ class User:
         self.app.print_dest_menu()
         while action not in QUIT:
             action = input("select an option: ")
-            if action == "1":
+            if action == "1": #create new dest
                 self.app.print_add_dest()
                 self.add_dest()
                 print()
@@ -208,7 +210,7 @@ class User:
         for line in employee_list:
             sting = str(line)
             lis = sting.split(",")
-            print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[6]))
+            print(lis)
 
 
 
