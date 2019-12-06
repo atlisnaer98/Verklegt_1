@@ -241,13 +241,14 @@ class User:
     
     def change_plane_status(self): #VINNA Í ÞESSU!
         self.app.print_change_plane_status()
-        airplane_list = self.ll.get_all_airplanes
-        self.app.print_selection_list(airplane_list)
-        action = input("blibla")
-
-
-
-
+        airplane_list = self.ll.get_all_airplanes()
+        for index in range(0,len(airplane_list)):
+            sting = str(airplane_list[index])
+            lis = sting.split(",")
+            numb = index + 1
+            plane = lis[0]
+            activity = lis[2]
+            self.app.test_print_selection_list(numb,plane,activity)
 
     def airplane_menu(self,action):
         self.app.print_airplane_menu()
@@ -260,7 +261,7 @@ class User:
                 print("You have added a new airplane!")
                 print()
             elif action == "2":
-                self.app.print_change_plane_status()
+                self.change_plane_status()
                 
             elif action == "3":
                 self.app.print_list_plane()

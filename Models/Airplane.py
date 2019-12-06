@@ -7,7 +7,7 @@ class Airplane():
         self.__active = active
             
     def __str__(self):
-        return "{},{},{}".format(self.__model, self.__registration_number, self.__active,)
+        return "{},{},{}".format(self.__registration_number, self.__model, self.__active)
 
     def get_registration_number(self):
         return self.__registration_number

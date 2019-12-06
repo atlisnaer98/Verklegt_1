@@ -191,6 +191,13 @@ class Appearance:
             #self.app.print_selection_list(numb,dest)
             #print("[{}] {}".format(numb,dest))
             print("[{}] {}".format(numb,selected))
+        
+    def test_print_selection_list(self,numb,selected,activity=""):
+        if activity == "1":
+            activity = "Active"
+        elif activity == "0":
+            activity = "Inactive"
+        print("[{}] {}\t{}".format(numb,selected,activity))
 
     def print_assign_crew(self):
         pass
@@ -224,7 +231,7 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(CS))
         print(DASH*LENGTH)
-        print("Laga og bæta hér :)")
+        print()
         '''
         print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', CS)) #Laga þetta 
         print("{:>5} {} ".format('[3]', LA )) #Laga þetta 
