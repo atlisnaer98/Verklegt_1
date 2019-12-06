@@ -13,7 +13,9 @@ class VoyageLL():
         for line in all_voyage_list:
             sting = str(line)
             lis = sting.split(',')
+            print(from_date)
             print(lis[3])
+            print(to_date)
             if from_date <= lis[3] and lis[3] <= to_date:
                 print("yes")
                 employee_list.append(lis)
