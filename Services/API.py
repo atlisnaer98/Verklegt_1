@@ -38,4 +38,8 @@ class LLApi:
 
     def get_pilots(self):
         return self.eLL.get_pilots()
+
+    
+    def get_all_voyages(self):
+        return self.eLL.get_all_voyages()
     

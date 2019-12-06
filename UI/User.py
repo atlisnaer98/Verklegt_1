@@ -191,7 +191,22 @@ class User:
                 elif action == "3":
                     self.get_cabin_crew()
             
-                
+    
+    def add_voyage(self):
+        dest = Destination()
+        dest.set_destination(input("date of departure: "))
+        dest.set_country(input("time of departure: "))
+        dest.set_airport(input("destination: "))
+        
+        #print(dest)
+        self.ll.add_dest(dest)
+        #return country, airport, flight_time, name_of_contact, emergency_phone_number
+
+    def get_all_voyages(self):
+        pass
+
+
+
     def Voyage_menu(self,action):
         self.app.print_voyage_menu()
         action = ""
@@ -199,10 +214,11 @@ class User:
             action = input("select an option: ")
             if action == "1":
                 self.app.print_add_voyage()
+                
             # elif action == "2":
             #     #assign crew
-            # elif action == "3":
-            #     #list voyages
+            elif action == "3":
+                #list voyages
             # elif action == "4":
             #     #change voyage
 
