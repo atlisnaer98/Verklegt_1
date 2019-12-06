@@ -13,7 +13,6 @@ class Voyage():
         self.__fa1 = fa1
         self.__fa2 = fa2
 
-
     def __str__(self):
         return "{},{},{},{},{},{},{},{},{},{},{}".format(self.__flight_number,self.__departing_from,self.__arriving_at,self.__departure,self.__arrival,self.__aircraft_id,self.__captain,self.__copilot,self.__fsm,self.__fa1,self.__fa2)
 

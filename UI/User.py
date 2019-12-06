@@ -199,13 +199,10 @@ class User:
         #return country, airport, flight_time, name_of_contact, emergency_phone_number
 
     def get_all_voyages(self, from_date, to_date):
-        employee_list = self.ll.get_all_voyages(from_date, to_date)
+        voyage_list = self.ll.get_all_voyages(from_date, to_date)
         print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
-        for line in employee_list:
-            sting = str(line)
-            lis = sting.split(",")
-            print(lis)
-            print('yes')
+        for voyage in voyage_list:
+            print(str(voyage))
 
     def get_voyages_for_employee(self, ID):
         employee_list = self.ll.get_voyages_for_employee(ID)

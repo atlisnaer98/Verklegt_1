@@ -10,7 +10,7 @@ class Voyage_repository:
         with open("./DATA/PastFlights.csv","r",newline="") as all_flights:
             reader = csv.DictReader(all_flights)
             for line in reader:
-                voyages = (line["flightNumber"],line["departingFrom"],line["arrivingAt"],line["departure"],line["arrival"],line["aircraftID"],line["captain"],line["copilot"],line["fsm"],line["fa1"],line["fa2"])
+                voyages = Voyage(line["flightNumber"],line["departingFrom"],line["arrivingAt"],line["departure"],line["arrival"],line["aircraftID"],line["captain"],line["copilot"],line["fsm"],line["fa1"],line["fa2"])
                 all_voyages_list.append(voyages)
         return all_voyages_list
 
