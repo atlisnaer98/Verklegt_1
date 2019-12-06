@@ -8,3 +8,6 @@ class VoyageLL():
 
     def get_all_voyages(self):
         return self.dl.get_all_voyages()
+
+    def get_voyages_for_employee(self,ID):
+        return

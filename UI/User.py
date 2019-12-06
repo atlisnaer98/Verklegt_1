@@ -87,32 +87,22 @@ class User:
                 print("ID Number: {}\nName: {}\nAddress: {}\nHome phone: {}\nMobile number: {}\nEmail address: {}\nJob title: {}\nRank: {}\nLicence: {}\nActivity: {}\n"
                 .format(emp.get_ID_number(), emp.get_name(), emp.get_address(), emp.get_home_phone(), emp.get_mobile_number(), 
                 emp.get_email_address(), emp.get_job_title(), emp.get_rank(), emp.get_licence(), emp.get_activity()))
-                changed = input("What do you want to change? ")
-                #self.ll.change_employee(emp,changed)
+                option = int(input("What do you want to change? "))
+                changed = input("Enter new input: ")
+                self.ll.change_employee(emp,option,changed)
                 print("I liiike")
         # self.get_employee(action)
 
     def change_dest_info(self):
         self.app.print_change_dest_info()
-        self.print_select_dest()
         dest_list = self.ll.get_all_dest()
+        self.app.print_selection_list(dest_list)
         action = input("select an option: ")
         for i in range(0,len(dest_list)):
             if int(action) == (i+1):
                 self.app.print_change_dest_info()
                 print(str(dest_list[i]))
         
-
-
-    def print_select_dest(self):
-        dest_list = self.ll.get_all_dest()
-        print("Please select destination: ")
-        for i in range(0,len(dest_list)):
-            sting = str(dest_list[i])
-            lis = sting.split(",")
-            numb = i+1
-            dest = lis[0]
-            print("[{}] {}".format(numb,dest))
     
     def get_cabin_crew(self):
         cabin_crew_list = self.ll.get_cabin_crew()
@@ -225,7 +215,18 @@ class User:
             # elif action == "2":
             #     #assign crew
             elif action == "3":
-                self.get_all_voyages()
+                self.app.print_voyage_selection()
+                action = input("select an option: ")
+                if action =="1": 
+                    from_date = input("Enter date: dd/mm/yy")
+                    to_date = input("to dd/mm/yy")
+                    self.get_all_voyages(from_date, to_date)
+                elif action == "2":
+                    ID = input("Enter ID number")
+                    print("Enter timeperiod")
+                    from_date = input("From dd/mm/yy")
+                    to_date = input("to dd/mm/yy")
+                    self.get_all_voyages()
             # elif action == "4":
             #     #change voyage
         
@@ -251,7 +252,7 @@ class User:
                 self.Voyage_menu(action)
                 action = input("select an option: ")
             elif action == "3": #DESTINATION
-                action = self.dest_menu(action)
+                self.dest_menu(action)
 
             # elif action == "4":
             #     #sækja appearance
