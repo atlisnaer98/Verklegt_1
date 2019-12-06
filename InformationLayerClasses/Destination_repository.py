@@ -28,3 +28,5 @@ class Destination_repository():
     def add_dest(self,dest):
         with open("./DATA/Destination.csv", "a", newline="") as destinations:
             destinations.write("{}\n".format(str(dest)))
+
+        

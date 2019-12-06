@@ -19,6 +19,9 @@ class Data_main:
     def get_all_dest(self):
         return self.dDL.get_all_dest()
 
+    def update_dest_file(self, dest_list):
+        return self.dDL.update_dest_file(dest_list)
+
     def add_dest(self, dest):
         self.dDL.add_dest(dest)
     
