@@ -1,5 +1,6 @@
 from Models.Voyage import Voyage
 import datetime
+import dateutil.parser
 
 class VoyageLL():
         
@@ -13,9 +14,8 @@ class VoyageLL():
         for line in all_voyage_list:
             sting = str(line)
             lis = sting.split(',')
-            print(from_date)
-            if from_date <= lis[3] and lis[3] <= to_date:
-                print("yes")
+            parseddate =dateutil.parser.parse(lis[3])
+            if from_date <= parseddate and parseddate <= to_date:
                 employee_list.append(lis)
         return employee_list
         
