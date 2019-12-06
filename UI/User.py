@@ -241,7 +241,17 @@ class User:
                     self.get_voyages_for_employee(ID)
             # elif action == "4":
             #     #change voyage
-        
+    
+    def change_plane_status(self): #VINNA Í ÞESSU!
+        self.app.print_change_plane_status()
+        airplane_list = self.ll.get_all_airplanes
+        self.app.print_selection_list(airplane_list)
+        action = input("blibla")
+
+
+
+
+
     def airplane_menu(self,action):
         self.app.print_airplane_menu()
         while action not in QUIT:
@@ -251,7 +261,14 @@ class User:
                 self.add_plane()
                 print()
                 print("You have added a new airplane!")
-                print()      
+                print()
+            elif action == "2":
+                self.app.print_change_plane_status()
+                
+            elif action == "3":
+                self.app.print_list_plane()
+                
+                
         '''
         self.app.print_airplane()
         while action not in QUIT:
