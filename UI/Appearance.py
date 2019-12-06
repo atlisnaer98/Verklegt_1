@@ -168,6 +168,16 @@ class Appearance:
         #Input upplýsingar
         self.back_quit()
 
+    def print_selection_list(self,selected_list):
+        print("Please select an option: ")
+        for i in range(0,len(selected_list)):
+            sting = str(selected_list[i])
+            lis = sting.split(",")
+            numb = i+1
+            selected = lis[0]
+            #self.app.print_selection_list(numb,dest)
+            #print("[{}] {}".format(numb,dest))
+            print("[{}] {}".format(numb,selected))
 
     def print_assign_crew(self):
         pass
