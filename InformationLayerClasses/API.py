@@ -25,6 +25,9 @@ class Data_main:
     def get_all_employee(self):
         return self.eDL.get_all_employees()
 
+    def update_employee_file(self,emp_list):
+        return self.eDL.update_employee_file(emp_list)
+
     def get_all_employees_dict(self):
         return self.eDL.get_all_employees_dict()
 

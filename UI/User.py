@@ -78,7 +78,8 @@ class User:
         self.app.print_change_employee_info()
         employee_list = self.ll.get_all_employees()
         action = input("Enter ID number: ")
-        for emp in employee_list:
+        for index in range(len(employee_list)):
+            emp = employee_list[index]
             sting = str(emp)
             lis = sting.split(",")
             if action == lis[0]:
@@ -87,8 +88,8 @@ class User:
                 emp.get_email_address(), emp.get_job_title(), emp.get_rank(), emp.get_licence(), emp.get_activity()))
                 option = int(input("What do you want to change? "))
                 changed = input("Enter new input: ")
-                self.ll.change_employee(emp,option,changed)
-                print("I liiike")
+                self.ll.change_employee(employee_list,index,option,changed)
+                print("tippi")
 
     """def change_employee_info(self): # ef við viljum nota dicts
             self.app.print_change_employee_info()
