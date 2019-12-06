@@ -41,5 +41,14 @@ class LLApi:
 
     
     def get_all_voyages(self):
+<<<<<<< HEAD
         return self.vLL.get_all_voyages()
+
+    def get_voyages_for_employee(self, ID):
+        ''' takes staff ID and returns all the voyages for a specific employee'''
+        return self.vLL.get_voyages_for_employee(ID)
     
+=======
+        return self.vLL.get_all_voyages()   
+        
+>>>>>>> 221b47d74747f384877338ff936b4091f0ab18f4

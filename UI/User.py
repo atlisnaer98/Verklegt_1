@@ -202,6 +202,13 @@ class User:
             lis = sting.split(",")
             print(lis)
 
+    def get_voyages_for_employee(self, ID):
+        employee_list = self.ll.get_voyages_for_employee(ID)
+        for line in employee_list:
+            sting = str(line)
+            lis = sting.split(",")
+            print(lis)
+
 
 
     def Voyage_menu(self,action):
@@ -215,9 +222,28 @@ class User:
             # elif action == "2":
             #     #assign crew
             elif action == "3":
-                self.get_all_voyages()
+                self.app.print_voyage_selection()
+                action = input("select an option: ")
+                if action =="1": 
+                    # from_date = input("Enter date: dd/mm/yy")
+                    # to_date = input("to dd/mm/yy")
+                    self.get_all_voyages(from_date, to_date)
+                elif action == "2":
+                    ID = input("Enter ID number")
+                    print("Enter timeperiod")
+                    # from_date = input("From dd/mm/yy")
+                    # to_date = input("to dd/mm/yy")
+                    self.get_voyages_for_employee(ID)
             # elif action == "4":
             #     #change voyage
+        
+    def Airplane_menu(self,action):
+        self.app.print_dest_menu()
+        while action not in QUIT:
+            action = input("select an option: ")
+            if action == "1":
+                self.app.print_add_plane()
+            
 
 
     def main_menu(self):

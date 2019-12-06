@@ -30,6 +30,9 @@ CE = "Change employee"
 CV = "Change voyage"
 CDI = 'Change destination info'
 WC = "What would you like to change?"
+DOE = "Are you looking for a specific date or a specific employee?"
+DATE = "Date"
+EM = "Employee"
 
 
 
@@ -167,6 +170,13 @@ class Appearance:
         print("Please input necessary information:")
         #Input upplýsingar
         self.back_quit()
+    
+    def print_voyage_selection(self):
+        print(DASH*LENGTH)
+        print("{:^60}".format(S))
+        print(DASH*LENGTH)
+        print("{}".format(DOE))
+        print("{:>5} {:<27}{} {} ".format('[1]', DATE, '[2]',E ))
 
     def print_selection_list(self,selected_list):
         print("Please select an option: ")
@@ -187,3 +197,5 @@ class Appearance:
 
     def print_change_voyage(self):
         pass
+
+    
