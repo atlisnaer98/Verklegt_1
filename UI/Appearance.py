@@ -153,6 +153,10 @@ class Appearance:
         print("Destination: {}\nCountry: {}\nAirport: {}\nflight time(one-way): {}\nDistance from Reykjavik: {}\nContact: {}\nContact phonenumber: {}\n"
                 .format(dest_list.get_destination(),dest_list.get_country(),dest_list.get_airport(),dest_list.get_flight_time()
                 ,dest_list.get_distance(),dest_list.get_name_of_contact(),dest_list.get_emergency_phone_number()))
+        print(DASH*LENGTH)
+        print("What would you like to change?")
+        print("{:>5} {:<27}{} {} ".format('[1]', "Emergency contact", '[2]', "Emergency phonenumber"))
+
 
     def print_add_dest(self): 
         print(DASH*LENGTH)
