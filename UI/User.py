@@ -100,8 +100,6 @@ class User:
                 self.app.print_change_dest_info()
                 print(str(dest_list[i]))
         
-
-
     def print_select_dest(self):
         dest_list = self.ll.get_all_dest()
         print("Please select destination: ")
@@ -241,7 +239,7 @@ class User:
                 self.Voyage_menu(action)
                 action = input("select an option: ")
             elif action == "3": #DESTINATION
-                action = self.dest_menu(action)
+                self.dest_menu(action)
 
             # elif action == "4":
             #     #sækja appearance
