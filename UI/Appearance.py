@@ -171,6 +171,7 @@ class Appearance:
         #Input upplýsingar
         self.back_quit()
 
+<<<<<<< HEAD
     def print_voyage_selection(self):
         print(DASH*LENGTH)
         print("{:^60}".format(S))
@@ -180,6 +181,18 @@ class Appearance:
         
         
 
+=======
+    def print_selection_list(self,selected_list):
+        print("Please select an option: ")
+        for i in range(0,len(selected_list)):
+            sting = str(selected_list[i])
+            lis = sting.split(",")
+            numb = i+1
+            selected = lis[0]
+            #self.app.print_selection_list(numb,dest)
+            #print("[{}] {}".format(numb,dest))
+            print("[{}] {}".format(numb,selected))
+>>>>>>> 608c60a6a6be0b48d8a31437b44a3cf638a3ac85
 
     def print_assign_crew(self):
         pass
