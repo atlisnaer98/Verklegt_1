@@ -225,7 +225,18 @@ class User:
             # elif action == "2":
             #     #assign crew
             elif action == "3":
-                self.get_all_voyages()
+                self.app.print_voyage_selection()
+                action = input("select an option: ")
+                if action =="1": 
+                    from_date = input("Enter date: dd/mm/yy")
+                    to_date = input("to dd/mm/yy")
+                    self.get_all_voyages(from_date, to_date)
+                elif action == "2":
+                    ID = input("Enter ID number")
+                    print("Enter timeperiod")
+                    from_date = input("From dd/mm/yy")
+                    to_date = input("to dd/mm/yy")
+                    self.get_all_voyages()
             # elif action == "4":
             #     #change voyage
 
