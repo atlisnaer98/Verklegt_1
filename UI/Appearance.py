@@ -142,7 +142,6 @@ class Appearance:
         print(DASH*LENGTH)
         print("Please input necessary information:")
         # Input Upplýsingar
-        self.back_quit()
 
 
     def print_change_dest_info(self):
