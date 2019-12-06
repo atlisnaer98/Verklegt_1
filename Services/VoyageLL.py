@@ -19,3 +19,4 @@ class VoyageLL():
             if lis[6] or lis[7] or lis[8] or lis[9] or lis[10] == ID:
                 employee_list.append(lis)
         return employee_list
+        
