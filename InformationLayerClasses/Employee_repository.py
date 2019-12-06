@@ -36,7 +36,7 @@ class Employee_repository:
         '''returns working schedule for a specific employee for a specific week'''
         pass
 
-    def get_all_employees_dict(self):
+    """def get_all_employees_dict(self):
         """gets all the crew member"""
         all_employee_dict = {}
         with open("./DATA/Crew.csv","r",newline="") as all_crew:
@@ -53,4 +53,14 @@ class Employee_repository:
                 lis.append(line["licence"])
                 lis.append(line["active"])
                 all_employee_dict[line["ssn"]] = lis
+        return all_employee_dict"""
+
+    def get_all_employees_dict(self):
+        """gets all the crew member"""
+        all_employee_dict = {}
+        with open("./DATA/Crew.csv","r",newline="") as all_crew:
+            reader = csv.DictReader(all_crew)
+            for line in reader:
+                crew = Employee(line["ssn"], line["name"], line["address"], line["home_phone"],line["mobile_phone"], line["email_address"], line["role"], line["rank"], line["licence"], line["active"])
+                all_employee_dict[line["ssn"]] = crew
         return all_employee_dict
