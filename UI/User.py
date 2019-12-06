@@ -273,16 +273,13 @@ class User:
         while action not in QUIT:
             self.app.print_main_menu()
             action = input("select an option: ") # muna að villutjékka þetta
-
             if action == "1":
-                self.employee_menu(action)
-                
+                self.employee_menu(action)  
             elif action == "2":
                 self.Voyage_menu(action)
                 action = input("select an option: ")
             elif action == "3": #DESTINATION
                 self.dest_menu(action)
-
             elif action == "4":
                self.airplane_menu(action)
 
