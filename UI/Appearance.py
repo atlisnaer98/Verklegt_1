@@ -14,6 +14,7 @@ CEI = 'Change Employee Info'
 CNE = 'Create new Employee'
 CND = 'Create new Destination'
 CNV = 'Create new Voyage'
+CNA = 'Create new Airplane'
 CV = 'Change voyage'
 A = 'Airplanes'
 AC = 'Assign crew'
@@ -208,5 +209,32 @@ class Appearance:
         print("{:>5} {} ".format('[3]', LA ))
         self.back_quit()
     
+    def print_add_plane(self):
+        print(DASH*LENGTH)
+        print("{:^60}".format(CNA))
+        print(DASH*LENGTH)
+        print("Laga og bæta hér :)")
+        '''
+        print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', CS)) #Laga þetta 
+        print("{:>5} {} ".format('[3]', LA )) #Laga þetta 
+        '''
+        self.back_quit() 
+        
+    def print_change_plane_status(self):
+        print(DASH*LENGTH)
+        print("{:^60}".format(CS))
+        print(DASH*LENGTH)
+        print("Laga og bæta hér :)")
+        '''
+        print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', CS)) #Laga þetta 
+        print("{:>5} {} ".format('[3]', LA )) #Laga þetta 
+        '''
+        self.back_quit()
+
+    def print_list_plane(self):
+        print(DASH*LENGTH)
+        print("{:^60}".format(LA))
+        print(DASH*LENGTH)
+        print("Laga og bæta hér :), hehehehe")
 
     
