@@ -19,3 +19,10 @@ if __name__ == '__main__':
     main()
 
 print("I liiike")
+
+
+
+
+from InformationLayerClasses.Employee_repository import Employee_repository
+er=Employee_repository()
+er.get_all_employees_dict()
