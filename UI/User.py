@@ -228,6 +228,14 @@ class User:
                 self.get_all_voyages()
             # elif action == "4":
             #     #change voyage
+        
+    def Airplane_menu(self,action):
+        self.app.print_dest_menu()
+        while action not in QUIT:
+            action = input("select an option: ")
+            if action == "1":
+                self.app.print_add_plane()
+            
 
 
     def main_menu(self):
