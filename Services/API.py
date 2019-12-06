@@ -27,8 +27,8 @@ class LLApi:
     def get_all_employees(self):
         return self.eLL.get_all_employees()
 
-    def change_employee(self,emp):
-        self.eLL.change_employee(emp)
+    def change_employee(self,emp,option,changed):
+        self.eLL.change_employee(emp,option,changed)
     
     def add_employee(self, emp):
         self.eLL.add_employee(emp)
