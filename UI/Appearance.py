@@ -42,6 +42,9 @@ DOE = "Are you looking for a specific date or a specific employee?"
 DATE = "Date"
 EM = "Employee"
 ASS = "Assign crew"
+F100 = "Fokker F100"
+BAE146 = "BAE 146"
+F28 = "Fokker F28"
 
 
 B = "[B] Back"
@@ -122,7 +125,10 @@ class Appearance:
         self.back_quit()
 
     def print_show_schedule(self):
-        pass
+        print(DASH*LENGTH)
+        print("{:^60}".format(S))
+        print(DASH*LENGTH)
+        
     
     def print_change_employee_info(self):
         print(DASH*LENGTH)
@@ -244,11 +250,11 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(CNA))
         print(DASH*LENGTH)
-        print("Vinsamlegast veljið flugvélategund!")
-        '''
-        print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', CS)) #Laga þetta 
-        print("{:>5} {} ".format('[3]', LA )) #Laga þetta 
-        '''
+        print("Please select the registration number and aircraft model")
+        print("Aircraft models:")
+        print("{:>5} {:<27}{} {} ".format('[1]', F100, '[2]', BAE146))
+        print("{:>5} {} ".format('[3]', F28 )) 
+        
  
         
     def print_change_plane_status(self):
@@ -267,5 +273,7 @@ class Appearance:
         print("{:^60}".format(LA))
         print(DASH*LENGTH)
         print("Laga og bæta hér :), hehehehe")
+
+        
 
     

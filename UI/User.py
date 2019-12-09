@@ -48,7 +48,13 @@ class User:
         #self.app.print_add_plane()
         plane = Airplane()
         plane.set_registration_number(input("Registration number: "))
-        plane.set_model(input("Model:s "))
+        option = input("Model: ")
+        if option == "1":
+            set_plane_BAE146(plane)
+        elif option == "2":
+            set_plane_FokkerF28(plane)
+        elif option == "3":
+            set_plane_FokkerF100(plane)
         self.ll.add_plane(plane)
 
     def get_all_employee(self):
@@ -181,7 +187,8 @@ class User:
             elif action == "2":
                 self.change_employee_info()
             elif action == "3":
-                pass
+                self.app.print_show_schedule()
+                self.show_emp_schedule(action)
             elif action == "4":
                 self.app.print_select_employee_menu()
                 action = input("select an option: ")
@@ -191,6 +198,29 @@ class User:
                     self.get_pilots()
                 elif action == "3":
                     self.get_cabin_crew()
+
+
+    def show_emp_schedule(self, action):
+        print("[1] Date [2]employee")
+        action = input("Select an option: ")
+        if action == '1':
+            action = input("Enter date: ")
+        elif action == '2':
+            ID = input("Enter ID number: ")
+            year,month,day,hour,minute = 2019,11,10,6,0
+            from_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
+            year,month,day,hour,minute = 2019,12,20,6,0
+            to_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
+            self.get_emp_schedule_time(ID, from_date, to_date)
+    
+    def get_emp_schedule_time(self, ID, from_date, to_date):
+        schedule = self.ll.get_emp_schedule(ID, from_date, to_date)
+        for trip in schedule:
+            print(str(trip))
+
+
+
+
             
     def add_voyage(self):
         dest = Destination()
@@ -229,10 +259,10 @@ class User:
                 if action =="1": 
                     #from_date = input("Enter date: YYYY-MM-DD:") 2019-11-24T14:43:00
                     year,month,day,hour,minute = 2019,11,10,6,0
-                    from_date = datetime.datetime(year,month,day,hour,minute,0)
+                    from_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
                     #to_date = input("to YYYY-MM-DD:") 2019-11-24T03:00:00
                     year,month,day,hour,minute = 2019,12,20,6,0
-                    to_date = datetime.datetime(year,month,day,hour,minute,0)
+                    to_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
                     self.get_all_voyages(from_date, to_date)
                 elif action == "2":
                     ID = input("Enter ID number")
