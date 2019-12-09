@@ -58,7 +58,9 @@ class EmployeeLL():
         for line in voyage_list:
             sting = str(line)
             lis = sting.split(',')
-            if ID == lis[6] or ID == lis[7] or ID == lis[8] or ID == lis[9] or ID == lis[10]:
+            print(lis[0], ID, lis[7])
+            if ID == lis[11] or ID == lis[7] or ID == lis[8] or ID == lis[9] or ID == lis[10]:
+                print("yes")
                 employee_list.append(lis)
         return employee_list
 
@@ -76,7 +78,7 @@ class EmployeeLL():
     def get_date_schedule(self, date):
         voyage_list = []
         all_voyage_list = self.dl.get_all_voyages()
-        
+        print(date)
         for voyage in all_voyage_list:
             parseddate = dateutil.parser.parse(voyage.get_departure())
             print(date, parseddate)

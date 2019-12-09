@@ -231,7 +231,9 @@ class User:
     def get_emp_schedule_time(self, ID, from_date, to_date):
         schedule = self.ll.get_emp_schedule(ID, from_date, to_date)
         for trip in schedule:
-            print(trip[0],trip[2])
+            print(trip)
+
+
 
     def get_emp_date_schedule(self, date):
         available = self.ll.get_emp_date_schedule(date)
