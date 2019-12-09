@@ -249,8 +249,8 @@ class Appearance:
         print(DASH*LENGTH)
         print("Please select the registration number and aircraft model")
         print("Aircraft models:")
-        print("{:>5} {:<27}{} {} ".format('[1]', F100, '[2]', BAE146))
-        print("{:>5} {} ".format('[3]', F28 )) 
+        print("{:>5} {:<27}{} {} ".format('[1]', BAE146, '[2]', F28))
+        print("{:>5} {} ".format('[3]', F100 )) 
         
  
         

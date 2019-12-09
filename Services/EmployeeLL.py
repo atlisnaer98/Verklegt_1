@@ -54,14 +54,14 @@ class EmployeeLL():
             parseddate = dateutil.parser.parse(voyage.get_departure())
             if from_date <= parseddate and parseddate <= to_date:
                 voyage_list.append(voyage)
-        voyage_list = check_id_in_voyage(voyage_list, ID)
-        return voyage_list
-        # for line in voyage_list:
-        #     sting = str(line)
-        #     lis = sting.split(',')
-        #     if ID in line:
-        #         employee_list.append(lis)
-        # return employee_list
+        #voyage_list = check_id_in_voyage(voyage_list, ID)
+        #return voyage_list
+        for line in voyage_list:
+            sting = str(line)
+            lis = sting.split(',')
+            if ID in line:
+                employee_list.append(lis)
+        return employee_list
 
     def check_id_in_voyage(self, voyage_list, ID):
         employee_list = []

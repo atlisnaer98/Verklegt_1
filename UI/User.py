@@ -48,14 +48,27 @@ class User:
         #self.app.print_add_plane()
         plane = Airplane()
         plane.set_registration_number(input("Registration number: "))
-        option = input("Model: ")
-        if option == "1":
-            set_plane_BAE146(plane)
-        elif option == "2":
-            set_plane_FokkerF28(plane)
-        elif option == "3":
-            set_plane_FokkerF100(plane)
+        option = int(input("Model: "))
+        self.set_plane_model(plane,option)
+        plane.set_active(1)
         self.ll.add_plane(plane)
+
+    def set_plane_model(self,plane,option):
+        if option == 1:
+            plane.set_planeID("NABAE146")
+            plane.set_plane_type("BAE")
+            plane.set_model("146")
+            plane.set_capacity(82)
+        elif option == 2:
+            plane.set_planeID("NAFokkerF28")
+            plane.set_plane_type("Fokker")
+            plane.set_model("F28")
+            plane.set_capacity(65)
+        elif option == 3:
+            plane.set_planeID("NAFokkerF100")
+            plane.set_plane_type("Fokker")
+            plane.set_model("F100")
+            plane.set_capacity(100)
 
     def get_all_employee(self):
         employee_list = self.ll.get_all_employees()
@@ -282,8 +295,8 @@ class User:
         while action not in QUIT:
             action = input("select an option: ")
             if action == "1":
-                self.app.print_add_plane()
                 self.add_plane()
+                self.app.print_add_plane()
                 print()
                 print("You have added a new airplane!")
                 print()
