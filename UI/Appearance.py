@@ -42,6 +42,9 @@ DOE = "Are you looking for a specific date or a specific employee?"
 DATE = "Date"
 EM = "Employee"
 ASS = "Assign crew"
+F100 = "Fokker F100"
+BAE146 = "BAE 146"
+F28 = "Fokker F28"
 
 
 B = "[B] Back"
@@ -213,7 +216,7 @@ class Appearance:
             #print("[{}] {}".format(numb,dest))
             print("[{}] {}".format(numb,selected))
         
-    def test_print_selection_list(self,numb,selected,activity=""):
+    def print_plane_activity_list(self,numb,selected,activity=""):
         if activity == "1":
             activity = "Active"
         elif activity == "0":
@@ -244,12 +247,12 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(CNA))
         print(DASH*LENGTH)
-        print("Laga og bæta hér :)")
+        print("Vinsamlegast veljið flugvélategund!")
         '''
         print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', CS)) #Laga þetta 
         print("{:>5} {} ".format('[3]', LA )) #Laga þetta 
         '''
-        self.back_quit() 
+ 
         
     def print_change_plane_status(self):
         print(DASH*LENGTH)

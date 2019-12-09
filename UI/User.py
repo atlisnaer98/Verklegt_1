@@ -9,6 +9,7 @@ import datetime
 
 QUIT = ["q","Q"]
 BACK = ["b","B"]
+THE_WAY = []
 class User:
     def __init__(self):
         self.ll = LLApi()
@@ -47,7 +48,7 @@ class User:
         #self.app.print_add_plane()
         plane = Airplane()
         plane.set_registration_number(input("Registration number: "))
-        plane.set_model(input("Model: "))
+        plane.set_model(input("Model:s "))
         self.ll.add_plane(plane)
 
     def get_all_employee(self):
@@ -263,13 +264,12 @@ class User:
     def change_plane_status(self): #VINNA Í ÞESSU!
         self.app.print_change_plane_status()
         airplane_list = self.ll.get_all_airplanes()
-        for index in range(0,len(airplane_list)):
-            sting = str(airplane_list[index])
-            lis = sting.split(",")
-            numb = index + 1
-            plane = lis[0]
-            activity = lis[2]
-            self.app.test_print_selection_list(numb,plane,activity)
+        counter = 0
+        for plane in airplane_list:
+            counter += 1
+            plane_reg = plane.get_registration_number()
+            activity = plane.get_active()
+            self.app.test_print_selection_list(counter,plane_reg,activity)
 
     def airplane_menu(self,action):
         self.app.print_airplane_menu()
