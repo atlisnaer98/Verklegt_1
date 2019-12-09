@@ -53,3 +53,5 @@ class LLApi:
         ''' takes staff ID and returns all the voyages for a specific employee'''
         return self.vLL.get_voyages_for_employee(ID)
     
+    def get_emp_schedule(self, ID, from_date, to_date):
+        return self.eLL.get_schedule(ID, from_date, to_date)

@@ -1,5 +1,7 @@
 from Models.Employee import Employee
 from InformationLayerClasses.API import Data_main
+import datetime
+import dateutil.parser
 
 class EmployeeLL():
         
@@ -43,3 +45,29 @@ class EmployeeLL():
             if lis[6] == "Pilot":
                 pilot_list.append(sting)
         return pilot_list
+
+    def get_schedule(self, ID, from_date, to_date):
+        voyage_list = []
+        employee_list = []
+        all_voyage_list = self.dl.get_all_voyages()
+        for voyage in all_voyage_list:
+            parseddate = dateutil.parser.parse(voyage.get_departure())
+            if from_date <= parseddate and parseddate <= to_date:
+                voyage_list.append(voyage)
+        voyage_list = check_id_in_voyage(voyage_list, ID)
+        return voyage_list
+        # for line in voyage_list:
+        #     sting = str(line)
+        #     lis = sting.split(',')
+        #     if ID in line:
+        #         employee_list.append(lis)
+        # return employee_list
+
+    def check_id_in_voyage(self, voyage_list, ID):
+        employee_list = []
+        for line in voyage_list:
+            sting = str(line)
+            lis = sting.split(',')
+            if ID in line:
+                employee_list.append(lis)
+        return employee_list
