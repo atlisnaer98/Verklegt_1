@@ -34,7 +34,7 @@ class VoyageLL():
         self.dl.add_voyage(voyage)
 
     def assign_crew(self,voyage_list):
-        self.dl.update_voyage_file(voyage_list):
+        self.dl.update_voyage_file(voyage_list)
 
     def change_voyage(self,voyage_list,index,option,changed):
         voyage = voyage_list[index]
@@ -45,4 +45,4 @@ class VoyageLL():
         else:
             return False
         voyage_list[index] = voyage
-        self.dl.update_voyage_file(voyage_list):
+        self.dl.update_voyage_file(voyage_list)
