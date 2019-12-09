@@ -322,7 +322,28 @@ class User:
             activity = plane.get_active()
             self.app.print_plane_activity_list(counter,plane_reg,activity)
         action = self.back_quit(action,len(airplane_list))
-        changed = input("Number to change:" )
+        for index in range(0,len(airplane_list)):
+            if int(action) == (index+1):
+                self.app.print_change_plane_status()
+                a_plane = airplane_list[index]
+                self.app.print_add_plane(a_plane)
+                action = self.back_quit(action,len(airplane_list))
+                
+
+
+        #Bæta við hér 
+'''
+for index in range(0,len(dest_list)):
+            if int(action) == (index+1):
+                self.app.print_change_dest_info()
+                dest = dest_list[index]
+                self.app.print_dest_info(dest)
+                action = self.back_quit(action,len(dest_list))
+                changed = input("Enter new input: ")
+                self.ll.change_dest(dest_list,index,int(action),changed)
+'''
+
+
     '''    
     def change_plane_status(self,action): #TAKA TVÖ VINNA Í ÞESSU!!!!!
         self.app.print_change_plane_status()
