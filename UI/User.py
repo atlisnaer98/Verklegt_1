@@ -118,13 +118,13 @@ class User:
         self.app.print_change_dest_info()
         dest_list = self.ll.get_all_dest()
         self.app.print_selection_list(dest_list)
-        action = self.back_quit(action,len(dest_list)+1)
+        action = self.back_quit(action,len(dest_list))
         for index in range(0,len(dest_list)):
             if int(action) == (index+1):
                 self.app.print_change_dest_info()
                 dest = dest_list[index]
                 self.app.print_dest_info(dest)
-                action = self.back_quit(action,len(dest_list)+1)
+                action = self.back_quit(action,len(dest_list))
                 changed = input("Enter new input: ")
                 self.ll.change_dest(dest_list,index,int(action),changed)
         
@@ -179,7 +179,7 @@ class User:
         self.app.back_quit()
         action = input("Select an option: ")
         try:
-            if int(action) > 0 and int(action) < limit:
+            if int(action) > 0 and int(action) < limit+1:
                 return action
             else:
                 print("Invalid input,")
@@ -187,22 +187,10 @@ class User:
             if action in BACK:
                 self.main_menu()
             elif action in QUIT:
+                print("pepe")
                 self.main_menu(action)
             else:
                 print("Invalid input")
-        """
-        self.app.back_quit()
-        action = input("select an option: ")
-        if action in BACK:
-            self.main_menu()
-        elif action in QUIT:
-            return action
-        try:
-            temp_action = int(action)
-            return temp_action
-        except ValueError:
-            print("Invalid input,")
-            self.back_quit(action)"""
 
     def employee_menu(self,action):
         self.app.print_employee_menu()
@@ -244,7 +232,9 @@ class User:
     def get_emp_schedule_time(self, ID, from_date, to_date):
         schedule = self.ll.get_emp_schedule(ID, from_date, to_date)
         for trip in schedule:
-            print(trip[0],trip[2])
+            print(trip)
+
+
 
     def get_emp_date_schedule(self, date):
         available = self.ll.get_emp_date_schedule(date)
