@@ -332,8 +332,7 @@ class User:
                 print("You have added a new airplane!")
                 print()
             elif action == "2":
-                self.change_plane_status()
-                
+                self.change_plane_status(action)
             elif action == "3":
                 self.app.print_list_plane()
                 
