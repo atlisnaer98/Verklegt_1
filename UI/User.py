@@ -314,7 +314,7 @@ class User:
             elif action == "4":
                 self.change_voyage()
     
-    def change_plane_status(self): #VINNA Í ÞESSU!
+    def change_plane_status(self): #VINNA Í ÞESSU og nota þenna!
         self.app.print_change_plane_status()
         airplane_list = self.ll.get_all_airplanes()
         counter = 0
@@ -323,7 +323,7 @@ class User:
             plane_reg = plane.get_registration_number()
             activity = plane.get_active()
             self.app.test_print_selection_list(counter,plane_reg,activity)
-        
+    '''    
     def change_plane_status(self,action): #TAKA TVÖ VINNA Í ÞESSU!!!!!
         self.app.print_change_plane_status()
         plane_list = self.ll.get_all_airplanes()
@@ -339,6 +339,7 @@ class User:
                     changed = input("Enter new input: ") #Breyta þessu 
                     self.ll.change_dest(plane_list,index,action,changed) #Breyta þessu
         return action
+    '''
 
 
 
