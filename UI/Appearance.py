@@ -42,6 +42,9 @@ DOE = "Are you looking for a specific date or a specific employee?"
 DATE = "Date"
 EM = "Employee"
 ASS = "Assign crew"
+F100 = "Fokker F100"
+BAE146 = "BAE 146"
+F28 = "Fokker F28"
 
 
 B = "[B] Back"
