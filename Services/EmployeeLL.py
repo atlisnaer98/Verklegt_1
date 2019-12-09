@@ -9,38 +9,17 @@ class EmployeeLL():
     def get_all_employees(self):
         return self.dl.get_all_employee()
 
-    def get_all_employees_dict(self):
-        return self.dl.get_all_employees_dict()
-
-    def list_to_dict(self):
-        big_list = self.dl.get_all_employee()
-        for emp in big_list:
-            lis = []
-            lis.append(emp)
-    
-    def change_employee(self,employee_list,index,option,changed):
-        emp = employee_list[index]
-        if option == 1:
-            emp.set_address(changed)
-        elif option == 2:
-            emp.set_home_phone(changed)
-        elif option == 3:
-            emp.set_mobile_number(changed)
-        elif option == 4:
-            emp.set_email_address(changed)
-        elif option == 5:
-            emp.set_job_title(changed)
-        elif option == 6:
-            emp.set_rank(changed)
-        elif option == 7:
-            emp.set_licence(changed)
-        elif option == 8:
-            emp.set_activity(changed)
-        else: 
-            return False
-        employee_list[index] = emp
-        self.dl.update_employee_file(employee_list)
+    def get_employee(self, action):
+        employee_list = []
+        all_employee_list = self.dl.get_all_employee()
+        for line in all_employee_list:
+            sting = str(line)
+            lis = sting.split(',')
+            if lis[0] == action:
+                cabin_crew_list.append(sting)
         return employee_list
+
+        
 
     def add_employee(self,emp):
         self.dl.add_employee(emp)
