@@ -48,7 +48,7 @@ class User:
         #self.app.print_add_plane()
         plane = Airplane()
         plane.set_registration_number(input("Registration number: "))
-        option = input("Model: "))
+        option = input("Model: ")
         if option == "1":
             set_plane_BAE146(plane)
         elif option == "2":
