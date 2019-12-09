@@ -15,7 +15,7 @@ class Voyage():
         self.__fa2 = fa2
 
     def __str__(self):
-        return "{},{},{},{},{},{},{},{},{},{},{}".format(self.__flight_number_away,self.__flight_number_home,self.__arriving_at,self.__departure,self.__arrival,self.__aircraft_id,self.__captain,self.__copilot,self.__fsm,self.__fa1,self.__fa2)
+        return "{},{},{},{},{},{},{},{},{},{},{},{}".format(self.__booking_reference,self.__flight_number_away,self.__flight_number_home,self.__arriving_at,self.__departure,self.__arrival,self.__aircraft_id,self.__captain,self.__copilot,self.__fsm,self.__fa1,self.__fa2)
 
     def get_booking_reference(self):
         return self.__booking_reference
