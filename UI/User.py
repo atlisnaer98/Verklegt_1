@@ -227,13 +227,7 @@ class User:
             from_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
             year,month,day,hour,minute = 2019,12,20,6,0
             to_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
-            self.get_emp_schedule_time(ID, from_date, to_date)
-    
-    def get_emp_schedule_time(self, ID, from_date, to_date):
-        schedule = self.ll.get_emp_schedule(ID, from_date, to_date)
-        for trip in schedule:
-            print(trip)
-
+            self.get_voyages_for_employee(ID)
 
 
     def get_emp_date_schedule(self, date):
@@ -260,12 +254,12 @@ class User:
         voyage_list = self.ll.get_all_voyages(from_date, to_date)
         #print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for voyage in voyage_list:
-            print(voyage[0],voyage[1],voyage[2])
+            print(voyage.get_booking_reference())
 
     def get_voyages_for_employee(self, ID):
-        employee_list = self.ll.get_voyages_for_employee(ID)
-        for line in employee_list:
-            print(line[0],line[1],line[2])
+        voyage_list = self.ll.get_voyages_for_employee(ID)
+        for voyage in voyage_list:
+            print(voyage.get_booking_reference())
             
     def Voyage_menu(self,action):
         self.app.print_voyage_menu()
