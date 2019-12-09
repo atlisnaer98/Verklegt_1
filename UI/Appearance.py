@@ -122,7 +122,10 @@ class Appearance:
         self.back_quit()
 
     def print_show_schedule(self):
-        pass
+        print(DASH*LENGTH)
+        print("{:^60}".format(S))
+        print(DASH*LENGTH)
+        
     
     def print_change_employee_info(self):
         print(DASH*LENGTH)
@@ -264,5 +267,7 @@ class Appearance:
         print("{:^60}".format(LA))
         print(DASH*LENGTH)
         print("Laga og bæta hér :), hehehehe")
+
+        
 
     
