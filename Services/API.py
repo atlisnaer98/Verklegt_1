@@ -55,6 +55,9 @@ class LLApi:
     def add_voyage(self,voyage):
         self.vLL.add_voyage(voyage)
 
+    def change_voyage(self,voyage_list,index,option,changed):
+        self.vll.change_voyage(voyage_list,index,option,changed)
+
     def get_voyages_for_employee(self, ID):
         ''' takes staff ID and returns all the voyages for a specific employee'''
         return self.vLL.get_voyages_for_employee(ID)

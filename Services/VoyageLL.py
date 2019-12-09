@@ -11,6 +11,9 @@ class VoyageLL():
         all_voyage_list = self.dl.get_all_voyages()
         return all_voyage_list
 
+    def change_voyage(self,voyage_list,index,option,changed):
+        self.dl.change_voyage(voyage_list,index,option,changed)
+
     def get_date_voyages(self, from_date, to_date):
         voyage_list = []
         all_voyage_list = self.dl.get_all_voyages()
