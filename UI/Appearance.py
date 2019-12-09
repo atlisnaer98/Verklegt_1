@@ -241,12 +241,12 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(CNA))
         print(DASH*LENGTH)
-        print("Laga og bæta hér :)")
+        print("Vinsamlegast veljið flugvélategund!")
         '''
         print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', CS)) #Laga þetta 
         print("{:>5} {} ".format('[3]', LA )) #Laga þetta 
         '''
-        self.back_quit() 
+ 
         
     def print_change_plane_status(self):
         print(DASH*LENGTH)

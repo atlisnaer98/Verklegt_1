@@ -47,7 +47,7 @@ class User:
         #self.app.print_add_plane()
         plane = Airplane()
         plane.set_registration_number(input("Registration number: "))
-        plane.set_model(input("Model: "))
+        plane.set_model(input("Model:s "))
         self.ll.add_plane(plane)
 
     def get_all_employee(self):
@@ -239,7 +239,6 @@ class User:
     def change_plane_status(self): #VINNA Í ÞESSU!
         self.app.print_change_plane_status()
         airplane_list = self.ll.get_all_airplanes()
-<<<<<<< HEAD
         counter = 0
         for plane in airplane_list:
             counter += 1
