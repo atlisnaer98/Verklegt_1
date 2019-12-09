@@ -293,7 +293,7 @@ class User:
             # elif action == "4":
             #     #change voyage
     
-    def change_plane_status(self): #VINNA Í ÞESSU!
+    def change_plane_status(self): #VINNA Í ÞESSU og nota þenna!
         self.app.print_change_plane_status()
         airplane_list = self.ll.get_all_airplanes()
         counter = 0
@@ -302,7 +302,7 @@ class User:
             plane_reg = plane.get_registration_number()
             activity = plane.get_active()
             self.app.test_print_selection_list(counter,plane_reg,activity)
-        
+    '''    
     def change_plane_status(self,action): #TAKA TVÖ VINNA Í ÞESSU!!!!!
         self.app.print_change_plane_status()
         plane_list = self.ll.get_all_airplane()
@@ -318,24 +318,24 @@ class User:
                     changed = input("Enter new input: ") #Breyta þessu 
                     self.ll.change_dest(plane_list,index,action,changed) #Breyta þessu
         return action
+    '''
 
 
-
-    def airplane_menu(self,action):
-        self.app.print_airplane_menu()
-        while action not in QUIT:
-            action = input("select an option: ")
-            if action == "1":
-                self.app.print_add_plane()
-                self.add_plane()
-                print()
-                print("You have added a new airplane!")
-                print()
-            elif action == "2":
-                self.change_plane_status()
+def airplane_menu(self,action):
+    self.app.print_airplane_menu()
+    while action not in QUIT:
+        action = input("select an option: ")
+        if action == "1":
+            self.app.print_add_plane()
+            self.add_plane()
+            print()
+            print("You have added a new airplane!")
+            print()
+        elif action == "2":
+            self.change_plane_status()
                 
-            elif action == "3":
-                self.app.print_list_plane()
+        elif action == "3":
+            self.app.print_list_plane()
                 
                 
         '''
