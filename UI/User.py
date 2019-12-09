@@ -10,6 +10,8 @@ import dateutil.parser
 
 QUIT = ["q","Q"]
 BACK = ["b","B"]
+YES = ["y","Y"]
+NO = ["n","N"]
 THE_WAY = []
 class User:
     def __init__(self):
@@ -244,17 +246,33 @@ class User:
         voyage.set_aircraft_id("TF-100")
         self.ll.add_voyage(voyage)
 
-    # def change_voyage()
-    # # self.app.print_change_voyage()
-    #     voyage_list = self.ll.get_all_voyages()
-    #     action = input("Enter ID number: ")
-    #     for index in range(len(voyage_list)):
-    #         voyage = voyage_list[index]
-    #         if action == voyage.get_booking_reference():
-    #             #self.app.print_changing_voyage_information(voyage)
-    #             option = int(input("What do you want to change? "))
-    #             changed = input("Enter new input: ")
-    #             self.ll.change_employee(employee_list,index,option,changed)
+    def change_voyage():
+        #self.app.print_change_voyage()
+        voyage_list = self.ll.get_all_voyages()
+        action = input("Enter ID number: ")
+        for index in range(len(voyage_list)):
+            voyage = voyage_list[index]
+            if action == voyage.get_booking_reference():
+                #self.app.print_changing_voyage_information(voyage)
+                option = int(input("What do you want to change? "))
+                changed = input("Enter new input: ")
+                self.ll.change_voyage(voyage_list,index,option,changed)
+
+    def assign_crew(self):
+    #self.app.print_assign_crew()
+        voyage_list = self.ll.get_all_voyages()
+        action = input("Enter booking reference: ")
+        for index in range(len(voyage_list)):
+            voyage = voyage_list[index]
+            if action == voyage.get_booking_reference():
+                #self.app.print_changing_voyage_information(voyage)
+                voyage.set_captain(input("Captain: "))
+                voyage.set_copilot(input("Copilot: "))
+                voyage.set_fsm(input("Flight service manager: "))
+                voyage.set_fa1(input("Flight attendant: "))
+                voyage.set_fa2(input("Flight attendat: "))
+                voyage_list[index] = voyage
+                self.ll.assign_crew(voyage_list)
 
     def get_date_voyages(self, from_date, to_date):
         voyage_list = self.ll.get_date_voyages(from_date, to_date)
@@ -294,10 +312,10 @@ class User:
                     # from_date = input("From YYYY-MM-DD:")
                     # to_date = input("to YYYY-MM-DD:")
                     self.get_voyages_for_employee(ID)
-            # elif action == "4":
-            #     #change voyage
+            elif action == "4":
+                self.change_voyage()
     
-    def change_plane_status(self): #VINNA Í ÞESSU!
+    def change_plane_status(self): #VINNA Í ÞESSU og nota þenna!
         self.app.print_change_plane_status()
         airplane_list = self.ll.get_all_airplanes()
         counter = 0
@@ -306,7 +324,7 @@ class User:
             plane_reg = plane.get_registration_number()
             activity = plane.get_active()
             self.app.test_print_selection_list(counter,plane_reg,activity)
-        
+    '''    
     def change_plane_status(self,action): #TAKA TVÖ VINNA Í ÞESSU!!!!!
         self.app.print_change_plane_status()
         plane_list = self.ll.get_all_airplanes()
@@ -322,6 +340,7 @@ class User:
                     changed = input("Enter new input: ") #Breyta þessu 
                     self.ll.change_dest(plane_list,index,action,changed) #Breyta þessu
         return action
+    '''
 
 
 
