@@ -234,7 +234,7 @@ class User:
             print(trip[0],trip[2])
 
     def get_emp_date_schedule(self, date):
-        available = self.ll.get_emp_date_schedule
+        available = self.ll.get_emp_date_schedule(date)
         print("yes")
         # for line in available:
         #     print(line)

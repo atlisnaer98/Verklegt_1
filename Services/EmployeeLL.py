@@ -76,13 +76,14 @@ class EmployeeLL():
     def get_date_schedule(self, date):
         voyage_list = []
         all_voyage_list = self.dl.get_all_voyages()
-        print(date.day)
+        
         for voyage in all_voyage_list:
             parseddate = dateutil.parser.parse(voyage.get_departure())
-            print(date.day, parseddate.day)
-            if date.day == parseddate.day:
-                voyage_list.append(voyage[6], voyage[7], voyage[8], voyage[9], voyage[10])
-        print(voyage_list)
+            print(date, parseddate)
+            if date == parseddate:
+                print('jeiijjj')
+                # voyage_list.append(voyage[6], voyage[7], voyage[8], voyage[9], voyage[10])
+        # print(voyage_list)
         return voyage_list
 
             
