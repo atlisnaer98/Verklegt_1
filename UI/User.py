@@ -301,8 +301,8 @@ class User:
         while action not in QUIT:
             action = input("select an option: ")
             if action == "1":
-                self.add_plane()
                 self.app.print_add_plane()
+                self.add_plane()
                 print()
                 print("You have added a new airplane!")
                 print()
