@@ -1,6 +1,6 @@
 class Voyage():
 
-    def __init__(self,booking_ref, flight_number_away = "", flight_number_home = "", arriving_at = "", departure ="", arrival="", aircraft_id="",captain="",copilot="",fsm="",fa1="",fa2=""):
+    def __init__(self,booking_ref=0, flight_number_away = "", flight_number_home = "", arriving_at = "", departure ="", arrival="", aircraft_id="",captain="",copilot="",fsm="",fa1="",fa2=""):
         self.__booking_reference = booking_ref
         self.__flight_number_away = flight_number_away
         self.__flight_number_home = flight_number_home
