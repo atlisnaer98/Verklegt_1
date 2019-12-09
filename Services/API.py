@@ -56,10 +56,10 @@ class LLApi:
         self.vLL.add_voyage(voyage)
 
     def change_voyage(self,voyage_list,index,option,changed):
-        self.vll.change_voyage(voyage_list,index,option,changed)
+        self.vLL.change_voyage(voyage_list,index,option,changed)
 
     def assign_crew(self,voyage_list):
-        self.vll.assign_crew(voyage_list)
+        self.vLL.assign_crew(voyage_list)
 
     def get_voyages_for_employee(self, ID):
         ''' takes staff ID and returns all the voyages for a specific employee'''
