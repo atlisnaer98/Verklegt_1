@@ -154,7 +154,6 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', CH))
         print("{:>5} {} ".format('[3]', LD ))
-        self.back_quit()
 
     def print_dest_info(self,dest_list):
         print("Destination: {}\nCountry: {}\nAirport: {}\nflight time(one-way): {}\nDistance from Reykjavik: {}\nContact: {}\nContact phonenumber: {}"
