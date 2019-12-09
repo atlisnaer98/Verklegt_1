@@ -42,3 +42,6 @@ class Data_main:
 
     def add_voyage(self,voyage):
         self.vDL.add_voyage(voyage)
+
+    def update_voyage_file(self,voyage_list,index,option,changed):
+        self.vDL.update_file(voyage_list,index,option,changed)
