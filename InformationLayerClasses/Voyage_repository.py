@@ -22,8 +22,8 @@ class Voyage_repository:
             for voyage in voyage_list:
                 voyages.write("{}\n".format(str(voyage)))
 
-    def get_all_voyages(self):
-        """gets all the voyages"""
+    def get_all_pastflights(self):
+        
         all_voyages_list = []
         with open("./DATA/PastFlights.csv","r",newline="") as all_flights:
             reader = csv.DictReader(all_flights)
@@ -33,6 +33,16 @@ class Voyage_repository:
                     counter +=1
                     voyages = Voyage(counter,line["flightNumber"],line["flightNumber"],line["arrivingAt"],line["departure"],line["arrival"],line["aircraftID"],line["captain"],line["copilot"],line["fsm"],line["fa1"],line["fa2"])
                     all_voyages_list.append(voyages)
+        return all_voyages_list
+
+    def get_all_voyages(self):
+        """gets all the voyages"""
+        all_voyages_list = []
+        with open("./DATA/Voyages.csv","r",newline="") as voyages:
+            reader = csv.DictReader(voyages)
+            for line in reader:
+                voyage = Voyage(line["bookingReference"],line["flightNumber"],line["flightNumber"],line["arrivingAt"],line["departure"],line["arrival"],line["aircraftID"],line["captain"],line["copilot"],line["fsm"],line["fa1"],line["fa2"])
+                all_voyages_list.append(voyage)
         return all_voyages_list
 
     def add_captains_to_voyage(self):
