@@ -245,7 +245,7 @@ class User:
         voyage.set_aircraft_id("TF-100")
         self.ll.add_voyage(voyage)
 
-    def change_voyage()
+    def change_voyage():
     #self.app.print_change_voyage()
         voyage_list = self.ll.get_all_voyages()
         action = input("Enter ID number: ")
@@ -257,7 +257,7 @@ class User:
                 changed = input("Enter new input: ")
                 self.ll.change_voyage(voyage_list,index,option,changed)
 
-    def assign_crew()
+    def assign_crew():
     #self.app.print_assign_crew()
         voyage_list = self.ll.get_all_voyages()
         action = input("Enter booking reference: ")
