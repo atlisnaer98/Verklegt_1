@@ -26,29 +26,6 @@ class EmployeeLL():
     def add_employee(self,emp):
         self.dl.add_employee(emp)
 
-    def change_employee(self,employee_list,index,option,changed):
-        emp = employee_list[index]
-        if option == 1:
-            emp.set_address(changed)
-        elif option == 2:
-            emp.set_home_phone(changed)
-        elif option == 3:
-            emp.set_mobile_number(changed)
-        elif option == 4:
-            emp.set_email_address(changed)
-        elif option == 5:
-            emp.set_job_title(changed)
-        elif option == 6:
-            emp.set_rank(changed)
-        elif option == 7:
-            emp.set_licence(changed)
-        elif option == 8:
-            emp.set_activity(changed)
-        else: 
-            return False
-        employee_list[index] = emp
-        self.dl.update_employee_file(employee_list)
-
     def get_cabin_crew(self):
         cabin_crew_list = []
         all_employee_list = self.dl.get_all_employee()
@@ -119,8 +96,23 @@ class EmployeeLL():
             parseddate = dateutil.parser.parse(day.get_departure())
             if date.day == parseddate.day:
                 same_day_list.append(day)
+        action = input("[1]available, [2]working")
+        if action == '1':
+            self.available_employees(same_day_list)
+        elif action == '2':
+            self.working_employees(same_day_list)
+        
         
         return same_day_list
+
+    def available_employees(self, same_day_list):
+        all_employees = self.get_all_employees()
+        for i in all_employees:
+            if i in same_day_list:
+                print("yesss")
+
+    def working_employees(self):
+        all_employees = self.get_all_employees()
 
             
 

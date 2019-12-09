@@ -228,10 +228,6 @@ class User:
         available = self.ll.get_emp_date_schedule(date)
         for line in available:
             print(line)
-        # for line in available:
-        #     print(line)
-
-
 
 
             
