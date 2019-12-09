@@ -191,7 +191,7 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(V))
         print(DASH*LENGTH)
-        print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', AC))
+        print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', ASS))
         print("{:>5} {:<27}{} {}".format('[3]', LV, '[4]',CV ))
         print("{:15}{}".format(EMPTY,DASH*30))
         print("{:17}{}{:10}{}".format(EMPTY,B,EMPTY,Q))
