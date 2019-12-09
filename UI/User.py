@@ -210,7 +210,7 @@ class User:
         print("[1] Date [2]employee")
         action = input("Select an option: ")
         if action == '1':
-            year,month,day,hour,minute = 2019,11,10,6,0
+            year,month,day,hour,minute = 2019,11,20,6,0
             date = datetime.datetime(year,month,day,hour,minute,0)
             self.get_emp_date_schedule(date)
         elif action == '2':
@@ -224,7 +224,8 @@ class User:
 
     def get_emp_date_schedule(self, date):
         available = self.ll.get_emp_date_schedule(date)
-        print("yes")
+        for line in available:
+            print(line)
         # for line in available:
         #     print(line)
 
@@ -243,17 +244,17 @@ class User:
         voyage.set_aircraft_id("TF-100")
         self.ll.add_voyage(voyage)
 
-    def change_voyage()
-    #self.app.print_change_voyage()
-        voyage_list = self.ll.get_all_voyages()
-        action = input("Enter ID number: ")
-        for index in range(len(voyage_list)):
-            voyage = voyage_list[index]
-            if action == voyage.get_booking_reference():
-                #self.app.print_changing_voyage_information(voyage)
-                option = int(input("What do you want to change? "))
-                changed = input("Enter new input: ")
-                self.ll.change_employee(employee_list,index,option,changed)
+    # def change_voyage()
+    # # self.app.print_change_voyage()
+    #     voyage_list = self.ll.get_all_voyages()
+    #     action = input("Enter ID number: ")
+    #     for index in range(len(voyage_list)):
+    #         voyage = voyage_list[index]
+    #         if action == voyage.get_booking_reference():
+    #             #self.app.print_changing_voyage_information(voyage)
+    #             option = int(input("What do you want to change? "))
+    #             changed = input("Enter new input: ")
+    #             self.ll.change_employee(employee_list,index,option,changed)
 
     def get_date_voyages(self, from_date, to_date):
         voyage_list = self.ll.get_date_voyages(from_date, to_date)

@@ -76,17 +76,28 @@ class EmployeeLL():
 
 
     def get_date_schedule(self, date):
-        voyage_list = []
-        all_voyage_list = self.dl.get_all_voyages()
+        same_year_list = []
+        same_month_list = []
+        same_day_list = []
         print(date)
+        all_voyage_list = self.dl.get_all_voyages() 
         for voyage in all_voyage_list:
             parseddate = dateutil.parser.parse(voyage.get_departure())
-            print(date, parseddate)
-            if date == parseddate:
-                print('jeiijjj')
-                # voyage_list.append(voyage[6], voyage[7], voyage[8], voyage[9], voyage[10])
-        # print(voyage_list)
-        return voyage_list
+            if date.year == parseddate.year:
+                same_year_list.append(voyage)
+
+
+        for month in same_year_list:
+            parseddate = dateutil.parser.parse(month.get_departure())
+            if date.month == parseddate.month:
+                same_month_list.append(month)
+
+        for day in same_month_list:
+            parseddate = dateutil.parser.parse(day.get_departure())
+            if date.day == parseddate.day:
+                same_day_list.append(day)
+        
+        return same_day_list
 
             
 
