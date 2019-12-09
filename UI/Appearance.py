@@ -240,7 +240,17 @@ class Appearance:
         pass
 
     def print_change_voyage(self):
-        pass
+        print(DASH*LENGTH)
+        print("{:^60}".format(CV))
+        print(DASH*LENGTH)
+    
+    def print_changing_voyage_information(self,emp):
+        print(DASH*LENGTH)
+        print("{:^60}".format("What would you like to change?"))
+        print(DASH*LENGTH)
+        print()
+        
+        print("{:>5} {:<27}{} {} ".format('[1]', "Flight Number", '[2]', "Aircraft ID"))
 
     def print_airplane_menu(self):
         print(DASH*LENGTH)
@@ -280,6 +290,7 @@ class Appearance:
         print("{:^60}".format(LA))
         print(DASH*LENGTH)
         print("Laga og bæta hér :), hehehehe")
+        
 
         
 
