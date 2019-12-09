@@ -6,6 +6,7 @@ import csv
 from Services.API import LLApi
 from UI.Appearance import Appearance
 import datetime
+import dateutil.parser
 
 QUIT = ["q","Q"]
 BACK = ["b","B"]
@@ -48,6 +49,7 @@ class User:
         #self.app.print_add_plane()
         plane = Airplane()
         plane.set_registration_number(input("Registration number: "))
+        self.app.print_add_plane_vol2()
         option = int(input("Model: "))
         self.set_plane_model(plane,option)
         plane.set_active(1)
@@ -228,7 +230,9 @@ class User:
         print("[1] Date [2]employee")
         action = input("Select an option: ")
         if action == '1':
-            action = input("Enter date: ")
+            year,month,day,hour,minute = 2019,11,10,6,0
+            date = datetime.datetime(year,month,day,hour,minute,0)
+            self.get_emp_date_schedule(date)
         elif action == '2':
             ID = input("Enter ID number: ")
             year,month,day,hour,minute = 2019,11,10,6,0
@@ -240,7 +244,13 @@ class User:
     def get_emp_schedule_time(self, ID, from_date, to_date):
         schedule = self.ll.get_emp_schedule(ID, from_date, to_date)
         for trip in schedule:
-            print(str(trip))
+            print(trip[0],trip[2])
+
+    def get_emp_date_schedule(self, date):
+        available = self.ll.get_emp_date_schedule(date)
+        print("yes")
+        # for line in available:
+        #     print(line)
 
 
 
@@ -260,7 +270,7 @@ class User:
         voyage_list = self.ll.get_all_voyages(from_date, to_date)
         #print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for voyage in voyage_list:
-            print(str(voyage))
+            print(voyage[0],voyage[1],voyage[2])
 
     def get_voyages_for_employee(self, ID):
         employee_list = self.ll.get_voyages_for_employee(ID)
@@ -290,7 +300,7 @@ class User:
                     self.get_all_voyages(from_date, to_date)
                 elif action == "2":
                     ID = input("Enter ID number")
-                    print("Enter timeperiod")
+                    #print("Enter timeperiod")
                     # from_date = input("From YYYY-MM-DD:")
                     # to_date = input("to YYYY-MM-DD:")
                     self.get_voyages_for_employee(ID)
@@ -306,6 +316,24 @@ class User:
             plane_reg = plane.get_registration_number()
             activity = plane.get_active()
             self.app.test_print_selection_list(counter,plane_reg,activity)
+        
+    def change_plane_status(self,action): #TAKA TVÖ VINNA Í ÞESSU!!!!!
+        self.app.print_change_plane_status()
+        plane_list = self.ll.get_all_airplane()
+        self.app.print_selection_list(plane_list)
+        action = self.back_quit(action)
+        while action not in BACK or action not in QUIT: #BReyta hér þannig maður velji active eða unactive :)
+            for index in range(0,len(plane_list)):
+                if int(action) == (index+1):
+                    self.app.print_change_dest_info()
+                    dest = plane_list[index]
+                    self.app.print_dest_info(dest)             
+                    action = int(input("I want to change: "))
+                    changed = input("Enter new input: ")
+                    self.ll.change_dest(plane_list,index,action,changed)
+        return action
+
+
 
     def airplane_menu(self,action):
         self.app.print_airplane_menu()

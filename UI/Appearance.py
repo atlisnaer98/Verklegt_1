@@ -251,9 +251,12 @@ class Appearance:
         print("{:^60}".format(CNA))
         print(DASH*LENGTH)
         print("Please select the registration number and aircraft model")
+        
+    
+    def print_add_plane_vol2(self):
         print("Aircraft models:")
         print("{:>5} {:<27}{} {} ".format('[1]', BAE146, '[2]', F28))
-        print("{:>5} {} ".format('[3]', F100 )) 
+        print("{:>5} {} ".format('[3]', F100 ))
         
  
         
