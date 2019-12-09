@@ -9,6 +9,7 @@ import datetime
 
 QUIT = ["q","Q"]
 BACK = ["b","B"]
+THE_WAY = []
 class User:
     def __init__(self):
         self.ll = LLApi()
@@ -245,15 +246,6 @@ class User:
             plane_reg = plane.get_registration_number()
             activity = plane.get_active()
             self.app.test_print_selection_list(counter,plane_reg,activity)
-=======
-        for index in range(0,len(airplane_list)):
-            sting = str(airplane_list[index])
-            lis = sting.split(",")
-            numb = index + 1
-            plane = lis[0]
-            activity = lis[5]
-            self.app.print_plane_activity_list(numb,plane,activity)
->>>>>>> e3b5e05e7b62c4624b078018c2f2ad17be05c145
 
     def airplane_menu(self,action):
         self.app.print_airplane_menu()

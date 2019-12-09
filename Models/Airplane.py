@@ -19,13 +19,28 @@ class Airplane():
         self.__registration_number = new_regID
 
     def get_plane_ID(self):
-        self
+        return self.__planeID
+
+    def set_plane_ID(self,new_planeID):
+        self.__planeID = new_planeID
+
+    def get_plane_type(self):
+        return self.__plane_type
+
+    def set_plane_type(self,new_plane_type):
+        self.__plane_type = new_plane_type
 
     def get_model(self):
         return self.__model
 
     def set_model(self, new_model):
         self.__model = new_model
+
+    def get_capacity(self):
+        return self.__capacity
+
+    def set_capacity(self,new_capacity):
+        self.__capacity = new_capacity
 
     def get_active(self):
         return self.__active
