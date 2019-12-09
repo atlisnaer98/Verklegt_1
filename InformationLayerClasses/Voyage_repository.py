@@ -4,7 +4,7 @@ import csv
 HEADER = "bookingReference,flightNumberAway,flightNumberHome,arrivingAt,departure,arrival,aircraftID,captain,copilot,fsm,fa1,fa2"
 class Voyage_repository:
 
-    def create_voyage_list(self,all_voyages,counter):
+    def add_all_upcoming_flights(self,all_voyages,counter):
         all_voyages_list = all_voyages
         with open("./DATA/UpcomingFlights.csv","r",newline="") as all_flights:
             reader = csv.DictReader(all_flights)
@@ -22,8 +22,7 @@ class Voyage_repository:
             for voyage in voyage_list:
                 voyages.write("{}\n".format(str(voyage)))
 
-    def get_all_pastflights(self):
-        
+    def get_all_past_flights(self):
         all_voyages_list = []
         with open("./DATA/PastFlights.csv","r",newline="") as all_flights:
             reader = csv.DictReader(all_flights)
