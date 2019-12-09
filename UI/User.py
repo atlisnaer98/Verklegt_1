@@ -9,6 +9,7 @@ import datetime
 
 QUIT = ["q","Q"]
 BACK = ["b","B"]
+THE_WAY = []
 class User:
     def __init__(self):
         self.ll = LLApi()
