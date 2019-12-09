@@ -245,7 +245,7 @@ class User:
             numb = index + 1
             plane = lis[0]
             activity = lis[5]
-            self.app.test_print_selection_list(numb,plane,activity)
+            self.app.print_plane_activity_list(numb,plane,activity)
 
     def airplane_menu(self,action):
         self.app.print_airplane_menu()
