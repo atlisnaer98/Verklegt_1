@@ -16,7 +16,7 @@ class Airplane_repository:
             reader = csv.DictReader(aircraft)
             #next(reader)
             for line in reader:
-                plane = Airplane(line["planeInsignia"], line["planeTypeId"], line["active"])
+                plane = Airplane(line["planeInsignia"], line["planeTypeId"],line["planeType"],line["model"],line["capacity"],line["active"])
                 lis.append(plane)
         return lis
 
