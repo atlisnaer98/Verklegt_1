@@ -257,7 +257,7 @@ class User:
                 changed = input("Enter new input: ")
                 self.ll.change_voyage(voyage_list,index,option,changed)
 
-    def assign_crew():
+    def assign_crew(self):
     #self.app.print_assign_crew()
         voyage_list = self.ll.get_all_voyages()
         action = input("Enter booking reference: ")
