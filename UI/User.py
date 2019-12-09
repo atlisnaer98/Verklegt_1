@@ -311,15 +311,39 @@ class User:
             elif action == "4":
                 self.change_voyage()
     
-    def change_plane_status(self): #VINNA Í ÞESSU og nota þenna!
+    def change_plane_status(self,action): #VINNA Í ÞESSU og nota þenna!
         self.app.print_change_plane_status()
         airplane_list = self.ll.get_all_airplanes()
+        #app.fall(airplane_list) svipað fall og print selection list
         counter = 0
         for plane in airplane_list:
             counter += 1
             plane_reg = plane.get_registration_number()
             activity = plane.get_active()
-            self.app.test_print_selection_list(counter,plane_reg,activity)
+            self.app.print_plane_activity_list(counter,plane_reg,activity)
+        action = self.back_quit(action,len(airplane_list))
+        for index in range(0,len(airplane_list)):
+            if int(action) == (index+1):
+                self.app.print_change_plane_status()
+                a_plane = airplane_list[index]
+                self.app.print_add_plane(a_plane)
+                action = self.back_quit(action,len(airplane_list))
+                
+
+
+        #Bæta við hér 
+'''
+for index in range(0,len(dest_list)):
+            if int(action) == (index+1):
+                self.app.print_change_dest_info()
+                dest = dest_list[index]
+                self.app.print_dest_info(dest)
+                action = self.back_quit(action,len(dest_list))
+                changed = input("Enter new input: ")
+                self.ll.change_dest(dest_list,index,int(action),changed)
+'''
+
+
     '''    
     def change_plane_status(self,action): #TAKA TVÖ VINNA Í ÞESSU!!!!!
         self.app.print_change_plane_status()
@@ -343,6 +367,7 @@ class User:
     def airplane_menu(self,action):
         self.app.print_airplane_menu()
         while action not in QUIT:
+            print("ATLI ATLI")
             action = input("select an option: ")
             if action == "1":
                 self.app.print_add_plane()
@@ -352,6 +377,7 @@ class User:
                 print()
             elif action == "2":
                 self.change_plane_status(action)
+
             elif action == "3":
                 self.app.print_list_plane()
                 
