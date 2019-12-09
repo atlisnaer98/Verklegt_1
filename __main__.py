@@ -25,7 +25,7 @@ from InformationLayerClasses.Voyage_repository import Voyage_repository
 
 repo = Voyage_repository()
 
-voyage_list = repo.get_all_voyages()
-voyage_list = repo.create_voyage_list(voyage_list,26)
+voyage_list = repo.get_all_past_flights()
+voyage_list = repo.add_all_upcomig_flights(voyage_list,26)
 repo.update_voyage_file(voyage_list)
 """

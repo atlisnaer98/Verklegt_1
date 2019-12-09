@@ -49,6 +49,9 @@ class LLApi:
     def get_all_voyages(self, from_date, to_date):
         return self.vLL.get_all_voyages(from_date, to_date)
 
+    def add_voyage(self,voyage):
+        self.vLL.add_voyage(voyage)
+
     def get_voyages_for_employee(self, ID):
         ''' takes staff ID and returns all the voyages for a specific employee'''
         return self.vLL.get_voyages_for_employee(ID)
