@@ -79,6 +79,7 @@ class EmployeeLL():
         same_year_list = []
         same_month_list = []
         same_day_list = []
+        temp_list = []
         print(date)
         all_voyage_list = self.dl.get_all_voyages() 
         for voyage in all_voyage_list:
@@ -96,9 +97,13 @@ class EmployeeLL():
             parseddate = dateutil.parser.parse(day.get_departure())
             if date.day == parseddate.day:
                 same_day_list.append(day)
+
+        for i in same_day_list:
+            temp_list.append(i)
+            
         action = input("[1]available, [2]working")
         if action == '1':
-            self.available_employees(same_day_list)
+            self.available_employees(temp_list)
         elif action == '2':
             self.working_employees(same_day_list)
         
@@ -107,11 +112,23 @@ class EmployeeLL():
 
     def available_employees(self, same_day_list):
         all_employees = self.get_all_employees()
-        for i in all_employees:
-            if i in same_day_list:
-                print("yesss")
+        list_of_ids = []
+        for employee in all_employees:
+            id_numb = employee.get_ID_number()
+            list_of_ids.append(id_numb)
+        for z in same_day_list:
+            str_z = str(z)
+            lis_z = str_z.split(",")
+            vid_leita = lis_z[7]
+            
+            if "2706838569" in vid_leita:
+                print("si")
             else:
-                print("no")
+                print("fuuuck")
+        #for i in list_of_ids:
+            #print(i)
+            #for y in same_day_list:
+                #print(y)
 
     def working_employees(self):
         all_employees = self.get_all_employees()

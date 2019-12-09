@@ -225,8 +225,8 @@ class User:
 
 
     def get_emp_date_schedule(self, date):
-        available = self.ll.get_emp_date_schedule(date)
-        for line in available:
+        available_list = self.ll.get_emp_date_schedule(date)
+        for line in available_list:
             print(line)
 
 
