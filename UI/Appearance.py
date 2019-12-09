@@ -1,5 +1,6 @@
 from Models.Destination import Destination
 from Models.Employee import Employee
+from Models.Airplane import Airplane
 
 
 
@@ -45,6 +46,8 @@ ASS = "Assign crew"
 F100 = "Fokker F100"
 BAE146 = "BAE 146"
 F28 = "Fokker F28"
+AC = "Active"
+IAC = "Inactive"
 
 
 B = "[B] Back"
@@ -164,6 +167,9 @@ class Appearance:
         print()
         print("{:>5} {:<27}{} {} ".format('[1]', "Emergency contact", '[2]', "Emergency phonenumber"))
         print()
+    
+    def print_plane_info(self,plane_list):
+        print("Registration number: {}\nPlane Type: {}\nModel: {}\nCapictity: {}\nActivity: {}").format(plane_list.get_registration_number(),plane_list.get_plane_type(),plane_list.get_model(),plane_list.get_capacity(),plane_list.get_active())
 
 
     def print_add_dest(self): 
@@ -198,7 +204,6 @@ class Appearance:
         print(DASH*LENGTH)
         print("Please input necessary information:")
         #Input upplýsingar
-        self.back_quit()
     
     def print_voyage_selection(self):
         print(DASH*LENGTH)
@@ -264,10 +269,10 @@ class Appearance:
         print("{:^60}".format(CS))
         print(DASH*LENGTH)
         print()
-        '''
-        print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', CS)) #Laga þetta 
-        print("{:>5} {} ".format('[3]', LA )) #Laga þetta 
-        '''
+        
+        print("{:>5} {:<27}{} {} ".format('[1]', AC, '[2]', IAC))  #laga hér mögulega
+        
+        
         self.back_quit()
 
     def print_list_plane(self):

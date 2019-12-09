@@ -219,12 +219,8 @@ class User:
             from_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
             year,month,day,hour,minute = 2019,12,20,6,0
             to_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
-            self.get_emp_schedule_time(ID, from_date, to_date)
-    
-    def get_emp_schedule_time(self, ID, from_date, to_date):
-        schedule = self.ll.get_emp_schedule(ID, from_date, to_date)
-        for trip in schedule:
-            print(trip[0],trip[2])
+            self.get_voyages_for_employee(ID)
+
 
     def get_emp_date_schedule(self, date):
         available = self.ll.get_emp_date_schedule(date)
@@ -237,25 +233,26 @@ class User:
 
             
     def add_voyage(self):
-        dest = Destination()
-        dest.set_destination(input("date of departure: "))
-        dest.set_country(input("time of departure: "))
-        dest.set_airport(input("destination: "))
-        
-        #print(dest)
-        self.ll.add_dest(dest)
-        #return country, airport, flight_time, name_of_contact, emergency_phone_number
+        voyage = Voyage()
+        voyage.set_booking_reference(100)
+        voyage.set_flight_number_away("NA 0500")
+        voyage.set_flight_number_home("NA 0501")
+        voyage.set_arriving_at(input("Destination: "))
+        voyage.set_departure("00:30")
+        voyage.set_arrival("05:30")
+        voyage.set_aircraft_id("TF-100")
+        self.ll.add_voyage(voyage)
 
     def get_all_voyages(self, from_date, to_date):
         voyage_list = self.ll.get_all_voyages(from_date, to_date)
         #print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for voyage in voyage_list:
-            print(voyage[0],voyage[1],voyage[2])
+            print(voyage.get_booking_reference())
 
     def get_voyages_for_employee(self, ID):
-        employee_list = self.ll.get_voyages_for_employee(ID)
-        for line in employee_list:
-            print(line[0],line[1],line[2])
+        voyage_list = self.ll.get_voyages_for_employee(ID)
+        for voyage in voyage_list:
+            print(voyage.get_booking_reference())
             
     def Voyage_menu(self,action):
         self.app.print_voyage_menu()
@@ -264,6 +261,7 @@ class User:
             action = input("select an option: ")
             if action == "1":
                 self.app.print_add_voyage()
+                self.add_voyage()
                 
             # elif action == "2":
             #     #assign crew
@@ -299,18 +297,18 @@ class User:
         
     def change_plane_status(self,action): #TAKA TVÖ VINNA Í ÞESSU!!!!!
         self.app.print_change_plane_status()
-        plane_list = self.ll.get_all_airplane()
+        plane_list = self.ll.get_all_airplanes()
         self.app.print_selection_list(plane_list)
         action = self.back_quit(action)
-        while action not in BACK or action not in QUIT: #BReyta hér þannig maður velji active eða unactive :)
+        while action not in BACK or action not in QUIT:
             for index in range(0,len(plane_list)):
                 if int(action) == (index+1):
-                    self.app.print_change_dest_info()
-                    dest = plane_list[index]
-                    self.app.print_dest_info(dest)             
-                    action = int(input("I want to change: "))
-                    changed = input("Enter new input: ")
-                    self.ll.change_dest(plane_list,index,action,changed)
+                    self.app.print_change_plane_status()
+                    plane = plane_list[index]
+                    self.app.print_plane_info(plane) #Búa til fall sem er í appearance og hannað fyrir             
+                    action = int(input("I want to change: ")) #Breyta þessu
+                    changed = input("Enter new input: ") #Breyta þessu 
+                    self.ll.change_dest(plane_list,index,action,changed) #Breyta þessu
         return action
 
 
@@ -326,8 +324,7 @@ class User:
                 print("You have added a new airplane!")
                 print()
             elif action == "2":
-                self.change_plane_status()
-                
+                self.change_plane_status(action)
             elif action == "3":
                 self.app.print_list_plane()
                 
