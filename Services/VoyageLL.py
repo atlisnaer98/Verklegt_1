@@ -25,6 +25,6 @@ class VoyageLL():
         for line in all_voyage_list:
             sting = str(line)
             lis = sting.split(',')
-            if ID in line:
+            if ID == lis[6] or ID == lis[7] or ID == lis[8] or ID == lis[9] or ID == lis[10]:
                 employee_list.append(lis)
         return employee_list

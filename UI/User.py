@@ -6,6 +6,7 @@ import csv
 from Services.API import LLApi
 from UI.Appearance import Appearance
 import datetime
+import dateutil.parser
 
 QUIT = ["q","Q"]
 BACK = ["b","B"]
@@ -192,7 +193,9 @@ class User:
         print("[1] Date [2]employee")
         action = input("Select an option: ")
         if action == '1':
-            action = input("Enter date: ")
+            year,month,day,hour,minute = 2019,11,10,6,0
+            date = datetime.datetime(year,month,day,hour,minute,0)
+            self.get_emp_date_schedule(date)
         elif action == '2':
             ID = input("Enter ID number: ")
             year,month,day,hour,minute = 2019,11,10,6,0
@@ -204,7 +207,13 @@ class User:
     def get_emp_schedule_time(self, ID, from_date, to_date):
         schedule = self.ll.get_emp_schedule(ID, from_date, to_date)
         for trip in schedule:
-            print(str(trip))
+            print(trip[0],trip[2])
+
+    def get_emp_date_schedule(self, date):
+        available = self.ll.get_emp_date_schedule
+        print("yes")
+        # for line in available:
+        #     print(line)
 
 
 
@@ -224,7 +233,7 @@ class User:
         voyage_list = self.ll.get_all_voyages(from_date, to_date)
         #print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for voyage in voyage_list:
-            print(str(voyage))
+            print(voyage[0],voyage[1],voyage[2])
 
     def get_voyages_for_employee(self, ID):
         employee_list = self.ll.get_voyages_for_employee(ID)
@@ -254,7 +263,7 @@ class User:
                     self.get_all_voyages(from_date, to_date)
                 elif action == "2":
                     ID = input("Enter ID number")
-                    print("Enter timeperiod")
+                    #print("Enter timeperiod")
                     # from_date = input("From YYYY-MM-DD:")
                     # to_date = input("to YYYY-MM-DD:")
                     self.get_voyages_for_employee(ID)
