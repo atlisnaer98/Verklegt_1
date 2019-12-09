@@ -135,8 +135,8 @@ class User:
         self.app.picture()
 
     def dest_menu(self,action):
-        self.app.print_dest_menu()
         while action not in QUIT:
+            self.app.print_dest_menu()
             action = input("select an option: ")
             if action == "1": #create new dest
                 self.app.print_add_dest()
@@ -147,11 +147,9 @@ class User:
                 self.dest_menu(action)
             elif action == "2": #change dest
                 action = self.change_dest_info(action)
-                return action
             elif action == "3": #list dest
                 self.get_all_dest()
                 action = self.back_quit(action)
-                return action
                 """self.app.back_quit()
                 action = input("select an option: ")
                 if action in BACK:
@@ -162,7 +160,7 @@ class User:
                     action = input("not a valid input, please re-enter: ")
                     self.dest_menu(action)"""
             elif action in BACK:
-                self.main_menu()
+                return action
                     
     def back_quit(self,action):
         self.app.back_quit()
@@ -328,7 +326,7 @@ class User:
                 self.Voyage_menu(action)
                 action = input("select an option: ")
             elif action == "3": #DESTINATION
-                 action = self.dest_menu(action)
+                self.dest_menu(action)
             elif action == "4":
                 self.airplane_menu(action)
 
