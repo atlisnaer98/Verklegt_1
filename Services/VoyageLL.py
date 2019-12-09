@@ -11,16 +11,6 @@ class VoyageLL():
         all_voyage_list = self.dl.get_all_voyages()
         return all_voyage_list
 
-    def change_voyage(self,voyage_list,index,option,changed):
-        voyage = voyage_list[index]
-        if option == 1:
-            voyage.set_flight_number_away(changed)
-        elif option == 2:
-            voyage.set_aircraft_id(changed)
-        else:
-            return False
-        voyage_list[index] = voyage
-        self.dl.update_voyage_file(voyage_list):
 
     def get_date_voyages(self, from_date, to_date):
         voyage_list = []
@@ -29,8 +19,7 @@ class VoyageLL():
             parseddate =dateutil.parser.parse(voyage.get_departure())
             if from_date <= parseddate and parseddate <= to_date:
                 voyage_list.append(voyage)
-        return voyage_list
-        
+        return voyage_list  
 
     def get_voyages_for_employee(self,ID):
         ''' takes staff ID and returns all the voyages for a specific employee'''
@@ -43,3 +32,17 @@ class VoyageLL():
 
     def add_voyage(self,voyage):
         self.dl.add_voyage(voyage)
+
+    def assign_crew(self,voyage_list):
+        self.dl.update_voyage_file(voyage_list):
+
+    def change_voyage(self,voyage_list,index,option,changed):
+        voyage = voyage_list[index]
+        if option == 1:
+            voyage.set_flight_number_away(changed)
+        elif option == 2:
+            voyage.set_aircraft_id(changed)
+        else:
+            return False
+        voyage_list[index] = voyage
+        self.dl.update_voyage_file(voyage_list):
