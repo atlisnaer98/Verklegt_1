@@ -1,3 +1,6 @@
+import datetime
+import dateutil.parser
+
 dist = len("[1] Create      [2] Change info")
 other_dist = len("Destination")
 print("-"*((dist-other_dist)//2))
@@ -5,21 +8,27 @@ print(" "*(dist//4)+"Destination")
 print("-"*dist)
 print("[1] Create\t[2] Change info")
 print("[3] List destinations")
-selection = int(input("Select an option: "))
+# selection = int(input("Select an option: "))
 
-if selection == 1:
-    try: 
-        name = input("Name: ")
-        IDnumber = int(input("ID number: "))
+# if selection == 1:
+#     try: 
+#         name = input("Name: ")
+#         IDnumber = int(input("ID number: "))
     
-    except ValueError:
-        print("suckers my titters")
+#     except ValueError:
+#         print("suckers my titters")
 
-else:
-    print("suck a tit")
+# else:
+#     print("suck a tit")
     
 """import datetime
 
 timi = datetime.datetime.now().isoformat()
 
 print(timi)"""
+
+
+year,month,day,hour,minute = 2019,12,20,6,0
+to_date = datetime.datetime(year,month,day,hour,minute,0)
+
+print(to_date.day)

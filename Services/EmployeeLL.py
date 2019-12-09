@@ -54,20 +54,37 @@ class EmployeeLL():
             parseddate = dateutil.parser.parse(voyage.get_departure())
             if from_date <= parseddate and parseddate <= to_date:
                 voyage_list.append(voyage)
-        #voyage_list = check_id_in_voyage(voyage_list, ID)
-        #return voyage_list
+
         for line in voyage_list:
             sting = str(line)
             lis = sting.split(',')
-            if ID in line:
+            if ID == lis[6] or ID == lis[7] or ID == lis[8] or ID == lis[9] or ID == lis[10]:
                 employee_list.append(lis)
         return employee_list
 
-    def check_id_in_voyage(self, voyage_list, ID):
-        employee_list = []
-        for line in voyage_list:
-            sting = str(line)
-            lis = sting.split(',')
-            if ID in line:
-                employee_list.append(lis)
-        return employee_list
+    # def check_id_in_voyage(self, voyage_list, ID):
+    #     ''' LANGAR AÐ KALLA Í ÞETTA FALL ÚR FALLINU GET_SCHEDULE EN ÞAÐ VIRKAR EKKI'''
+    #     employee_list = []
+    #     for line in voyage_list:
+    #         sting = str(line)
+    #         lis = sting.split(',')
+    #         if ID in line:
+    #             employee_list.append(lis)
+    #     return employee_list
+
+
+    def get_date_schedule(self, date):
+        voyage_list = []
+        all_voyage_list = self.dl.get_all_voyages()
+        print(date.day)
+        for voyage in all_voyage_list:
+            parseddate = dateutil.parser.parse(voyage.get_departure())
+            print(date.day, parseddate.day)
+            if date.day == parseddate.day:
+                voyage_list.append(voyage[6], voyage[7], voyage[8], voyage[9], voyage[10])
+        print(voyage_list)
+        return voyage_list
+
+            
+
+        
