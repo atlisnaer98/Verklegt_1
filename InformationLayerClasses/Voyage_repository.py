@@ -38,10 +38,10 @@ class Voyage_repository:
     def get_all_voyages(self):
         """gets all the voyages"""
         all_voyages_list = []
-        with open("./DATA/Voyages.csv","r",newline="") as voyages:
+        with open("./DATA/Voyage.csv","r",newline="") as voyages:
             reader = csv.DictReader(voyages)
             for line in reader:
-                voyage = Voyage(line["bookingReference"],line["flightNumber"],line["flightNumber"],line["arrivingAt"],line["departure"],line["arrival"],line["aircraftID"],line["captain"],line["copilot"],line["fsm"],line["fa1"],line["fa2"])
+                voyage = Voyage(line["bookingReference"],line["flightNumberAway"],line["flightNumberHome"],line["arrivingAt"],line["departure"],line["arrival"],line["aircraftID"],line["captain"],line["copilot"],line["fsm"],line["fa1"],line["fa2"])
                 all_voyages_list.append(voyage)
         return all_voyages_list
 
