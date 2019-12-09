@@ -210,7 +210,7 @@ class Appearance:
             #print("[{}] {}".format(numb,dest))
             print("[{}] {}".format(numb,selected))
         
-    def test_print_selection_list(self,numb,selected,activity=""):
+    def print_plane_activity_list(self,numb,selected,activity=""):
         if activity == "1":
             activity = "Active"
         elif activity == "0":
