@@ -150,7 +150,7 @@ class User:
     def dest_menu(self,action):
         while action not in QUIT:
             self.app.print_dest_menu()
-            action = input("select an option: ")
+            action = self.back_quit(action,3)
             if action == "1": #create new dest
                 self.app.print_add_dest()
                 self.add_dest()
