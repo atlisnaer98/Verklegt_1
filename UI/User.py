@@ -112,19 +112,21 @@ class User:
                 if key == action:
                 print(employee_dic[key]) """
 
-    def change_dest_info(self):
+    def change_dest_info(self,action):
         self.app.print_change_dest_info()
         dest_list = self.ll.get_all_dest()
         self.app.print_selection_list(dest_list)
-        action = input("select an option: ")
-        for index in range(0,len(dest_list)):
-            if int(action) == (index+1):
-                self.app.print_change_dest_info()
-                dest = dest_list[index]
-                self.app.print_dest_info(dest)             
-                action = int(input("I want to change: "))
-                changed = input("Enter new input: ")
-                self.ll.change_dest(dest_list,index,action,changed)
+        action = self.back_quit(action)
+        while action not in BACK or action not in QUIT:
+            for index in range(0,len(dest_list)):
+                if int(action) == (index+1):
+                    self.app.print_change_dest_info()
+                    dest = dest_list[index]
+                    self.app.print_dest_info(dest)             
+                    action = int(input("I want to change: "))
+                    changed = input("Enter new input: ")
+                    self.ll.change_dest(dest_list,index,action,changed)
+        return action
         
     def get_cabin_crew(self):
         cabin_crew_list = self.ll.get_cabin_crew()
@@ -157,10 +159,12 @@ class User:
                 print()
                 self.dest_menu(action)
             elif action == "2": #change dest
-                self.change_dest_info()
+                action = self.change_dest_info(action)
+                return action
             elif action == "3": #list dest
                 self.get_all_dest()
                 action = self.back_quit(action)
+                return action
                 """self.app.back_quit()
                 action = input("select an option: ")
                 if action in BACK:
@@ -180,10 +184,12 @@ class User:
             self.dest_menu(action)
         elif action in QUIT:
             return action
-        else:
-            action = input("not a valid input, please re-enter: ")
-            self.dest_menu(action)
-            return action
+        try:
+            temp_action = int(action)
+            return temp_action
+        except ValueError:
+            print("Invalid input,")
+            self.back_quit(action)
 
     def employee_menu(self,action):
         self.app.print_employee_menu()
@@ -335,7 +341,7 @@ class User:
                 self.Voyage_menu(action)
                 action = input("select an option: ")
             elif action == "3": #DESTINATION
-                self.dest_menu(action)
+                 action = self.dest_menu(action)
             elif action == "4":
                 self.airplane_menu(action)
 
