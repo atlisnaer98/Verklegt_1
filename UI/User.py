@@ -48,6 +48,7 @@ class User:
         #self.app.print_add_plane()
         plane = Airplane()
         plane.set_registration_number(input("Registration number: "))
+        self.app.print_add_plane_vol2()
         option = int(input("Model: "))
         self.set_plane_model(plane,option)
         plane.set_active(1)
