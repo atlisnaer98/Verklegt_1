@@ -53,7 +53,7 @@ class User:
             set_plane_BAE146(plane)
         elif option == "2":
             set_plane_FokkerF28(plane)
-        elif option == "3"
+        elif option == "3":
             set_plane_FokkerF100(plane)
         self.ll.add_plane(plane)
 
