@@ -322,6 +322,7 @@ class User:
             activity = plane.get_active()
             self.app.print_plane_activity_list(counter,plane_reg,activity)
         action = self.back_quit(action,len(airplane_list))
+        changed = input("Number to change:" )
     '''    
     def change_plane_status(self,action): #TAKA TVÖ VINNA Í ÞESSU!!!!!
         self.app.print_change_plane_status()
