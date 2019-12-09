@@ -163,15 +163,6 @@ class User:
             elif action == "3": #list dest
                 self.get_all_dest()
                 action = self.back_quit(action,3)
-                """self.app.back_quit()
-                action = input("select an option: ")
-                if action in BACK:
-                    self.dest_menu(action)
-                elif action in QUIT:
-                    return action
-                else:
-                    action = input("not a valid input, please re-enter: ")
-                    self.dest_menu(action)"""
             elif action in BACK:
                 return action
                     
@@ -185,6 +176,7 @@ class User:
                 print("Invalid input,")
         except ValueError:
             if action in BACK:
+                print("pipi")
                 self.main_menu()
             elif action in QUIT:
                 print("pepe")
@@ -251,8 +243,32 @@ class User:
         voyage.set_aircraft_id("TF-100")
         self.ll.add_voyage(voyage)
 
-    def get_all_voyages(self, from_date, to_date):
-        voyage_list = self.ll.get_all_voyages(from_date, to_date)
+    def change_voyage()
+    #self.app.print_change_voyage()
+        voyage_list = self.ll.get_all_voyages()
+        action = input("Enter ID number: ")
+        for index in range(len(voyage_list)):
+            voyage = voyage_list[index]
+            if action == voyage.get_booking_reference():
+                #self.app.print_changing_voyage_information(voyage)
+                option = int(input("What do you want to change? "))
+                changed = input("Enter new input: ")
+                self.ll.change_voyage(voyage_list,index,option,changed)
+
+    def assign_crew()
+    #self.app.print_assign_crew()
+        voyage_list = self.ll.get_all_voyages()
+        action = input("Enter ID number: ")
+        for index in range(len(voyage_list)):
+            voyage = voyage_list[index]
+            if action == voyage.get_booking_reference():
+                #self.app.print_changing_voyage_information(voyage)
+                option = int(input("What do you want to change? "))
+                changed = input("Enter new input: ")
+                self.ll.change_employee(employee_list,index,option,changed)
+
+    def get_date_voyages(self, from_date, to_date):
+        voyage_list = self.ll.get_date_voyages(from_date, to_date)
         #print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for voyage in voyage_list:
             print(voyage.get_booking_reference())
@@ -270,9 +286,8 @@ class User:
             if action == "1":
                 self.app.print_add_voyage()
                 self.add_voyage()
-                
-            # elif action == "2":
-            #     #assign crew
+            elif action == "2":
+                self.assign_crew()
             elif action == "3":
                 self.app.print_voyage_selection()
                 action = input("select an option: ")
@@ -283,15 +298,15 @@ class User:
                     #to_date = input("to YYYY-MM-DD:") 2019-11-24T03:00:00
                     year,month,day,hour,minute = 2019,12,20,6,0
                     to_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
-                    self.get_all_voyages(from_date, to_date)
+                    self.get_date_voyages(from_date, to_date)
                 elif action == "2":
                     ID = input("Enter ID number")
                     #print("Enter timeperiod")
                     # from_date = input("From YYYY-MM-DD:")
                     # to_date = input("to YYYY-MM-DD:")
                     self.get_voyages_for_employee(ID)
-            # elif action == "4":
-            #     #change voyage
+            elif action == "4":
+                self.change_voyage()
     
     def change_plane_status(self): #VINNA Í ÞESSU og nota þenna!
         self.app.print_change_plane_status()
@@ -305,9 +320,9 @@ class User:
     '''    
     def change_plane_status(self,action): #TAKA TVÖ VINNA Í ÞESSU!!!!!
         self.app.print_change_plane_status()
-        plane_list = self.ll.get_all_airplane()
+        plane_list = self.ll.get_all_airplanes()
         self.app.print_selection_list(plane_list)
-        action = self.back_quit(action)
+        action = self.back_quit(action, len(plane_list))
         while action not in BACK or action not in QUIT:
             for index in range(0,len(plane_list)):
                 if int(action) == (index+1):
@@ -321,21 +336,21 @@ class User:
     '''
 
 
-def airplane_menu(self,action):
-    self.app.print_airplane_menu()
-    while action not in QUIT:
-        action = input("select an option: ")
-        if action == "1":
-            self.app.print_add_plane()
-            self.add_plane()
-            print()
-            print("You have added a new airplane!")
-            print()
-        elif action == "2":
-            self.change_plane_status()
-                
-        elif action == "3":
-            self.app.print_list_plane()
+
+    def airplane_menu(self,action):
+        self.app.print_airplane_menu()
+        while action not in QUIT:
+            action = input("select an option: ")
+            if action == "1":
+                self.app.print_add_plane()
+                self.add_plane()
+                print()
+                print("You have added a new airplane!")
+                print()
+            elif action == "2":
+                self.change_plane_status(action)
+            elif action == "3":
+                self.app.print_list_plane()
                 
                 
         '''
@@ -355,8 +370,7 @@ def airplane_menu(self,action):
                 pass
         '''
 
-    def main_menu(self, action = ""):
-        action = action
+    def main_menu(self,action = ""):
         while action not in QUIT:
             self.app.print_main_menu()
             action = input("select an option: ") # muna að villutjékka þetta

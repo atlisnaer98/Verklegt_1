@@ -18,8 +18,6 @@ class DestinationLL():
         elif option == 2:
             dest.set_emergency_phone_number(changed)
         else:
-            print("Þú sökkar")
             return False
         dest_list[index] = dest
         self.dl.update_dest_file(dest_list)
-        print("Tipp")

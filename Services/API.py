@@ -46,11 +46,17 @@ class LLApi:
         return self.eLL.get_pilots()
 
     
-    def get_all_voyages(self, from_date, to_date):
-        return self.vLL.get_all_voyages(from_date, to_date)
+    def get_all_voyages(self):
+        return self.vLL.get_all_voyages()
+
+    def get_date_voyages(self, from_date, to_date):
+        return self.vLL.get_date_voyages(from_date,to_date)
 
     def add_voyage(self,voyage):
         self.vLL.add_voyage(voyage)
+
+    def change_voyage(self,voyage_list,index,option,changed):
+        self.vll.change_voyage(voyage_list,index,option,changed)
 
     def get_voyages_for_employee(self, ID):
         ''' takes staff ID and returns all the voyages for a specific employee'''
