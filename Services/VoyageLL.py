@@ -12,7 +12,15 @@ class VoyageLL():
         return all_voyage_list
 
     def change_voyage(self,voyage_list,index,option,changed):
-        self.dl.change_voyage(voyage_list,index,option,changed)
+        voyage = voyage_list[index]
+        if option == 1:
+            voyage.set_flight_number_away(changed)
+        elif option == 2:
+            voyage.set_aircraft_id(changed)
+        else:
+            return False
+        voyage_list[index] = voyage
+        self.dl.update_voyage_file(voyage_list):
 
     def get_date_voyages(self, from_date, to_date):
         voyage_list = []
