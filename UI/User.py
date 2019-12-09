@@ -241,14 +241,15 @@ class User:
 
             
     def add_voyage(self):
-        dest = Destination()
-        dest.set_destination(input("date of departure: "))
-        dest.set_country(input("time of departure: "))
-        dest.set_airport(input("destination: "))
-        
-        #print(dest)
-        self.ll.add_dest(dest)
-        #return country, airport, flight_time, name_of_contact, emergency_phone_number
+        voyage = Voyage()
+        voyage.set_booking_reference(100)
+        voyage.set_flight_number_away("NA 0500")
+        voyage.set_flight_number_home("NA 0501")
+        voyage.set_arriving_at(input("Destination: "))
+        voyage.set_departure("00:30")
+        voyage.set_arrival("05:30")
+        voyage.set_aircraft_id("TF-100")
+        self.ll.add_voyage(voyage)
 
     def get_all_voyages(self, from_date, to_date):
         voyage_list = self.ll.get_all_voyages(from_date, to_date)
@@ -268,6 +269,7 @@ class User:
             action = input("select an option: ")
             if action == "1":
                 self.app.print_add_voyage()
+                self.add_voyage()
                 
             # elif action == "2":
             #     #assign crew

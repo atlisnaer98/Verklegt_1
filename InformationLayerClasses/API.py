@@ -39,3 +39,6 @@ class Data_main:
 
     def get_all_voyages(self):
         return self.vDL.get_all_voyages()
+
+    def add_voyage(self,voyage):
+        self.vDL.add_voyage(voyage)

@@ -44,6 +44,10 @@ class Voyage_repository:
                 all_voyages_list.append(voyage)
         return all_voyages_list
 
+    def add_voyage(self, voyage):
+        with open("./DATA/Voyage.csv", "a", newline="") as voyages:
+            voyages.write("{}\n".format(str(voyage)))
+
     def add_captains_to_voyage(self):
         ''' adds captains to a specific voyage, each captain can only go on one voyage each day,
         each voyage should at least have two pilots of which one should be a captain'''

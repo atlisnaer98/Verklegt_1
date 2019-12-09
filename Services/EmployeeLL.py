@@ -46,7 +46,7 @@ class EmployeeLL():
                 pilot_list.append(sting)
         return pilot_list
 
-    def get_schedule(self, ID, from_date, to_date):
+    """def get_schedule(self, ID, from_date, to_date):
         voyage_list = []
         employee_list = []
         all_voyage_list = self.dl.get_all_voyages()
@@ -62,7 +62,7 @@ class EmployeeLL():
             if ID == lis[11] or ID == lis[7] or ID == lis[8] or ID == lis[9] or ID == lis[10]:
                 print("yes")
                 employee_list.append(lis)
-        return employee_list
+        return employee_list"""
 
     # def check_id_in_voyage(self, voyage_list, ID):
     #     ''' LANGAR AÐ KALLA Í ÞETTA FALL ÚR FALLINU GET_SCHEDULE EN ÞAÐ VIRKAR EKKI'''

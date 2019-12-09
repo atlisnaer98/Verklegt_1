@@ -198,7 +198,6 @@ class Appearance:
         print(DASH*LENGTH)
         print("Please input necessary information:")
         #Input upplýsingar
-        self.back_quit()
     
     def print_voyage_selection(self):
         print(DASH*LENGTH)

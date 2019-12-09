@@ -1,11 +1,12 @@
 from Models.Voyage import Voyage
 import datetime
 import dateutil.parser
-
+from InformationLayerClasses.API import Data_main
 class VoyageLL():
         
     def __init__(self, sending):
         self.dl = sending
+    
     
 
     def get_all_voyages(self, from_date, to_date):
@@ -26,3 +27,6 @@ class VoyageLL():
             if ID == voyage.get_captain() or ID == voyage.get_copilot() or ID == voyage.get_fsm() or ID == voyage.get_fa1 or ID == voyage.get_fa2():
                 voyage_list_for_emp.append(voyage)
         return voyage_list_for_emp
+
+    def add_voyage(self,voyage):
+        self.dl.add_voyage(voyage)
