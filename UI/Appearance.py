@@ -142,6 +142,7 @@ class Appearance:
         pass
 
     def print_dest_menu(self):
+        print()
         print(DASH*LENGTH)
         print("{:^60}".format(D))
         print(DASH*LENGTH)
@@ -161,6 +162,7 @@ class Appearance:
 
 
     def print_add_dest(self): 
+        print()
         print(DASH*LENGTH)
         print("{:^60}".format(CND))
         print(DASH*LENGTH)
@@ -169,6 +171,7 @@ class Appearance:
 
 
     def print_change_dest_info(self):
+        print()
         print(DASH*LENGTH)
         print("{:^60}".format(CDI))
         print(DASH*LENGTH)
