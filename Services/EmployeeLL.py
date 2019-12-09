@@ -110,6 +110,8 @@ class EmployeeLL():
         for i in all_employees:
             if i in same_day_list:
                 print("yesss")
+            else:
+                print("no")
 
     def working_employees(self):
         all_employees = self.get_all_employees()
