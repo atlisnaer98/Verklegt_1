@@ -18,10 +18,10 @@ class Airplane():
     def set_registration_number(self,new_regID):
         self.__registration_number = new_regID
 
-    def get_plane_ID(self):
+    def get_planeID(self):
         return self.__planeID
 
-    def set_plane_ID(self,new_planeID):
+    def set_planeID(self,new_planeID):
         self.__planeID = new_planeID
 
     def get_plane_type(self):

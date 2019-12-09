@@ -49,8 +49,28 @@ class User:
         #self.app.print_add_plane()
         plane = Airplane()
         plane.set_registration_number(input("Registration number: "))
-        plane.set_model(input("Model:s "))
+        self.app.print_add_plane_vol2()
+        option = int(input("Model: "))
+        self.set_plane_model(plane,option)
+        plane.set_active(1)
         self.ll.add_plane(plane)
+
+    def set_plane_model(self,plane,option):
+        if option == 1:
+            plane.set_planeID("NABAE146")
+            plane.set_plane_type("BAE")
+            plane.set_model("146")
+            plane.set_capacity(82)
+        elif option == 2:
+            plane.set_planeID("NAFokkerF28")
+            plane.set_plane_type("Fokker")
+            plane.set_model("F28")
+            plane.set_capacity(65)
+        elif option == 3:
+            plane.set_planeID("NAFokkerF100")
+            plane.set_plane_type("Fokker")
+            plane.set_model("F100")
+            plane.set_capacity(100)
 
     def get_all_employee(self):
         employee_list = self.ll.get_all_employees()
@@ -94,19 +114,21 @@ class User:
                 if key == action:
                 print(employee_dic[key]) """
 
-    def change_dest_info(self):
+    def change_dest_info(self,action):
         self.app.print_change_dest_info()
         dest_list = self.ll.get_all_dest()
         self.app.print_selection_list(dest_list)
-        action = input("select an option: ")
-        for index in range(0,len(dest_list)):
-            if int(action) == (index+1):
-                self.app.print_change_dest_info()
-                dest = dest_list[index]
-                self.app.print_dest_info(dest)             
-                action = int(input("I want to change: "))
-                changed = input("Enter new input: ")
-                self.ll.change_dest(dest_list,index,action,changed)
+        action = self.back_quit(action)
+        while action not in BACK or action not in QUIT:
+            for index in range(0,len(dest_list)):
+                if int(action) == (index+1):
+                    self.app.print_change_dest_info()
+                    dest = dest_list[index]
+                    self.app.print_dest_info(dest)             
+                    action = int(input("I want to change: "))
+                    changed = input("Enter new input: ")
+                    self.ll.change_dest(dest_list,index,action,changed)
+        return action
         
     def get_cabin_crew(self):
         cabin_crew_list = self.ll.get_cabin_crew()
@@ -128,8 +150,8 @@ class User:
         self.app.picture()
 
     def dest_menu(self,action):
-        self.app.print_dest_menu()
         while action not in QUIT:
+            self.app.print_dest_menu()
             action = input("select an option: ")
             if action == "1": #create new dest
                 self.app.print_add_dest()
@@ -139,7 +161,7 @@ class User:
                 print()
                 self.dest_menu(action)
             elif action == "2": #change dest
-                self.change_dest_info()
+                action = self.change_dest_info(action)
             elif action == "3": #list dest
                 self.get_all_dest()
                 action = self.back_quit(action)
@@ -153,7 +175,7 @@ class User:
                     action = input("not a valid input, please re-enter: ")
                     self.dest_menu(action)"""
             elif action in BACK:
-                self.main_menu()
+                return action
                     
     def back_quit(self,action):
         self.app.back_quit()
@@ -162,10 +184,12 @@ class User:
             self.dest_menu(action)
         elif action in QUIT:
             return action
-        else:
-            action = input("not a valid input, please re-enter: ")
-            self.dest_menu(action)
-            return action
+        try:
+            temp_action = int(action)
+            return temp_action
+        except ValueError:
+            print("Invalid input,")
+            self.back_quit(action)
 
     def employee_menu(self,action):
         self.app.print_employee_menu()
@@ -279,6 +303,24 @@ class User:
             plane_reg = plane.get_registration_number()
             activity = plane.get_active()
             self.app.test_print_selection_list(counter,plane_reg,activity)
+        
+    def change_plane_status(self,action): #TAKA TVÖ VINNA Í ÞESSU!!!!!
+        self.app.print_change_plane_status()
+        plane_list = self.ll.get_all_airplane()
+        self.app.print_selection_list(plane_list)
+        action = self.back_quit(action)
+        while action not in BACK or action not in QUIT: #BReyta hér þannig maður velji active eða unactive :)
+            for index in range(0,len(plane_list)):
+                if int(action) == (index+1):
+                    self.app.print_change_dest_info()
+                    dest = plane_list[index]
+                    self.app.print_dest_info(dest)             
+                    action = int(input("I want to change: "))
+                    changed = input("Enter new input: ")
+                    self.ll.change_dest(plane_list,index,action,changed)
+        return action
+
+
 
     def airplane_menu(self,action):
         self.app.print_airplane_menu()

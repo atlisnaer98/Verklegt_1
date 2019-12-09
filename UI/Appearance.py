@@ -148,6 +148,7 @@ class Appearance:
         pass
 
     def print_dest_menu(self):
+        print()
         print(DASH*LENGTH)
         print("{:^60}".format(D))
         print(DASH*LENGTH)
@@ -167,6 +168,7 @@ class Appearance:
 
 
     def print_add_dest(self): 
+        print()
         print(DASH*LENGTH)
         print("{:^60}".format(CND))
         print(DASH*LENGTH)
@@ -175,6 +177,7 @@ class Appearance:
 
 
     def print_change_dest_info(self):
+        print()
         print(DASH*LENGTH)
         print("{:^60}".format(CDI))
         print(DASH*LENGTH)
@@ -247,11 +250,14 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(CNA))
         print(DASH*LENGTH)
-        print("Vinsamlegast veljið flugvélategund!")
-        '''
-        print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', CS)) #Laga þetta 
-        print("{:>5} {} ".format('[3]', LA )) #Laga þetta 
-        '''
+        print("Please select the registration number and aircraft model")
+        
+    
+    def print_add_plane_vol2(self):
+        print("Aircraft models:")
+        print("{:>5} {:<27}{} {} ".format('[1]', BAE146, '[2]', F28))
+        print("{:>5} {} ".format('[3]', F100 ))
+        
  
         
     def print_change_plane_status(self):
