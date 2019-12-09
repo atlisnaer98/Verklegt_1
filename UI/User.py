@@ -48,7 +48,13 @@ class User:
         #self.app.print_add_plane()
         plane = Airplane()
         plane.set_registration_number(input("Registration number: "))
-        plane.set_model(input("Model:s "))
+        option = input("Model: "))
+        if option == "1":
+            set_plane_BAE146(plane)
+        elif option == "2":
+            set_plane_FokkerF28(plane)
+        elif option == "3"
+            set_plane_FokkerF100(plane)
         self.ll.add_plane(plane)
 
     def get_all_employee(self):
