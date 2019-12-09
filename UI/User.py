@@ -244,7 +244,7 @@ class User:
             lis = sting.split(",")
             numb = index + 1
             plane = lis[0]
-            activity = lis[2]
+            activity = lis[5]
             self.app.test_print_selection_list(numb,plane,activity)
 
     def airplane_menu(self,action):
