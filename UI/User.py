@@ -251,8 +251,20 @@ class User:
         voyage.set_aircraft_id("TF-100")
         self.ll.add_voyage(voyage)
 
-    def get_all_voyages(self, from_date, to_date):
-        voyage_list = self.ll.get_all_voyages(from_date, to_date)
+    def change_voyage()
+    #self.app.print_change_voyage()
+        voyage_list = self.ll.get_all_voyages()
+        action = input("Enter ID number: ")
+        for index in range(len(voyage_list)):
+            voyage = voyage_list[index]
+            if action == voyage.get_booking_reference():
+                #self.app.print_changing_voyage_information(voyage)
+                option = int(input("What do you want to change? "))
+                changed = input("Enter new input: ")
+                self.ll.change_employee(employee_list,index,option,changed)
+
+    def get_date_voyages(self, from_date, to_date):
+        voyage_list = self.ll.get_date_voyages(from_date, to_date)
         #print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for voyage in voyage_list:
             print(voyage.get_booking_reference())
@@ -270,9 +282,8 @@ class User:
             if action == "1":
                 self.app.print_add_voyage()
                 self.add_voyage()
-                
-            # elif action == "2":
-            #     #assign crew
+            elif action == "2":
+                self.assign_crew()
             elif action == "3":
                 self.app.print_voyage_selection()
                 action = input("select an option: ")
@@ -283,7 +294,7 @@ class User:
                     #to_date = input("to YYYY-MM-DD:") 2019-11-24T03:00:00
                     year,month,day,hour,minute = 2019,12,20,6,0
                     to_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
-                    self.get_all_voyages(from_date, to_date)
+                    self.get_date_voyages(from_date, to_date)
                 elif action == "2":
                     ID = input("Enter ID number")
                     #print("Enter timeperiod")

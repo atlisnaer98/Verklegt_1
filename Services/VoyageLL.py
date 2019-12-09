@@ -7,9 +7,11 @@ class VoyageLL():
     def __init__(self, sending):
         self.dl = sending
     
-    
+    def get_all_voyages(self):
+        all_voyage_list = self.dl.get_all_voyages()
+        return all_voyage_list
 
-    def get_all_voyages(self, from_date, to_date):
+    def get_date_voyages(self, from_date, to_date):
         voyage_list = []
         all_voyage_list = self.dl.get_all_voyages()
         for voyage in all_voyage_list:
