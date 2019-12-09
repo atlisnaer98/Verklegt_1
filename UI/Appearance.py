@@ -244,11 +244,11 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(CNA))
         print(DASH*LENGTH)
-        print("Vinsamlegast veljið flugvélategund!")
-        '''
-        print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', CS)) #Laga þetta 
-        print("{:>5} {} ".format('[3]', LA )) #Laga þetta 
-        '''
+        print("Please select the registration number and aircraft model")
+        print("Aircraft models:")
+        print("{:>5} {:<27}{} {} ".format('[1]', F100, '[2]', BAE146))
+        print("{:>5} {} ".format('[3]', F28 )) 
+        
  
         
     def print_change_plane_status(self):
