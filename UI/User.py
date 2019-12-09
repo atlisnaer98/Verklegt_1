@@ -163,15 +163,6 @@ class User:
             elif action == "3": #list dest
                 self.get_all_dest()
                 action = self.back_quit(action,3)
-                """self.app.back_quit()
-                action = input("select an option: ")
-                if action in BACK:
-                    self.dest_menu(action)
-                elif action in QUIT:
-                    return action
-                else:
-                    action = input("not a valid input, please re-enter: ")
-                    self.dest_menu(action)"""
             elif action in BACK:
                 return action
                     
@@ -185,6 +176,7 @@ class User:
                 print("Invalid input,")
         except ValueError:
             if action in BACK:
+                print("pipi")
                 self.main_menu()
             elif action in QUIT:
                 print("pepe")
@@ -357,8 +349,7 @@ class User:
                 pass
         '''
 
-    def main_menu(self, action = ""):
-        action = action
+    def main_menu(self,action = ""):
         while action not in QUIT:
             self.app.print_main_menu()
             action = input("select an option: ") # muna að villutjékka þetta
