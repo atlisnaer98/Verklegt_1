@@ -305,7 +305,7 @@ class User:
         
     def change_plane_status(self,action): #TAKA TVÖ VINNA Í ÞESSU!!!!!
         self.app.print_change_plane_status()
-        plane_list = self.ll.get_all_airplane()
+        plane_list = self.ll.get_all_airplanes()
         self.app.print_selection_list(plane_list)
         action = self.back_quit(action)
         while action not in BACK or action not in QUIT:
