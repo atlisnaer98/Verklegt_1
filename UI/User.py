@@ -316,20 +316,15 @@ class User:
                 self.change_voyage()
     
     def change_plane_status(self,action): #VINNA Í ÞESSU og nota þenna!
-        self.app.print_change_plane_status()
         airplane_list = self.ll.get_all_airplanes()
         #app.fall(airplane_list) svipað fall og print selection list
-        counter = 0
-        for plane in airplane_list:
-            counter += 1
-            plane_reg = plane.get_registration_number()
-            activity = plane.get_active()
-            self.app.print_plane_activity_list(counter,plane_reg,activity)
+        self.app.print_change_plane_status(airplane_list)
         action = self.back_quit(action,len(airplane_list))
         for index in range(0,len(airplane_list)):
             if int(action) == (index+1):
                 self.ll.change_plane_status(airplane_list,index)
-                self.app.print_change_plane_status()
+                print("You have changed the plane status")
+        self.main_menu()
     
     def get_all_plane(self):
         print("{:<20}{:<13}{:<13}{:<13}".format("Registration Number","Plane Type","Model","Capacity"))
@@ -343,7 +338,6 @@ class User:
     def airplane_menu(self,action):
         self.app.print_airplane_menu()
         while action not in QUIT:
-            print("ATLI ATLI")
             action = input("select an option: ")
             if action == "1":
                 self.app.print_add_plane()
