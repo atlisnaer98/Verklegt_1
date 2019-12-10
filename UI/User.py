@@ -344,7 +344,7 @@ class User:
     def airplane_menu(self,action):
         self.app.print_airplane_menu()
         while action not in QUIT:
-            action = input("select an option: ")
+            action = self.back_quit(action,3)
             if action == "1":
                 self.app.print_add_plane()
                 self.add_plane()
