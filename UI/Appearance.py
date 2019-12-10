@@ -167,11 +167,7 @@ class Appearance:
         print()
     
     def print_plane_info(self,plane_list):
-<<<<<<< HEAD
         print("Registration number: {}\nPlane Type: {}\nModel: {}\nCapictity: {}\nActivity: {}".format(plane_list.get_registration_number(),plane_list.get_plane_type(),plane_list.get_model(),plane_list.get_capacity(),plane_list.get_active()))
-=======
-        print("\nRegistration number: {}\nPlane Type: {}\nModel: {}\nCapictity: {}\nActivity: {}").format(plane_list.get_registration_number(),plane_list.get_plane_type(),plane_list.get_model(),plane_list.get_capacity(),plane_list.get_active())
->>>>>>> 81e883ebb89639b94e387a551573b722a2d4f663
 
 
     def print_add_dest(self): 
