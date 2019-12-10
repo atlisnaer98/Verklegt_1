@@ -328,6 +328,8 @@ class User:
                 a_plane = airplane_list[index]
                 self.app.print_add_plane(a_plane)
                 action = self.back_quit(action,len(airplane_list))
+                changed = input("Enter plane: ")
+
                 
                 
 
@@ -362,9 +364,25 @@ class User:
     #                 self.ll.change_dest(plane_list,index,action,changed) #Breyta þessu
     #     return action
     
+    def get_all_plane(self):
+        print("{:<20}{:<20}{:<20}".format("Airport","Country","Distance(km)"))
+        plane_obj = self.ll.get_all_airplanes()
+        for line in plane_obj:
+            sting = str(line)
+            lis = sting.split(",")
+            print("{:<20}{:<20}{:<20}".format(lis[2], lis[1], lis[4]+'km'))
 
 
-
+    '''
+        def get_all_dest(self):
+        print("{:<20}{:<20}{:<20}".format("Airport","Country","Distance(km)"))
+        dest_obj = self.ll.get_all_dest()
+        for line in dest_obj:
+            sting = str(line)
+            lis = sting.split(",")
+            print("{:<20}{:<20}{:<20}".format(lis[2], lis[1], lis[4]+'km'))
+    '''    
+    
     def airplane_menu(self,action):
         self.app.print_airplane_menu()
         while action not in QUIT:
@@ -381,6 +399,7 @@ class User:
 
             elif action == "3":
                 self.app.print_list_plane()
+                self.print_plane_info()
                 
                 
         # '''
