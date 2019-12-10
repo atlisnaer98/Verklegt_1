@@ -334,14 +334,14 @@ class User:
 
         #Bæta við hér 
 
-        for index in range(0,len(dest_list)):
-            if int(action) == (index+1):
-                self.app.print_change_dest_info()
-                dest = dest_list[index]
-                self.app.print_dest_info(dest)
-                action = self.back_quit(action,len(dest_list))
-                changed = input("Enter new input: ")
-                self.ll.change_dest(dest_list,index,int(action),changed)
+        # for index in range(0,len(dest_list)):
+        #     if int(action) == (index+1):
+        #         self.app.print_change_dest_info()
+        #         dest = dest_list[index]
+        #         self.app.print_dest_info(dest)
+        #         action = self.back_quit(action,len(dest_list))
+        #         changed = input("Enter new input: ")
+        #         self.ll.change_dest(dest_list,index,int(action),changed)
 
 
 
