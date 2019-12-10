@@ -11,3 +11,12 @@ class AirplaneLL():
 
     def add_plane(self, plane):
         self.dl.add_plane(plane)
+
+    def change_plane(self,airplane_list,index):
+        plane = airplane_list[index]
+        if plane.get_active() == "1":
+            plane.set_active(0)
+        elif plane.get_active() == "0":
+            plane.set_active(1)
+        airplane_list[index] = plane
+        self.dl.update_plane_file(airplane_list)
