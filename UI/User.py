@@ -329,6 +329,7 @@ class User:
                 self.app.print_add_plane(a_plane)
                 action = self.back_quit(action,len(airplane_list))
                 
+                
 
 
         #Bæta við hér 
