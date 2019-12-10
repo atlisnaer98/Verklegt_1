@@ -169,7 +169,11 @@ class Appearance:
         print()
     
     def print_plane_info(self,plane_list):
+<<<<<<< HEAD
         print("\nRegistration number: {}\nPlane Type: {}\nModel: {}\nCapictity: {}\nActivity: {}").format(plane_list.get_registration_number(),plane_list.get_plane_type(),plane_list.get_model(),plane_list.get_capacity(),plane_list.get_active())
+=======
+        print("Registration number: {}\nPlane Type: {}\nModel: {}\nCapictity: {}\nActivity: {}".format(plane_list.get_registration_number(),plane_list.get_plane_type(),plane_list.get_model(),plane_list.get_capacity(),plane_list.get_active()))
+>>>>>>> 0e5581bef3d6057521c582426078cafee73afab7
 
 
     def print_add_dest(self): 
@@ -204,6 +208,9 @@ class Appearance:
         print(DASH*LENGTH)
         print("Please input necessary information:")
         #Input upplýsingar
+
+    def print_voyage_info(self, voyage):
+        print("Booking Refrence: {}\nDestination: {}\nDeparture Time: {}\nArrival Time: {}\n".format(voyage.get_booking_reference(), voyage.get_arriving_at(),voyage.get_departure(),voyage.get_arrival()))
     
     def print_voyage_selection(self):
         print(DASH*LENGTH)
@@ -280,7 +287,7 @@ class Appearance:
         print(DASH*LENGTH)
         print()
         
-        print("{:>5} {:<27}{} {} ".format('[1]', AC, '[2]', IAC))  #laga hér mögulega
+        #print("{:>5} {:<27}{} {} ".format('[1]', AC, '[2]', IAC))  #laga hér mögulega
         
         
         self.back_quit()
@@ -289,10 +296,12 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(LA))
         print(DASH*LENGTH)
+<<<<<<< HEAD
         print("Laga og bæta hér :), hehehehe")
         
     def print_yes_no(self):
         print("{:>5} {:<27}{} {} ".format('[1]', "Yes", '[2]',"No" ))
+=======
+>>>>>>> 0e5581bef3d6057521c582426078cafee73afab7
         
 
-    
