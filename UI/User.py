@@ -332,8 +332,8 @@ class User:
 
 
         #Bæta við hér 
-'''
-for index in range(0,len(dest_list)):
+
+        for index in range(0,len(dest_list)):
             if int(action) == (index+1):
                 self.app.print_change_dest_info()
                 dest = dest_list[index]
@@ -341,26 +341,26 @@ for index in range(0,len(dest_list)):
                 action = self.back_quit(action,len(dest_list))
                 changed = input("Enter new input: ")
                 self.ll.change_dest(dest_list,index,int(action),changed)
-'''
 
 
-    '''    
-    def change_plane_status(self,action): #TAKA TVÖ VINNA Í ÞESSU!!!!!
-        self.app.print_change_plane_status()
-        plane_list = self.ll.get_all_airplanes()
-        self.app.print_selection_list(plane_list)
-        action = self.back_quit(action, len(plane_list))
-        while action not in BACK or action not in QUIT:
-            for index in range(0,len(plane_list)):
-                if int(action) == (index+1):
-                    self.app.print_change_plane_status()
-                    plane = plane_list[index]
-                    self.app.print_plane_info(plane) #Búa til fall sem er í appearance og hannað fyrir             
-                    action = int(input("I want to change: ")) #Breyta þessu
-                    changed = input("Enter new input: ") #Breyta þessu 
-                    self.ll.change_dest(plane_list,index,action,changed) #Breyta þessu
-        return action
-    '''
+
+    # '''    
+    # def change_plane_status(self,action): #TAKA TVÖ VINNA Í ÞESSU!!!!!
+    #     self.app.print_change_plane_status()
+    #     plane_list = self.ll.get_all_airplanes()
+    #     self.app.print_selection_list(plane_list)
+    #     action = self.back_quit(action, len(plane_list))
+    #     while action not in BACK or action not in QUIT:
+    #         for index in range(0,len(plane_list)):
+    #             if int(action) == (index+1):
+    #                 self.app.print_change_plane_status()
+    #                 plane = plane_list[index]
+    #                 self.app.print_plane_info(plane) #Búa til fall sem er í appearance og hannað fyrir             
+    #                 action = int(input("I want to change: ")) #Breyta þessu
+    #                 changed = input("Enter new input: ") #Breyta þessu 
+    #                 self.ll.change_dest(plane_list,index,action,changed) #Breyta þessu
+    #     return action
+    
 
 
 
@@ -382,22 +382,22 @@ for index in range(0,len(dest_list)):
                 self.app.print_list_plane()
                 
                 
-        '''
-        self.app.print_airplane()
-        while action not in QUIT:
-            action = input("select an option: ")
-            if action == "1":
-                self.app.print_add_plane()
-                self.add_plane()
-                print()
-                print("You have added a new airplane!")
-                print()
-                self.dest_menu(action)
-            elif action == "2": #Change satus
-                pass
-            elif action == "3": #List airplane
-                pass
-        '''
+        # '''
+        # self.app.print_airplane()
+        # while action not in QUIT:
+        #     action = input("select an option: ")
+        #     if action == "1":
+        #         self.app.print_add_plane()
+        #         self.add_plane()
+        #         print()
+        #         print("You have added a new airplane!")
+        #         print()
+        #         self.dest_menu(action)
+        #     elif action == "2": #Change satus
+        #         pass
+        #     elif action == "3": #List airplane
+        #         pass
+        # '''
 
     def main_menu(self,action = ""):
         while action not in QUIT:
