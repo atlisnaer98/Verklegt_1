@@ -110,8 +110,14 @@ class User:
                 change_selection = self.back_quit(action,2)
                 if change_selection == "1":
                     option = int(input("What do you want to change? "))
-                    changed = input("Enter new input: ")
-                    self.ll.change_employee(employee_list,index,option,changed)
+                    if option == 5:
+                        changed = ""
+                        self.ll.change_employee(employee_list,index,option,changed)
+                        self.employee_menu(action)
+                    else:
+                        changed = input("Enter new input: ")
+                        self.ll.change_employee(employee_list,index,option,changed)
+                        self.employee_menu(action)
                 elif change_selection == "2":
                     self.employee_menu(action)
 
