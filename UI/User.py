@@ -278,8 +278,8 @@ class User:
     def get_voyages_for_employee(self, ID):
         voyage_list = self.ll.get_voyages_for_employee(ID)
         for voyage in voyage_list:
-            #self.app.print_voyage_info(voyage)
-            print(voyage.get_booking_reference())
+            self.app.print_voyage_info(voyage)
+            #print(voyage.get_booking_reference())
             
     def Voyage_menu(self,action):
         self.app.print_voyage_menu()

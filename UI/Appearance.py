@@ -169,7 +169,7 @@ class Appearance:
         print()
     
     def print_plane_info(self,plane_list):
-        print("Registration number: {}\nPlane Type: {}\nModel: {}\nCapictity: {}\nActivity: {}").format(plane_list.get_registration_number(),plane_list.get_plane_type(),plane_list.get_model(),plane_list.get_capacity(),plane_list.get_active())
+        print("Registration number: {}\nPlane Type: {}\nModel: {}\nCapictity: {}\nActivity: {}".format(plane_list.get_registration_number(),plane_list.get_plane_type(),plane_list.get_model(),plane_list.get_capacity(),plane_list.get_active()))
 
 
     def print_add_dest(self): 
@@ -206,7 +206,7 @@ class Appearance:
         #Input upplýsingar
 
     def print_voyage_info(self, voyage):
-        print("Booking Refrence: {}\nDestination: {}\nDeparture Time: {}\nArrival Time: {}").format(voyage.get_booking_refrence(), voyage.get_arriving_at(),voyage.get_departure(),voyage.get_arrival())
+        print("Booking Refrence: {}\nDestination: {}\nDeparture Time: {}\nArrival Time: {}\n".format(voyage.get_booking_reference(), voyage.get_arriving_at(),voyage.get_departure(),voyage.get_arrival()))
     
     def print_voyage_selection(self):
         print(DASH*LENGTH)
