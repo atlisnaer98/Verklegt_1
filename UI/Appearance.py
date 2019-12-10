@@ -170,7 +170,6 @@ class Appearance:
         print("Registration number: {}\nPlane Type: {}\nModel: {}\nCapictity: {}\nActivity: {}".format(plane_list.get_registration_number(),plane_list.get_plane_type(),plane_list.get_model(),plane_list.get_capacity(),plane_list.get_active()))
 
 
-
     def print_add_dest(self): 
         print()
         print(DASH*LENGTH)
