@@ -88,3 +88,10 @@ Komumst langt á leið með að útfæra employee og destinations eigum smá eft
 
 mánudagur - morgunfundur:
 Í dag er planið að klára stóran hluta í aircrafts og destinations, erum komnir vel á leið í voyages og hvernig við viljum útfæra þann lið.
+
+mánudagur - lokafundur:
+Það tókst að vinna vel í voyage klösum og einnig er employee komið ansi langt á leið. Það eru örfáir hlutir sem á eftir að klára í destination. 
+Það þarf að laga "back" og "quit" takkana.
+
+þriðjudagur morgunfundur:
+Ætlum að klára back og quit takkana ásamt því að reyna að fínpússa sem mest í dag.
