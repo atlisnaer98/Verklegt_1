@@ -411,5 +411,6 @@ class User:
                 self.dest_menu(action)
             elif action == "4":
                 self.airplane_menu(action)
+        quit()
 
             
