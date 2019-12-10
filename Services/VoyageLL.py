@@ -16,7 +16,6 @@ class VoyageLL():
     def get_date_voyages(self,from_date,to_date):
         voyage_list = []
         all_voyage_list = self.dl.get_all_voyages()
-        from_date= dateutil.parser.parse(the_date)
         for voyage in all_voyage_list:
             parseddate =dateutil.parser.parse(voyage.get_departure())
             if from_date <= parseddate and parseddate < to_date:

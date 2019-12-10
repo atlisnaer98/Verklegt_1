@@ -303,13 +303,14 @@ class User:
                 self.app.print_voyage_selection()
                 action = input("select an option: ")
                 if action =="1":
-                    from_date = input("Enter date: YYYY-MM-DD:")                    
+                    the_date = input("Enter date: YYYY-MM-DD:")                    
                     #year,month,day,hour,minute = 2019,11,10,6,0
                     #from_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
                     #to_date = input("to YYYY-MM-DD:") 2019-11-24T03:00:00
                     #year,month,day,hour,minute = 2019,12,20,6,0
                     #to_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
                     #self.get_date_voyages(from_date, to_date)
+                    from_date= dateutil.parser.parse(the_date)
                     to_date = from_date + timedelta(days=1)
                     voyage_list = self.ll.get_date_voyages(from_date,to_date)
                     for voyage in voyage_list:
