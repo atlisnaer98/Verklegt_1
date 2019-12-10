@@ -7,6 +7,7 @@ from Services.API import LLApi
 from UI.Appearance import Appearance
 import datetime
 import dateutil.parser
+from datetime import timedelta
 
 QUIT = ["q","Q"]
 BACK = ["b","B"]
@@ -309,7 +310,8 @@ class User:
                     #year,month,day,hour,minute = 2019,12,20,6,0
                     #to_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
                     #self.get_date_voyages(from_date, to_date)
-                    voyage_list = self.ll.get_date_voyages(from_date)
+                    to_date = from_date + timedelta(days=1)
+                    voyage_list = self.ll.get_date_voyages(from_date,to_date)
                     for voyage in voyage_list:
                         print(str(voyage))
                 elif action == "2":
