@@ -296,12 +296,9 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(LA))
         print(DASH*LENGTH)
-<<<<<<< HEAD
         print("Laga og bæta hér :), hehehehe")
         
     def print_yes_no(self):
         print("{:>5} {:<27}{} {} ".format('[1]', "Yes", '[2]',"No" ))
-=======
->>>>>>> 0e5581bef3d6057521c582426078cafee73afab7
         
 
