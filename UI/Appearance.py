@@ -169,11 +169,7 @@ class Appearance:
         print()
     
     def print_plane_info(self,plane_list):
-<<<<<<< HEAD
         print("\nRegistration number: {}\nPlane Type: {}\nModel: {}\nCapictity: {}\nActivity: {}").format(plane_list.get_registration_number(),plane_list.get_plane_type(),plane_list.get_model(),plane_list.get_capacity(),plane_list.get_active())
-=======
-        print("Registration number: {}\nPlane Type: {}\nModel: {}\nCapictity: {}\nActivity: {}".format(plane_list.get_registration_number(),plane_list.get_plane_type(),plane_list.get_model(),plane_list.get_capacity(),plane_list.get_active()))
->>>>>>> 6dd4daed8246b42269ec2aa7f329bedceb7e4137
 
 
     def print_add_dest(self): 
@@ -281,15 +277,17 @@ class Appearance:
         
  
         
-    def print_change_plane_status(self):
+    def print_change_plane_status(self,airplane_list):
         print(DASH*LENGTH)
         print("{:^60}".format(CS))
         print(DASH*LENGTH)
         print()
-        
-        #print("{:>5} {:<27}{} {} ".format('[1]', AC, '[2]', IAC))  #laga hér mögulega
-        
-        
+        counter = 0
+        for plane in airplane_list:
+            counter += 1
+            plane_reg = plane.get_registration_number()
+            activity = plane.get_active()
+            self.print_plane_activity_list(counter,plane_reg,activity)
         self.back_quit()
 
     def print_list_plane(self):
