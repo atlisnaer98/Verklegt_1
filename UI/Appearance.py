@@ -204,6 +204,9 @@ class Appearance:
         print(DASH*LENGTH)
         print("Please input necessary information:")
         #Input upplýsingar
+
+    def print_voyage_info(self, voyage):
+        print("Booking Refrence: {}\nDestination: {}\nDeparture Time: {}\nArrival Time: {}").format(voyage.get_booking_refrence(), voyage.get_arriving_at(),voyage.get_departure(),voyage.get_arrival())
     
     def print_voyage_selection(self):
         print(DASH*LENGTH)
