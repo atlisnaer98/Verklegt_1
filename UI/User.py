@@ -235,8 +235,6 @@ class User:
         available_list = self.ll.get_emp_date_schedule(date)
         for line in available_list:
             print(line)
-
-
             
     def add_voyage(self):
         voyage = Voyage()
@@ -284,7 +282,12 @@ class User:
             print(voyage.get_booking_reference())
 
     def get_voyages_for_employee(self, ID):
-        voyage_list = self.ll.get_voyages_for_employee(ID)
+        temp_date = input("Enter date: YYYY-MM-DD:")
+        from_date= dateutil.parser.parse(temp_date)
+        temp_date = input("Enter date: YYYY-MM-DD:")
+        to_date= dateutil.parser.parse(temp_date)
+        time_voyage_list = self.ll.get_date_voyages(from_date,to_date)
+        voyage_list = self.ll.get_voyages_for_employee(ID,time_voyage_list)
         for voyage in voyage_list:
             self.app.print_voyage_info(voyage)
             #print(voyage.get_booking_reference())
