@@ -181,8 +181,7 @@ class User:
                 print("pipi")
                 self.main_menu()
             elif action in QUIT:
-                print("pepe")
-                self.main_menu(action)
+                quit()
             else:
                 print("Invalid input")
 
@@ -331,7 +330,6 @@ class User:
                 changed = input("Enter plane: ")
 
                 
-                
 
 
         #Bæta við hér 
@@ -432,5 +430,6 @@ class User:
                 self.dest_menu(action)
             elif action == "4":
                 self.airplane_menu(action)
+        quit()
 
             
