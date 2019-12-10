@@ -298,14 +298,17 @@ class User:
             elif action == "3":
                 self.app.print_voyage_selection()
                 action = input("select an option: ")
-                if action =="1": 
-                    #from_date = input("Enter date: YYYY-MM-DD:") 2019-11-24T14:43:00
-                    year,month,day,hour,minute = 2019,11,10,6,0
-                    from_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
+                if action =="1":
+                    from_date = input("Enter date: YYYY-MM-DD:")
+                    the_date = from_date + "T00:00:00"
+                    
+                    #year,month,day,hour,minute = 2019,11,10,6,0
+                    #from_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
                     #to_date = input("to YYYY-MM-DD:") 2019-11-24T03:00:00
-                    year,month,day,hour,minute = 2019,12,20,6,0
-                    to_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
-                    self.get_date_voyages(from_date, to_date)
+                    #year,month,day,hour,minute = 2019,12,20,6,0
+                    #to_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
+                    #self.get_date_voyages(from_date, to_date)
+                    self.ll.get_date_voyages(the_date)
                 elif action == "2":
                     ID = input("Enter ID number")
                     #print("Enter timeperiod")
