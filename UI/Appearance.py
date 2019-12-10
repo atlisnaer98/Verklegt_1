@@ -106,7 +106,6 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', CH))
         print("{:>5} {:<27}{} {} ".format('[3]', S, '[4]', L))
-        self.back_quit()
 
     def print_select_employee_menu(self):
         print(DASH*LENGTH)
@@ -125,7 +124,6 @@ class Appearance:
         print(DASH*LENGTH)
         print("Please input necessary information:")
         #Input upplýsingar
-        self.back_quit()
 
     def print_show_schedule(self):
         print(DASH*LENGTH)
@@ -170,6 +168,7 @@ class Appearance:
     
     def print_plane_info(self,plane_list):
         print("Registration number: {}\nPlane Type: {}\nModel: {}\nCapictity: {}\nActivity: {}".format(plane_list.get_registration_number(),plane_list.get_plane_type(),plane_list.get_model(),plane_list.get_capacity(),plane_list.get_active()))
+
 
 
     def print_add_dest(self): 
@@ -261,7 +260,6 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', CS))
         print("{:>5} {} ".format('[3]', LA ))
-        self.back_quit()
     
     def print_add_plane(self):
         print(DASH*LENGTH)
@@ -288,7 +286,6 @@ class Appearance:
             plane_reg = plane.get_registration_number()
             activity = plane.get_active()
             self.print_plane_activity_list(counter,plane_reg,activity)
-        self.back_quit()
 
     def print_list_plane(self):
         print(DASH*LENGTH)

@@ -145,15 +145,15 @@ class EmployeeLL():
         for employee in all_employees:
             id_numb = employee.get_ID_number()
             list_of_ids.append(id_numb)
+
         for z in same_day_list:
             str_z = str(z)
             lis_z = str_z.split(",")
-            vid_leita = lis_z[7]
-            
-            if "2706838569" in vid_leita:
-                print("si")
-            else:
-                print("fuuuck")
+            for ids in list_of_ids:
+                if  ids in lis_z:
+                    print("si")
+                else:
+                    print("fuuuck")
         #for i in list_of_ids:
             #print(i)
             #for y in same_day_list:
