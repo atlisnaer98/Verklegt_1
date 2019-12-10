@@ -364,23 +364,13 @@ class User:
     #     return action
     
     def get_all_plane(self):
-        print("{:<20}{:<20}{:<20}".format("Airport","Country","Distance(km)"))
+        print("{:<20}{:<13}{:<13}{:<13}".format("Registration Number","Plane Type","Model","Capacity"))
         plane_obj = self.ll.get_all_airplanes()
         for line in plane_obj:
             sting = str(line)
             lis = sting.split(",")
-            print("{:<20}{:<20}{:<20}".format(lis[2], lis[1], lis[4]+'km'))
+            print("{:<20}{:<13}{:<13}{:<13}".format(lis[0], lis[2], lis[3], lis[4]))
 
-
-    '''
-        def get_all_dest(self):
-        print("{:<20}{:<20}{:<20}".format("Airport","Country","Distance(km)"))
-        dest_obj = self.ll.get_all_dest()
-        for line in dest_obj:
-            sting = str(line)
-            lis = sting.split(",")
-            print("{:<20}{:<20}{:<20}".format(lis[2], lis[1], lis[4]+'km'))
-    '''    
     
     def airplane_menu(self,action):
         self.app.print_airplane_menu()
@@ -397,8 +387,8 @@ class User:
                 self.change_plane_status(action)
 
             elif action == "3":
-                self.app.print_list_plane()
-                self.print_plane_info()
+                self.get_all_plane()
+                action = self.back_quit(action,3)
                 
                 
         # '''
