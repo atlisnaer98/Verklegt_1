@@ -17,6 +17,9 @@ class LLApi:
 
     def add_plane(self, plane):
         self.aLL.add_plane(plane)
+    
+    def change_plane_status(self,airplane_list,index):
+        self.aLL.change_plane(airplane_list,index)
 
     def add_dest(self, dest):
         self.dLL.add_dest(dest)

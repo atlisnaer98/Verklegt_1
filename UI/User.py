@@ -334,11 +334,8 @@ class User:
         action = self.back_quit(action,len(airplane_list))
         for index in range(0,len(airplane_list)):
             if int(action) == (index+1):
+                self.ll.change_plane_status(airplane_list,index)
                 self.app.print_change_plane_status()
-                a_plane = airplane_list[index]
-                self.app.print_add_plane(a_plane)
-                action = self.back_quit(action,len(airplane_list))
-                changed = input("Enter plane: ")
 
                 
 

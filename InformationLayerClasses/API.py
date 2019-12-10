@@ -15,6 +15,9 @@ class Data_main:
 
     def add_plane(self, plane):
         self.aDL.add_plane(plane)
+
+    def update_plane_file(self,plane_list):
+        self.aDL.update_plane_file(plane_list)
     
     def get_all_dest(self):
         return self.dDL.get_all_dest()

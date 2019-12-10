@@ -1,6 +1,7 @@
 from Models.Airplane import Airplane
 import csv
 
+HEADER = "planeInsignia,planeTypeId,planeType,model,capacity,active"
 class Airplane_repository:
 
     def __init__(self):
@@ -20,4 +21,8 @@ class Airplane_repository:
                 lis.append(plane)
         return lis
 
-     
+    def update_plane_file(self,plane_list):
+        with open("./DATA/Aircraft.csv", "w+", newline="") as planes:
+            planes.write("{}\n".format(HEADER))
+            for plane in plane_list:
+                planes.write("{}\n".format(str(plane)))
