@@ -301,14 +301,17 @@ class User:
             elif action == "3":
                 self.app.print_voyage_selection()
                 action = input("select an option: ")
-                if action =="1": 
-                    #from_date = input("Enter date: YYYY-MM-DD:") 2019-11-24T14:43:00
-                    year,month,day,hour,minute = 2019,11,10,6,0
-                    from_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
+                if action =="1":
+                    from_date = input("Enter date: YYYY-MM-DD:")
+                    the_date = from_date + "T00:00:00"
+                    
+                    #year,month,day,hour,minute = 2019,11,10,6,0
+                    #from_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
                     #to_date = input("to YYYY-MM-DD:") 2019-11-24T03:00:00
-                    year,month,day,hour,minute = 2019,12,20,6,0
-                    to_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
-                    self.get_date_voyages(from_date, to_date)
+                    #year,month,day,hour,minute = 2019,12,20,6,0
+                    #to_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
+                    #self.get_date_voyages(from_date, to_date)
+                    self.ll.get_date_voyages(the_date)
                 elif action == "2":
                     ID = input("Enter ID number")
                     #print("Enter timeperiod")
@@ -319,53 +322,15 @@ class User:
                 self.change_voyage()
     
     def change_plane_status(self,action): #VINNA Í ÞESSU og nota þenna!
-        self.app.print_change_plane_status()
         airplane_list = self.ll.get_all_airplanes()
         #app.fall(airplane_list) svipað fall og print selection list
-        counter = 0
-        for plane in airplane_list:
-            counter += 1
-            plane_reg = plane.get_registration_number()
-            activity = plane.get_active()
-            self.app.print_plane_activity_list(counter,plane_reg,activity)
+        self.app.print_change_plane_status(airplane_list)
         action = self.back_quit(action,len(airplane_list))
         for index in range(0,len(airplane_list)):
             if int(action) == (index+1):
                 self.ll.change_plane_status(airplane_list,index)
-                self.app.print_change_plane_status()
-
-                
-
-
-        #Bæta við hér 
-
-        # for index in range(0,len(dest_list)):
-        #     if int(action) == (index+1):
-        #         self.app.print_change_dest_info()
-        #         dest = dest_list[index]
-        #         self.app.print_dest_info(dest)
-        #         action = self.back_quit(action,len(dest_list))
-        #         changed = input("Enter new input: ")
-        #         self.ll.change_dest(dest_list,index,int(action),changed)
-
-
-
-    # '''    
-    # def change_plane_status(self,action): #TAKA TVÖ VINNA Í ÞESSU!!!!!
-    #     self.app.print_change_plane_status()
-    #     plane_list = self.ll.get_all_airplanes()
-    #     self.app.print_selection_list(plane_list)
-    #     action = self.back_quit(action, len(plane_list))
-    #     while action not in BACK or action not in QUIT:
-    #         for index in range(0,len(plane_list)):
-    #             if int(action) == (index+1):
-    #                 self.app.print_change_plane_status()
-    #                 plane = plane_list[index]
-    #                 self.app.print_plane_info(plane) #Búa til fall sem er í appearance og hannað fyrir             
-    #                 action = int(input("I want to change: ")) #Breyta þessu
-    #                 changed = input("Enter new input: ") #Breyta þessu 
-    #                 self.ll.change_dest(plane_list,index,action,changed) #Breyta þessu
-    #     return action
+                print("You have changed the plane status")
+        self.main_menu()
     
     def get_all_plane(self):
         print("{:<20}{:<13}{:<13}{:<13}".format("Registration Number","Plane Type","Model","Capacity"))
@@ -379,7 +344,6 @@ class User:
     def airplane_menu(self,action):
         self.app.print_airplane_menu()
         while action not in QUIT:
-            print("ATLI ATLI")
             action = input("select an option: ")
             if action == "1":
                 self.app.print_add_plane()

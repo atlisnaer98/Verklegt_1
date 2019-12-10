@@ -1,5 +1,5 @@
 planeInsignia,planeTypeId,planeType,model,capacity,active
-TF-EPG,NAFokkerF100,Fokker,F100,100,1
+TF-EPG,NAFokkerF100,Fokker,F100,100,0
 TF-UVR,NAFokkerF28,Fokker,F28,65,1
 TF-XZR,NABAE146,BAE,146,82,1
 TF-XZM,NABAE146,BAE,146,82,1
