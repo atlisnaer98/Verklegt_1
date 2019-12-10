@@ -181,8 +181,7 @@ class User:
                 print("pipi")
                 self.main_menu()
             elif action in QUIT:
-                print("pepe")
-                self.main_menu(action)
+                quit()
             else:
                 print("Invalid input")
 
@@ -328,7 +327,6 @@ class User:
                 a_plane = airplane_list[index]
                 self.app.print_add_plane(a_plane)
                 action = self.back_quit(action,len(airplane_list))
-                
                 
 
 
