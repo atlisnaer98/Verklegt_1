@@ -105,27 +105,34 @@ class User:
             emp = employee_list[index]
             if action == emp.get_ID_number():
                 self.app.print_changing_employee_information(emp)
-                option = int(input("What do you want to change? "))
-                changed = input("Enter new input: ")
-                self.ll.change_employee(employee_list,index,option,changed)
-                """def change_employee_info(self): # ef við viljum nota dicts
-                self.app.print_change_employee_info()
-                employee_dic = self.ll.get_all_employees_dict()
-                action = input("Enter ID number: ")
-                for key in employee_dic:
-                if key == action:
-                print(employee_dic[key]) """
+                print("Would you like to change any information?")
+                self.app.print_yes_no()
+                change_selection = self.back_quit(action,2)
+                if change_selection == "1":
+                    option = int(input("What do you want to change? "))
+                    if option == 5:
+                        changed = ""
+                        self.ll.change_employee(employee_list,index,option,changed)
+                        self.employee_menu(action)
+                    else:
+                        changed = input("Enter new input: ")
+                        self.ll.change_employee(employee_list,index,option,changed)
+                        self.employee_menu(action)
+                elif change_selection == "2":
+                    self.employee_menu(action)
 
     def change_dest_info(self,action):
         self.app.print_change_dest_info()
         dest_list = self.ll.get_all_dest()
         self.app.print_selection_list(dest_list)
+        self.app.back_quit()
         action = self.back_quit(action,len(dest_list))
         for index in range(0,len(dest_list)):
             if int(action) == (index+1):
                 self.app.print_change_dest_info()
                 dest = dest_list[index]
                 self.app.print_dest_info(dest)
+                self.app.back_quit()
                 action = self.back_quit(action,len(dest_list))
                 changed = input("Enter new input: ")
                 self.ll.change_dest(dest_list,index,int(action),changed)
@@ -152,6 +159,7 @@ class User:
     def dest_menu(self,action):
         while action not in QUIT:
             self.app.print_dest_menu()
+            self.app.back_quit()
             action = self.back_quit(action,3)
             if action == "1": #create new dest
                 self.app.print_add_dest()
@@ -164,18 +172,19 @@ class User:
                 self.change_dest_info(action)
             elif action == "3": #list dest
                 self.get_all_dest()
+                self.app.back_quit()
                 action = self.back_quit(action,3)
             elif action in BACK:
                 return action
                     
     def back_quit(self,action,limit):
-        self.app.back_quit()
         action = input("Select an option: ")
         try:
             if int(action) > 0 and int(action) < limit+1:
                 return action
             else:
                 print("Invalid input,")
+                self.back_quit(action,limit)
         except ValueError:
             if action in BACK:
                 print("pipi")
@@ -183,7 +192,8 @@ class User:
             elif action in QUIT:
                 quit()
             else:
-                print("Invalid input")
+                print("Invalid input,")
+                self.back_quit(action,limit)
 
     def employee_menu(self,action):
         self.app.print_employee_menu()
@@ -278,8 +288,8 @@ class User:
     def get_voyages_for_employee(self, ID):
         voyage_list = self.ll.get_voyages_for_employee(ID)
         for voyage in voyage_list:
-            #self.app.print_voyage_info(voyage)
-            print(voyage.get_booking_reference())
+            self.app.print_voyage_info(voyage)
+            #print(voyage.get_booking_reference())
             
     def Voyage_menu(self,action):
         self.app.print_voyage_menu()
@@ -294,14 +304,17 @@ class User:
             elif action == "3":
                 self.app.print_voyage_selection()
                 action = input("select an option: ")
-                if action =="1": 
-                    #from_date = input("Enter date: YYYY-MM-DD:") 2019-11-24T14:43:00
-                    year,month,day,hour,minute = 2019,11,10,6,0
-                    from_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
+                if action =="1":
+                    from_date = input("Enter date: YYYY-MM-DD:")
+                    the_date = from_date + "T00:00:00"
+                    
+                    #year,month,day,hour,minute = 2019,11,10,6,0
+                    #from_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
                     #to_date = input("to YYYY-MM-DD:") 2019-11-24T03:00:00
-                    year,month,day,hour,minute = 2019,12,20,6,0
-                    to_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
-                    self.get_date_voyages(from_date, to_date)
+                    #year,month,day,hour,minute = 2019,12,20,6,0
+                    #to_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
+                    #self.get_date_voyages(from_date, to_date)
+                    self.ll.get_date_voyages(the_date)
                 elif action == "2":
                     ID = input("Enter ID number")
                     #print("Enter timeperiod")
@@ -324,11 +337,8 @@ class User:
         action = self.back_quit(action,len(airplane_list))
         for index in range(0,len(airplane_list)):
             if int(action) == (index+1):
+                self.ll.change_plane_status(airplane_list,index)
                 self.app.print_change_plane_status()
-                a_plane = airplane_list[index]
-                self.app.print_add_plane(a_plane)
-                action = self.back_quit(action,len(airplane_list))
-                changed = input("Enter plane: ")
 
                 
 

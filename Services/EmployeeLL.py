@@ -37,12 +37,18 @@ class EmployeeLL():
         elif option == 4:
             emp.set_email_address(changed)
         elif option == 5:
-            emp.set_job_title(changed)
-        elif option == 6:
-            emp.set_rank(changed)
-        elif option == 7:
-            emp.set_licence(changed)
-        elif option == 8:
+            current_activity = emp.get_activity()
+            if current_activity == "1":
+                changed = "0"
+                print()
+                print("{} is now Inactive".format(emp.get_name()))
+                print()
+            elif current_activity == "0":
+                changed = "1"
+                print()
+                print("{} is now Active".format(emp.get_name()))
+                print()
+
             emp.set_activity(changed)
         else: 
             return False

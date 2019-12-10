@@ -17,6 +17,9 @@ class LLApi:
 
     def add_plane(self, plane):
         self.aLL.add_plane(plane)
+    
+    def change_plane_status(self,airplane_list,index):
+        self.aLL.change_plane(airplane_list,index)
 
     def add_dest(self, dest):
         self.dLL.add_dest(dest)
@@ -49,8 +52,8 @@ class LLApi:
     def get_all_voyages(self):
         return self.vLL.get_all_voyages()
 
-    def get_date_voyages(self, from_date, to_date):
-        return self.vLL.get_date_voyages(from_date,to_date)
+    def get_date_voyages(self, from_date):
+        return self.vLL.get_date_voyages(from_date)
 
     def add_voyage(self,voyage):
         self.vLL.add_voyage(voyage)
