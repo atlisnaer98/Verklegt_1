@@ -52,8 +52,8 @@ class LLApi:
     def get_all_voyages(self):
         return self.vLL.get_all_voyages()
 
-    def get_date_voyages(self, from_date):
-        return self.vLL.get_date_voyages(from_date)
+    def get_date_voyages(self,from_date,to_date):
+        return self.vLL.get_date_voyages(from_date,to_date)
 
     def add_voyage(self,voyage):
         self.vLL.add_voyage(voyage)
@@ -64,9 +64,9 @@ class LLApi:
     def assign_crew(self,voyage_list):
         self.vLL.assign_crew(voyage_list)
 
-    def get_voyages_for_employee(self, ID):
+    def get_voyages_for_employee(self,ID,voyage_list):
         ''' takes staff ID and returns all the voyages for a specific employee'''
-        return self.vLL.get_voyages_for_employee(ID)
+        return self.vLL.get_voyages_for_employee(ID,voyage_list)
     
     def get_emp_schedule(self, ID, from_date, to_date):
         return self.eLL.get_schedule(ID, from_date, to_date)
