@@ -330,39 +330,6 @@ class User:
             if int(action) == (index+1):
                 self.ll.change_plane_status(airplane_list,index)
                 self.app.print_change_plane_status()
-
-                
-
-
-        #Bæta við hér 
-
-        # for index in range(0,len(dest_list)):
-        #     if int(action) == (index+1):
-        #         self.app.print_change_dest_info()
-        #         dest = dest_list[index]
-        #         self.app.print_dest_info(dest)
-        #         action = self.back_quit(action,len(dest_list))
-        #         changed = input("Enter new input: ")
-        #         self.ll.change_dest(dest_list,index,int(action),changed)
-
-
-
-    # '''    
-    # def change_plane_status(self,action): #TAKA TVÖ VINNA Í ÞESSU!!!!!
-    #     self.app.print_change_plane_status()
-    #     plane_list = self.ll.get_all_airplanes()
-    #     self.app.print_selection_list(plane_list)
-    #     action = self.back_quit(action, len(plane_list))
-    #     while action not in BACK or action not in QUIT:
-    #         for index in range(0,len(plane_list)):
-    #             if int(action) == (index+1):
-    #                 self.app.print_change_plane_status()
-    #                 plane = plane_list[index]
-    #                 self.app.print_plane_info(plane) #Búa til fall sem er í appearance og hannað fyrir             
-    #                 action = int(input("I want to change: ")) #Breyta þessu
-    #                 changed = input("Enter new input: ") #Breyta þessu 
-    #                 self.ll.change_dest(plane_list,index,action,changed) #Breyta þessu
-    #     return action
     
     def get_all_plane(self):
         print("{:<20}{:<13}{:<13}{:<13}".format("Registration Number","Plane Type","Model","Capacity"))
