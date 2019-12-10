@@ -143,9 +143,9 @@ class Appearance:
         print("{}".format(WC))
 
     def print_changing_employee_information(self, emp):
-        print("\nID Number: {}\nName: {}\n\n[1] Address: {}\n[2] Home phone: {}\n[3] Mobile number: {}\n[4] Email address: {}\n[5] Job title: {}\n[6] Rank: {}\n[7] Licence: {}\n[8] Activity: {}\n"
-        .format(emp.get_ID_number(), emp.get_name(), emp.get_address(), emp.get_home_phone(), emp.get_mobile_number(),
-        emp.get_email_address(), emp.get_job_title(), emp.get_rank(), emp.get_licence(), emp.get_activity()))
+        print("\nID Number: {}\nName: {}\nJob title: {}\nRank: {}\nLicence: {}\n\n[1] Address: {}\n[2] Home phone: {}\n[3] Mobile number: {}\n[4] Email address: {}\n[5] Activity: {}\n"
+        .format(emp.get_ID_number(), emp.get_name(), emp.get_job_title(), emp.get_rank(), emp.get_licence(), emp.get_address(), emp.get_home_phone(), emp.get_mobile_number(),
+        emp.get_email_address(), emp.get_activity()))
 
     def print_employee_list(self):
         pass
@@ -169,7 +169,11 @@ class Appearance:
         print()
     
     def print_plane_info(self,plane_list):
+<<<<<<< HEAD
+        print("\nRegistration number: {}\nPlane Type: {}\nModel: {}\nCapictity: {}\nActivity: {}").format(plane_list.get_registration_number(),plane_list.get_plane_type(),plane_list.get_model(),plane_list.get_capacity(),plane_list.get_active())
+=======
         print("Registration number: {}\nPlane Type: {}\nModel: {}\nCapictity: {}\nActivity: {}".format(plane_list.get_registration_number(),plane_list.get_plane_type(),plane_list.get_model(),plane_list.get_capacity(),plane_list.get_active()))
+>>>>>>> 6dd4daed8246b42269ec2aa7f329bedceb7e4137
 
 
     def print_add_dest(self): 

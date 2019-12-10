@@ -52,8 +52,8 @@ class LLApi:
     def get_all_voyages(self):
         return self.vLL.get_all_voyages()
 
-    def get_date_voyages(self, from_date, to_date):
-        return self.vLL.get_date_voyages(from_date,to_date)
+    def get_date_voyages(self, from_date):
+        return self.vLL.get_date_voyages(from_date)
 
     def add_voyage(self,voyage):
         self.vLL.add_voyage(voyage)
