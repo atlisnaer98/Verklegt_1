@@ -85,6 +85,9 @@ class User:
 
     def add_employee(self):
         #self.app.print_add_employee()
+        job_title_list = ["Pilot","Cabincrew"]
+        pilot_rank_list = ["Captain","Copilot"]
+        cabincrew_rank_list = ["Flight Service Manager", "Flight Attendant"]
         emp = Employee()
         emp.set_ssn(input("ID number: "))
         emp.set_name(input("Name: "))
@@ -92,11 +95,35 @@ class User:
         emp.set_home_phone(input("Home phone: "))
         emp.set_mobile_number(input("Mobile number: "))
         emp.set_email_address(input("Email: "))
-        emp.set_job_title(input("Job title: "))
-        emp.set_rank(input("Rank: "))
+        print("Job title:")
+        self.app.print_selection_list(job_title_list)
+        job_title_selection = self.back_quit("",2)
+        if job_title_selection == "1":
+            job_title_selection = "Pilot"
+            selected_rank_list = pilot_rank_list
+        elif job_title_selection == "2":
+            job_title_selection = "Cabincrew"
+            selected_rank_list = cabincrew_rank_list
+        emp.set_job_title(job_title_selection)
+        self.app.print_selection_list(selected_rank_list)
+        rank_selection = self.back_quit("",2)
+        if job_title_selection == "Cabincrew":
+            if rank_selection == "1":
+                rank_selection = "Flight Service Manager"
+            elif rank_selection == "2":
+                rank_selection = "Flight Attendant"
+        elif job_title_selection == "Pilot":
+            if rank_selection == "1":
+                rank_selection = "Captain"
+            elif rank_selection == "2":
+                rank_selection = "Copilot"
+        emp.set_rank(rank_selection)
         emp.set_licence(input("Licence: "))
         emp.set_activity(input("Activity: "))
         self.ll.add_employee(emp)
+
+    def validate_selection():
+        selection = ""
 
     def change_employee_info(self):
         self.app.print_change_employee_info()
