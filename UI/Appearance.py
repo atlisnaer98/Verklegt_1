@@ -288,7 +288,9 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(LA))
         print(DASH*LENGTH)
-        print("Laga og bæta hér :), hehehehe")
+    
+    def print_list_plane_info(self,plane):
+        print("{:<20}{:<13}{:<13}{:<13}".format(plane.get_registration_number(), plane.get_plane_type(), plane.get_model(), plane.get_capacity()))
         
     def print_yes_no(self):
         print("{:>5} {:<27}{} {} ".format('[1]', "Yes", '[2]',"No" ))
