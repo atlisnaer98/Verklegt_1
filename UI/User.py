@@ -288,7 +288,7 @@ class User:
 
 
     def show_emp_schedule(self, action):
-        print("[1] Date [2]employee")
+        print("[1]date     [2] Employee")
         action = input("Select an option: ")
         if action == '1':
             print("[1]available     [2] working")
