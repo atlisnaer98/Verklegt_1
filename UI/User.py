@@ -281,17 +281,23 @@ class User:
         voyage_list = self.ll.get_all_voyages()
         last_booking_ref = int(voyage_list[-1].get_booking_reference())
         voyage.set_booking_reference(last_booking_ref+1)
-        voyage.set_arriving_at(input("Destination: "))
+        dest_list = self.ll.get_all_dest()
+        self.app.print_selection_list(dest_list)
+        dest_number = int(input("Please select destination: ")) - 1
+        dest = dest_list[dest_number].get_destination()
+        voyage.set_arriving_at(dest)
         voyage.set_flight_number_away("NA0500")
         voyage.set_flight_number_home("NA0501")
         depart = input("Departure date (YYYY-MM-DD): ") + "T" + input("Departure time(HH:MM): ")
         departure = dateutil.parser.parse(depart)
-        voyage.set_departure(departure)
+        voyage.set_departure(depart)
         arrival = departure + timedelta(hours=4)
-        voyage.set_arrival(arrival)
-        plane_list = self.ll.get_all_airplanes()
+        voyage.set_arrival(arrival.isoformat())
+        plane_list = self.ll.get_available_planes(departure,arrival)
         self.app.print_selection_list(plane_list)
-        voyage.set_aircraft_id("TF-100")
+        plane_number = int(input("Select an airplane: ")) - 1
+        plane = plane_list[plane_number].get_registration_number()
+        voyage.set_aircraft_id(plane)
         self.ll.add_voyage(voyage)
 
     def change_voyage():
@@ -378,12 +384,11 @@ class User:
     
     def get_all_plane(self):
         plane_list = self.ll.get_all_airplanes()
+        self.app.print_list_plane
         #self.app.print_all_planes()
         print("{:<20}{:<13}{:<13}{:<13}".format("Registration Number","Plane Type","Model","Capacity"))
         for plane in plane_list:
-            sting = str(plane)
-            lis = sting.split(",")
-            print("{:<20}{:<13}{:<13}{:<13}".format(lis[0], lis[2], lis[3], lis[4]))
+            self.app.print_list_plane_info(plane)
 
     
     def airplane_menu(self,action):

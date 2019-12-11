@@ -15,6 +15,9 @@ class LLApi:
     def get_all_airplanes(self):
         return self.aLL.get_all_airplanes()
 
+    def get_available_planes(self,from_date,to_date):
+        return self.aLL.get_available_planes(from_date,to_date)
+
     def add_plane(self, plane):
         self.aLL.add_plane(plane)
     
