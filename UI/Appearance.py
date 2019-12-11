@@ -137,9 +137,14 @@ class Appearance:
         print(DASH*LENGTH)
         print("{}".format(WC))
 
-    def print_changing_employee_information(self, emp):
-        print("\nID Number: {}\nName: {}\nJob title: {}\nRank: {}\nLicence: {}\n\n[1] Address: {}\n[2] Home phone: {}\n[3] Mobile number: {}\n[4] Email address: {}\n[5] Activity: {}\n"
+    def print_employee_information(self, emp):
+        print("\nID Number: {}\nName: {}\nJob title: {}\nRank: {}\nLicence: {}\nAddress: {}\nHome phone: {}\nMobile number: {}\nEmail address: {}\nActivity: {}\n"
         .format(emp.get_ID_number(), emp.get_name(), emp.get_job_title(), emp.get_rank(), emp.get_licence(), emp.get_address(), emp.get_home_phone(), emp.get_mobile_number(),
+        emp.get_email_address(), emp.get_activity()))
+
+    def print_changing_employee_information(self, emp):
+        print("\n[1] Address: {}\n[2] Home phone: {}\n[3] Mobile number: {}\n[4] Email address: {}\n[5] Activity: {}\n"
+        .format(emp.get_address(), emp.get_home_phone(), emp.get_mobile_number(),
         emp.get_email_address(), emp.get_activity()))
 
     def print_employee_list(self):
@@ -163,6 +168,15 @@ class Appearance:
         print("{:>10} {:<30}{} {} ".format('[1]', "Emergency contact", '[2]', "Emergency phonenumber"))
         print()
     
+    def print_list_dest(self):
+        print()
+        print(DASH*LENGTH)
+        print("{:^60}".format(LD))
+        print(DASH*LENGTH)
+    
+    def print_list_dest_info(self,dest):
+        print("{:<20}{:<20}{:<20}".format(dest.get_airport(), dest.get_country(), dest.get_distance()+' km'))
+
     def print_plane_info(self,plane_list):
         print("Registration number: {}\nPlane Type: {}\nModel: {}\nCapictity: {}\nActivity: {}".format(plane_list.get_registration_number(),plane_list.get_plane_type(),plane_list.get_model(),plane_list.get_capacity(),plane_list.get_active()))
 
@@ -285,9 +299,12 @@ class Appearance:
             self.print_plane_activity_list(counter,plane_reg,activity)
 
     def print_list_plane(self):
+        print()
         print(DASH*LENGTH)
         print("{:^60}".format(LA))
         print(DASH*LENGTH)
+
+
     
     def print_list_plane_info(self,plane):
         print("{:<20}{:<13}{:<13}{:<13}".format(plane.get_registration_number(), plane.get_plane_type(), plane.get_model(), plane.get_capacity()))

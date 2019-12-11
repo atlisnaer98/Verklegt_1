@@ -8,6 +8,7 @@ from UI.Appearance import Appearance
 import datetime
 import dateutil.parser
 from datetime import timedelta
+import string
 
 QUIT = ["q","Q"]
 BACK = ["b","B"]
@@ -35,12 +36,12 @@ class User:
         #return country, airport, flight_time, name_of_contact, emergency_phone_number
 
     def get_all_dest(self):
+        self.app.print_list_dest()
         print("{:<20}{:<20}{:<20}".format("Airport","Country","Distance(km)"))
         dest_obj = self.ll.get_all_dest()
-        for line in dest_obj:
-            sting = str(line)
-            lis = sting.split(",")
-            print("{:<20}{:<20}{:<20}".format(lis[2], lis[1], lis[4]+'km'))
+        for dest in dest_obj:
+            self.app.print_list_dest_info(dest)
+            
     
     def add_plane(self):
         #self.app.print_add_plane()
@@ -79,6 +80,7 @@ class User:
 
     def add_employee(self):
         #self.app.print_add_employee()
+        plane_list = []
         job_title_list = ["Pilot","Cabincrew"]
         pilot_rank_list = ["Captain","Copilot"]
         cabincrew_rank_list = ["Flight Service Manager", "Flight Attendant"]
@@ -91,16 +93,24 @@ class User:
         emp.set_email_address(input("Email: "))
         print("Job title:")
         self.app.print_selection_list(job_title_list)
-        job_title_selection = self.back_quit("",2)
+        job_title_selection = self.validate_selection(input("Select a job title: "),2)
+        for job_title_index in range(len(job_title_list)):
+            if job_title_selection == str(job_title_index+1) and int(job_title_selection)==1:
+                job_title_selection = job_title_list[job_title_index]
+                selected_rank_list = pilot_rank_list
+            elif job_title_selection == str(job_title_index+1) and int(job_title_selection)==2:
+                job_title_selection = job_title_list[job_title_index]
+                selected_rank_list = cabincrew_rank_list
+        """
         if job_title_selection == "1":
             job_title_selection = "Pilot"
             selected_rank_list = pilot_rank_list
         elif job_title_selection == "2":
             job_title_selection = "Cabincrew"
-            selected_rank_list = cabincrew_rank_list
+            selected_rank_list = cabincrew_rank_list"""
         emp.set_job_title(job_title_selection)
         self.app.print_selection_list(selected_rank_list)
-        rank_selection = self.back_quit("",2)
+        rank_selection = self.validate_selection(input("select a rank: "),2)
         if job_title_selection == "Cabincrew":
             if rank_selection == "1":
                 rank_selection = "Flight Service Manager"
@@ -112,12 +122,38 @@ class User:
             elif rank_selection == "2":
                 rank_selection = "Copilot"
         emp.set_rank(rank_selection)
-        emp.set_licence(input("Licence: "))
-        emp.set_activity(input("Activity: "))
+
+        airplane_obj = self.ll.get_all_airplanes()
+        for index in range(len(airplane_obj)):
+            plane = airplane_obj[index]
+            plane_type = plane.get_planeID()
+            if plane_type not in plane_list:
+                plane_list.append(plane_type)
+        if job_title_selection == "Cabincrew":
+            plane_selection = "N/A"
+        elif job_title_selection == "Pilot":
+            self.app.print_selection_list(plane_list)
+            plane_selection = self.validate_selection(input("Select a licence: "),len(plane_list))
+            for selected_numb in range(len(plane_list)):
+                if plane_selection == str(selected_numb+1):
+                    plane_selection = plane_list[selected_numb]
+        emp.set_licence(plane_selection)
+        emp.set_activity(1)
         self.ll.add_employee(emp)
 
-    def validate_selection():
-        selection = ""
+
+
+    def validate_selection(self,action,limit):
+        validation = True
+        while validation == True:
+            try:
+                if int(action) > 0 and int(action) < limit+1:
+                    validation = False
+                    return action
+                else:
+                    action = input("Invalid input, please re-enter: ")
+            except ValueError:
+                action = input("Invalid input, please re-enter: ")
 
     def change_employee_info(self):
         self.app.print_change_employee_info()
@@ -126,11 +162,12 @@ class User:
         for index in range(len(employee_list)):
             emp = employee_list[index]
             if action == emp.get_ID_number():
-                self.app.print_changing_employee_information(emp)
+                self.app.print_employee_information(emp)
                 print("Would you like to change any information?")
                 self.app.print_yes_no()
                 change_selection = self.back_quit(action,2)
                 if change_selection == "1":
+                    self.app.print_changing_employee_information(emp)
                     option = int(input("What do you want to change? "))
                     if option == 5:
                         changed = ""
@@ -255,10 +292,19 @@ class User:
         if action == '1':
             print("[1]available     [2] working")
             action = input("Select an option: ")
+<<<<<<< HEAD
             if action == '1':
                 self.get_available_emp_date_schedule()
             elif action == '2':
                 self.get_working_emp_date_schedule()
+=======
+            temp_date = input("Enter from date: YYYY-MM-DD:")
+            date= dateutil.parser.parse(temp_date)
+            if action == '1':
+                self.get_available_emp_date_schedule(date,action)
+            elif action == '2':
+                self.get_working_emp_date_schedule(date)
+>>>>>>> b31a394d522f108f562362ec8475549ec9cef829
         elif action == '2':
             ID = input("Enter ID number: ")
             self.get_voyages_for_employee(ID)
@@ -270,12 +316,16 @@ class User:
 
 
 
-    def get_working_emp_date_schedule(self):
+    def get_available_emp_date_schedule(self, date,action):
+        available_list = self.ll.get_emp_date_schedule(date,action)
+        for emp in available_list:
+            print(str(emp))
+
+
+    def get_working_emp_date_schedule(self,date):
         # available_list = self.ll.get_emp_date_schedule(date)
         # for emp in available_list:
         #     print(str(emp))
-        temp_date = input("Enter date: YYYY-MM-DD:")
-        date = dateutil.parser.parse(temp_date)
         time_voyage_list = self.ll.get_voyages_on_date(date)
         #voyage_list = self.ll.get_voyages_for_employee(ID,time_voyage_list)
         for voyage in time_voyage_list:
@@ -386,11 +436,10 @@ class User:
             if int(action) == (index+1):
                 self.ll.change_plane_status(airplane_list,index)
                 print("You have changed the plane status")
-        self.main_menu()
     
     def get_all_plane(self):
         plane_list = self.ll.get_all_airplanes()
-        self.app.print_list_plane
+        self.app.print_list_plane()
         #self.app.print_all_planes()
         print("{:<20}{:<13}{:<13}{:<13}".format("Registration Number","Plane Type","Model","Capacity"))
         for plane in plane_list:
@@ -409,7 +458,6 @@ class User:
                 print()
             elif action == "2":
                 self.change_plane_status(action)
-
             elif action == "3":
                 self.get_all_plane()
                 action = self.back_quit(action,3)
