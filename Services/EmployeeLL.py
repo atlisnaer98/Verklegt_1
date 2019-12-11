@@ -110,14 +110,13 @@ class EmployeeLL():
     #     return employee_list
 
 
-    def get_date_schedule(self, date):
+    def get_date_schedule(self, date, action):
         temp_list = []
         all_voyage_list = self.dl.get_all_voyages() 
         for voyage in all_voyage_list:
             parseddate = dateutil.parser.parse(voyage.get_departure())
             if date.year == parseddate.year and date.month == parseddate.month and date.day == parseddate.day:
-                temp_list.append(voyage)   
-        action = input("[1]available, [2]working")
+                temp_list.append(voyage)
         final_list = self.available_employees(temp_list,action)
         return final_list
 
