@@ -2,6 +2,7 @@ from Models.Employee import Employee
 from InformationLayerClasses.API import Data_main
 import datetime
 import dateutil.parser
+from datetime import timedelta
 from Services.VoyageLL import VoyageLL
 
 class EmployeeLL():
@@ -67,14 +68,17 @@ class EmployeeLL():
                 cabin_crew_list.append(sting)
         return cabin_crew_list
     
-    def get_pilots(self):
+    def get_pilots(self, license):
         pilot_list = []
         all_employee_list = self.dl.get_all_employee()
         for line in all_employee_list:
             sting = str(line)
             lis = sting.split(',')
-            if lis[6] == "Pilot":
-                pilot_list.append(sting)
+            if license == "All" and lis[6] == 'Pilot':
+                pilot_list.append(line)
+            elif lis[8] == license:
+                pilot_list.append(line)
+        
         return pilot_list
 
     """def get_schedule(self, ID, from_date, to_date):
@@ -107,35 +111,14 @@ class EmployeeLL():
 
 
     def get_date_schedule(self, date):
-        same_year_list = []
-        same_month_list = []
-        same_day_list = []
         temp_list = []
-        print(date)
         all_voyage_list = self.dl.get_all_voyages() 
         for voyage in all_voyage_list:
             parseddate = dateutil.parser.parse(voyage.get_departure())
             if date.year == parseddate.year and date.month == parseddate.month and date.day == parseddate.day:
-                temp_list.append(voyage)
-
-
-        """for month in same_year_list:
-            parseddate = dateutil.parser.parse(month.get_departure())
-            if date.month == parseddate.month:
-                same_month_list.append(month)
-
-        for day in same_month_list:
-            parseddate = dateutil.parser.parse(day.get_departure())
-            if date.day == parseddate.day:
-                same_day_list.append(day)
-
-        for i in same_day_list:
-            temp_list.append(i)"""
-            
+                temp_list.append(voyage)   
         action = input("[1]available, [2]working")
         final_list = self.available_employees(temp_list,action)
-        
-        
         return final_list
 
     def available_employees(self, voyage_list,action):

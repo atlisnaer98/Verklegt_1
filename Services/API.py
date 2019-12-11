@@ -15,6 +15,9 @@ class LLApi:
     def get_all_airplanes(self):
         return self.aLL.get_all_airplanes()
 
+    def get_available_planes(self,from_date,to_date):
+        return self.aLL.get_available_planes(from_date,to_date)
+
     def add_plane(self, plane):
         self.aLL.add_plane(plane)
     
@@ -45,8 +48,8 @@ class LLApi:
     def get_cabin_crew(self):
         return self.eLL.get_cabin_crew()
 
-    def get_pilots(self):
-        return self.eLL.get_pilots()
+    def get_pilots(self, license):
+        return self.eLL.get_pilots(license)
 
     
     def get_all_voyages(self):
@@ -54,6 +57,9 @@ class LLApi:
 
     def get_date_voyages(self,from_date,to_date):
         return self.vLL.get_date_voyages(from_date,to_date)
+    
+    def get_voyages_on_date(self,date):
+        return self.vLL.get_voyages_on_date(date)
 
     def add_voyage(self,voyage):
         self.vLL.add_voyage(voyage)
