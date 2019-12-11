@@ -111,7 +111,6 @@ class EmployeeLL():
 
     def get_date_schedule(self, date):
         temp_list = []
-        print(date)
         all_voyage_list = self.dl.get_all_voyages() 
         for voyage in all_voyage_list:
             parseddate = dateutil.parser.parse(voyage.get_departure())

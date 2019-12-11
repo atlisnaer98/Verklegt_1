@@ -265,10 +265,12 @@ class User:
             
     def add_voyage(self):
         voyage = Voyage()
-        voyage.set_booking_reference(100)
+        voyage_list = self.ll.get_all_voyages()
+        last_booking_ref = int(voyage_list[-1].get_booking_reference())
+        voyage.set_booking_reference(last_booking_ref+1)
         voyage.set_arriving_at(input("Destination: "))
-        voyage.set_flight_number_away("NA 0500")
-        voyage.set_flight_number_home("NA 0501")
+        voyage.set_flight_number_away("NA0500")
+        voyage.set_flight_number_home("NA0501")
         depart = input("Departure date (YYYY-MM-DD): ") + "T" + input("Departure time(HH:MM): ")
         departure = dateutil.parser.parse(depart)
         voyage.set_departure(departure)
