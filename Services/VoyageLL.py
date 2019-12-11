@@ -45,14 +45,9 @@ class VoyageLL():
     def assign_crew(self,voyage_list):
         self.dl.update_voyage_file(voyage_list)
 
-    def change_voyage(self,voyage_list,index,option,changed):
+    def change_voyage(self,voyage_list,index,plane):
         voyage = voyage_list[index]
-        if option == 1:
-            voyage.set_flight_number_away(changed)
-        elif option == 2:
-            voyage.set_aircraft_id(changed)
-        else:
-            return False
+        voyage.set_aircraft_id(plane)
         voyage_list[index] = voyage
         self.dl.update_voyage_file(voyage_list)
 

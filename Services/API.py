@@ -64,8 +64,8 @@ class LLApi:
     def add_voyage(self,voyage):
         self.vLL.add_voyage(voyage)
 
-    def change_voyage(self,voyage_list,index,option,changed):
-        self.vLL.change_voyage(voyage_list,index,option,changed)
+    def change_voyage(self,voyage_list,index,plane):
+        self.vLL.change_voyage(voyage_list,index,plane)
 
     def get_crew(self,voyage):
         self.vLL.get_crew(voyage)
