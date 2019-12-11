@@ -408,6 +408,7 @@ class User:
         #print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for voyage in voyage_list:
             print(voyage.get_booking_reference())
+
 #self.app.print_voy_lsfasldf(voyage_list,"Manned")
     def get_voyages_for_employee(self, ID):
         temp_date = input("Enter from date: YYYY-MM-DD:")
@@ -434,20 +435,38 @@ class User:
                 self.app.print_voyage_selection()
                 action = input("select an option: ")
                 if action =="1":
-                    the_date = input("Enter date: YYYY-MM-DD:")                    
-                    from_date= dateutil.parser.parse(the_date)
-                    to_date = from_date + timedelta(days=1)
-                    voyage_list = self.ll.get_date_voyages(from_date,to_date)
-                    for voyage in voyage_list:
-                        if len(voyage.get_captain()) == 10 and len(voyage.get_copilot()) == 10 and len(voyage.get_fsm()) == 10:
-                            self.app.print_voyage_list_with_crew(voyage,"Manned")
-                        else:
-                            self.app.print_voyage_list_with_crew(voyage,"Unmanned")
+                    self.get_voyages_for_single_date()
                 elif action == "2":
                     ID = input("Enter ID number")
                     self.get_voyages_for_employee(ID)
+                elif action == "3":
+                    self.get_voyages_for_timeperiod()
             elif action == "4":
                 self.change_voyage()
+    
+    def get_voyages_for_single_date(self):
+        the_date = input("Enter date: YYYY-MM-DD:")                    
+        from_date= dateutil.parser.parse(the_date)
+        to_date = from_date + timedelta(days=1)
+        voyage_list = self.ll.get_date_voyages(from_date,to_date)
+        for voyage in voyage_list:
+            if len(voyage.get_captain()) == 10 and len(voyage.get_copilot()) == 10 and len(voyage.get_fsm()) == 10:
+                self.app.print_voyage_list_with_crew(voyage,"Manned")
+            else:
+                self.app.print_voyage_list_with_crew(voyage,"Unmanned")
+    
+    def get_voyages_for_timeperiod(self):
+        temp_date = input("Enter from date: YYYY-MM-DD:")                    
+        from_date = dateutil.parser.parse(temp_date)
+        temp_date = input("Enter to date: YYYY-MM-DD:")     
+        to_date = dateutil.parser.parse(temp_date)
+        voyage_list = self.ll.get_date_voyages(from_date,to_date)
+        for voyage in voyage_list:
+            if len(voyage.get_captain()) == 10 and len(voyage.get_copilot()) == 10 and len(voyage.get_fsm()) == 10:
+                self.app.print_voyage_list_with_crew(voyage,"Manned")
+            else:
+                self.app.print_voyage_list_with_crew(voyage,"Unmanned")
+
     
     def change_plane_status(self,action): #VINNA Í ÞESSU og nota þenna!
         airplane_list = self.ll.get_all_airplanes()
