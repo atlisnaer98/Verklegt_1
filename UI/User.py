@@ -13,7 +13,6 @@ QUIT = ["q","Q"]
 BACK = ["b","B"]
 YES = ["y","Y"]
 NO = ["n","N"]
-THE_WAY = []
 class User:
     def __init__(self):
         self.ll = LLApi()
@@ -378,24 +377,6 @@ class User:
             elif action == "3":
                 self.get_all_plane()
                 action = self.back_quit(action,3)
-                
-                
-        # '''
-        # self.app.print_airplane()
-        # while action not in QUIT:
-        #     action = input("select an option: ")
-        #     if action == "1":
-        #         self.app.print_add_plane()
-        #         self.add_plane()
-        #         print()
-        #         print("You have added a new airplane!")
-        #         print()
-        #         self.dest_menu(action)
-        #     elif action == "2": #Change satus
-        #         pass
-        #     elif action == "3": #List airplane
-        #         pass
-        # '''
 
     def main_menu(self,action = ""):
         while action not in QUIT:
