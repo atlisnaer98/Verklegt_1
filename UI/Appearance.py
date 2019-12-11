@@ -137,9 +137,14 @@ class Appearance:
         print(DASH*LENGTH)
         print("{}".format(WC))
 
-    def print_changing_employee_information(self, emp):
-        print("\nID Number: {}\nName: {}\nJob title: {}\nRank: {}\nLicence: {}\n\n[1] Address: {}\n[2] Home phone: {}\n[3] Mobile number: {}\n[4] Email address: {}\n[5] Activity: {}\n"
+    def print_employee_information(self, emp):
+        print("\nID Number: {}\nName: {}\nJob title: {}\nRank: {}\nLicence: {}\nAddress: {}\nHome phone: {}\nMobile number: {}\nEmail address: {}\nActivity: {}\n"
         .format(emp.get_ID_number(), emp.get_name(), emp.get_job_title(), emp.get_rank(), emp.get_licence(), emp.get_address(), emp.get_home_phone(), emp.get_mobile_number(),
+        emp.get_email_address(), emp.get_activity()))
+
+    def print_changing_employee_information(self, emp):
+        print("\n[1] Address: {}\n[2] Home phone: {}\n[3] Mobile number: {}\n[4] Email address: {}\n[5] Activity: {}\n"
+        .format(emp.get_address(), emp.get_home_phone(), emp.get_mobile_number(),
         emp.get_email_address(), emp.get_activity()))
 
     def print_employee_list(self):
@@ -313,3 +318,6 @@ class Appearance:
         print()
         
 
+    def print_working_emps(self, voyage, date):
+        print("\nCaptain: {}\nCopilot: {}\nFlight service manager: {}\nFlight Attendant: {}\nFlight Attendant {}".format(voyage.get_captain(), voyage.get_copilot(),voyage.get_fsm(),voyage.get_fa1(),voyage.get_fa2() ))
+    
