@@ -70,9 +70,9 @@ class User:
     def get_all_employee(self):
         employee_list = self.ll.get_all_employees()
         self.app.print_get_all_employess()
-        print("{:<20}{:<20}{:<20}".format("Name","SSN","Rank"))
+        print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for employee in employee_list:
-            self.app.print_get_all_employess_info(employee)
+            self.app.print_get_all_employess_role(employee)
 
     def add_employee(self):
         #self.app.print_add_employee()                          Búa til þetta í apperance
@@ -197,7 +197,7 @@ class User:
             #sting = str(line)
             #lis = sting.split(",")
             #print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[7]))
-            self.app.print_get_all_employess_info(employee)
+            self.app.print_get_all_employess_rank(employee)
 
     def get_pilots(self):
         self.app.select_license()
@@ -284,10 +284,10 @@ class User:
 
 
     def show_emp_schedule(self, action):
-        print("[1]date     [2] Employee")
+        print("[1]Date     [2] Employee")
         action = input("Select an option: ")
         if action == '1':
-            print("[1]available     [2] working")
+            print("[1]Available     [2] Working")
             action = input("Select an option: ")
             temp_date = input("Enter from date: YYYY-MM-DD:")
             from_date = dateutil.parser.parse(temp_date)
@@ -304,7 +304,7 @@ class User:
         available_list = self.ll.get_emp_date_schedule(date,action)
         print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for emp in available_list:
-            self.app.print_get_all_employess_info(emp)
+            self.app.print_get_all_employess_role(employee)
 
 
     def get_working_emp_date_schedule(self,date):
