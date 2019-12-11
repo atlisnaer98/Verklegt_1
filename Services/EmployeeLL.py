@@ -20,11 +20,10 @@ class EmployeeLL():
     def get_employee(self, action):
         employee_list = []
         all_employee_list = self.dl.get_all_employee()
-        for line in all_employee_list:
-            sting = str(line)
-            lis = sting.split(',')
-            if lis[0] == action:
-                cabin_crew_list.append(sting)
+        for emp in all_employee_list:
+            ssn = emp.get_ssn()
+            if ssn == action:
+                cabin_crew_list.append(emp)
         return employee_list
 
     def add_employee(self,emp):
@@ -62,11 +61,10 @@ class EmployeeLL():
     def get_cabin_crew(self):
         cabin_crew_list = []
         all_employee_list = self.dl.get_all_employee()
-        for line in all_employee_list:
-            sting = str(line)
-            lis = sting.split(',')
-            if lis[6] == "Cabincrew":
-                cabin_crew_list.append(sting)
+        for emp in all_employee_list:
+            role = emp.get_role()
+            if role == "Cabincrew":
+                cabin_crew_list.append(emp)
         return cabin_crew_list
     
     def get_pilots(self, license):
