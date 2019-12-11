@@ -308,6 +308,7 @@ class User:
     
 
 
+<<<<<<< HEAD
     def get_working_emp_date_schedule(self):
 <<<<<<< HEAD
 =======
@@ -317,8 +318,17 @@ class User:
 >>>>>>> 4d99d8f46692c55cb8b873ecf911989cf59b2755
         temp_date = input("Enter date: YYYY-MM-DD:")
         date = dateutil.parser.parse(temp_date)
+=======
+    def get_available_emp_date_schedule(self, date,action):
+        available_list = self.ll.get_emp_date_schedule(date,action)
+        for emp in available_list:
+            print(str(emp))
+
+
+    def get_working_emp_date_schedule(self,date):
+>>>>>>> c39ef30e484ed610e92feb9e72b8a51bfe8f57d4
         time_voyage_list = self.ll.get_voyages_on_date(date)
-        #voyage_list = self.ll.get_voyages_for_employee(ID,time_voyage_list)
+        employee_dict = self.ll.get_all_employees_dict()
         for voyage in time_voyage_list:
             print(voyage)
             self.app.print_working_emps(voyage,date)
