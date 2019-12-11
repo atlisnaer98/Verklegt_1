@@ -75,9 +75,6 @@ class User:
         self.app.print_get_all_employess()
         print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for employee in employee_list:
-            #sting = str(line)
-            #lis = sting.split(",")
-            #print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[6]))
             self.app.print_get_all_employess_info(employee)
 
     def add_employee(self):
@@ -302,19 +299,11 @@ class User:
         elif action == '2':
             ID = input("Enter ID number: ")
             self.get_voyages_for_employee(ID)
-    
 
-
-    def get_working_emp_date_schedule(self):
-        # available_list = self.ll.get_emp_date_schedule(date)
-        # for emp in available_list:
-        #     print(str(emp))
-        temp_date = input("Enter date: YYYY-MM-DD:")
-        date = dateutil.parser.parse(temp_date)
     def get_available_emp_date_schedule(self, date,action):
         available_list = self.ll.get_emp_date_schedule(date,action)
         for emp in available_list:
-            print(str(emp))
+            self.app.print_get_all_employess_info(emp)
 
 
     def get_working_emp_date_schedule(self,date):
