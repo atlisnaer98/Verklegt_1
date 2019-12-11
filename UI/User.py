@@ -285,7 +285,7 @@ class User:
                     self.get_cabin_crew()
 
 
-   def show_emp_schedule(self, action):
+    def show_emp_schedule(self, action):
         print("[1] Date [2]employee")
         action = input("Select an option: ")
         if action == '1':
