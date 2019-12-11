@@ -1,6 +1,7 @@
 from Models.Destination import Destination
 from Models.Employee import Employee
 from Models.Airplane import Airplane
+from Models.Voyage import Voyage
 
 
 
@@ -249,8 +250,8 @@ class Appearance:
         print(DASH*LENGTH)
         
 
-    def print_voyage_selection_list(self):
-        pass
+    def print_voyage_selection_list(self,voyage):
+        print("{} {}".format(voyage.get_booking_reference(),voyage.get_arriving_at()))
 
     def print_change_voyage(self):
         print(DASH*LENGTH)

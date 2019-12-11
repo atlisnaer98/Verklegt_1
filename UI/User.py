@@ -351,6 +351,9 @@ class User:
     def assign_crew(self):
         self.app.print_assign_crew()
         voyage_list = self.ll.get_all_voyages()
+        for voyage in voyage_list:
+            if voyage.get_captain() == "":
+                self.app.print_voyage_selection_list(voyage)
         action = input("Enter booking reference: ")
         for index in range(len(voyage_list)):
             voyage = voyage_list[index]
