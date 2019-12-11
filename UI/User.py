@@ -313,7 +313,7 @@ class User:
         employee_dict = self.ll.get_all_employees_dict()
         for voyage in time_voyage_list:
             #print(voyage)
-            self.app.print_working_emps(voyage,date,employee_dict)
+            self.app.print_working_emps(voyage,employee_dict)
             
     def add_voyage(self):
         voyage = Voyage()
