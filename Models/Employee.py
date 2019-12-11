@@ -17,7 +17,7 @@ class Employee():
     def __str__(self):
         return "{},{},{},{},{},{},{},{},{},{}".format(self.__ssn, self.__name, self.__address, self.__home_phone,self.__mobile_phone, self.__email_address, self.__role, self.__rank, self.__licence, self.__active)
         
-    def get_ID_ssn(self):
+    def get_ssn(self):
         return self.__ssn
 
     def set_ssn(self, new_ssn):

@@ -290,11 +290,12 @@ class User:
             print("[1]available     [2] working")
             action = input("Select an option: ")
             temp_date = input("Enter from date: YYYY-MM-DD:")
-            date= dateutil.parser.parse(temp_date)
+            from_date = dateutil.parser.parse(temp_date)
+            to_date = from_date + timedelta(days=1)
             if action == '1':
-                self.get_available_emp_date_schedule(date,action)
+                self.get_available_emp_date_schedule(from_date,to_date)
             elif action == '2':
-                self.get_working_emp_date_schedule(date)
+                self.get_working_emp_date_schedule(from_date,to_date)
         elif action == '2':
             ID = input("Enter ID number: ")
             self.get_voyages_for_employee(ID)
@@ -309,8 +310,9 @@ class User:
     def get_working_emp_date_schedule(self,date):
         time_voyage_list = self.ll.get_voyages_on_date(date)
         employee_dict = self.ll.get_all_employees_dict()
+        self.app.print_working_employee()
+        print("{:<20}{:<20}{:<20}".format("Name","SSN","Destination"))
         for voyage in time_voyage_list:
-            #print(voyage)
             self.app.print_working_emps(voyage,employee_dict)
             
     def add_voyage(self):
@@ -337,17 +339,22 @@ class User:
         voyage.set_aircraft_id(plane)
         self.ll.add_voyage(voyage)
 
-    def change_voyage():
+    def change_voyage(self):
         #self.app.print_change_voyage()                     Búa til þetta method í apperance
         voyage_list = self.ll.get_all_voyages()
-        action = input("Enter ID number: ")
+        action = input("Enter booking reference: ")
         for index in range(len(voyage_list)):
             voyage = voyage_list[index]
             if action == voyage.get_booking_reference():
                 #self.app.print_changing_voyage_information(voyage)
-                option = int(input("What do you want to change? "))
-                changed = input("Enter new input: ")
-                self.ll.change_voyage(voyage_list,index,option,changed)
+                departure = dateutil.parser.parse(voyage.get_departure())
+                arrival = dateutil.parser.parse(voyage.get_arrival())
+                plane_list = self.ll.get_available_planes(departure,arrival)
+                self.app.print_selection_list(plane_list)
+                plane_number = int(input("Select an airplane: ")) - 1
+                plane = plane_list[plane_number].get_registration_number()
+                voyage.set_aircraft_id(plane)
+                self.ll.change_voyage(voyage_list,index,plane)
 
     def assign_crew(self):
         available_captain_list = []

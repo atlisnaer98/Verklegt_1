@@ -64,8 +64,8 @@ class LLApi:
     def add_voyage(self,voyage):
         self.vLL.add_voyage(voyage)
 
-    def change_voyage(self,voyage_list,index,option,changed):
-        self.vLL.change_voyage(voyage_list,index,option,changed)
+    def change_voyage(self,voyage_list,index,plane):
+        self.vLL.change_voyage(voyage_list,index,plane)
 
     def get_crew(self,voyage):
         self.vLL.get_crew(voyage)
@@ -80,5 +80,5 @@ class LLApi:
     def get_emp_schedule(self, ID, from_date, to_date):
         return self.eLL.get_schedule(ID, from_date, to_date)
     
-    def get_emp_date_schedule(self, date,action):
-        return self.eLL.get_date_schedule(date,action) 
+    def get_emp_date_schedule(self, from_date, to_date):
+        return self.eLL.get_date_schedule(from_date,to_date) 
