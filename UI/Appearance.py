@@ -249,7 +249,7 @@ class Appearance:
         print(DASH*LENGTH)
         
 
-    def print_voyage_list(self):
+    def print_voyage_selection_list(self):
         pass
 
     def print_change_voyage(self):
