@@ -167,21 +167,24 @@ class User:
 
     def get_pilots(self):
         self.app.select_license()
-        license = input("select aircraft license:")
-        if license == '1':
-            license = 'NAFokkerF100'
-        elif license == '2':
-            license = 'NABAE146'
-        elif license == '3':
-            license = 'NAFokkerF28'
-        elif license == '4':
-            license = 'All'
-        pilot_list = self.ll.get_pilots(license)
-        print("{:<20}{:<20}{:<20}".format("Name","SSN","Licence"))
-        for line in pilot_list:
-            sting = str(line)
-            lis = sting.split(",")
-            print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[8]))
+        license = ''
+        while license not in QUIT:
+            license = self.back_quit(license,4)
+            license = input("select aircraft license:")
+            if license == '1':
+                license = 'NAFokkerF100'
+            elif license == '2':
+                license = 'NABAE146'
+            elif license == '3':
+                license = 'NAFokkerF28'
+            elif license == '4':
+                license = 'All'
+            pilot_list = self.ll.get_pilots(license)
+            print("{:<20}{:<20}{:<20}".format("Name","SSN","Licence"))
+            for line in pilot_list:
+                sting = str(line)
+                lis = sting.split(",")
+                print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[8]))
 
     def printing_picture(self):
         self.app.picture()
