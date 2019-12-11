@@ -70,7 +70,7 @@ class User:
     def get_all_employee(self):
         employee_list = self.ll.get_all_employees()
         self.app.print_get_all_employess()
-        print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
+        print("{:<20}{:<20}{:<20}".format("Name","SSN","Rank"))
         for employee in employee_list:
             self.app.print_get_all_employess_info(employee)
 
@@ -189,13 +189,15 @@ class User:
                 changed = input("Enter new input: ")
                 self.ll.change_dest(dest_list,index,int(action),changed)
         
-    def get_cabin_crew(self):
+    def get_cabin_crew(self): #Laga og bæta 
         cabin_crew_list = self.ll.get_cabin_crew()
+        self.app.print_get_all_cabincrew()
         print("{:<20}{:<20}{:<20}".format("Name","SSN","Rank"))
-        for line in cabin_crew_list:
-            sting = str(line)
-            lis = sting.split(",")
-            print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[7]))        #Nota model föllin og færa í apperance
+        for employee in cabin_crew_list:
+            #sting = str(line)
+            #lis = sting.split(",")
+            #print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[7]))
+            self.app.print_get_all_employess_info(employee)
 
     def get_pilots(self):
         self.app.select_license()
@@ -353,8 +355,13 @@ class User:
                 self.ll.change_voyage(voyage_list,index,plane)
 
     def assign_crew(self):
+        available_captain_list = []
+        available_copilot_list = []
+        available_fsm = []
+        available_fa = []
         self.app.print_assign_crew()
         voyage_list = self.ll.get_all_voyages()
+        employee_list = self.ll.get_all_employees()
         print("{}{:>15}{:>20}".format("Booking referance","Destination","Departure"))
         for voyage in voyage_list:
             if voyage.get_captain() == "":
@@ -365,7 +372,11 @@ class User:
             voyage = voyage_list[index]
             if action == voyage.get_booking_reference():
                 #self.app.print_changing_voyage_information(voyage)
-                voyage.set_captain(input("Captain: "))
+                for captain in employee_list:
+                    if captain.get_rank() == "Captain" and captain.get_activity() == "1":#and voyage.get_aircraft_id() == captain.get_licence():
+                        available_captain_list.append(captain.get_name())
+                    self.app.print_selection_list(available_captain_list)
+                    voyage.set_captain(input("Captain: "))
                 voyage.set_copilot(input("Copilot: "))
                 voyage.set_fsm(input("Flight service manager: "))
                 voyage.set_fa1(input("Flight attendant: "))
