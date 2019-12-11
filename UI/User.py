@@ -280,9 +280,9 @@ class User:
         voyage.set_flight_number_home("NA0501")
         depart = input("Departure date (YYYY-MM-DD): ") + "T" + input("Departure time(HH:MM): ")
         departure = dateutil.parser.parse(depart)
-        voyage.set_departure(departure)
+        voyage.set_departure(depart)
         arrival = departure + timedelta(hours=4)
-        voyage.set_arrival(arrival)
+        voyage.set_arrival(arrival.isoformat())
         plane_list = self.ll.get_available_planes(departure,arrival)
         self.app.print_selection_list(plane_list)
         plane_number = int(input("Select an airplane: ")) - 1
