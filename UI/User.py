@@ -337,7 +337,7 @@ class User:
         voyage.set_aircraft_id(plane)
         self.ll.add_voyage(voyage)
 
-    def change_voyage():
+    def change_voyage(self):
         #self.app.print_change_voyage()                     Búa til þetta method í apperance
         voyage_list = self.ll.get_all_voyages()
         action = input("Enter booking reference: ")
