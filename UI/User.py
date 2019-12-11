@@ -387,7 +387,7 @@ class User:
                         print(licence) 
                 #captain_list = self.ll.get_emp_date_schedule(voyage.get)  and captain in available_emp_list
                 for captain in employee_list:
-                    if captain.get_rank() == "Captain" and captain.get_activity() == "1" and licence == captain.get_licence() and captain.get_ssn in available_emp_list:
+                    if captain.get_rank() == "Captain" and captain.get_activity() == "1" and licence == captain.get_licence() and captain.get_ssn() in available_emp_list:
                         available_captain_list.append(captain.get_name())
                 self.app.print_selection_list(available_captain_list)
                 captain_selection = self.back_quit("",len(available_captain_list))
