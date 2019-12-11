@@ -354,10 +354,12 @@ class User:
     def assign_crew(self):
         self.app.print_assign_crew()
         voyage_list = self.ll.get_all_voyages()
+        print("{}{:>15}{:>20}".format("Booking referance","Destination","Departure"))
         for voyage in voyage_list:
             if voyage.get_captain() == "":
+                highest_selection = int(voyage.get_booking_reference())
                 self.app.print_voyage_selection_list(voyage)
-        action = input("Enter booking reference: ")
+        action = self.back_quit("",highest_selection)
         for index in range(len(voyage_list)):
             voyage = voyage_list[index]
             if action == voyage.get_booking_reference():

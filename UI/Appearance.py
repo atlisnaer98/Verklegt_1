@@ -223,7 +223,7 @@ class Appearance:
         print("{:^60}".format(S))
         print(DASH*LENGTH)
         print("{}".format(DOE))
-        print("{:>10} {:<30}{} {} ".format('[1]', DATE, '[2]',E ))
+        print("{:>20} {:<40}{} {} ".format('[1]', DATE, '[2]',E ))
 
     def print_selection_list(self,selected_list):
         print()
@@ -251,7 +251,7 @@ class Appearance:
         
 
     def print_voyage_selection_list(self,voyage):
-        print("{} {}".format(voyage.get_booking_reference(),voyage.get_arriving_at()))
+        print("[{}]{:<17}{}{:<10}{}".format(voyage.get_booking_reference(),"",voyage.get_arriving_at(),"",voyage.get_departure()))
 
     def print_change_voyage(self):
         print(DASH*LENGTH)
