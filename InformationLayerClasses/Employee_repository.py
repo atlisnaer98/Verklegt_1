@@ -66,7 +66,6 @@ class Employee_repository:
         with open("./DATA/Crew.csv","r",newline="") as all_crew:
             reader = csv.DictReader(all_crew)
             for line in reader:
-                crew = Employee(line["ssn"], line["name"], line["address"], line["home_phone"],line["mobile_phone"], line["email_address"], line["role"], line["rank"], line["licence"], line["active"])
-                all_employee_dict[line["ssn"]] = crew
-        print(all_employee_dict)
+                emp = Employee(line["ssn"], line["name"], line["address"], line["home_phone"],line["mobile_phone"], line["email_address"], line["role"], line["rank"], line["licence"], line["active"])
+                all_employee_dict[line["ssn"]] = emp
         return all_employee_dict

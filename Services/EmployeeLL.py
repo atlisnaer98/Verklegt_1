@@ -14,6 +14,9 @@ class EmployeeLL():
     def get_all_employees(self):
         return self.dl.get_all_employee()
 
+    def get_all_employees_dict(self):
+        return self.dl.get_all_employees_dict()
+
     def get_employee(self, action):
         employee_list = []
         all_employee_list = self.dl.get_all_employee()
@@ -23,8 +26,6 @@ class EmployeeLL():
             if lis[0] == action:
                 cabin_crew_list.append(sting)
         return employee_list
-
-        
 
     def add_employee(self,emp):
         self.dl.add_employee(emp)
