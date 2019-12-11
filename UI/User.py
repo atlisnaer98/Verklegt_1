@@ -159,11 +159,11 @@ class User:
         
     def get_cabin_crew(self):
         cabin_crew_list = self.ll.get_cabin_crew()
-        print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
+        print("{:<20}{:<20}{:<20}".format("Name","SSN","Rank"))
         for line in cabin_crew_list:
             sting = str(line)
             lis = sting.split(",")
-            print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[6]))
+            print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[7]))
 
     def get_pilots(self):
         self.app.select_license()
