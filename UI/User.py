@@ -292,40 +292,19 @@ class User:
         if action == '1':
             print("[1]available     [2] working")
             action = input("Select an option: ")
-<<<<<<< HEAD
             if action == '1':
                 self.get_available_emp_date_schedule()
             elif action == '2':
                 self.get_working_emp_date_schedule()
-=======
-            temp_date = input("Enter from date: YYYY-MM-DD:")
-            date= dateutil.parser.parse(temp_date)
-            if action == '1':
-                self.get_available_emp_date_schedule(date,action)
-            elif action == '2':
-                self.get_working_emp_date_schedule(date)
->>>>>>> b31a394d522f108f562362ec8475549ec9cef829
         elif action == '2':
             ID = input("Enter ID number: ")
             self.get_voyages_for_employee(ID)
     
-    def get_available_emp_date_schedule():
+
+
+    def get_working_emp_date_schedule(self):
         temp_date = input("Enter date: YYYY-MM-DD:")
         date = dateutil.parser.parse(temp_date)
-        
-
-
-
-    def get_available_emp_date_schedule(self, date,action):
-        available_list = self.ll.get_emp_date_schedule(date,action)
-        for emp in available_list:
-            print(str(emp))
-
-
-    def get_working_emp_date_schedule(self,date):
-        # available_list = self.ll.get_emp_date_schedule(date)
-        # for emp in available_list:
-        #     print(str(emp))
         time_voyage_list = self.ll.get_voyages_on_date(date)
         #voyage_list = self.ll.get_voyages_for_employee(ID,time_voyage_list)
         for voyage in time_voyage_list:
