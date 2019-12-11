@@ -342,9 +342,9 @@ class Appearance:
         print("{:>5} {:<27}{} {} ".format('[3]', "NAFokkerF28", '[4]',"All Pilots" ))
         print()
         
-
-    def print_working_emps(self, voyage,employee_dict): #Laga þetta fyrir GÍSLA og HELGA 
-        print("\n{}{}{}\n{}{}{}\n{}{}{}\n{}{}{}\n{}{}{}\n".format(employee_dict[voyage.get_captain()].get_name(),voyage.get_captain(),voyage.get_arriving_at(),
+#\n{}{}{}\n{}{}{}\n{}{}{}\n{}{}{}\n{}{}{}\n"
+    def print_working_emps(self, voyage,employee_dict): #Laga þetta fyrir GÍSLA og HELGA, Nafn, KT og Dest
+        print("\n{:<20}{:<20}{:<20}\n{:<20}{:<20}{:<20}\n{:<20}{:<20}{:<20}\n{:<20}{:<20}{:<20}\n{:<20}{:<20}{:<20}\n".format(employee_dict[voyage.get_captain()].get_name(),voyage.get_captain(),voyage.get_arriving_at(),
         employee_dict[voyage.get_copilot()].get_name(),voyage.get_copilot(),voyage.get_arriving_at(),
         employee_dict[voyage.get_fsm()].get_name(),voyage.get_fsm(),voyage.get_arriving_at(),
         employee_dict[voyage.get_fa1()].get_name(),voyage.get_fa1(),voyage.get_arriving_at(),
