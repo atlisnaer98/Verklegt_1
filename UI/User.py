@@ -374,12 +374,11 @@ class User:
     
     def get_all_plane(self):
         plane_list = self.ll.get_all_airplanes()
+        self.app.print_list_plane
         #self.app.print_all_planes()
         print("{:<20}{:<13}{:<13}{:<13}".format("Registration Number","Plane Type","Model","Capacity"))
         for plane in plane_list:
-            sting = str(plane)
-            lis = sting.split(",")
-            print("{:<20}{:<13}{:<13}{:<13}".format(lis[0], lis[2], lis[3], lis[4]))
+            self.app.print_list_plane_info(plane)
 
     
     def airplane_menu(self,action):
