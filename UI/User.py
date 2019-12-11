@@ -157,7 +157,7 @@ class User:
         action = input("Enter ID number: ")
         for index in range(len(employee_list)):
             emp = employee_list[index]
-            if action == emp.get_ID_number():
+            if action == emp.get_ssn():
                 self.app.print_changing_employee_information(emp)
                 print("Would you like to change any information?")
                 self.app.print_yes_no()
