@@ -157,8 +157,11 @@ class Appearance:
         print("{:^60}".format(GA))
         print(DASH*LENGTH)
 
-    def print_get_all_employess_info(self,employee):
+    def print_get_all_employess_role(self,employee):
         print("{:<20}{:<20}{:<20}".format(employee.get_name(), employee.get_ssn(), employee.get_role()))
+    
+    def print_get_all_employess_rank(self,employee):
+        print("{:<20}{:<20}{:<20}".format(employee.get_name(), employee.get_ssn(), employee.get_rank()))
 
     def print_get_all_pilots(self):#Nota og tengja
         print()
