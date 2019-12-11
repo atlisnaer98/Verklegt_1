@@ -417,7 +417,6 @@ class User:
             if int(action) == (index+1):
                 self.ll.change_plane_status(airplane_list,index)
                 print("You have changed the plane status")
-        self.main_menu()
     
     def get_all_plane(self):
         plane_list = self.ll.get_all_airplanes()
@@ -440,7 +439,6 @@ class User:
                 print()
             elif action == "2":
                 self.change_plane_status(action)
-
             elif action == "3":
                 self.get_all_plane()
                 action = self.back_quit(action,3)
