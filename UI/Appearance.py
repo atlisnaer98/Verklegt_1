@@ -150,6 +150,15 @@ class Appearance:
     def print_employee_list(self):
         pass
 
+    def print_get_all_employess(self):
+        print()
+        print(DASH*LENGTH)
+        print("{:^60}".format(GA))
+        print(DASH*LENGTH)
+
+    def print_get_all_employess_info(self,employee):
+        print("{:<20}{:<20}{:<20}".format(employee.get_name(), employee.get_ID_number(), employee.get_job_title()))
+
     def print_dest_menu(self):
         print()
         print(DASH*LENGTH)
@@ -223,6 +232,9 @@ class Appearance:
         print(DASH*LENGTH)
         print("{}".format(DOE))
         print("{:>10} {:<30}{} {} ".format('[1]', DATE, '[2]',E ))
+    
+    def print_voyage_list_with_crew(self, voyage,status):
+        print("{:<20}{:<20}{:<20}".format(voyage.get_booking_reference(), voyage.get_arriving_at(),status))
 
     def print_selection_list(self,selected_list):
         print()

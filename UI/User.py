@@ -72,11 +72,13 @@ class User:
 
     def get_all_employee(self):
         employee_list = self.ll.get_all_employees()
+        self.app.print_get_all_employess()
         print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
-        for line in employee_list:
-            sting = str(line)
-            lis = sting.split(",")
-            print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[6]))
+        for employee in employee_list:
+            #sting = str(line)
+            #lis = sting.split(",")
+            #print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[6]))
+            self.app.print_get_all_employess_info(employee)
 
     def add_employee(self):
         #self.app.print_add_employee()
@@ -407,7 +409,10 @@ class User:
                     to_date = from_date + timedelta(days=1)
                     voyage_list = self.ll.get_date_voyages(from_date,to_date)
                     for voyage in voyage_list:
-                        print(str(voyage))
+                        if len(voyage.get_captain()) == 10 and len(voyage.get_copilot()) == 10 and len(voyage.get_fsm()) == 10:
+                            self.app.print_voyage_list_with_crew(voyage,"Manned")
+                        else:
+                            self.app.print_voyage_list_with_crew(voyage,"Unmanned")
                 elif action == "2":
                     ID = input("Enter ID number")
                     self.get_voyages_for_employee(ID)
