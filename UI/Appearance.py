@@ -160,6 +160,18 @@ class Appearance:
     def print_get_all_employess_info(self,employee):
         print("{:<20}{:<20}{:<20}".format(employee.get_name(), employee.get_ID_number(), employee.get_job_title()))
 
+    def print_get_all_pilots(self):#Nota og tengja
+        print()
+        print(DASH*LENGTH)
+        print("{:^60}".format(GP))
+        print(DASH*LENGTH)    
+    
+    def print_get_all_cabincrew(self):#Nota og tengja 
+        print()
+        print(DASH*LENGTH)
+        print("{:^60}".format(GC))
+        print(DASH*LENGTH)
+    
     def print_dest_menu(self):
         print()
         print(DASH*LENGTH)
@@ -331,7 +343,7 @@ class Appearance:
         print()
         
 
-    def print_working_emps(self, voyage,employee_dict):
+    def print_working_emps(self, voyage,employee_dict): #Laga þetta fyrir GÍSLA og HELGA 
         print("\n{}{}{}\n{}{}{}\n{}{}{}\n{}{}{}\n{}{}{}\n".format(employee_dict[voyage.get_captain()].get_name(),voyage.get_captain(),voyage.get_arriving_at(),
         employee_dict[voyage.get_copilot()].get_name(),voyage.get_copilot(),voyage.get_arriving_at(),
         employee_dict[voyage.get_fsm()].get_name(),voyage.get_fsm(),voyage.get_arriving_at(),

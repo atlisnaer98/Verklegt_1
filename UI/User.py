@@ -31,9 +31,7 @@ class User:
         dest.set_distance(input("Distance: "))
         dest.set_name_of_contact(input("Emergency contact: "))
         dest.set_emergency_phone_number(input("Emergency contact number: "))
-        #print(dest)
         self.ll.add_dest(dest)
-        #return country, airport, flight_time, name_of_contact, emergency_phone_number
 
     def get_all_dest(self):
         print("{:<20}{:<20}{:<20}".format("Airport","Country","Distance(km)"))
@@ -41,10 +39,9 @@ class User:
         for line in dest_obj:
             sting = str(line)
             lis = sting.split(",")
-            print("{:<20}{:<20}{:<20}".format(lis[2], lis[1], lis[4]+'km'))
+            print("{:<20}{:<20}{:<20}".format(lis[2], lis[1], lis[4]+'km'))              #Nota model föllin og færa í apperance
     
     def add_plane(self):
-        #self.app.print_add_plane()
         plane = Airplane()
         plane.set_registration_number(input("Registration number: "))
         self.app.print_add_plane_vol2()
@@ -73,12 +70,12 @@ class User:
     def get_all_employee(self):
         employee_list = self.ll.get_all_employees()
         self.app.print_get_all_employess()
-        print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
+        print("{:<20}{:<20}{:<20}".format("Name","SSN","Rank"))
         for employee in employee_list:
             self.app.print_get_all_employess_info(employee)
 
     def add_employee(self):
-        #self.app.print_add_employee()
+        #self.app.print_add_employee()                          Búa til þetta í apperance
         plane_list = []
         job_title_list = ["Pilot","Cabincrew"]
         pilot_rank_list = ["Captain","Copilot"]
@@ -192,13 +189,15 @@ class User:
                 changed = input("Enter new input: ")
                 self.ll.change_dest(dest_list,index,int(action),changed)
         
-    def get_cabin_crew(self):
+    def get_cabin_crew(self): #Laga og bæta 
         cabin_crew_list = self.ll.get_cabin_crew()
+        self.app.print_get_all_cabincrew()
         print("{:<20}{:<20}{:<20}".format("Name","SSN","Rank"))
-        for line in cabin_crew_list:
-            sting = str(line)
-            lis = sting.split(",")
-            print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[7]))
+        for employee in cabin_crew_list:
+            #sting = str(line)
+            #lis = sting.split(",")
+            #print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[7]))
+            self.app.print_get_all_employess_info(employee)
 
     def get_pilots(self):
         self.app.select_license()
@@ -219,7 +218,7 @@ class User:
             for line in pilot_list:
                 sting = str(line)
                 lis = sting.split(",")
-                print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[8]))
+                print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[8]))        #Nota model föllin og færa í apperance
 
     def printing_picture(self):
         self.app.picture()
@@ -339,7 +338,7 @@ class User:
         self.ll.add_voyage(voyage)
 
     def change_voyage():
-        #self.app.print_change_voyage()
+        #self.app.print_change_voyage()                     Búa til þetta method í apperance
         voyage_list = self.ll.get_all_voyages()
         action = input("Enter ID number: ")
         for index in range(len(voyage_list)):
