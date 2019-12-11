@@ -310,11 +310,8 @@ class User:
 
 
     def get_working_emp_date_schedule(self,date):
-        # available_list = self.ll.get_emp_date_schedule(date)
-        # for emp in available_list:
-        #     print(str(emp))
         time_voyage_list = self.ll.get_voyages_on_date(date)
-        #voyage_list = self.ll.get_voyages_for_employee(ID,time_voyage_list)
+        employee_dict = self.ll.get_all_employees_dict()
         for voyage in time_voyage_list:
             print(voyage)
             self.app.print_working_emps(voyage,date)
