@@ -93,8 +93,8 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(M))
         print(DASH*LENGTH)
-        print("{:>5} {:<27}{} {} ".format('[1]', E, '[2]', V))
-        print("{:>5} {:<27}{} {} ".format('[3]', D, '[4]', A))
+        print("{:>10} {:<30}{} {}".format('[1]',E,'[2]',V))
+        print("{:>10} {:<30}{} {}".format('[3]',D,'[4]',A))
         print("{:15}{}".format(EMPTY,DASH*30))
         print("{:^60}".format(Q))
         print("{:15}{}".format(EMPTY,DASH*30))
@@ -104,15 +104,15 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(E))
         print(DASH*LENGTH)
-        print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', CH))
-        print("{:>5} {:<27}{} {} ".format('[3]', S, '[4]', L))
+        print("{:>10} {:<30}{} {} ".format('[1]', C, '[2]', CH))
+        print("{:>10} {:<30}{} {} ".format('[3]', S, '[4]', L))
 
     def print_select_employee_menu(self):
         print(DASH*LENGTH)
         print("{:^60}".format(E))
         print(DASH*LENGTH)
-        print("{:>5} {:<27}{} {} ".format('[1]', GA, '[2]', GP))
-        print("{:>5} {:<27}".format('[3]', GC, ))
+        print("{:>10} {:<30}{} {} ".format('[1]', GA, '[2]', GP))
+        print("{:>10} {:<30}".format('[3]', GC, ))
         print("{:15}{}".format(EMPTY,DASH*30))
         print("{:17}{}{:10}{}".format(EMPTY,B,EMPTY,Q))
         print("{:15}{}".format(EMPTY,DASH*30))
@@ -153,8 +153,8 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(D))
         print(DASH*LENGTH)
-        print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', CH))
-        print("{:>5} {} ".format('[3]', LD ))
+        print("{:>10} {:<30}{} {} ".format('[1]', C, '[2]', CH))
+        print("{:>10} {} ".format('[3]', LD ))
 
     def print_dest_info(self,dest_list):
         print("\nDestination: {}\nCountry: {}\nAirport(XXX): {}\nflight time(one-way, HH:MM): {}\nDistance from Reykjavik: {}\nContact: {}\nContact phonenumber(+xxx...): {}"
@@ -163,7 +163,7 @@ class Appearance:
         print(DASH*LENGTH)
         print("What would you like to change?")
         print()
-        print("{:>5} {:<27}{} {} ".format('[1]', "Emergency contact", '[2]', "Emergency phonenumber"))
+        print("{:>10} {:<30}{} {} ".format('[1]', "Emergency contact", '[2]', "Emergency phonenumber"))
         print()
     
     def print_plane_info(self,plane_list):
@@ -189,8 +189,8 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(V))
         print(DASH*LENGTH)
-        print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', ASS))
-        print("{:>5} {:<27}{} {}".format('[3]', LV, '[4]',CV ))
+        print("{:>10} {:<30}{} {} ".format('[1]', C, '[2]', ASS))
+        print("{:>10} {:<30}{} {}".format('[3]', LV, '[4]',CV ))
         print("{:15}{}".format(EMPTY,DASH*30))
         print("{:17}{}{:10}{}".format(EMPTY,B,EMPTY,Q))
         print("{:15}{}".format(EMPTY,DASH*30))
@@ -211,7 +211,7 @@ class Appearance:
         print("{:^60}".format(S))
         print(DASH*LENGTH)
         print("{}".format(DOE))
-        print("{:>5} {:<27}{} {} ".format('[1]', DATE, '[2]',E ))
+        print("{:>10} {:<30}{} {} ".format('[1]', DATE, '[2]',E ))
 
     def print_selection_list(self,selected_list):
         print("Please select an option: ")
@@ -251,14 +251,14 @@ class Appearance:
         print(DASH*LENGTH)
         print()
         
-        print("{:>5} {:<27}{} {} ".format('[1]', "Flight Number", '[2]', "Aircraft ID"))
+        print("{:>10} {:<30}{} {} ".format('[1]', "Flight Number", '[2]', "Aircraft ID"))
 
     def print_airplane_menu(self):
         print(DASH*LENGTH)
         print("{:^60}".format(A))
         print(DASH*LENGTH)
-        print("{:>5} {:<27}{} {} ".format('[1]', C, '[2]', CS))
-        print("{:>5} {} ".format('[3]', LA ))
+        print("{:>10} {:<30}{} {} ".format('[1]', C, '[2]', CS))
+        print("{:>10} {} ".format('[3]', LA ))
     
     def print_add_plane(self):
         print(DASH*LENGTH)
@@ -269,8 +269,8 @@ class Appearance:
     
     def print_add_plane_vol2(self):
         print("Aircraft models:")
-        print("{:>5} {:<27}{} {} ".format('[1]', BAE146, '[2]', F28))
-        print("{:>5} {} ".format('[3]', F100 ))
+        print("{:>10} {:<30}{} {} ".format('[1]', BAE146, '[2]', F28))
+        print("{:>10} {} ".format('[3]', F100 ))
         
  
         
@@ -293,6 +293,6 @@ class Appearance:
         print("Laga og bæta hér :), hehehehe")
         
     def print_yes_no(self):
-        print("{:>5} {:<27}{} {} ".format('[1]', "Yes", '[2]',"No" ))
+        print("{:>10} {:<30}{} {} ".format('[1]', "Yes", '[2]',"No" ))
         
 
