@@ -303,6 +303,7 @@ class User:
     def get_available_emp_date_schedule(self, date,action):
         available_list = self.ll.get_emp_date_schedule(date,action)
         for emp in available_list:
+            print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
             self.app.print_get_all_employess_info(emp)
 
 
