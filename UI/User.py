@@ -26,8 +26,8 @@ class User:
         dest = Destination()
         dest.set_destination(input("Destination: "))
         dest.set_country(input("Country: "))
-        dest.set_airport(input("Airport: "))
-        dest.set_flight_time(input("Time of flight: "))
+        dest.set_airport(input("Airport(XXX): "))
+        dest.set_flight_time(input("Time of flight (HH:MM): "))
         dest.set_distance(input("Distance: "))
         dest.set_name_of_contact(input("Emergency contact: "))
         dest.set_emergency_phone_number(input("Emergency contact number: "))
@@ -36,12 +36,12 @@ class User:
         #return country, airport, flight_time, name_of_contact, emergency_phone_number
 
     def get_all_dest(self):
-        self.app.print_list_dest()
         print("{:<20}{:<20}{:<20}".format("Airport","Country","Distance(km)"))
         dest_obj = self.ll.get_all_dest()
-        for dest in dest_obj:
-            self.app.print_list_dest_info(dest)
-            
+        for line in dest_obj:
+            sting = str(line)
+            lis = sting.split(",")
+            print("{:<20}{:<20}{:<20}".format(lis[2], lis[1], lis[4]+'km'))
     
     def add_plane(self):
         #self.app.print_add_plane()
@@ -88,7 +88,7 @@ class User:
         cabincrew_rank_list = ["Flight Service Manager", "Flight Attendant"]
         emp = Employee()
         emp.set_ssn(input("ID number: "))
-        emp.set_name(input("Name: "))
+        emp.set_name.validate_name(input("Name: "))
         emp.set_address(input("Adress: "))
         emp.set_home_phone(input("Home phone: "))
         emp.set_mobile_number(input("Mobile number: "))
@@ -164,12 +164,11 @@ class User:
         for index in range(len(employee_list)):
             emp = employee_list[index]
             if action == emp.get_ID_number():
-                self.app.print_employee_information(emp)
+                self.app.print_changing_employee_information(emp)
                 print("Would you like to change any information?")
                 self.app.print_yes_no()
                 change_selection = self.back_quit(action,2)
                 if change_selection == "1":
-                    self.app.print_changing_employee_information(emp)
                     option = int(input("What do you want to change? "))
                     if option == 5:
                         changed = ""
@@ -303,8 +302,15 @@ class User:
         elif action == '2':
             ID = input("Enter ID number: ")
             self.get_voyages_for_employee(ID)
+    
 
 
+    def get_working_emp_date_schedule(self):
+        # available_list = self.ll.get_emp_date_schedule(date)
+        # for emp in available_list:
+        #     print(str(emp))
+        temp_date = input("Enter date: YYYY-MM-DD:")
+        date = dateutil.parser.parse(temp_date)
     def get_available_emp_date_schedule(self, date,action):
         available_list = self.ll.get_emp_date_schedule(date,action)
         for emp in available_list:
@@ -312,14 +318,11 @@ class User:
 
 
     def get_working_emp_date_schedule(self,date):
-        # available_list = self.ll.get_emp_date_schedule(date)
-        # for emp in available_list:
-        #     print(str(emp))
         time_voyage_list = self.ll.get_voyages_on_date(date)
-        #voyage_list = self.ll.get_voyages_for_employee(ID,time_voyage_list)
+        employee_dict = self.ll.get_all_employees_dict()
         for voyage in time_voyage_list:
-            print(voyage)
-            self.app.print_working_emps(voyage,date)
+            #print(voyage)
+            self.app.print_working_emps(voyage,employee_dict)
             
     def add_voyage(self):
         voyage = Voyage()
@@ -358,8 +361,11 @@ class User:
                 self.ll.change_voyage(voyage_list,index,option,changed)
 
     def assign_crew(self):
-    #self.app.print_assign_crew()
+        self.app.print_assign_crew()
         voyage_list = self.ll.get_all_voyages()
+        for voyage in voyage_list:
+            if voyage.get_captain() == "":
+                self.app.print_voyage_selection_list(voyage)
         action = input("Enter booking reference: ")
         for index in range(len(voyage_list)):
             voyage = voyage_list[index]
@@ -378,7 +384,7 @@ class User:
         #print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for voyage in voyage_list:
             print(voyage.get_booking_reference())
-
+#self.app.print_voy_lsfasldf(voyage_list,"Manned")
     def get_voyages_for_employee(self, ID):
         temp_date = input("Enter from date: YYYY-MM-DD:")
         from_date= dateutil.parser.parse(temp_date)
@@ -427,11 +433,14 @@ class User:
         for index in range(0,len(airplane_list)):
             if int(action) == (index+1):
                 self.ll.change_plane_status(airplane_list,index)
+                print()
                 print("You have changed the plane status")
+                print()
+        self.main_menu()
     
     def get_all_plane(self):
         plane_list = self.ll.get_all_airplanes()
-        self.app.print_list_plane()
+        self.app.print_list_plane
         #self.app.print_all_planes()
         print("{:<20}{:<13}{:<13}{:<13}".format("Registration Number","Plane Type","Model","Capacity"))
         for plane in plane_list:
@@ -450,6 +459,7 @@ class User:
                 print()
             elif action == "2":
                 self.change_plane_status(action)
+
             elif action == "3":
                 self.get_all_plane()
                 action = self.back_quit(action,3)

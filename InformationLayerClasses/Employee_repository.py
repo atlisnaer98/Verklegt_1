@@ -61,22 +61,11 @@ class Employee_repository:
                 all_employee_dict[line["ssn"]] = lis
         return all_employee_dict
 
-    """def get_all_employees_dict(self):
+    def get_all_employees_dict(self):
         all_employee_dict = {}
         with open("./DATA/Crew.csv","r",newline="") as all_crew:
             reader = csv.DictReader(all_crew)
             for line in reader:
-                crew = Employee(line["ssn"], line["name"], line["address"], line["home_phone"],line["mobile_phone"], line["email_address"], line["role"], line["rank"], line["licence"], line["active"])
-                all_employee_dict[line["ssn"]] = crew
-        print(all_employee_dict)
-        return all_employee_dict"""
-
-    def get_all_voyages(self):
-        """gets all the voyages"""
-        all_voyages_list = []
-        with open("./DATA/PastFlights.csv","r",newline="") as all_flights:
-            reader = csv.DictReader(all_flights)
-            for line in reader:
-                voyages = Voyage(line["flightNumber"],line["departingFrom"],line["arrivingAt"],line["departure"],line["arrival"],line["aircraftID"],line["captain"],line["copilot"],line["fsm"],line["fa1"],line["fa2"])
-                all_voyages_list.append(voyages)
-        return all_voyages_list
+                emp = Employee(line["ssn"], line["name"], line["address"], line["home_phone"],line["mobile_phone"], line["email_address"], line["role"], line["rank"], line["licence"], line["active"])
+                all_employee_dict[line["ssn"]] = emp
+        return all_employee_dict

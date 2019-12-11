@@ -1,6 +1,7 @@
 from Models.Destination import Destination
 from Models.Employee import Employee
 from Models.Airplane import Airplane
+from Models.Voyage import Voyage
 
 
 
@@ -261,8 +262,8 @@ class Appearance:
         print(DASH*LENGTH)
         
 
-    def print_voyage_list(self):
-        pass
+    def print_voyage_selection_list(self,voyage):
+        print("{} {}".format(voyage.get_booking_reference(),voyage.get_arriving_at()))
 
     def print_change_voyage(self):
         print(DASH*LENGTH)
@@ -330,6 +331,10 @@ class Appearance:
         print()
         
 
-    def print_working_emps(self, voyage, date):
-        print("\nCaptain: {}\nCopilot: {}\nFlight service manager: {}\nFlight Attendant: {}\nFlight Attendant {}".format(voyage.get_captain(), voyage.get_copilot(),voyage.get_fsm(),voyage.get_fa1(),voyage.get_fa2() ))
+    def print_working_emps(self, voyage,employee_dict):
+        print("\n{}{}{}\n{}{}{}\n{}{}{}\n{}{}{}\n{}{}{}\n".format(employee_dict[voyage.get_captain()].get_name(),voyage.get_captain(),voyage.get_arriving_at(),
+        employee_dict[voyage.get_copilot()].get_name(),voyage.get_copilot(),voyage.get_arriving_at(),
+        employee_dict[voyage.get_fsm()].get_name(),voyage.get_fsm(),voyage.get_arriving_at(),
+        employee_dict[voyage.get_fa1()].get_name(),voyage.get_fa1(),voyage.get_arriving_at(),
+        employee_dict[voyage.get_fa2()].get_name(),voyage.get_fa2(),voyage.get_arriving_at()))
     
