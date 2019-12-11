@@ -46,3 +46,7 @@ class VoyageLL():
             return False
         voyage_list[index] = voyage
         self.dl.update_voyage_file(voyage_list)
+
+    def get_crew(self,voyage):
+        crew = [voyage.get_captain(), voyage.get_copilot(), voyage.get_fsm(), voyage.get_fa1(), voyage.get_fa2()]
+        return crew

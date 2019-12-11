@@ -219,22 +219,18 @@ class User:
         print("[1] Date [2]employee")
         action = input("Select an option: ")
         if action == '1':
-            year,month,day,hour,minute = 2019,11,20,6,0
-            date = datetime.datetime(year,month,day,hour,minute,0)
+            temp_date = input("Enter from date: YYYY-MM-DD:")
+            date= dateutil.parser.parse(temp_date)
             self.get_emp_date_schedule(date)
         elif action == '2':
             ID = input("Enter ID number: ")
-            year,month,day,hour,minute = 2019,11,10,6,0
-            from_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
-            year,month,day,hour,minute = 2019,12,20,6,0
-            to_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
             self.get_voyages_for_employee(ID)
 
 
     def get_emp_date_schedule(self, date):
         available_list = self.ll.get_emp_date_schedule(date)
-        for line in available_list:
-            print(line)
+        for emp in available_list:
+            print(str(emp))
             
     def add_voyage(self):
         voyage = Voyage()
