@@ -162,11 +162,12 @@ class User:
         for index in range(len(employee_list)):
             emp = employee_list[index]
             if action == emp.get_ID_number():
-                self.app.print_changing_employee_information(emp)
+                self.app.print_employee_information(emp)
                 print("Would you like to change any information?")
                 self.app.print_yes_no()
                 change_selection = self.back_quit(action,2)
                 if change_selection == "1":
+                    self.app.print_changing_employee_information(emp)
                     option = int(input("What do you want to change? "))
                     if option == 5:
                         changed = ""
