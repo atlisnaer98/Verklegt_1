@@ -2,6 +2,7 @@ from Models.Employee import Employee
 from InformationLayerClasses.API import Data_main
 import datetime
 import dateutil.parser
+from datetime import timedelta
 from Services.VoyageLL import VoyageLL
 
 class EmployeeLL():

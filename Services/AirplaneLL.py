@@ -1,5 +1,8 @@
 from Models.Airplane import Airplane
 from InformationLayerClasses.API import Data_main
+import datetime
+import dateutil.parser
+from datetime import timedelta
 
 class AirplaneLL():
 
@@ -8,8 +11,8 @@ class AirplaneLL():
 
     def get_all_airplanes(self):
         return self.dl.get_airplane()
-    """
-    def get_plane_schedule(self,from_date,to_date):
+    
+    def get_available_planes(self,from_date,to_date):
         busy_list = []
         all_voyage_list = self.dl.get_all_voyages() 
         for voyage in all_voyage_list:
@@ -17,22 +20,24 @@ class AirplaneLL():
             arr_parsed_date = dateutil.parser.parse(voyage.get_arrival())
             if (dep_parsed_date < to_date and arr_parsed_date > from_date) or (arr_parsed_date > from_date and dep_parsed_date < from_date):
                 busy_list.append(voyage)   
-        final_list = self.available_employees(busy_list)
+        final_list = self.check_available_planes(busy_list)
         return final_list
 
-    def get_available_planes(self,voyage_list):
+    def check_available_planes(self,voyage_list):
         all_plane_list = self.dl.get_airplane()
         list_of_available = []
         list_of_working = []
         for plane in all_plane_list:
             reg_num = plane.get_registration_number()
             for voyage in voyage_list:
-                if reg_num = voyage.get_plane_id() and employee not in list_of_working:
-                    list_of_working.append(employee)
-            if employee not in list_of_working:
+                string = str(voyage)
+                list_of_voyage_attributes = string.split(",")
+                if reg_num == list_of_voyage_attributes[6] and plane not in list_of_working:
+                    list_of_working.append(plane)
+            if plane not in list_of_working:
                 list_of_available.append(plane)
         return list_of_available
-    """
+    
     def add_plane(self, plane):
         self.dl.add_plane(plane)
 
