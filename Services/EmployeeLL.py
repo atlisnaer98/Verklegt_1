@@ -70,13 +70,12 @@ class EmployeeLL():
     def get_pilots(self, license):
         pilot_list = []
         all_employee_list = self.dl.get_all_employee()
-        for line in all_employee_list:
-            sting = str(line)
-            lis = sting.split(',')
-            if license == "All" and lis[6] == 'Pilot':
-                pilot_list.append(line)
-            elif lis[8] == license:
-                pilot_list.append(line)
+        for emp in all_employee_list:
+            role = emp.get_role()
+            if license == "All" and role == 'Pilot':
+                pilot_list.append(emp)
+            elif emp.get_licence() == license:
+                pilot_list.append(emp)
         
         return pilot_list
 
