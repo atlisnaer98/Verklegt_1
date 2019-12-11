@@ -282,10 +282,10 @@ class User:
             print(voyage.get_booking_reference())
 
     def get_voyages_for_employee(self, ID):
-        temp_date = input("Enter date: YYYY-MM-DD:")
+        temp_date = input("Enter from date: YYYY-MM-DD:")
         from_date= dateutil.parser.parse(temp_date)
-        temp_date = input("Enter date: YYYY-MM-DD:")
-        to_date= dateutil.parser.parse(temp_date)
+        temp_date = input("Enter to date: YYYY-MM-DD:")
+        to_date= dateutil.parser.parse(temp_date) + timedelta(days=1)
         time_voyage_list = self.ll.get_date_voyages(from_date,to_date)
         voyage_list = self.ll.get_voyages_for_employee(ID,time_voyage_list)
         for voyage in voyage_list:
@@ -320,9 +320,6 @@ class User:
                         print(str(voyage))
                 elif action == "2":
                     ID = input("Enter ID number")
-                    #print("Enter timeperiod")
-                    # from_date = input("From YYYY-MM-DD:")
-                    # to_date = input("to YYYY-MM-DD:")
                     self.get_voyages_for_employee(ID)
             elif action == "4":
                 self.change_voyage()
