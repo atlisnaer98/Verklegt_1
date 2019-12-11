@@ -13,7 +13,6 @@ QUIT = ["q","Q"]
 BACK = ["b","B"]
 YES = ["y","Y"]
 NO = ["n","N"]
-THE_WAY = []
 class User:
     def __init__(self):
         self.ll = LLApi()
@@ -42,11 +41,6 @@ class User:
             sting = str(line)
             lis = sting.split(",")
             print("{:<20}{:<20}{:<20}".format(lis[2], lis[1], lis[4]+'km'))
-
-    def get_all_airplane(self):
-        airplane_obj = self.ll.get_all_airplanes()
-        for line in airplane_obj:
-            print(line)
     
     def add_plane(self):
         #self.app.print_add_plane()
@@ -85,6 +79,9 @@ class User:
 
     def add_employee(self):
         #self.app.print_add_employee()
+        job_title_list = ["Pilot","Cabincrew"]
+        pilot_rank_list = ["Captain","Copilot"]
+        cabincrew_rank_list = ["Flight Service Manager", "Flight Attendant"]
         emp = Employee()
         emp.set_ssn(input("ID number: "))
         emp.set_name(input("Name: "))
@@ -92,11 +89,35 @@ class User:
         emp.set_home_phone(input("Home phone: "))
         emp.set_mobile_number(input("Mobile number: "))
         emp.set_email_address(input("Email: "))
-        emp.set_job_title(input("Job title: "))
-        emp.set_rank(input("Rank: "))
+        print("Job title:")
+        self.app.print_selection_list(job_title_list)
+        job_title_selection = self.back_quit("",2)
+        if job_title_selection == "1":
+            job_title_selection = "Pilot"
+            selected_rank_list = pilot_rank_list
+        elif job_title_selection == "2":
+            job_title_selection = "Cabincrew"
+            selected_rank_list = cabincrew_rank_list
+        emp.set_job_title(job_title_selection)
+        self.app.print_selection_list(selected_rank_list)
+        rank_selection = self.back_quit("",2)
+        if job_title_selection == "Cabincrew":
+            if rank_selection == "1":
+                rank_selection = "Flight Service Manager"
+            elif rank_selection == "2":
+                rank_selection = "Flight Attendant"
+        elif job_title_selection == "Pilot":
+            if rank_selection == "1":
+                rank_selection = "Captain"
+            elif rank_selection == "2":
+                rank_selection = "Copilot"
+        emp.set_rank(rank_selection)
         emp.set_licence(input("Licence: "))
         emp.set_activity(input("Activity: "))
         self.ll.add_employee(emp)
+
+    def validate_selection():
+        selection = ""
 
     def change_employee_info(self):
         self.app.print_change_employee_info()
@@ -229,31 +250,32 @@ class User:
         print("[1] Date [2]employee")
         action = input("Select an option: ")
         if action == '1':
-            year,month,day,hour,minute = 2019,11,20,6,0
-            date = datetime.datetime(year,month,day,hour,minute,0)
+            temp_date = input("Enter from date: YYYY-MM-DD:")
+            date= dateutil.parser.parse(temp_date)
             self.get_emp_date_schedule(date)
         elif action == '2':
             ID = input("Enter ID number: ")
-            year,month,day,hour,minute = 2019,11,10,6,0
-            from_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
-            year,month,day,hour,minute = 2019,12,20,6,0
-            to_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
             self.get_voyages_for_employee(ID)
 
 
     def get_emp_date_schedule(self, date):
         available_list = self.ll.get_emp_date_schedule(date)
-        for line in available_list:
-            print(line)
+        for emp in available_list:
+            print(str(emp))
             
     def add_voyage(self):
         voyage = Voyage()
         voyage.set_booking_reference(100)
+        voyage.set_arriving_at(input("Destination: "))
         voyage.set_flight_number_away("NA 0500")
         voyage.set_flight_number_home("NA 0501")
-        voyage.set_arriving_at(input("Destination: "))
-        voyage.set_departure("00:30")
-        voyage.set_arrival("05:30")
+        depart = input("Departure date (YYYY-MM-DD): ") + "T" + input("Departure time(HH:MM): ")
+        departure = dateutil.parser.parse(depart)
+        voyage.set_departure(departure)
+        arrival = departure + timedelta(hours=4)
+        voyage.set_arrival(arrival)
+        plane_list = self.ll.get_all_airplanes()
+        self.app.print_selection_list(plane_list)
         voyage.set_aircraft_id("TF-100")
         self.ll.add_voyage(voyage)
 
@@ -292,10 +314,10 @@ class User:
             print(voyage.get_booking_reference())
 
     def get_voyages_for_employee(self, ID):
-        temp_date = input("Enter date: YYYY-MM-DD:")
+        temp_date = input("Enter from date: YYYY-MM-DD:")
         from_date= dateutil.parser.parse(temp_date)
-        temp_date = input("Enter date: YYYY-MM-DD:")
-        to_date= dateutil.parser.parse(temp_date)
+        temp_date = input("Enter to date: YYYY-MM-DD:")
+        to_date= dateutil.parser.parse(temp_date) + timedelta(days=1)
         time_voyage_list = self.ll.get_date_voyages(from_date,to_date)
         voyage_list = self.ll.get_voyages_for_employee(ID,time_voyage_list)
         for voyage in voyage_list:
@@ -317,12 +339,6 @@ class User:
                 action = input("select an option: ")
                 if action =="1":
                     the_date = input("Enter date: YYYY-MM-DD:")                    
-                    #year,month,day,hour,minute = 2019,11,10,6,0
-                    #from_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
-                    #to_date = input("to YYYY-MM-DD:") 2019-11-24T03:00:00
-                    #year,month,day,hour,minute = 2019,12,20,6,0
-                    #to_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
-                    #self.get_date_voyages(from_date, to_date)
                     from_date= dateutil.parser.parse(the_date)
                     to_date = from_date + timedelta(days=1)
                     voyage_list = self.ll.get_date_voyages(from_date,to_date)
@@ -330,9 +346,6 @@ class User:
                         print(str(voyage))
                 elif action == "2":
                     ID = input("Enter ID number")
-                    #print("Enter timeperiod")
-                    # from_date = input("From YYYY-MM-DD:")
-                    # to_date = input("to YYYY-MM-DD:")
                     self.get_voyages_for_employee(ID)
             elif action == "4":
                 self.change_voyage()
@@ -349,10 +362,11 @@ class User:
         self.main_menu()
     
     def get_all_plane(self):
+        plane_list = self.ll.get_all_airplanes()
+        #self.app.print_all_planes()
         print("{:<20}{:<13}{:<13}{:<13}".format("Registration Number","Plane Type","Model","Capacity"))
-        plane_obj = self.ll.get_all_airplanes()
-        for line in plane_obj:
-            sting = str(line)
+        for plane in plane_list:
+            sting = str(plane)
             lis = sting.split(",")
             print("{:<20}{:<13}{:<13}{:<13}".format(lis[0], lis[2], lis[3], lis[4]))
 
@@ -373,24 +387,6 @@ class User:
             elif action == "3":
                 self.get_all_plane()
                 action = self.back_quit(action,3)
-                
-                
-        # '''
-        # self.app.print_airplane()
-        # while action not in QUIT:
-        #     action = input("select an option: ")
-        #     if action == "1":
-        #         self.app.print_add_plane()
-        #         self.add_plane()
-        #         print()
-        #         print("You have added a new airplane!")
-        #         print()
-        #         self.dest_menu(action)
-        #     elif action == "2": #Change satus
-        #         pass
-        #     elif action == "3": #List airplane
-        #         pass
-        # '''
 
     def main_menu(self,action = ""):
         while action not in QUIT:
