@@ -392,7 +392,7 @@ class User:
                 self.app.print_selection_list(available_captain_list)
                 captain_selection = self.back_quit("",len(available_captain_list))
                 for captain_index in range(len(available_captain_list)):
-                    if captain_index+1 == captain_selection:
+                    if captain_index+1 == int(captain_selection):
                         voyage.set_captain(available_captain_list[captain_index])
 
                 
