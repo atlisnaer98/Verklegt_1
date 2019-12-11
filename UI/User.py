@@ -42,11 +42,6 @@ class User:
             sting = str(line)
             lis = sting.split(",")
             print("{:<20}{:<20}{:<20}".format(lis[2], lis[1], lis[4]+'km'))
-
-    def get_all_airplane(self):
-        airplane_obj = self.ll.get_all_airplanes()
-        for line in airplane_obj:
-            print(line)
     
     def add_plane(self):
         #self.app.print_add_plane()
@@ -235,11 +230,16 @@ class User:
     def add_voyage(self):
         voyage = Voyage()
         voyage.set_booking_reference(100)
+        voyage.set_arriving_at(input("Destination: "))
         voyage.set_flight_number_away("NA 0500")
         voyage.set_flight_number_home("NA 0501")
-        voyage.set_arriving_at(input("Destination: "))
-        voyage.set_departure("00:30")
-        voyage.set_arrival("05:30")
+        depart = input("Departure date (YYYY-MM-DD): ") + "T" + input("Departure time(HH:MM): ")
+        departure = dateutil.parser.parse(depart)
+        voyage.set_departure(departure)
+        arrival = departure + timedelta(hours=4)
+        voyage.set_arrival(arrival)
+        plane_list = self.ll.get_all_airplanes()
+        self.app.print_selection_list(plane_list)
         voyage.set_aircraft_id("TF-100")
         self.ll.add_voyage(voyage)
 
@@ -303,12 +303,6 @@ class User:
                 action = input("select an option: ")
                 if action =="1":
                     the_date = input("Enter date: YYYY-MM-DD:")                    
-                    #year,month,day,hour,minute = 2019,11,10,6,0
-                    #from_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
-                    #to_date = input("to YYYY-MM-DD:") 2019-11-24T03:00:00
-                    #year,month,day,hour,minute = 2019,12,20,6,0
-                    #to_date = datetime.datetime(year,month,day,hour,minute,0) #breyta í input
-                    #self.get_date_voyages(from_date, to_date)
                     from_date= dateutil.parser.parse(the_date)
                     to_date = from_date + timedelta(days=1)
                     voyage_list = self.ll.get_date_voyages(from_date,to_date)
@@ -332,10 +326,11 @@ class User:
         self.main_menu()
     
     def get_all_plane(self):
+        plane_list = self.ll.get_all_airplanes()
+        #self.app.print_all_planes()
         print("{:<20}{:<13}{:<13}{:<13}".format("Registration Number","Plane Type","Model","Capacity"))
-        plane_obj = self.ll.get_all_airplanes()
-        for line in plane_obj:
-            sting = str(line)
+        for plane in plane_list:
+            sting = str(plane)
             lis = sting.split(",")
             print("{:<20}{:<13}{:<13}{:<13}".format(lis[0], lis[2], lis[3], lis[4]))
 
