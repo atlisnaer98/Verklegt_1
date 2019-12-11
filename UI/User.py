@@ -291,10 +291,12 @@ class User:
         if action == '1':
             print("[1]available     [2] working")
             action = input("Select an option: ")
-            if action == '2':
-                self.get_working_emp_date_schedule()
+            temp_date = input("Enter from date: YYYY-MM-DD:")
+            date= dateutil.parser.parse(temp_date)
+            if action == '1':
+                self.get_available_emp_date_schedule(date,action)
             elif action == '2':
-                pass
+                self.get_working_emp_date_schedule(date)
         elif action == '2':
             ID = input("Enter ID number: ")
             self.get_voyages_for_employee(ID)
@@ -317,8 +319,8 @@ class User:
         time_voyage_list = self.ll.get_voyages_on_date(date)
         employee_dict = self.ll.get_all_employees_dict()
         for voyage in time_voyage_list:
-            print(voyage)
-            self.app.print_working_emps(voyage,date)
+            #print(voyage)
+            self.app.print_working_emps(voyage,date,employee_dict)
             
     def add_voyage(self):
         voyage = Voyage()
@@ -359,6 +361,9 @@ class User:
     def assign_crew(self):
         self.app.print_assign_crew()
         voyage_list = self.ll.get_all_voyages()
+        for voyage in voyage_list:
+            if voyage.get_captain() == "":
+                self.app.print_voyage_selection_list(voyage)
         action = input("Enter booking reference: ")
         for index in range(len(voyage_list)):
             voyage = voyage_list[index]
