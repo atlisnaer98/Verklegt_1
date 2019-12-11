@@ -338,14 +338,19 @@ class User:
     def change_voyage():
         #self.app.print_change_voyage()                     Búa til þetta method í apperance
         voyage_list = self.ll.get_all_voyages()
-        action = input("Enter ID number: ")
+        action = input("Enter booking reference: ")
         for index in range(len(voyage_list)):
             voyage = voyage_list[index]
             if action == voyage.get_booking_reference():
                 #self.app.print_changing_voyage_information(voyage)
-                option = int(input("What do you want to change? "))
-                changed = input("Enter new input: ")
-                self.ll.change_voyage(voyage_list,index,option,changed)
+                departure = dateutil.parser.parse(voyage.get_departure())
+                arrival = dateutil.parser.parse(voyage.get_arrival())
+                plane_list = self.ll.get_available_planes(departure,arrival)
+                self.app.print_selection_list(plane_list)
+                plane_number = int(input("Select an airplane: ")) - 1
+                plane = plane_list[plane_number].get_registration_number()
+                voyage.set_aircraft_id(plane)
+                self.ll.change_voyage(voyage_list,index,plane)
 
     def assign_crew(self):
         self.app.print_assign_crew()
