@@ -357,6 +357,7 @@ class User:
         self.app.print_assign_crew()
         voyage_list = self.ll.get_all_voyages()
         employee_list = self.ll.get_all_employees()
+        airplane_list = self.ll.get_all_airplanes()
         print("{}{:>15}{:>20}".format("Booking referance","Destination","Departure"))
         for voyage in voyage_list:
             if voyage.get_captain() == "":
@@ -365,13 +366,23 @@ class User:
         action = self.back_quit("",highest_selection)
         for index in range(len(voyage_list)):
             voyage = voyage_list[index]
+
             if action == voyage.get_booking_reference():
-                #self.app.print_changing_voyage_information(voyage)
+                for airplane in airplane_list:
+                    if voyage.get_aircraft_id() == airplane.get_registration_number():
+                        licence = airplane.get_planeID()
+                        print(licence) 
+                #captain_list = self.ll.get_emp_date_schedule(voyage.get)
                 for captain in employee_list:
-                    if captain.get_rank() == "Captain" and captain.get_activity() == "1":#and voyage.get_aircraft_id() == captain.get_licence():
+                    if captain.get_rank() == "Captain" and captain.get_activity() == "1" and licence == captain.get_licence():
                         available_captain_list.append(captain.get_name())
-                    self.app.print_selection_list(available_captain_list)
-                    voyage.set_captain(input("Captain: "))
+                self.app.print_selection_list(available_captain_list)
+                captain_selection = self.back_quit("",len(available_captain_list))
+                for captain_index in range(len(available_captain_list)):
+                    if captain_index+1 == captain_selection:
+                        voyage.set_captain(available_captain_list[captain_index])
+
+                
                 voyage.set_copilot(input("Copilot: "))
                 voyage.set_fsm(input("Flight service manager: "))
                 voyage.set_fa1(input("Flight attendant: "))
