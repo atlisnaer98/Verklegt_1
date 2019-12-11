@@ -2,11 +2,13 @@ from Models.Employee import Employee
 from InformationLayerClasses.API import Data_main
 import datetime
 import dateutil.parser
+from Services.VoyageLL import VoyageLL
 
 class EmployeeLL():
         
     def __init__(self, sending):
         self.dl = sending
+        self.vLL = VoyageLL(sending)
     
     def get_all_employees(self):
         return self.dl.get_all_employee()
@@ -113,11 +115,11 @@ class EmployeeLL():
         all_voyage_list = self.dl.get_all_voyages() 
         for voyage in all_voyage_list:
             parseddate = dateutil.parser.parse(voyage.get_departure())
-            if date.year == parseddate.year:
-                same_year_list.append(voyage)
+            if date.year == parseddate.year and date.month == parseddate.month and date.day == parseddate.day:
+                temp_list.append(voyage)
 
 
-        for month in same_year_list:
+        """for month in same_year_list:
             parseddate = dateutil.parser.parse(month.get_departure())
             if date.month == parseddate.month:
                 same_month_list.append(month)
@@ -128,40 +130,30 @@ class EmployeeLL():
                 same_day_list.append(day)
 
         for i in same_day_list:
-            temp_list.append(i)
+            temp_list.append(i)"""
             
         action = input("[1]available, [2]working")
-        if action == '1':
-            self.available_employees(temp_list)
-        elif action == '2':
-            self.working_employees(same_day_list)
+        final_list = self.available_employees(temp_list,action)
         
         
-        return same_day_list
+        return final_list
 
-    def available_employees(self, same_day_list):
+    def available_employees(self, voyage_list,action):
         all_employees = self.get_all_employees()
-        list_of_ids = []
+        list_of_available = []
+        list_of_working = []
         for employee in all_employees:
             id_numb = employee.get_ID_number()
-            list_of_ids.append(id_numb)
-
-        for z in same_day_list:
-            str_z = str(z)
-            lis_z = str_z.split(",")
-            for ids in list_of_ids:
-                if  ids in lis_z:
-                    print("si")
-                else:
-                    print("fuuuck")
-        #for i in list_of_ids:
-            #print(i)
-            #for y in same_day_list:
-                #print(y)
-
-    def working_employees(self):
-        all_employees = self.get_all_employees()
-
+            for voyage in voyage_list:
+                crew = self.vLL.get_crew(voyage)
+                if id_numb in crew and employee not in list_of_working:
+                    list_of_working.append(employee)
+            if employee not in list_of_working:
+                list_of_available.append(employee)
+        if action == "1":
+            return list_of_available
+        elif action == "2":
+            return list_of_working
             
 
         
