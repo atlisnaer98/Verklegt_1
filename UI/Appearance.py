@@ -291,6 +291,11 @@ class Appearance:
         print("Laga og bæta hér :), hehehehe")
         
     def print_yes_no(self):
-        print("{:>10} {:<30}{} {} ".format('[1]', "Yes", '[2]',"No" ))
+        print("{:>5} {:<27}{} {} ".format('[1]', "Yes", '[2]',"No" ))
+
+    def select_license(self):
+        print("{:>5} {:<27}{} {} ".format('[1]', "NAFokkerF100", '[2]',"NABAE146" ))
+        print("{:>5} {:<27}{} {} ".format('[3]', "NAFokkerF28", '[4]',"All Pilots" ))
+        print()
         
 
