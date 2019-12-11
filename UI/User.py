@@ -290,11 +290,12 @@ class User:
             print("[1]available     [2] working")
             action = input("Select an option: ")
             temp_date = input("Enter from date: YYYY-MM-DD:")
-            date= dateutil.parser.parse(temp_date)
+            from_date = dateutil.parser.parse(temp_date)
+            to_date = from_date + timedelta(days=1)
             if action == '1':
-                self.get_available_emp_date_schedule(date,action)
+                self.get_available_emp_date_schedule(from_date,to_date)
             elif action == '2':
-                self.get_working_emp_date_schedule(date)
+                self.get_working_emp_date_schedule(from_date,to_date)
         elif action == '2':
             ID = input("Enter ID number: ")
             self.get_voyages_for_employee(ID)

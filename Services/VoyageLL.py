@@ -17,8 +17,9 @@ class VoyageLL():
         voyage_list = []
         all_voyage_list = self.dl.get_all_voyages()
         for voyage in all_voyage_list:
-            parseddate =dateutil.parser.parse(voyage.get_departure())
-            if from_date <= parseddate and parseddate < to_date:
+            dep_date = dateutil.parser.parse(voyage.get_departure())
+            arr_date = dateutil.parser.parse(voyage.get_arrival())
+            if (from_date <= dep_date and dep_date < to_date) or (from_date <= arr_date and arr_date < to_date):
                 voyage_list.append(voyage)
         return voyage_list  
     
