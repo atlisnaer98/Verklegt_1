@@ -281,7 +281,7 @@ class User:
         voyage.set_arrival(arrival)
         plane_list = self.ll.get_available_planes(departure,arrival)
         self.app.print_selection_list(plane_list)
-        plane_number = int(input("Select an airplane: ")) + 1
+        plane_number = int(input("Select an airplane: ")) - 1
         voyage.set_aircraft_id(plane_list[plane_number].get_registration_number())
         self.ll.add_voyage(voyage)
 
