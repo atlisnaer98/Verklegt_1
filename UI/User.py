@@ -204,7 +204,6 @@ class User:
         license = ''
         while license not in QUIT:
             license = self.back_quit(license,4)
-            license = input("select aircraft license:")
             if license == '1':
                 license = 'NAFokkerF100'
             elif license == '2':
