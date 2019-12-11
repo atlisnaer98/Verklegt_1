@@ -318,6 +318,6 @@ class Appearance:
         print()
         
 
-    def print_working_emps(self, voyage, date):
-        print("\nCaptain: {}\nCopilot: {}\nFlight service manager: {}\nFlight Attendant: {}\nFlight Attendant {}".format(voyage.get_captain(), voyage.get_copilot(),voyage.get_fsm(),voyage.get_fa1(),voyage.get_fa2() ))
+    def print_working_emps(self, voyage, date,employee_dict):
+        print("\nCaptain: {}\nCopilot: {}\nFlight service manager: {}\nFlight Attendant: {}\nFlight Attendant {}".format(employee_dict[voyage.get_captain()].get_name(), voyage.get_copilot(),voyage.get_fsm(),voyage.get_fa1(),voyage.get_fa2() ))
     
