@@ -31,9 +31,7 @@ class User:
         dest.set_distance(input("Distance: "))
         dest.set_name_of_contact(input("Emergency contact: "))
         dest.set_emergency_phone_number(input("Emergency contact number: "))
-        #print(dest)
         self.ll.add_dest(dest)
-        #return country, airport, flight_time, name_of_contact, emergency_phone_number
 
     def get_all_dest(self):
         print("{:<20}{:<20}{:<20}".format("Airport","Country","Distance(km)"))
@@ -41,10 +39,9 @@ class User:
         for line in dest_obj:
             sting = str(line)
             lis = sting.split(",")
-            print("{:<20}{:<20}{:<20}".format(lis[2], lis[1], lis[4]+'km'))
+            print("{:<20}{:<20}{:<20}".format(lis[2], lis[1], lis[4]+'km'))              #Nota model föllin og færa í apperance
     
     def add_plane(self):
-        #self.app.print_add_plane()
         plane = Airplane()
         plane.set_registration_number(input("Registration number: "))
         self.app.print_add_plane_vol2()
@@ -75,13 +72,10 @@ class User:
         self.app.print_get_all_employess()
         print("{:<20}{:<20}{:<20}".format("Name","SSN","Rank"))
         for employee in employee_list:
-            #sting = str(line)
-            #lis = sting.split(",")
-            #print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[6]))
             self.app.print_get_all_employess_info(employee)
 
     def add_employee(self):
-        #self.app.print_add_employee()
+        #self.app.print_add_employee()                          Búa til þetta í apperance
         plane_list = []
         job_title_list = ["Pilot","Cabincrew"]
         pilot_rank_list = ["Captain","Copilot"]
@@ -224,7 +218,7 @@ class User:
             for line in pilot_list:
                 sting = str(line)
                 lis = sting.split(",")
-                print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[8]))
+                print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[8]))        #Nota model föllin og færa í apperance
 
     def printing_picture(self):
         self.app.picture()
@@ -290,7 +284,7 @@ class User:
 
 
     def show_emp_schedule(self, action):
-        print("[1] Date [2]employee")
+        print("[1]date     [2] Employee")
         action = input("Select an option: ")
         if action == '1':
             print("[1]available     [2] working")
@@ -304,19 +298,12 @@ class User:
         elif action == '2':
             ID = input("Enter ID number: ")
             self.get_voyages_for_employee(ID)
-    
 
-
-    def get_working_emp_date_schedule(self):
-        # available_list = self.ll.get_emp_date_schedule(date)
-        # for emp in available_list:
-        #     print(str(emp))
-        temp_date = input("Enter date: YYYY-MM-DD:")
-        date = dateutil.parser.parse(temp_date)
     def get_available_emp_date_schedule(self, date,action):
         available_list = self.ll.get_emp_date_schedule(date,action)
+        print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for emp in available_list:
-            print(str(emp))
+            self.app.print_get_all_employess_info(emp)
 
 
     def get_working_emp_date_schedule(self,date):
@@ -351,7 +338,7 @@ class User:
         self.ll.add_voyage(voyage)
 
     def change_voyage():
-        #self.app.print_change_voyage()
+        #self.app.print_change_voyage()                     Búa til þetta method í apperance
         voyage_list = self.ll.get_all_voyages()
         action = input("Enter ID number: ")
         for index in range(len(voyage_list)):
@@ -365,10 +352,12 @@ class User:
     def assign_crew(self):
         self.app.print_assign_crew()
         voyage_list = self.ll.get_all_voyages()
+        print("{}{:>15}{:>20}".format("Booking referance","Destination","Departure"))
         for voyage in voyage_list:
             if voyage.get_captain() == "":
+                highest_selection = int(voyage.get_booking_reference())
                 self.app.print_voyage_selection_list(voyage)
-        action = input("Enter booking reference: ")
+        action = self.back_quit("",highest_selection)
         for index in range(len(voyage_list)):
             voyage = voyage_list[index]
             if action == voyage.get_booking_reference():
