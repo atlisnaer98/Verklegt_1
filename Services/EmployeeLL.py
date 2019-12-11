@@ -65,14 +65,17 @@ class EmployeeLL():
                 cabin_crew_list.append(sting)
         return cabin_crew_list
     
-    def get_pilots(self):
+    def get_pilots(self, license):
         pilot_list = []
         all_employee_list = self.dl.get_all_employee()
         for line in all_employee_list:
             sting = str(line)
             lis = sting.split(',')
-            if lis[6] == "Pilot":
-                pilot_list.append(sting)
+            if license == "All" and lis[6] == 'Pilot':
+                pilot_list.append(line)
+            elif lis[8] == license:
+                pilot_list.append(line)
+        
         return pilot_list
 
     """def get_schedule(self, ID, from_date, to_date):
