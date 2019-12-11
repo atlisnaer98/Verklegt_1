@@ -80,5 +80,5 @@ class LLApi:
     def get_emp_schedule(self, ID, from_date, to_date):
         return self.eLL.get_schedule(ID, from_date, to_date)
     
-    def get_emp_date_schedule(self, date,action):
-        return self.eLL.get_date_schedule(date,action) 
+    def get_emp_date_schedule(self, from_date, to_date):
+        return self.eLL.get_date_schedule(from_date,to_date) 

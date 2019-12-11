@@ -290,11 +290,12 @@ class User:
             print("[1]Available     [2] Working")
             action = input("Select an option: ")
             temp_date = input("Enter from date: YYYY-MM-DD:")
-            date= dateutil.parser.parse(temp_date)
+            from_date = dateutil.parser.parse(temp_date)
+            to_date = from_date + timedelta(days=1)
             if action == '1':
-                self.get_available_emp_date_schedule(date,action)
+                self.get_available_emp_date_schedule(from_date,to_date)
             elif action == '2':
-                self.get_working_emp_date_schedule(date)
+                self.get_working_emp_date_schedule(from_date,to_date)
         elif action == '2':
             ID = input("Enter ID number: ")
             self.get_voyages_for_employee(ID)
@@ -356,6 +357,7 @@ class User:
                 self.ll.change_voyage(voyage_list,index,plane)
 
     def assign_crew(self):
+        available_emp_list = []
         available_captain_list = []
         available_copilot_list = []
         available_fsm = []
@@ -363,6 +365,7 @@ class User:
         self.app.print_assign_crew()
         voyage_list = self.ll.get_all_voyages()
         employee_list = self.ll.get_all_employees()
+        airplane_list = self.ll.get_all_airplanes()
         print("{}{:>15}{:>20}".format("Booking referance","Destination","Departure"))
         for voyage in voyage_list:
             if voyage.get_captain() == "":
@@ -371,13 +374,28 @@ class User:
         action = self.back_quit("",highest_selection)
         for index in range(len(voyage_list)):
             voyage = voyage_list[index]
-            if action == voyage.get_booking_reference():
-                #self.app.print_changing_voyage_information(voyage)
+    
+            if action == voyage.get_booking_reference():            
+                voyage_date_from = dateutil.parser.parse(voyage.get_departure())
+                voyage_date_to = dateutil.parser.parse(voyage.get_arrival())
+                emp_obj = self.ll.get_emp_date_schedule(voyage_date_from,voyage_date_to)
+                for emp in emp_obj:
+                    available_emp_list.append(emp.get_ssn())
+                for airplane in airplane_list:
+                    if voyage.get_aircraft_id() == airplane.get_registration_number():
+                        licence = airplane.get_planeID()
+                        print(licence) 
+                #captain_list = self.ll.get_emp_date_schedule(voyage.get)  and captain in available_emp_list
                 for captain in employee_list:
-                    if captain.get_rank() == "Captain" and captain.get_activity() == "1":#and voyage.get_aircraft_id() == captain.get_licence():
+                    if captain.get_rank() == "Captain" and captain.get_activity() == "1" and licence == captain.get_licence() and captain.get_ssn in available_emp_list:
                         available_captain_list.append(captain.get_name())
-                    self.app.print_selection_list(available_captain_list)
-                    voyage.set_captain(input("Captain: "))
+                self.app.print_selection_list(available_captain_list)
+                captain_selection = self.back_quit("",len(available_captain_list))
+                for captain_index in range(len(available_captain_list)):
+                    if captain_index+1 == captain_selection:
+                        voyage.set_captain(available_captain_list[captain_index])
+
+                
                 voyage.set_copilot(input("Copilot: "))
                 voyage.set_fsm(input("Flight service manager: "))
                 voyage.set_fa1(input("Flight attendant: "))
