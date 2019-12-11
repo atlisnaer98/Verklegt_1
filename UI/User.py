@@ -73,7 +73,7 @@ class User:
     def get_all_employee(self):
         employee_list = self.ll.get_all_employees()
         self.app.print_get_all_employess()
-        print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
+        print("{:<20}{:<20}{:<20}".format("Name","SSN","Rank"))
         for employee in employee_list:
             #sting = str(line)
             #lis = sting.split(",")
@@ -195,13 +195,15 @@ class User:
                 changed = input("Enter new input: ")
                 self.ll.change_dest(dest_list,index,int(action),changed)
         
-    def get_cabin_crew(self):
+    def get_cabin_crew(self): #Laga og bæta 
         cabin_crew_list = self.ll.get_cabin_crew()
+        self.app.print_get_all_cabincrew()
         print("{:<20}{:<20}{:<20}".format("Name","SSN","Rank"))
-        for line in cabin_crew_list:
-            sting = str(line)
-            lis = sting.split(",")
-            print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[7]))
+        for employee in cabin_crew_list:
+            #sting = str(line)
+            #lis = sting.split(",")
+            #print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[7]))
+            self.app.print_get_all_employess_info(employee)
 
     def get_pilots(self):
         self.app.select_license()
