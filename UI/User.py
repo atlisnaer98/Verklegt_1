@@ -72,11 +72,10 @@ class User:
 
     def get_all_employee(self):
         employee_list = self.ll.get_all_employees()
+        self.app.print_get_all_employess()
         print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
-        for line in employee_list:
-            sting = str(line)
-            lis = sting.split(",")
-            print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[6]))
+        for employee in employee_list:
+            self.app.print_get_all_employess_info(employee)
 
     def add_employee(self):
         #self.app.print_add_employee()
@@ -286,7 +285,7 @@ class User:
 
 
     def show_emp_schedule(self, action):
-        print("[1] Date [2]employee")
+        print("[1]date     [2] Employee")
         action = input("Select an option: ")
         if action == '1':
             print("[1]available     [2] working")
@@ -301,11 +300,11 @@ class User:
             ID = input("Enter ID number: ")
             self.get_voyages_for_employee(ID)
 
-
     def get_available_emp_date_schedule(self, date,action):
         available_list = self.ll.get_emp_date_schedule(date,action)
+        print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for emp in available_list:
-            print(str(emp))
+            self.app.print_get_all_employess_info(emp)
 
 
     def get_working_emp_date_schedule(self,date):
@@ -313,7 +312,7 @@ class User:
         employee_dict = self.ll.get_all_employees_dict()
         for voyage in time_voyage_list:
             #print(voyage)
-            self.app.print_working_emps(voyage,date,employee_dict)
+            self.app.print_working_emps(voyage,employee_dict)
             
     def add_voyage(self):
         voyage = Voyage()
@@ -408,7 +407,10 @@ class User:
                     to_date = from_date + timedelta(days=1)
                     voyage_list = self.ll.get_date_voyages(from_date,to_date)
                     for voyage in voyage_list:
-                        print(str(voyage))
+                        if len(voyage.get_captain()) == 10 and len(voyage.get_copilot()) == 10 and len(voyage.get_fsm()) == 10:
+                            self.app.print_voyage_list_with_crew(voyage,"Manned")
+                        else:
+                            self.app.print_voyage_list_with_crew(voyage,"Unmanned")
                 elif action == "2":
                     ID = input("Enter ID number")
                     self.get_voyages_for_employee(ID)
