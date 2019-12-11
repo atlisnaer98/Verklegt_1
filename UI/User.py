@@ -357,6 +357,7 @@ class User:
                 self.ll.change_voyage(voyage_list,index,plane)
 
     def assign_crew(self):
+        available_emp_list = []
         available_captain_list = []
         available_copilot_list = []
         available_fsm = []
@@ -373,15 +374,20 @@ class User:
         action = self.back_quit("",highest_selection)
         for index in range(len(voyage_list)):
             voyage = voyage_list[index]
-
-            if action == voyage.get_booking_reference():
+    
+            if action == voyage.get_booking_reference():            
+                voyage_date_from = dateutil.parser.parse(voyage.get_departure())
+                voyage_date_to = dateutil.parser.parse(voyage.get_arrival())
+                emp_obj = self.ll.get_emp_date_schedule(voyage_date_from,voyage_date_to)
+                for emp in emp_obj:
+                    available_emp_list.append(emp.get_ssn())
                 for airplane in airplane_list:
                     if voyage.get_aircraft_id() == airplane.get_registration_number():
                         licence = airplane.get_planeID()
                         print(licence) 
-                #captain_list = self.ll.get_emp_date_schedule(voyage.get)
+                #captain_list = self.ll.get_emp_date_schedule(voyage.get)  and captain in available_emp_list
                 for captain in employee_list:
-                    if captain.get_rank() == "Captain" and captain.get_activity() == "1" and licence == captain.get_licence():
+                    if captain.get_rank() == "Captain" and captain.get_activity() == "1" and licence == captain.get_licence() and captain.get_ssn in available_emp_list:
                         available_captain_list.append(captain.get_name())
                 self.app.print_selection_list(available_captain_list)
                 captain_selection = self.back_quit("",len(available_captain_list))
