@@ -300,8 +300,15 @@ class User:
         elif action == '2':
             ID = input("Enter ID number: ")
             self.get_voyages_for_employee(ID)
+    
 
 
+    def get_working_emp_date_schedule(self):
+        # available_list = self.ll.get_emp_date_schedule(date)
+        # for emp in available_list:
+        #     print(str(emp))
+        temp_date = input("Enter date: YYYY-MM-DD:")
+        date = dateutil.parser.parse(temp_date)
     def get_available_emp_date_schedule(self, date,action):
         available_list = self.ll.get_emp_date_schedule(date,action)
         for emp in available_list:
@@ -354,6 +361,9 @@ class User:
     def assign_crew(self):
         self.app.print_assign_crew()
         voyage_list = self.ll.get_all_voyages()
+        for voyage in voyage_list:
+            if voyage.get_captain() == "":
+                self.app.print_voyage_selection_list(voyage)
         action = input("Enter booking reference: ")
         for index in range(len(voyage_list)):
             voyage = voyage_list[index]
