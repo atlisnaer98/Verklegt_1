@@ -274,7 +274,8 @@ class User:
         dest_list = self.ll.get_all_dest()
         self.app.print_selection_list(dest_list)
         dest_number = int(input("Please select destination: ")) - 1
-        voyage.set_arriving_at(dest_list[dest_number].get_destination())
+        dest = dest_list[dest_number].get_destination()
+        voyage.set_arriving_at(dest)
         voyage.set_flight_number_away("NA0500")
         voyage.set_flight_number_home("NA0501")
         depart = input("Departure date (YYYY-MM-DD): ") + "T" + input("Departure time(HH:MM): ")
@@ -285,7 +286,8 @@ class User:
         plane_list = self.ll.get_available_planes(departure,arrival)
         self.app.print_selection_list(plane_list)
         plane_number = int(input("Select an airplane: ")) - 1
-        voyage.set_aircraft_id(plane_list[plane_number].get_registration_number())
+        plane = plane_list[plane_number].get_registration_number()
+        voyage.set_aircraft_id(plane)
         self.ll.add_voyage(voyage)
 
     def change_voyage():
