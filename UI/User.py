@@ -351,8 +351,13 @@ class User:
                 self.ll.change_voyage(voyage_list,index,option,changed)
 
     def assign_crew(self):
+        available_captain_list = []
+        available_copilot_list = []
+        available_fsm = []
+        available_fa = []
         self.app.print_assign_crew()
         voyage_list = self.ll.get_all_voyages()
+        employee_list = self.ll.get_all_employees()
         print("{}{:>15}{:>20}".format("Booking referance","Destination","Departure"))
         for voyage in voyage_list:
             if voyage.get_captain() == "":
@@ -363,7 +368,11 @@ class User:
             voyage = voyage_list[index]
             if action == voyage.get_booking_reference():
                 #self.app.print_changing_voyage_information(voyage)
-                voyage.set_captain(input("Captain: "))
+                for captain in employee_list:
+                    if captain.get_rank() == "Captain" and captain.get_activity() == "1":#and voyage.get_aircraft_id() == captain.get_licence():
+                        available_captain_list.append(captain.get_name())
+                    self.app.print_selection_list(available_captain_list)
+                    voyage.set_captain(input("Captain: "))
                 voyage.set_copilot(input("Copilot: "))
                 voyage.set_fsm(input("Flight service manager: "))
                 voyage.set_fa1(input("Flight attendant: "))
