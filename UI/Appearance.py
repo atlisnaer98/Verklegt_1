@@ -211,7 +211,7 @@ class Appearance:
         print("{:>10} {:<30}{} {} ".format('[1]', DATE, '[2]',E ))
 
     def print_selection_list(self,selected_list):
-        print("Please select an option: ")
+        print()
         for i in range(0,len(selected_list)):
             sting = str(selected_list[i])
             lis = sting.split(",")
@@ -220,6 +220,7 @@ class Appearance:
             #self.app.print_selection_list(numb,dest)
             #print("[{}] {}".format(numb,dest))
             print("[{}] {}".format(numb,selected))
+        print()
         
     def print_plane_activity_list(self,numb,selected,activity=""):
         if activity == "1":
