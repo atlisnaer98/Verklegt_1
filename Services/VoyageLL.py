@@ -17,8 +17,9 @@ class VoyageLL():
         voyage_list = []
         all_voyage_list = self.dl.get_all_voyages()
         for voyage in all_voyage_list:
-            parseddate =dateutil.parser.parse(voyage.get_departure())
-            if from_date <= parseddate and parseddate < to_date:
+            dep_date = dateutil.parser.parse(voyage.get_departure())
+            arr_date = dateutil.parser.parse(voyage.get_arrival())
+            if (from_date <= dep_date and dep_date < to_date) or (from_date <= arr_date and arr_date < to_date):
                 voyage_list.append(voyage)
         return voyage_list  
     
@@ -45,14 +46,9 @@ class VoyageLL():
     def assign_crew(self,voyage_list):
         self.dl.update_voyage_file(voyage_list)
 
-    def change_voyage(self,voyage_list,index,option,changed):
+    def change_voyage(self,voyage_list,index,plane):
         voyage = voyage_list[index]
-        if option == 1:
-            voyage.set_flight_number_away(changed)
-        elif option == 2:
-            voyage.set_aircraft_id(changed)
-        else:
-            return False
+        voyage.set_aircraft_id(plane)
         voyage_list[index] = voyage
         self.dl.update_voyage_file(voyage_list)
 

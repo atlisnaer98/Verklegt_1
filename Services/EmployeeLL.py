@@ -20,11 +20,10 @@ class EmployeeLL():
     def get_employee(self, action):
         employee_list = []
         all_employee_list = self.dl.get_all_employee()
-        for line in all_employee_list:
-            sting = str(line)
-            lis = sting.split(',')
-            if lis[0] == action:
-                cabin_crew_list.append(sting)
+        for emp in all_employee_list:
+            ssn = emp.get_ssn()
+            if ssn == action:
+                employee_list.append(emp)
         return employee_list
 
     def add_employee(self,emp):
@@ -62,43 +61,23 @@ class EmployeeLL():
     def get_cabin_crew(self):
         cabin_crew_list = []
         all_employee_list = self.dl.get_all_employee()
-        for line in all_employee_list:
-            sting = str(line)
-            lis = sting.split(',')
-            if lis[6] == "Cabincrew":
-                cabin_crew_list.append(sting)
+        for emp in all_employee_list:
+            role = emp.get_role()
+            if role == "Cabincrew":
+                cabin_crew_list.append(emp)
         return cabin_crew_list
     
     def get_pilots(self, license):
         pilot_list = []
         all_employee_list = self.dl.get_all_employee()
-        for line in all_employee_list:
-            sting = str(line)
-            lis = sting.split(',')
-            if license == "All" and lis[6] == 'Pilot':
-                pilot_list.append(line)
-            elif lis[8] == license:
-                pilot_list.append(line)
+        for emp in all_employee_list:
+            role = emp.get_role()
+            if license == "All" and role == 'Pilot':
+                pilot_list.append(emp)
+            elif emp.get_licence() == license:
+                pilot_list.append(emp)
         
         return pilot_list
-
-    """def get_schedule(self, ID, from_date, to_date):
-        voyage_list = []
-        employee_list = []
-        all_voyage_list = self.dl.get_all_voyages()
-        for voyage in all_voyage_list:
-            parseddate = dateutil.parser.parse(voyage.get_departure())
-            if from_date <= parseddate and parseddate <= to_date:
-                voyage_list.append(voyage)
-
-        for line in voyage_list:
-            sting = str(line)
-            lis = sting.split(',')
-            print(lis[0], ID, lis[7])
-            if ID == lis[11] or ID == lis[7] or ID == lis[8] or ID == lis[9] or ID == lis[10]:
-                print("yes")
-                employee_list.append(lis)
-        return employee_list"""
 
     # def check_id_in_voyage(self, voyage_list, ID):
     #     ''' LANGAR AÐ KALLA Í ÞETTA FALL ÚR FALLINU GET_SCHEDULE EN ÞAÐ VIRKAR EKKI'''
@@ -111,32 +90,30 @@ class EmployeeLL():
     #     return employee_list
 
 
-    def get_date_schedule(self, date, action):
+    def get_date_schedule(self,from_date,to_date):
         temp_list = []
         all_voyage_list = self.dl.get_all_voyages() 
         for voyage in all_voyage_list:
-            parseddate = dateutil.parser.parse(voyage.get_departure())
-            if date.year == parseddate.year and date.month == parseddate.month and date.day == parseddate.day:
+            dep_date = dateutil.parser.parse(voyage.get_departure())
+            arr_date = dateutil.parser.parse(voyage.get_arrival())
+            if (from_date <= dep_date and dep_date < to_date) or (from_date <= arr_date and arr_date < to_date):
                 temp_list.append(voyage)
-        final_list = self.available_employees(temp_list,action)
+        final_list = self.available_employees(temp_list)
         return final_list
 
-    def available_employees(self, voyage_list,action):
+    def available_employees(self, voyage_list):
         all_employees = self.get_all_employees()
         list_of_available = []
         list_of_working = []
         for employee in all_employees:
-            id_numb = employee.get_ID_number()
+            ssn = employee.get_ssn()
             for voyage in voyage_list:
                 crew = self.vLL.get_crew(voyage)
-                if id_numb in crew and employee not in list_of_working:
+                if ssn in crew and employee not in list_of_working:
                     list_of_working.append(employee)
             if employee not in list_of_working:
                 list_of_available.append(employee)
-        if action == "1":
-            return list_of_available
-        elif action == "2":
-            return list_of_working
+        return list_of_available
             
 
         

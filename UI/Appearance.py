@@ -157,9 +157,24 @@ class Appearance:
         print("{:^60}".format(GA))
         print(DASH*LENGTH)
 
-    def print_get_all_employess_info(self,employee):
-        print("{:<20}{:<20}{:<20}".format(employee.get_name(), employee.get_ID_number(), employee.get_job_title()))
+    def print_get_all_employess_role(self,employee):
+        print("{:<20}{:<20}{:<20}".format(employee.get_name(), employee.get_ssn(), employee.get_role()))
+    
+    def print_get_all_employess_rank(self,employee):
+        print("{:<20}{:<20}{:<20}".format(employee.get_name(), employee.get_ssn(), employee.get_rank()))
 
+    def print_get_all_pilots(self):#Nota og tengja
+        print()
+        print(DASH*LENGTH)
+        print("{:^60}".format(GP))
+        print(DASH*LENGTH)    
+    
+    def print_get_all_cabincrew(self):#Nota og tengja 
+        print()
+        print(DASH*LENGTH)
+        print("{:^60}".format(GC))
+        print(DASH*LENGTH)
+    
     def print_dest_menu(self):
         print()
         print(DASH*LENGTH)
@@ -263,7 +278,7 @@ class Appearance:
         
 
     def print_voyage_selection_list(self,voyage):
-        print("{} {}".format(voyage.get_booking_reference(),voyage.get_arriving_at()))
+        print("[{}]{:<17}{}{:<10}{}".format(voyage.get_booking_reference(),"",voyage.get_arriving_at(),"",voyage.get_departure()))
 
     def print_change_voyage(self):
         print(DASH*LENGTH)
@@ -330,9 +345,14 @@ class Appearance:
         print("{:>5} {:<27}{} {} ".format('[3]', "NAFokkerF28", '[4]',"All Pilots" ))
         print()
         
-
-    def print_working_emps(self, voyage,employee_dict):
-        print("\n{}{}{}\n{}{}{}\n{}{}{}\n{}{}{}\n{}{}{}\n".format(employee_dict[voyage.get_captain()].get_name(),voyage.get_captain(),voyage.get_arriving_at(),
+    def print_working_employee(self):
+        print()
+        print(DASH*LENGTH)
+        print("{:^60}".format("Working employee schedule"))
+        print(DASH*LENGTH)
+    
+    def print_working_emps(self, voyage,employee_dict): #Laga þetta fyrir GÍSLA og HELGA, Nafn, KT og Dest
+        print("\n{:<20}{:<20}{:<20}\n{:<20}{:<20}{:<20}\n{:<20}{:<20}{:<20}\n{:<20}{:<20}{:<20}\n{:<20}{:<20}{:<20}\n".format(employee_dict[voyage.get_captain()].get_name(),voyage.get_captain(),voyage.get_arriving_at(),
         employee_dict[voyage.get_copilot()].get_name(),voyage.get_copilot(),voyage.get_arriving_at(),
         employee_dict[voyage.get_fsm()].get_name(),voyage.get_fsm(),voyage.get_arriving_at(),
         employee_dict[voyage.get_fa1()].get_name(),voyage.get_fa1(),voyage.get_arriving_at(),

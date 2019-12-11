@@ -31,9 +31,7 @@ class User:
         dest.set_distance(input("Distance: "))
         dest.set_name_of_contact(input("Emergency contact: "))
         dest.set_emergency_phone_number(input("Emergency contact number: "))
-        #print(dest)
         self.ll.add_dest(dest)
-        #return country, airport, flight_time, name_of_contact, emergency_phone_number
 
     def get_all_dest(self):
         print("{:<20}{:<20}{:<20}".format("Airport","Country","Distance(km)"))
@@ -41,10 +39,9 @@ class User:
         for line in dest_obj:
             sting = str(line)
             lis = sting.split(",")
-            print("{:<20}{:<20}{:<20}".format(lis[2], lis[1], lis[4]+'km'))
+            print("{:<20}{:<20}{:<20}".format(lis[2], lis[1], lis[4]+'km'))              #Nota model föllin og færa í apperance
     
     def add_plane(self):
-        #self.app.print_add_plane()
         plane = Airplane()
         plane.set_registration_number(input("Registration number: "))
         self.app.print_add_plane_vol2()
@@ -75,13 +72,10 @@ class User:
         self.app.print_get_all_employess()
         print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for employee in employee_list:
-            #sting = str(line)
-            #lis = sting.split(",")
-            #print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[6]))
-            self.app.print_get_all_employess_info(employee)
+            self.app.print_get_all_employess_role(employee)
 
     def add_employee(self):
-        #self.app.print_add_employee()
+        #self.app.print_add_employee()                          Búa til þetta í apperance
         plane_list = []
         job_title_list = ["Pilot","Cabincrew"]
         pilot_rank_list = ["Captain","Copilot"]
@@ -195,13 +189,15 @@ class User:
                 changed = input("Enter new input: ")
                 self.ll.change_dest(dest_list,index,int(action),changed)
         
-    def get_cabin_crew(self):
+    def get_cabin_crew(self): #Laga og bæta 
         cabin_crew_list = self.ll.get_cabin_crew()
+        self.app.print_get_all_cabincrew()
         print("{:<20}{:<20}{:<20}".format("Name","SSN","Rank"))
-        for line in cabin_crew_list:
-            sting = str(line)
-            lis = sting.split(",")
-            print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[7]))
+        for employee in cabin_crew_list:
+            #sting = str(line)
+            #lis = sting.split(",")
+            #print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[7]))
+            self.app.print_get_all_employess_rank(employee)
 
     def get_pilots(self):
         self.app.select_license()
@@ -222,7 +218,7 @@ class User:
             for line in pilot_list:
                 sting = str(line)
                 lis = sting.split(",")
-                print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[8]))
+                print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[8]))        #Nota model föllin og færa í apperance
 
     def printing_picture(self):
         self.app.picture()
@@ -288,40 +284,35 @@ class User:
 
 
     def show_emp_schedule(self, action):
-        print("[1]date     [2] Employee")
+        print("[1]Date     [2] Employee")
         action = input("Select an option: ")
         if action == '1':
-            print("[1]available     [2] working")
+            print("[1]Available     [2] Working")
             action = input("Select an option: ")
             temp_date = input("Enter from date: YYYY-MM-DD:")
-            date= dateutil.parser.parse(temp_date)
+            from_date = dateutil.parser.parse(temp_date)
+            to_date = from_date + timedelta(days=1)
             if action == '1':
-                self.get_available_emp_date_schedule(date,action)
+                self.get_available_emp_date_schedule(from_date,to_date)
             elif action == '2':
-                self.get_working_emp_date_schedule(date)
+                self.get_working_emp_date_schedule(from_date,to_date)
         elif action == '2':
             ID = input("Enter ID number: ")
             self.get_voyages_for_employee(ID)
-    
 
-
-    def get_working_emp_date_schedule(self):
-        # available_list = self.ll.get_emp_date_schedule(date)
-        # for emp in available_list:
-        #     print(str(emp))
-        temp_date = input("Enter date: YYYY-MM-DD:")
-        date = dateutil.parser.parse(temp_date)
     def get_available_emp_date_schedule(self, date,action):
         available_list = self.ll.get_emp_date_schedule(date,action)
+        print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for emp in available_list:
-            print(str(emp))
+            self.app.print_get_all_employess_role(employee)
 
 
     def get_working_emp_date_schedule(self,date):
         time_voyage_list = self.ll.get_voyages_on_date(date)
         employee_dict = self.ll.get_all_employees_dict()
+        self.app.print_working_employee()
+        print("{:<20}{:<20}{:<20}".format("Name","SSN","Destination"))
         for voyage in time_voyage_list:
-            #print(voyage)
             self.app.print_working_emps(voyage,employee_dict)
             
     def add_voyage(self):
@@ -348,30 +339,63 @@ class User:
         voyage.set_aircraft_id(plane)
         self.ll.add_voyage(voyage)
 
-    def change_voyage():
-        #self.app.print_change_voyage()
+    def change_voyage(self):
+        #self.app.print_change_voyage()                     Búa til þetta method í apperance
         voyage_list = self.ll.get_all_voyages()
-        action = input("Enter ID number: ")
-        for index in range(len(voyage_list)):
-            voyage = voyage_list[index]
-            if action == voyage.get_booking_reference():
-                #self.app.print_changing_voyage_information(voyage)
-                option = int(input("What do you want to change? "))
-                changed = input("Enter new input: ")
-                self.ll.change_voyage(voyage_list,index,option,changed)
-
-    def assign_crew(self):
-        self.app.print_assign_crew()
-        voyage_list = self.ll.get_all_voyages()
-        for voyage in voyage_list:
-            if voyage.get_captain() == "":
-                self.app.print_voyage_selection_list(voyage)
         action = input("Enter booking reference: ")
         for index in range(len(voyage_list)):
             voyage = voyage_list[index]
             if action == voyage.get_booking_reference():
                 #self.app.print_changing_voyage_information(voyage)
-                voyage.set_captain(input("Captain: "))
+                departure = dateutil.parser.parse(voyage.get_departure())
+                arrival = dateutil.parser.parse(voyage.get_arrival())
+                plane_list = self.ll.get_available_planes(departure,arrival)
+                self.app.print_selection_list(plane_list)
+                plane_number = int(input("Select an airplane: ")) - 1
+                plane = plane_list[plane_number].get_registration_number()
+                voyage.set_aircraft_id(plane)
+                self.ll.change_voyage(voyage_list,index,plane)
+
+    def assign_crew(self):
+        available_emp_list = []
+        available_captain_list = []
+        available_copilot_list = []
+        available_fsm = []
+        available_fa = []
+        self.app.print_assign_crew()
+        voyage_list = self.ll.get_all_voyages()
+        employee_list = self.ll.get_all_employees()
+        airplane_list = self.ll.get_all_airplanes()
+        print("{}{:>15}{:>20}".format("Booking referance","Destination","Departure"))
+        for voyage in voyage_list:
+            if voyage.get_captain() == "":
+                highest_selection = int(voyage.get_booking_reference())
+                self.app.print_voyage_selection_list(voyage)
+        action = self.back_quit("",highest_selection)
+        for index in range(len(voyage_list)):
+            voyage = voyage_list[index]
+    
+            if action == voyage.get_booking_reference():            
+                voyage_date_from = dateutil.parser.parse(voyage.get_departure())
+                voyage_date_to = dateutil.parser.parse(voyage.get_arrival())
+                emp_obj = self.ll.get_emp_date_schedule(voyage_date_from,voyage_date_to)
+                for emp in emp_obj:
+                    available_emp_list.append(emp.get_ssn())
+                for airplane in airplane_list:
+                    if voyage.get_aircraft_id() == airplane.get_registration_number():
+                        licence = airplane.get_planeID()
+                        print(licence) 
+                #captain_list = self.ll.get_emp_date_schedule(voyage.get)  and captain in available_emp_list
+                for captain in employee_list:
+                    if captain.get_rank() == "Captain" and captain.get_activity() == "1" and licence == captain.get_licence() and captain.get_ssn in available_emp_list:
+                        available_captain_list.append(captain.get_name())
+                self.app.print_selection_list(available_captain_list)
+                captain_selection = self.back_quit("",len(available_captain_list))
+                for captain_index in range(len(available_captain_list)):
+                    if captain_index+1 == captain_selection:
+                        voyage.set_captain(available_captain_list[captain_index])
+
+                
                 voyage.set_copilot(input("Copilot: "))
                 voyage.set_fsm(input("Flight service manager: "))
                 voyage.set_fa1(input("Flight attendant: "))
