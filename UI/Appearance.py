@@ -113,9 +113,6 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:>10} {:<30}{} {} ".format('[1]', GA, '[2]', GP))
         print("{:>10} {:<30}".format('[3]', GC, ))
-        print("{:15}{}".format(EMPTY,DASH*30))
-        print("{:17}{}{:10}{}".format(EMPTY,B,EMPTY,Q))
-        print("{:15}{}".format(EMPTY,DASH*30))
 
 
     def print_create_employee(self):
