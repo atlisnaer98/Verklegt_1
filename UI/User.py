@@ -279,7 +279,7 @@ class User:
         voyage.set_departure(departure)
         arrival = departure + timedelta(hours=4)
         voyage.set_arrival(arrival)
-        plane_list = self.ll.get_all_airplanes()
+        plane_list = self.ll.get_available_planes(departure,arrival)
         self.app.print_selection_list(plane_list)
         voyage.set_aircraft_id("TF-100")
         self.ll.add_voyage(voyage)
