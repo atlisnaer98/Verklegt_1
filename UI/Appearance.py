@@ -381,4 +381,5 @@ class Appearance:
         employee_dict[voyage.get_fa2()].get_name(),voyage.get_fa2(),voyage.get_arriving_at()))
     
 
-    print_voyage_selection
+    # def prentaetta(self, voyage):
+    #     print()
