@@ -298,7 +298,8 @@ class User:
         action_test = True
         self.app.back_quit()
         while action_test == True:
-            action = input("Select an option: ")
+            action = input("\nSelect an option:")
+            print()
             try:
                 if int(action) > 0 and int(action) < limit+1:
                     action_test = False
@@ -592,11 +593,11 @@ class User:
                 self.assign_crew()
             elif action == "3":
                 self.app.print_voyage_selection()
-                action = input("select an option: ")
+                action = self.back_quit(action,3)
                 if action =="1":
                     self.get_voyages_for_single_date()
                 elif action == "2":
-                    ID = input("Enter ID number")
+                    ID = input("Enter ID number")#ef ekki í fyrirtækinu     self.validate_ssn(
                     self.get_voyages_for_employee(ID)
                 elif action == "3":
                     self.get_voyages_for_timeperiod()
