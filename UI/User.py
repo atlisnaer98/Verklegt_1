@@ -192,19 +192,19 @@ class User:
             self.app.print_get_all_employess_rank(employee)
 
     def get_pilots(self):
-        self.app.select_license()
-        license = ''
-        while license not in QUIT:
-            license = self.back_quit(license,4)
-            if license == '1':
-                license = 'NAFokkerF100'
-            elif license == '2':
-                license = 'NABAE146'
-            elif license == '3':
-                license = 'NAFokkerF28'
-            elif license == '4':
-                license = 'All'
-            pilot_list = self.ll.get_pilots(license)
+        self.app.select_licence()
+        licence = ''
+        while licence not in QUIT:
+            licence = self.back_quit(licence,4)
+            if licence == '1':
+                licence = 'NAFokkerF100'
+            elif licence == '2':
+                licence = 'NABAE146'
+            elif licence == '3':
+                licence = 'NAFokkerF28'
+            elif licence == '4':
+                licence = 'All'
+            pilot_list = self.ll.get_pilots(licence)
             print("{:<20}{:<20}{:<20}".format("Name","SSN","Licence"))
             for line in pilot_list:
                 sting = str(line)
