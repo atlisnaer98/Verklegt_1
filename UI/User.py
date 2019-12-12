@@ -678,7 +678,7 @@ class User:
             elif action == "2":
                 self.Voyage_menu(action)
                 action = input("Select an option: ")
-            elif action == "3": #DESTINATION
+                elif action == "3": #DESTINATION
                 self.dest_menu(action)
             elif action == "4":
                 self.airplane_menu(action)
