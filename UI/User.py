@@ -34,8 +34,16 @@ class User:
         self.ll.add_dest(dest)
 
     def validate_airport(self,airport_input):
-        if len(airport_input) > 3 or len(airport_input) < 3:
-            pass
+        airport_repeater = True
+        numb_list = ["0","1","2","3","4","5","6","7","8","9"]
+        while airport_repeater == True:
+            for letter in airport_input:
+                if letter in numb_list or letter in string.punctuation:
+                    airport_input = input("Invalid input, please re-enter airport(XXX)")
+                else:
+                    return airport_input.upper()
+
+            
 
     def validate_name(self,name_input):
         splitted_name  = name_input.split(" ")
