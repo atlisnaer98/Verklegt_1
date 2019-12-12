@@ -58,7 +58,7 @@ class Validation:
                 true_check = False
                 return phone_number
             else:
-                phone_number = input("Invalid input,  please re-enter (only integers) Emergency contact number:")
+                phone_number = input("Invalid input,  please re-enter (only integers) phone number:")
 
     def validate_time(self,time_input):
         time_repeater = True
@@ -91,16 +91,14 @@ class Validation:
         return address_input
 
     def validate_email(self, email_address):
-        first, last = email_address.split('@')
-        if '@' in email_address and False == first.isdigit() and False == last.isdigit():
-            if first.isalpha() or first in '.':
-                if last.isalpha() or '.' in last:
-                    return email_address
-                else:
-                    email_address = input("invalid input, please re-enter:")
-                email_address = input("invalid input, please re-enter:")
-        else:
-            email_address = input("invalid input, please re-enter:")
+        true_condition = True
+        while true_condition == True:
+            try:
+                first, last = email_address.split('@')
+                true_condition = False
+                return email_address
+            except ValueError:
+                email_address = input("invalid input, pleaes re-enter email address")
 
     def validate_selection(self,action,limit):
         validation = True
