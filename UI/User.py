@@ -5,6 +5,7 @@ from Models.Voyage import Voyage
 import csv
 from Services.API import LLApi
 from UI.Appearance import Appearance
+from UI.Validation import Validation
 import datetime
 import dateutil.parser
 from datetime import timedelta
@@ -18,6 +19,7 @@ class User:
     def __init__(self):
         self.ll = LLApi()
         self.app = Appearance()
+        self.val = Validation()
 
     def start(self):
         pass
@@ -25,72 +27,16 @@ class User:
     def add_dest(self):
         # The method will add destinations and ask for needed information as input to make a new destination.
         dest = Destination()
-        dest.set_destination(self.validate_name(input("Destination: ")))
-        dest.set_country(self.validate_name(input("Country: ")))
-        dest.set_airport(self.validate_airport(input("Airport(XXX): ")))
-        dest.set_flight_time(self.validate_time(input("Time of flight (HH:MM): ")))
-        dest.set_distance(self.validate_distance(input("Distance: ")))
-        dest.set_name_of_contact(self.validate_name(input("Emergency contact: ")))
-        dest.set_emergency_phone_number(self.validate_phone_number(input("Emergency contact number: ")))
+        dest.set_destination(self.val.validate_name(input("Destination: ")))
+        dest.set_country(self.val.validate_name(input("Country: ")))
+        dest.set_airport(self.val.validate_airport(input("Airport(XXX): ")))
+        dest.set_flight_time(self.val.validate_time(input("Time of flight (HH:MM): ")))
+        dest.set_distance(self.val.validate_distance(input("Distance: ")))
+        dest.set_name_of_contact(self.val.validate_name(input("Emergency contact: ")))
+        dest.set_emergency_phone_number(self.val.validate_phone_number(input("Emergency contact number: ")))
         dest.set_flight_number(self.ll.get_dest_flight_number())
-        self.ll.add_dest(dest)
-
-    def validate_distance(self,distance_input):
-        # The method will check if the input of distance is valid, only number allowed. 
-        distance_repeater = True
-        while distance_repeater == True:
-            try:
-                if int(distance_input) <= 0:
-                    distance_input = input("Invalid input, please re-enter distance: ")
-                else:
-                    return distance_input
-            except ValueError:
-                distance_input = input("Invalid input, please re-enter distance: ")
-
-    def validate_airport(self,airport_input):
-        airport_repeater = True
-        numb_list = ["0","1","2","3","4","5","6","7","8","9"]
-        while airport_repeater == True:
-            if len(airport_input) > 3 or len(airport_input) < 3:
-                airport_input = input("Invalid input, please re-enter airport(XXX)")
-            else:
-                for letter in airport_input:
-                    if letter in numb_list or letter in string.punctuation:
-                        airport_input = input("Invalid input, please re-enter airport(XXX)")
-                    else:
-                        return airport_input.upper()
-
-            
-
-    def validate_name(self,name_input):
-        counter = 0
-        name_repeater = True
-        while name_repeater == True:
-            splitted_name  = name_input.split(" ")
-            name_len = len(splitted_name)
-            for name in splitted_name:
-                if name.isalpha():
-                    counter += 1
-                else:
-                    name_input = input("The name has to only contain letters, please re-enter name: ")
-                    break 
-            if counter == name_len: 
-                name_repeater = False        
-        return name_input.title()
+        self.ll.add_dest(dest)      
     
-    def validate_phone_number(self,phone_number):
-        true_check = True
-        while true_check == True:
-            if phone_number.isdigit():
-                true_check = False
-                return phone_number
-            else:
-                phone_number = input("Invalid input,  please re-enter (only integers) Emergency contact number:")
-
-
-
-                
-
     def get_all_dest(self):
         # The method will print out all listed destinations, the output will be Airport, Country and Distance from Reykjavik in km.
         dest_obj = self.ll.get_all_dest()
@@ -151,6 +97,36 @@ class User:
         for employee in employee_list:
             self.app.print_get_all_employess_role(employee)
 
+    def validate_ssn(self,ssn_input):
+        ssn_repeater = True
+        while ssn_repeater == True:
+            try:
+                if int(ssn_input) > 0 and len(ssn_input) == 10:
+                    ssn_repeater = False
+                else:
+                    print("The SSN has to be exactly 10 numbers,")
+                    ssn_input = input("please re-enter SSN:")
+            except ValueError:
+                print("The SSN can only contain numbers,")
+                ssn_input = input("please re-enter SSN:")
+        return ssn_input
+
+    def validate_home(self,address_input):
+        address_repeater = True
+        while address_repeater == True:
+            counter = 0
+            for letter in address_input:
+                if  letter in string.punctuation:
+                    print("The home address can only contain numbers and letters,")
+                    address_input = input("Please re-enter address: ")
+                    counter = 0
+                else:
+                    counter += 1
+            if counter == len(address_input):
+                address_repeater = False
+        return address_input
+
+
     def add_employee(self):
         # The method will add new employee to the Crew.csv file. 
         # User have to input SSN number, Name, Adress, Home and Mobile number, Email and chose role and rank for the employee.
@@ -161,11 +137,11 @@ class User:
         pilot_rank_list = ["Captain","Copilot"]
         cabincrew_rank_list = ["Flight Service Manager", "Flight Attendant"]
         emp = Employee()
-        emp.set_ssn(input("SSN number: "))
-        emp.set_name(self.validate_name(input("Name: ")))
-        emp.set_address(input("Adress: "))
-        emp.set_home_phone(self.validate_phone_number(input("Home phone: ")))
-        emp.set_mobile_number(self.validate_phone_number(input("Mobile number: ")))
+        emp.set_ssn(self.validate_ssn(input("SSN number: ")))
+        emp.set_name(self.val.validate_name(input("Name: ")))
+        emp.set_address(self.validate_home(input("Adress: ")))
+        emp.set_home_phone(self.val.validate_phone_number(input("Home phone: ")))
+        emp.set_mobile_number(self.val.validate_phone_number(input("Mobile number: ")))
         emp.set_email_address(input("Email: "))
         print("role:")
         self.app.print_selection_list(role_list)
@@ -237,10 +213,10 @@ class User:
                 change_selection = self.back_quit(action,2)
                 if change_selection == "1":
                     self.app.print_changing_employee_information(emp)
-                    option = int(input("What do you want to change? "))
-                    if option == 5:
+                    option = self.validate_selection(input("What do you want to change? "),5)
+                    if int(option) == 5:
                         changed = ""
-                        self.ll.change_employee(employee_list,index,option,changed)
+                        self.ll.change_employee(employee_list,index,int(option),changed)
                         self.employee_menu(action)
                     else:
                         changed = input("Enter new input: ")
@@ -262,9 +238,9 @@ class User:
                 self.app.print_dest_info(dest)
                 action = self.back_quit(action,len(dest_list))
                 if action == '1':
-                    changed = self.validate_name(input("Enter new input: "))
+                    changed = self.val.validate_name(input("Enter new input: "))
                 elif action == '2':
-                    changed = self.validate_phone_number(input("Enter new input: "))
+                    changed = self.val.validate_phone_number(input("Enter new input: "))
                 self.ll.change_dest(dest_list,index,int(action),changed)
         
     def get_cabin_crew(self):
@@ -415,7 +391,7 @@ class User:
         voyage.set_arriving_at(destination_place)
         voyage.set_flight_number_away("NA0500") #PLANE NUMBEEER!!!!!!!!!!!
         voyage.set_flight_number_home("NA0501")
-        depart = self.validate_date(input("Departure date (YYYY-MM-DD): ")) + "T" + self.validate_time(input("Departure time(HH:MM): "))
+        depart = self.validate_date(input("Departure date (YYYY-MM-DD): ")) + "T" + self.val.validate_time(input("Departure time(HH:MM): "))
         departure = dateutil.parser.parse(depart)
         voyage.set_departure(depart)
         one_way_flight_time = dateutil.parser.parse(dest.get_flight_time())
@@ -588,22 +564,6 @@ class User:
                     date_input = input("Invalid input, please re-enter (YYYY-MM-DD):")
             except ValueError:
                 date_input = input("Invalid input, please re-enter (YYYY-MM-DD):")
-
-    def validate_time(self,time_input):
-        time_repeater = True
-        while time_repeater == True:
-            #time_input = str(time_input)
-            try:
-                hour = int(time_input[:2])
-                minute = int(time_input[4:])
-                if hour >= 0 and hour <= 24 and minute >= 0 and minute <= 60 and time_input[2] == ":":
-                    #time_repeater = False
-                    return time_input
-                else:
-                    time_input = input("Invalid input, please re-enter (HH:MM): ")
-            except ValueError:
-                time_input = input("Invalid input, please re-enter (HH:MM): ")
-                
 
     def Voyage_menu(self,action):
         action = ""
