@@ -389,9 +389,12 @@ class User:
 
     def available_employees(self,voyage):
         available_emp_list = []
-        departure_day = dateutil.parser.parse(voyage.get_departure())
-        voyage_date_from = 
-        voyage_date_to = dateutil.parser.parse(voyage.get_arrival())
+        departure_time = dateutil.parser.parse(voyage.get_departure())
+        year,month,day = departure_time.year, departure_time.month, departure_time.day
+        voyage_date_from = datetime.datetime(year,month,day)
+        arrival_time = dateutil.parser.parse(voyage.get_arrival())
+        year,month,day = arrival_time.year, arrival_time.month, arrival_time.day
+        voyage_date_to = datetime.datetime(year,month,day) + timedelta(days=1)
         emp_obj = self.ll.get_emp_date_schedule(voyage_date_from,voyage_date_to)
         for emp in emp_obj:
             available_emp_list.append(emp.get_ssn())
