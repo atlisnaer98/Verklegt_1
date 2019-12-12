@@ -174,11 +174,16 @@ class Validation:
                 ssn_input = input("please re-enter SSN: ")
             
     def validate_already_emp(self,ssn_input,employee_list):
+        #Validate if the ssn input is already in the company if so then reenter ssn
         employees_in_company = []
         for emp in employee_list:
-            employees_in_company.append(emp.get_ssn)
+            employees_in_company.append(emp.get_ssn())
         ssn_repeater = True
         while ssn_repeater == True:
             ssn_input = self.validate_ssn(ssn_input)
-            if 
+            if ssn_input in employees_in_company:
+                print("This employee is already in the company,")
+                ssn_input = input("please re-enter SSN:")
+            else:
+                return ssn_input
             
