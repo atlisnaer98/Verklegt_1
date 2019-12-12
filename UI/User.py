@@ -101,12 +101,28 @@ class User:
     def add_plane(self):
         # The method will add new aircraft, you will have to give the plane a registration number and choose model, when model is choosen it will automacly put how many passenger can trave
         plane = Airplane()
-        plane.set_registration_number(input("Registration number: "))
+        plane.set_registration_number(self.validate_reg(input("Registration number(TF-XXX): ")))
         self.app.print_add_plane_vol2()
         option = int(input("Model: "))
         self.set_plane_model(plane,option)
         plane.set_active(1)
         self.ll.add_plane(plane)
+
+    def validate_reg(self,reg_input):
+        reg_repeater = True
+        while reg_repeater == True:
+            if reg_input[:3] != "TF-":
+                print("""The registration number has to start with "TF-""")
+                reg_input = input("please re-enter: ")
+            else:
+                last_three = reg_input.split("-")
+                for name in last_three[1:]:
+                    if name.isalpha():
+                        reg_repeater = False
+                    else:
+                        reg_input = input("Invalid input, please re-enter:")
+                    break
+        return reg_input.upper()
 
     def set_plane_model(self,plane,option):
         if option == 1:
