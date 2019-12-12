@@ -167,7 +167,7 @@ class User:
         emp.set_address(input("Adress: "))
         emp.set_home_phone(self.validate_phone_number(input("Home phone: ")))
         emp.set_mobile_number(self.validate_phone_number(input("Mobile number: ")))
-        emp.set_email_address(input("Email: "))
+        emp.set_email_address(self.validate_email(input("Email: ")))
         print("role:")
         self.app.print_selection_list(role_list)
         role_selection = self.validate_selection(input("Select a role: "),2)
@@ -210,6 +210,23 @@ class User:
         emp.set_activity(1)
         self.ll.add_employee(emp)
 
+<<<<<<< HEAD
+    def validate_email(self, email_address):
+        first, last = email_address.split('@')
+        if '@' in email_address and False == first.isdigit() and False == last.isdigit():
+            if first.isalpha() or first in '.':
+                if last.isalpha() or '.' in last:
+                    return email_address
+                else:
+                    email_address = input("invalid input, please re-enter:")
+            else:
+                email_address = input("invalid input, please re-enter:")
+        else:
+            email_address = input("invalid input, please re-enter:")
+
+
+=======
+>>>>>>> 2e155ad38105f9efcf72768f9eeaf88e0de4741a
     def validate_selection(self,action,limit):
         validation = True
         while validation == True:

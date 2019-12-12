@@ -2,6 +2,7 @@ import datetime
 import dateutil.parser
 from datetime import datetime
 
+
 # dist = len("[1] Create      [2] Change info")
 # other_dist = len("Destination")
 # print("-"*((dist-other_dist)//2))
@@ -34,17 +35,33 @@ from datetime import datetime
 
 # #print(to_date.day)
 
-name = 'Hvað! segir1 þú gott'
-if name.isalpha():
-    print("")
+# name = 'Hvað! segir1 þú gott'
+# if name.isalpha():
+#     print("")
 
 
-namesplit = name.split()
+# namesplit = name.split()
 
 
 
-num = '21313123 sdf'
-if num.isdigit():
-    print("cunt")
+# num = '21313123 sdf'
+# if num.isdigit():
+#     print("cunt")
 
+import string
 
+email_list = ['.']
+
+x = input("Enter email addresss")
+first, last = x.split('@')
+if '@' in x and False == first.isdigit() and False == last.isdigit():
+    if first.isalpha() or first in '.':
+        print('hór')
+        if last.isalpha() or '.' in last:
+            print('cunt')
+else:
+    print("bitch")
+# else:
+#     print("Tuss")
+print(first)
+print(last)
