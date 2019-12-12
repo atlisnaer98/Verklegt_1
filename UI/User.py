@@ -160,7 +160,7 @@ class User:
                         changed = ""
                         self.ll.change_employee(employee_list,index,int(option),changed)
                         self.employee_menu(action)
-                    else:
+                    elif int(option) ==
                         changed = input("Enter new input: ")
                         self.ll.change_employee(employee_list,index,option,changed)
                         self.employee_menu(action)
@@ -520,7 +520,7 @@ class User:
                 if action =="1":
                     self.get_voyages_for_single_date()
                 elif action == "2":
-                    ID = input("Enter ID number")#ef ekki í fyrirtækinu     self.validate_ssn(
+                    ID = self.val.validate_ssn(input("Enter ID number"))#ef ekki í fyrirtækinu     self.validate_ssn(
                     self.get_voyages_for_employee(ID)
                 elif action == "3":
                     self.get_voyages_for_timeperiod()
@@ -590,10 +590,6 @@ class User:
         if busy == 0:
             self.app.print_plane_available(plane) #Vantar bæta þetta fall
 
-            
-                    
-
-    
     def airplane_menu(self,action):
         # The method will give you options in airplane menu, user has to choose number to deside what he want to do.
         self.app.print_airplane_menu()

@@ -20,7 +20,7 @@ class Validation:
         airport_repeater = True
         numb_list = ["0","1","2","3","4","5","6","7","8","9"]
         while airport_repeater == True:
-            if len(airport_input) > 3 or len(airport_input) < 3:
+            if len(airport_input) ==3:
                 airport_input = input("Invalid input, please re-enter airport(XXX)")
             else:
                 counter = 0
@@ -120,7 +120,7 @@ class Validation:
                 year = int(date_input[:4])
                 month = int(date_input[5:7])
                 day = int(date_input[8:10])
-                if year > 0 and date_input[4] == "-" and date_input[7] == "-" and month > 0 and month <= 12 and day > 0 and day < 31:
+                if year > 0 and date_input[4] == "-" and date_input[7] == "-" and month > 0 and month <= 12 and day > 0 and day < 32:
                     return date_input
                 else:
                     date_input = input("Invalid input, please re-enter (YYYY-MM-DD):")
@@ -137,7 +137,7 @@ class Validation:
             else:
                 last_three = reg_input.split("-")
                 for name in last_three[1:]:
-                    if name.isalpha():
+                    if name.isalpha() and len(last_three) == 3:
                         reg_repeater = False
                     else:
                         reg_input = input("Invalid input, please re-enter:")
