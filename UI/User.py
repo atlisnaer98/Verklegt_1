@@ -345,7 +345,7 @@ class User:
         dest_list = self.ll.get_all_dest()
         self.app.print_selection_list(dest_list)
         dest_number = self.val.validate_selection(input("Please select destination: "),len(dest_list))
-        dest = dest_list[int(dest_number)]
+        dest = dest_list[int(dest_number)-1]
         destination_place = dest.get_destination()
         voyage.set_arriving_at(destination_place)
         while the_date == False:
@@ -366,7 +366,7 @@ class User:
         plane_list = self.ll.get_available_planes(departure,arrival)
         self.app.print_selection_list(plane_list)
         plane_number = self.val.validate_selection(input("Select an airplane: "),len(plane_list))
-        plane = plane_list[int(plane_number)].get_registration_number()
+        plane = plane_list[int(plane_number)-1].get_registration_number()
         voyage.set_aircraft_id(plane)
         self.ll.add_voyage(voyage)
         self.ll.update_flight_nums()
