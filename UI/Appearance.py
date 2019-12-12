@@ -25,6 +25,7 @@ CNA = 'Create new Airplane'
 CV = 'Change voyage'
 A = 'Airplanes'
 AC = 'Assign crew'
+AD = "All destinations"
 E = "Employees"
 V = "Voyage"
 S = "Show schedule "
@@ -120,7 +121,7 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(CNE))
         print(DASH*LENGTH)
-        print("Please input necessary information:")
+        #print("Please input necessary information:")
         #Input upplýsingar
 
     def print_show_schedule(self):
@@ -199,6 +200,12 @@ class Appearance:
         print("{:^60}".format(LD))
         print(DASH*LENGTH)
     
+    def print_get_all_dest(self):
+        print()
+        print(DASH*LENGTH)
+        print("{:^60}".format(AD))
+        print(DASH*LENGTH) 
+  
     def print_list_dest_info(self,dest):
         print("{:<20}{:<20}{:<20}".format(dest.get_airport(), dest.get_country(), dest.get_distance()+' km'))
 
@@ -274,7 +281,7 @@ class Appearance:
         
 
     def print_voyage_selection_list(self,voyage):
-        print("[{}]{:<17}{}{:<10}{}".format(voyage.get_booking_reference(),"",voyage.get_arriving_at(),"",voyage.get_departure()))
+        print("{:<20}{:<20}{:<20}".format("["+ voyage.get_booking_reference()+ "]",voyage.get_arriving_at(),voyage.get_departure()))
 
     def print_change_voyage(self):
         print(DASH*LENGTH)
