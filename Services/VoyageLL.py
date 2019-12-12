@@ -69,9 +69,10 @@ class VoyageLL():
             whole_time = arr_time - dep_time
             flight_time = whole_time - timedelta(hours=1)
             one_way_time = flight_time // 2
-
             time_left = arr_time - time
-            if 
-            return "In progress"
+            if time_left < one_way_time + 1 and time_left > one_way_time:
+                return "Landed in destination"
+            else:
+                "In the air"
         else:
             return "Invalid"
