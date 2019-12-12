@@ -80,8 +80,8 @@ class LLApi:
         ''' takes staff ID and returns all the voyages for a specific employee'''
         return self.vLL.get_voyages_for_employee(ID,voyage_list)
 
-    def get_voyage_status(self,voyage):
-        return self.vLL.get_voyage_status(voyage)
+    def get_voyage_status(self,voyage,date):
+        return self.vLL.get_voyage_status(voyage,date)
     
     def get_emp_schedule(self, ID, from_date, to_date):
         return self.eLL.get_schedule(ID, from_date, to_date)

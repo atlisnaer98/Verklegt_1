@@ -64,8 +64,8 @@ class VoyageLL():
         crew = [voyage.get_captain(), voyage.get_copilot(), voyage.get_fsm(), voyage.get_fa1(), voyage.get_fa2()]
         return crew
 
-    def get_voyage_status(self,voyage):
-        time = datetime.now()
+    def get_voyage_status(self,voyage,date):
+        time = date
         dep_time = dateutil.parser.parse(voyage.get_departure())
         arr_time = dateutil.parser.parse(voyage.get_arrival())
         if arr_time < time: #The voyage is over
