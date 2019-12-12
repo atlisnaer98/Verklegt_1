@@ -48,6 +48,7 @@ class User:
                 distance_input = input("Invalid input, please re-enter distance: ")
 
     def validate_airport(self,airport_input):
+        # The method checks the airport is validate. User is only allowed to enter letters. It is invalid if user put in for example numbers. 
         airport_repeater = True
         numb_list = ["0","1","2","3","4","5","6","7","8","9"]
         while airport_repeater == True:
@@ -60,9 +61,8 @@ class User:
                     else:
                         return airport_input.upper()
 
-            
-
     def validate_name(self,name_input):
+        # The method will check if the name is validate, user can only put in letters to proceed. 
         counter = 0
         name_repeater = True
         while name_repeater == True:
@@ -79,6 +79,7 @@ class User:
         return name_input.title()
     
     def validate_phone_number(self,phone_number):
+        # The method will check if the user put in number as a phone number. 
         true_check = True
         while true_check == True:
             if phone_number.isdigit():
@@ -86,10 +87,6 @@ class User:
                 return phone_number
             else:
                 phone_number = input("Invalid input,  please re-enter (only integers) Emergency contact number:")
-
-
-
-                
 
     def get_all_dest(self):
         # The method will print out all listed destinations, the output will be Airport, Country and Distance from Reykjavik in km.
@@ -429,7 +426,7 @@ class User:
         self.ll.add_voyage(voyage)
             
     def change_voyage(self):
-        #self.app.print_change_voyage()                     Búa til þetta method í apperance
+        self.app.print_change_voyage()
         voyage_list = self.ll.get_all_voyages()
         action = input("Enter booking reference: ")
         for index in range(len(voyage_list)):
@@ -651,7 +648,6 @@ class User:
             else:
                 self.app.print_voyage_list_with_crew(voyage,"Unmanned",status)
 
-    
     def change_plane_status(self,action):
         # The method will print out all airplanes in a list with information if the airplane is active or inactive.
         # You are able to make airplane active or inactive in this method.
@@ -666,7 +662,8 @@ class User:
         self.main_menu()
     
     def get_all_plane(self):
-        # The method will print out all airplanes in a list with certain information.
+        # The method will print out all airplanes in a list with certain information. 
+        # The output will tell you if the plain is heading or landed in the destination or in Reykjavik.
         plane_list = self.ll.get_all_airplanes()
         voyage_list = self.ll.get_all_voyages()
         self.app.print_list_plane()
@@ -694,7 +691,7 @@ class User:
             
                     
 
-        
+    
     def airplane_menu(self,action):
         # The method will give you options in airplane menu, user has to choose number to deside what he want to do.
         self.app.print_airplane_menu()
