@@ -93,7 +93,7 @@ class User:
             self.app.print_get_all_employess_role(employee)
 
     def add_employee(self):
-        #self.app.print_add_employee()                          Búa til þetta í apperance
+        self.app.print_create_employee()
         plane_list = []
         role_list = ["Pilot","Cabincrew"]
         pilot_rank_list = ["Captain","Copilot"]
@@ -210,6 +210,7 @@ class User:
             self.app.print_get_all_employess_rank(employee)
 
     def get_pilots(self):
+        self.app.print_choose_aircraft()
         self.app.select_licence()
         licence = ''
         while licence not in QUIT:
@@ -223,11 +224,10 @@ class User:
             elif licence == '4':
                 licence = 'All'
             pilot_list = self.ll.get_pilots(licence)
-            print("{:<20}{:<20}{:<20}".format("Name","SSN","Licence"))
-            for line in pilot_list:
-                sting = str(line)
-                lis = sting.split(",")
-                print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[8]))        #Nota model föllin og færa í apperance
+            self.app.print_get_all_pilots()
+            print("{:<20}{:<13}{:<13}{:<13}".format("Name:","SSN:","Licence:","Model:"))
+            for employee in pilot_list:
+                self.app.print_get_all_pilot_rank_and_licence(employee)
 
     def printing_picture(self):
         self.app.picture()
@@ -595,9 +595,7 @@ class User:
         for index in range(0,len(airplane_list)):
             if int(action) == (index+1):
                 self.ll.change_plane_status(airplane_list,index)
-                print()
-                print("You have changed the plane status")
-                print()
+                print("\nYou have changed the plane status\n")
         self.main_menu()
     
 
@@ -618,9 +616,7 @@ class User:
             if action == "1":
                 self.app.print_add_plane()
                 self.add_plane()
-                print()
-                print("You have added a new airplane!")
-                print()
+                print("\nYou have added a new airplane!\n")
             elif action == "2":
                 self.change_plane_status(action)
 
