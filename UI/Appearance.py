@@ -141,7 +141,7 @@ class Appearance:
 
     def print_employee_information(self, emp):
         print("\nID Number: {}\nName: {}\nJob title: {}\nRank: {}\nLicence: {}\nAddress: {}\nHome phone: {}\nMobile number: {}\nEmail address: {}\nActivity: {}\n"
-        .format(emp.get_ID_number(), emp.get_name(), emp.get_job_title(), emp.get_rank(), emp.get_licence(), emp.get_address(), emp.get_home_phone(), emp.get_mobile_number(),
+        .format(emp.get_ssn(), emp.get_name(), emp.get_role(), emp.get_rank(), emp.get_licence(), emp.get_address(), emp.get_home_phone(), emp.get_mobile_number(),
         emp.get_email_address(), emp.get_activity()))
 
     def print_changing_employee_information(self, emp):
@@ -263,8 +263,8 @@ class Appearance:
         print("{:>10} {:<30}{} {} ".format('[1]', DATE, '[2]',E ))
         print("{:>10} {:<30}".format('[3]', 'time period'))
     
-    def print_voyage_list_with_crew(self, voyage,status):
-        print("{:<20}{:<20}{:<20}".format(voyage.get_booking_reference(), voyage.get_arriving_at(),status))
+    def print_voyage_list_with_crew(self, voyage,manned,status):
+        print("Booking Refrence: {}\nDestination: {}\nFlight number away: {}\nFlight number home: {}\nDeparture Time: {}\nArrival Time: {}\nStatus: {}\nUn/Manned: {}\n".format(voyage.get_booking_reference(), voyage.get_arriving_at(),voyage.get_flight_number_away(),voyage.get_flight_number_home(),voyage.get_departure(),voyage.get_arrival(),status,manned))
 
     def print_selection_list(self,selected_list):
         print()
