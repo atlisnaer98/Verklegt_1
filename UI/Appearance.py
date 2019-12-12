@@ -264,7 +264,7 @@ class Appearance:
         print("{:>10} {:<30}".format('[3]', 'time period'))
     
     def print_voyage_list_with_crew(self, voyage,manned,status):
-        print("Booking Refrence: {}\nDestination: {}\Flight number away: {}\nFlight number home: {}\nDeparture Time: {}\nArrival Time: {}\nStatus: {}\nUn/Manned: {}\n".format(voyage.get_booking_reference(), voyage.get_arriving_at(),voyage.get_flight_number_away(),voyage.get_flight_number_home(),voyage.get_departure(),voyage.get_arrival(),status,manned))
+        print("Booking Refrence: {}\nDestination: {}\nFlight number away: {}\nFlight number home: {}\nDeparture Time: {}\nArrival Time: {}\nStatus: {}\nUn/Manned: {}\n".format(voyage.get_booking_reference(), voyage.get_arriving_at(),voyage.get_flight_number_away(),voyage.get_flight_number_home(),voyage.get_departure(),voyage.get_arrival(),status,manned))
 
     def print_selection_list(self,selected_list):
         print()
