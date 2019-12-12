@@ -34,12 +34,14 @@ class User:
         self.ll.add_dest(dest)
 
     def get_all_dest(self):
-        print("{:<20}{:<20}{:<20}".format("Airport","Country","Distance(km)"))
         dest_obj = self.ll.get_all_dest()
-        for line in dest_obj:
-            sting = str(line)
-            lis = sting.split(",")
-            print("{:<20}{:<20}{:<20}".format(lis[2], lis[1], lis[4]+'km'))              #Nota model föllin og færa í apperance
+        self.app.print_get_all_dest()
+        print("{:<20}{:<20}{:<20}".format("Airport","Country","Distance(km)"))
+        for destination in dest_obj:
+            #sting = str(line)
+            #lis = sting.split(",")
+            #print("{:<20}{:<20}{:<20}".format(lis[2], lis[1], lis[4]+'km')) 
+            self.app.print_list_dest_info(destination)
     
     def add_plane(self):
         plane = Airplane()
@@ -537,6 +539,8 @@ class User:
 
     
     def change_plane_status(self,action): #VINNA Í ÞESSU og nota þenna!
+        # The method will print out all airplanes in a list with information if the airplane is active or inactive.
+        # You are able to make airplane active or inactive in this method.
         airplane_list = self.ll.get_all_airplanes()
         #app.fall(airplane_list) svipað fall og print selection list
         self.app.print_change_plane_status(airplane_list)
@@ -549,7 +553,9 @@ class User:
                 print()
         self.main_menu()
     
+
     def get_all_plane(self):
+        # The method will print out all airplanes in a list with certain information.
         plane_list = self.ll.get_all_airplanes()
         self.app.print_list_plane
         #self.app.print_all_planes()
