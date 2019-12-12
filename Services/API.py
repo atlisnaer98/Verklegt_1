@@ -35,7 +35,7 @@ class LLApi:
 
     def get_dest_flight_number(self):
         return self.dLL.get_flight_number()
-    
+
     def get_all_employees(self):
         return self.eLL.get_all_employees()
 
@@ -87,4 +87,7 @@ class LLApi:
         return self.eLL.get_schedule(ID, from_date, to_date)
     
     def get_emp_date_schedule(self, from_date, to_date):
-        return self.eLL.get_date_schedule(from_date,to_date) 
+        return self.eLL.get_date_schedule(from_date,to_date)     
+        
+    def count_dest_flights(self,dest,place,time):
+        return self.vLL.count_dest_flights(dest,place,time)
