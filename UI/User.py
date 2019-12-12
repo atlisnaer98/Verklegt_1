@@ -37,8 +37,7 @@ class User:
         distance_repeater = True
         while distance_repeater == True:
             try:
-                int(distance_input)
-                if distance_input > 0:
+                if int(distance_input) <= 0:
                     distance_input = input("Invalid input, please re-enter distance: ")
                 else:
                     return distance_input
@@ -561,7 +560,7 @@ class User:
             #time_input = str(time_input)
             try:
                 hour = int(time_input[:2])
-                minute = int(time_input[4:6])
+                minute = int(time_input[4:])
                 if hour >= 0 and hour <= 24 and minute >= 0 and minute <= 60 and time_input[2] == ":":
                     print("rétt")
                     #time_repeater = False
