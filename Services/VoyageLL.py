@@ -66,6 +66,12 @@ class VoyageLL():
         elif dep_time > time: #The voyage has not started
             return "Not started"
         elif dep_time < time and arr_time > time: #The voyage is in progress
+            whole_time = arr_time - dep_time
+            flight_time = whole_time - timedelta(hours=1)
+            one_way_time = flight_time // 2
+
+            time_left = arr_time - time
+            if 
             return "In progress"
         else:
             return "Invalid"
