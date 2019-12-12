@@ -548,9 +548,7 @@ class User:
         to_date= dateutil.parser.parse(temp_date) + timedelta(days=1)
         time_voyage_list = self.ll.get_date_voyages(from_date,to_date)
         voyage_list = self.ll.get_voyages_for_employee(ID,time_voyage_list)
-        for voyage in voyage_list:
-            self.app.print_voyage_info(voyage)
-            #print(voyage.get_booking_reference())
+        self.print_voyages_manned_and_status(voyage_list)
 
     def validate_date(self,date_input):
         date_repeater = True
