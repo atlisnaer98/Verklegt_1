@@ -26,6 +26,7 @@ CV = 'Change voyage'
 A = 'Airplanes'
 AC = 'Assign crew'
 AD = "All destinations"
+AV = "Available"
 E = "Employees"
 V = "Voyage"
 S = "Show schedule "
@@ -50,6 +51,7 @@ BAE146 = "BAE 146"
 F28 = "Fokker F28"
 AC = "Active"
 IAC = "Inactive"
+W = "Working"
 
 
 B = "[B] Back"
@@ -138,6 +140,12 @@ class Appearance:
     def print_what_to_change_employee(self):
         print(DASH*LENGTH)
         print("{}".format(WC))
+    
+    def print_employee_schedule(self):
+        print("{:>10} {:<30}{} {} ".format('[1]', DATE, '[2]', EM))
+    
+    def print_employee_available_or_working(self):
+        print("{:>10} {:<30}{} {} ".format('[1]', AV ,'[2]', W))
 
     def print_employee_information(self, emp):
         print("\nID Number: {}\nName: {}\nJob title: {}\nRank: {}\nLicence: {}\nAddress: {}\nHome phone: {}\nMobile number: {}\nEmail address: {}\nActivity: {}\n"

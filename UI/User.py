@@ -30,7 +30,7 @@ class User:
         dest.set_airport(self.validate_airport(input("Airport(XXX): ")))
         dest.set_flight_time(self.validate_time(input("Time of flight (HH:MM): ")))
         dest.set_distance(self.validate_distance(input("Distance: ")))
-        dest.set_name_of_contact(input("Emergency contact: "))
+        dest.set_name_of_contact(self.validate_name(input("Emergency contact: ")))
         dest.set_emergency_phone_number(self.validate_phone_number(input("Emergency contact number: ")))
         self.ll.add_dest(dest)
 
@@ -336,11 +336,11 @@ class User:
 
 
     def show_emp_schedule(self, action):
-        print("[1]Date     [2] Employee")
-        action = input("Select an option: ")
+        self.app.print_employee_schedule()
+        action = self.back_quit(action, 2)
         if action == '1':
-            print("[1]Available     [2] Working")
-            action = input("Select an option: ")
+            self.app.print_employee_available_or_working()
+            action = self.back_quit(action, 2)
             temp_date = self.validate_date(input("Enter from date: YYYY-MM-DD:"))
             from_date = dateutil.parser.parse(temp_date)
             to_date = from_date + timedelta(days=1)
@@ -560,7 +560,6 @@ class User:
                 month = int(date_input[5:7])
                 day = int(date_input[8:10])
                 if year > 0 and date_input[4] == "-" and date_input[7] == "-" and month > 0 and month <= 12 and day > 0 and day < 31:
-                    print("rétt")
                     return date_input
                 else:
                     date_input = input("Invalid input, please re-enter (YYYY-MM-DD):")
