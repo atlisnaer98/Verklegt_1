@@ -158,4 +158,9 @@ class Validation:
                 ssn_input = input("please re-enter SSN:")
         return ssn_input
 
+    def validate_plane_selection(self, index, plane_list):
+        print(index)
+        print(len(plane_list)-1)
+        if index > len(plane_list)-1:
+            print("lengri en planelist")
 
