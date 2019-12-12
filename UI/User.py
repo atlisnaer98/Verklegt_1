@@ -611,7 +611,7 @@ class User:
         from_date = dateutil.parser.parse(the_date)
         to_date = from_date + timedelta(days=1)
         voyage_list = self.ll.get_date_voyages(from_date,to_date)
-        self.print_voyages_manned(voyage_list)
+        self.print_voyages_manned_and_status(voyage_list)
     
     def get_voyages_for_timeperiod(self): #Þarf að vera valkostur fyrir þetta í apperance
         temp_date = input("Enter from date: YYYY-MM-DD:")                    
