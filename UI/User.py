@@ -156,13 +156,25 @@ class User:
                 if change_selection == "1":
                     self.app.print_changing_employee_information(emp)
                     option = self.val.validate_selection(input("What do you want to change? "),5)
-                    if int(option) == 5:
+                    if int(option) == 1: #address
+                        changed = self.val.validate_home(input("Enter new address: "))
+                        self.ll.change_employee(employee_list,index,option,changed)
+                        self.employee_menu(action)
+                    elif int(option) == 2: #home phone
+                        changed = self.val.validate_phone_number(input("Enter new home phone: "))
+                        self.ll.change_employee(employee_list,index,option,changed)
+                        self.employee_menu(action)
+                    elif int(option) == 3: #mobile phone
+                        changed = self.val.validate_phone_number(input("Enter new mobile number: "))
+                        self.ll.change_employee(employee_list,index,option,changed)
+                        self.employee_menu(action)
+                    elif int(option) == 4: #email address
+                        changed = self.val.validate_email(input("Enter new email: "))
+                        self.ll.change_employee(employee_list,index,option,changed)
+                        self.employee_menu(action)
+                    elif int(option) == 5:
                         changed = ""
                         self.ll.change_employee(employee_list,index,int(option),changed)
-                        self.employee_menu(action)
-                    elif int(option) ==
-                        changed = input("Enter new input: ")
-                        self.ll.change_employee(employee_list,index,option,changed)
                         self.employee_menu(action)
                 elif change_selection == "2":
                     self.employee_menu(action)
