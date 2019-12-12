@@ -312,7 +312,8 @@ class User:
         self.app.print_working_employee()
         print("{:<20}{:<20}{:<20}".format("Name","SSN","Destination"))
         for voyage in time_voyage_list:
-            self.app.print_working_emps(voyage,employee_dict)
+            print(str(voyage))
+            #self.app.print_working_emps(voyage,employee_dict)
             
     def add_voyage(self):
         voyage = Voyage()
