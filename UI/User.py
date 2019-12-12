@@ -553,13 +553,14 @@ class User:
         temp_date = self.val.validate_date(input("Enter from date (YYYY-MM-DD): "))                    
         from_date = dateutil.parser.parse(temp_date)
         temp_date = self.val.validate_date(input("Enter to date (YYYY-MM-DD): "))     
-        to_date = dateutil.parser.parse(temp_date)
+        to_date = dateutil.parser.parse(temp_date) + timedelta(days=1)
         voyage_list = self.ll.get_date_voyages(from_date,to_date)
         self.print_voyages_manned_and_status(voyage_list)
 
     def print_voyages_manned_and_status(self,voyage_list):
+        date = datetime.now()
         for voyage in voyage_list:
-            status = self.ll.get_voyage_status(voyage)
+            status = self.ll.get_voyage_status(voyage,date)
             if len(voyage.get_captain()) == 10 and len(voyage.get_copilot()) == 10 and len(voyage.get_fsm()) == 10:
                 self.app.print_voyage_list_with_crew(voyage,"Manned",status)
             else:
@@ -584,18 +585,15 @@ class User:
         plane_list = self.ll.get_all_airplanes()
         voyage_list = self.ll.get_all_voyages()
         self.app.print_list_plane()
-        #self.app.print_all_planes()
-        #print("{:<20}{:<13}{:<13}{:<13}".format("Registration Number","Plane Type","Model","Capacity"))
-        #for plane in plane_list:
-        #   self.app.print_list_plane_info(plane)
         self.app.print_selection_list(plane_list)
         index = self.val.validate_selection(input("Select an airplane: "), len(plane_list))
         plane = plane_list[int(index)]
         reg_num = plane.get_registration_number()
+        date = dateutil.parser.parse(self.val.validate_date(input("Date (YYYY-MM-DD): ")) + "T" + self.val.validate_time(input("Time(HH:MM): ")) + ":00")
         busy = 0
         for voyage in voyage_list:
             if voyage.get_aircraft_id() == reg_num:
-                status = self.ll.get_voyage_status(voyage)
+                status = self.ll.get_voyage_status(voyage,date)
                 if status == "On the way to the destination" or status == "On the way to Reykjavik":
                     busy = 1
                     self.app.print_in_air(plane,voyage,status) #Vantar bæta þetta fall
