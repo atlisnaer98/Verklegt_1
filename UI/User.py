@@ -385,7 +385,7 @@ class User:
         voyage_list[index] = voyage
         self.ll.assign_crew(voyage_list)
 
-    def available_empoyees(self,voyage):
+    def available_employees(self,voyage):
         available_emp_list = []
         voyage_date_from = dateutil.parser.parse(voyage.get_departure())
         voyage_date_to = dateutil.parser.parse(voyage.get_arrival())
@@ -396,7 +396,7 @@ class User:
 
     def set_captain(self,voyage,employee_list,licence):
         available_captain_list = []
-        available_emp_list = self.available_empoyees(voyage)   
+        available_emp_list = self.available_employees(voyage)   
         for captain in employee_list:
             if captain.get_rank() == "Captain" and captain.get_activity() == "1" and licence == captain.get_licence() and captain.get_ssn() in available_emp_list:
                 available_captain_list.append(captain.get_name())
@@ -410,7 +410,7 @@ class User:
 
     def set_copilot(self,voyage,employee_list,licence):
         available_copilot_list = []
-        available_emp_list = self.available_empoyees(voyage)
+        available_emp_list = self.available_employees(voyage)
         for copilot in employee_list:
             if copilot.get_rank() == "Copilot" and copilot.get_activity() == "1" and licence == copilot.get_licence() and copilot.get_ssn() in available_emp_list:
                 available_copilot_list.append(copilot.get_name())
@@ -424,7 +424,7 @@ class User:
 
     def set_fsm(self,voyage,employee_list):
         available_fsm_list = []
-        available_emp_list = self.available_empoyees(voyage)
+        available_emp_list = self.available_employees(voyage)
         for fsm in employee_list:
             if fsm.get_rank() == "Flight Service Manager" and fsm.get_activity() =="1" and fsm.get_ssn() in available_emp_list:
                 available_fsm_list.append(fsm.get_name())
