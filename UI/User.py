@@ -513,7 +513,7 @@ class User:
     def get_voyages_for_employee(self, ID):
         temp_date = self.val.validate_date(input("Enter date from (YYYY-MM-DD):"))
         from_date= dateutil.parser.parse(temp_date)
-        temp_date = self.val.validate_date(input("Enter to date (YYYY-MM-DD):"))
+        temp_date = self.val.validate_date(input("Enter to date (YYYY-MM-DD):")) # það kemur error ef þessi dagsetning er lægri en from date
         to_date= dateutil.parser.parse(temp_date) + timedelta(days=1)
         time_voyage_list = self.ll.get_date_voyages(from_date,to_date)
         voyage_list = self.ll.get_voyages_for_employee(ID,time_voyage_list)
