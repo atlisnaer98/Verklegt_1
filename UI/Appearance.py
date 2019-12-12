@@ -155,7 +155,7 @@ class Appearance:
     def print_get_all_employess(self):
         print()
         print(DASH*LENGTH)
-        print("{:^60}".format(GA))
+        print("{:^60}".format("All Employees"))
         print(DASH*LENGTH)
 
     def print_get_all_employess_role(self,employee):
@@ -163,17 +163,27 @@ class Appearance:
     
     def print_get_all_employess_rank(self,employee):
         print("{:<20}{:<20}{:<20}".format(employee.get_name(), employee.get_ssn(), employee.get_rank()))
+    
+    def print_get_all_pilot_rank_and_licence(self,employee):
+        print("{:<20}{:<13}{:<13}{:<13}".format(employee.get_name(), employee.get_ssn(), employee.get_rank(), employee.get_licence()))
 
-    def print_get_all_pilots(self):#Nota og tengja
+    def print_choose_aircraft(self):
         print()
         print(DASH*LENGTH)
-        print("{:^60}".format(GP))
+        print("{:^60}".format("Choose Aircraft Model"))
+        print(DASH*LENGTH)  
+    
+    
+    def print_get_all_pilots(self):
+        print()
+        print(DASH*LENGTH)
+        print("{:^60}".format("Pilots"))
         print(DASH*LENGTH)    
     
-    def print_get_all_cabincrew(self):#Nota og tengja 
+    def print_get_all_cabincrew(self):
         print()
         print(DASH*LENGTH)
-        print("{:^60}".format(GC))
+        print("{:^60}".format("All Cabin Crew"))
         print(DASH*LENGTH)
     
     def print_dest_menu(self):

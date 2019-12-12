@@ -78,7 +78,6 @@ class User:
 
     def add_employee(self):
         self.app.print_create_employee()
-        #self.app.print_add_employee()                          Búa til þetta í apperance
         plane_list = []
         role_list = ["Pilot","Cabincrew"]
         pilot_rank_list = ["Captain","Copilot"]
@@ -195,6 +194,7 @@ class User:
             self.app.print_get_all_employess_rank(employee)
 
     def get_pilots(self):
+        self.app.print_choose_aircraft()
         self.app.select_licence()
         licence = ''
         while licence not in QUIT:
@@ -208,11 +208,10 @@ class User:
             elif licence == '4':
                 licence = 'All'
             pilot_list = self.ll.get_pilots(licence)
-            print("{:<20}{:<20}{:<20}".format("Name","SSN","Licence"))
-            for line in pilot_list:
-                sting = str(line)
-                lis = sting.split(",")
-                print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[8]))        #Nota model föllin og færa í apperance
+            self.app.print_get_all_pilots()
+            print("{:<20}{:<13}{:<13}{:<13}".format("Name:","SSN:","Licence:","Model:"))
+            for employee in pilot_list:
+                self.app.print_get_all_pilot_rank_and_licence(employee)
 
     def printing_picture(self):
         self.app.picture()
