@@ -226,11 +226,7 @@ class Appearance:
         print("{:^60}".format(V))
         print(DASH*LENGTH)
         print("{:>10} {:<30}{} {} ".format('[1]', C, '[2]', ASS))
-        print("{:>10} {:<30}{} {}".format('[3]', LV, '[4]',CV ))
-        print("{:15}{}".format(EMPTY,DASH*30))
-        print("{:17}{}{:10}{}".format(EMPTY,B,EMPTY,Q))
-        print("{:15}{}".format(EMPTY,DASH*30))
-        
+        print("{:>10} {:<30}{} {}".format('[3]', LV, '[4]',CV ))   
 
     def print_add_voyage(self):
         print(DASH*LENGTH)

@@ -349,7 +349,6 @@ class User:
                 self.ll.change_voyage(voyage_list,index,plane)
 
     def assign_crew(self):
-        available_fa = []
         self.app.print_assign_crew()
         voyage_list = self.ll.get_all_voyages()
         employee_list = self.ll.get_all_employees()
@@ -367,15 +366,22 @@ class User:
                 for airplane in airplane_list:
                     if voyage.get_aircraft_id() == airplane.get_registration_number():
                         licence = airplane.get_planeID()             
-                self.set_captain(voyage,employee_list,licence,)
+                self.set_captain(voyage,employee_list,licence)
+                self.save_crew(voyage,voyage_list,index)
                 self.set_copilot(voyage,employee_list,licence)
+                self.save_crew(voyage,voyage_list,index)
                 self.set_fsm(voyage,employee_list)
+                self.save_crew(voyage,voyage_list,index)
                 fa1 = self.set_fa(voyage,employee_list)
-                fa2 = self.set_fa(voyage,employee_list)
                 voyage.set_fa1(fa1)
+                self.save_crew(voyage,voyage_list,index)
+                fa2 = self.set_fa(voyage,employee_list)
                 voyage.set_fa2(fa2)
-                voyage_list[index] = voyage
-                self.ll.assign_crew(voyage_list)
+                self.save_crew(voyage,voyage_list,index)
+
+    def save_crew(self,voyage,voyage_list,index):
+        voyage_list[index] = voyage
+        self.ll.assign_crew(voyage_list)
 
     def clear_voyage_crew(self,voyage_list,index):
         voyage = voyage_list[index]
@@ -440,7 +446,7 @@ class User:
             if fsm_index + 1 == int(fsm_selection):
                 for emp in employee_list:
                     if emp.get_name() == available_fsm_list[fsm_index]:
-                        return emp.get_ssn()
+                        voyage.set_fsm(emp.get_ssn())
 
     def set_fa(self,voyage,employee_list):
         available_fa_list = []
@@ -454,7 +460,7 @@ class User:
             if fa_index + 1 == int(fa_selection):
                 for emp in employee_list:
                     if emp.get_name() == available_fa_list[fa_index]:
-                        voyage.set_fa(emp.get_ssn())
+                        return emp.get_ssn()
 
     def get_date_voyages(self, from_date, to_date):
         voyage_list = self.ll.get_date_voyages(from_date, to_date)
@@ -475,10 +481,10 @@ class User:
             #print(voyage.get_booking_reference())
             
     def Voyage_menu(self,action):
-        self.app.print_voyage_menu()
         action = ""
         while action not in QUIT:
-            action = input("select an option: ")
+            self.app.print_voyage_menu()
+            action = self.back_quit(action,4)
             if action == "1":
                 self.app.print_add_voyage()
                 self.add_voyage()
