@@ -110,6 +110,7 @@ class User:
         self.ll.add_plane(plane)
 
     def validate_reg(self,reg_input):
+        # The method will check if the registration number is valid. The number has to start with TF- to be valid and contain 3 letters.
         reg_repeater = True
         while reg_repeater == True:
             if reg_input[:3] != "TF-":
@@ -209,8 +210,6 @@ class User:
         emp.set_activity(1)
         self.ll.add_employee(emp)
 
-
-
     def validate_selection(self,action,limit):
         validation = True
         while validation == True:
@@ -300,6 +299,7 @@ class User:
         self.app.picture()
 
     def dest_menu(self,action):
+        # The method will give you options in destinations menu, user has to choose number to deside what he want to do.
         while action not in QUIT:
             self.app.print_dest_menu()
             action = self.back_quit(action,3)
@@ -339,6 +339,7 @@ class User:
                     print("Invalid input,")
 
     def employee_menu(self,action):
+        # The method will give you options in employee menu, user has to choose number to deside what he want to do.
         self.app.print_employee_menu()
         while action not in QUIT:
             action = self.back_quit(action,4)
@@ -359,8 +360,8 @@ class User:
                 elif action == "3":
                     self.get_cabin_crew()
 
-
     def show_emp_schedule(self, action):
+        # The method will show you employee schedule. User has to choose between to give Date og SSN number as a input.
         self.app.print_employee_schedule()
         action = self.back_quit(action, 2)
         if action == '1':
@@ -378,11 +379,11 @@ class User:
             self.get_voyages_for_employee(ID)
 
     def get_available_emp_date_schedule(self,from_date,to_date):
+        # The method will print out all available employees, their SSN number and role
         available_list = self.ll.get_emp_date_schedule(from_date,to_date)
         print("{:<20}{:<20}{:<20}".format("Name:","SSN:","Role:"))
         for emp in available_list:
             self.app.print_get_all_employess_role(emp)
-
 
     def get_working_emp_date_schedule(self,from_date, to_date):
         counter = 0
@@ -400,8 +401,7 @@ class User:
                 else:
                     print("{:<20}{:<20}{:<20}".format("Name","SSN","Destination"))
                     self.app.print_working_emps(voyage,employee_dict)
-
-        
+   
     def add_voyage(self):
         voyage = Voyage()
         voyage_list = self.ll.get_all_voyages()
@@ -652,7 +652,7 @@ class User:
                 self.app.print_voyage_list_with_crew(voyage,"Unmanned",status)
 
     
-    def change_plane_status(self,action): #VINNA Í ÞESSU og nota þenna!
+    def change_plane_status(self,action):
         # The method will print out all airplanes in a list with information if the airplane is active or inactive.
         # You are able to make airplane active or inactive in this method.
         airplane_list = self.ll.get_all_airplanes()
@@ -665,7 +665,6 @@ class User:
                 print("\nYou have changed the plane status\n")
         self.main_menu()
     
-
     def get_all_plane(self):
         # The method will print out all airplanes in a list with certain information.
         next_available = ''
@@ -692,9 +691,8 @@ class User:
             voyages = self.ll.get_voyage_status(voyage)
             list_of_voyages.append(voyages)
         
-
-    
     def airplane_menu(self,action):
+        # The method will give you options in airplane menu, user has to choose number to deside what he want to do.
         self.app.print_airplane_menu()
         while action not in QUIT:
             action = self.back_quit(action,3)
