@@ -1,6 +1,6 @@
 class Destination():
 
-    def __init__(self, destination="",country="", airport="", flight_time="", distance=0, name_of_contact="", emergency_phone_number=""):
+    def __init__(self, destination="",country="", airport="", flight_time="", distance=0, name_of_contact="", emergency_phone_number="",flight_number = ""):
         self.__destination = destination
         self.__country = country
         self.__airport = airport
@@ -8,9 +8,10 @@ class Destination():
         self.__distance = distance
         self.__name_of_contact = name_of_contact
         self.__emergency_phone_number = emergency_phone_number
+        self.__flight_number = flight_number
 
     def __str__(self):
-        return "{},{},{},{},{},{},{}".format(self.__destination,self.__country, self.__airport, self.__flight_time, self.__distance, self.__name_of_contact, self.__emergency_phone_number)
+        return "{},{},{},{},{},{},{},{}".format(self.__destination,self.__country, self.__airport, self.__flight_time, self.__distance, self.__name_of_contact, self.__emergency_phone_number)
 
     def get_destination(self):
         return self.__destination
@@ -53,3 +54,9 @@ class Destination():
 
     def set_emergency_phone_number(self, new_phone):
         self.__emergency_phone_number = new_phone
+
+    def get_flight_number(self):
+        return self.__flight_number
+
+    def set_flight_number(self,new_numb):
+        self.__flight_number = new_numb
