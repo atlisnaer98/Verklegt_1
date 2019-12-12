@@ -42,19 +42,16 @@ class User:
         # name_repeater = True
         # print(len(splitted_name))
         counter = 0
-        print(len(splitted_name))
+        letter_count = 0
         while counter != len(splitted_name):
             for name in splitted_name:
-                counter += 1
-                print(counter)
-
-                for letter in name:
-                    try:
-                        letter.isalpha()
-                        
-
-                    except ValueError:
-                        print("bitch")
+                print(name)
+                print(len(name))
+                try:
+                    name.isalpha()
+                    return splitted_name
+                except ValueError:
+                    print("bitch")
 
                 
 
