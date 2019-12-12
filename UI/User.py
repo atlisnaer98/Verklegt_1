@@ -177,11 +177,12 @@ class User:
         for index in range(len(employee_list)):
             emp = employee_list[index]
             if action == emp.get_ssn():
-                self.app.print_changing_employee_information(emp)
+                self.app.print_employee_information(emp)
                 print("Would you like to change any information?")
                 self.app.print_yes_no()
                 change_selection = self.back_quit(action,2)
                 if change_selection == "1":
+                    self.app.print_changing_employee_information(emp)
                     option = int(input("What do you want to change? "))
                     if option == 5:
                         changed = ""
@@ -573,7 +574,7 @@ class User:
     
     def get_voyages_for_single_date(self):
         the_date = input("Enter date: YYYY-MM-DD:")                    
-        from_date= dateutil.parser.parse(the_date)
+        from_date = dateutil.parser.parse(the_date)
         to_date = from_date + timedelta(days=1)
         voyage_list = self.ll.get_date_voyages(from_date,to_date)
         self.print_voyages_manned(voyage_list)
@@ -584,14 +585,15 @@ class User:
         temp_date = input("Enter to date: YYYY-MM-DD:")     
         to_date = dateutil.parser.parse(temp_date)
         voyage_list = self.ll.get_date_voyages(from_date,to_date)
-        self.print_voyages_manned(voyage_list)
+        self.print_voyages_manned_and_status(voyage_list)
 
-    def print_voyages_manned(self,voyage_list):
+    def print_voyages_manned_and_status(self,voyage_list):
         for voyage in voyage_list:
+            status = self.ll.get_voyage_status(voyage)
             if len(voyage.get_captain()) == 10 and len(voyage.get_copilot()) == 10 and len(voyage.get_fsm()) == 10:
-                self.app.print_voyage_list_with_crew(voyage,"Manned")
+                self.app.print_voyage_list_with_crew(voyage,"Manned",status)
             else:
-                self.app.print_voyage_list_with_crew(voyage,"Unmanned")
+                self.app.print_voyage_list_with_crew(voyage,"Unmanned",status)
 
     
     def change_plane_status(self,action): #VINNA Í ÞESSU og nota þenna!
