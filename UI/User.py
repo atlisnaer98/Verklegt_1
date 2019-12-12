@@ -387,7 +387,8 @@ class User:
 
     def available_employees(self,voyage):
         available_emp_list = []
-        voyage_date_from = dateutil.parser.parse(voyage.get_departure())
+        departure_day = dateutil.parser.parse(voyage.get_departure())
+        voyage_date_from = 
         voyage_date_to = dateutil.parser.parse(voyage.get_arrival())
         emp_obj = self.ll.get_emp_date_schedule(voyage_date_from,voyage_date_to)
         for emp in emp_obj:
