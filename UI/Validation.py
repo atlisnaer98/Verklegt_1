@@ -159,6 +159,7 @@ class Validation:
         return ssn_input
 
     def validate_existing_emp(self,ssn_input,employee_list):
+        #validates wether the employee is in the company, if not you have to reenter ssn
         ssn_repeater = True
         while ssn_repeater == True:
             ssn_input = self.validate_ssn(ssn_input)
@@ -171,4 +172,13 @@ class Validation:
             if counter > len(employee_list):
                 print("This employee is not in the company,")
                 ssn_input = input("please re-enter SSN: ")
+            
+    def validate_already_emp(self,ssn_input,employee_list):
+        employees_in_company = []
+        for emp in employee_list:
+            employees_in_company.append(emp.get_ssn)
+        ssn_repeater = True
+        while ssn_repeater == True:
+            ssn_input = self.validate_ssn(ssn_input)
+            if 
             

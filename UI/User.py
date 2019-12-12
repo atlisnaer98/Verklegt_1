@@ -91,7 +91,8 @@ class User:
         pilot_rank_list = ["Captain","Copilot"]
         cabincrew_rank_list = ["Flight Service Manager", "Flight Attendant"]
         emp = Employee()
-        emp.set_ssn(self.val.validate_ssn(input("SSN number: ")))
+        employee_list = self.ll.get_all_employees()
+        emp.set_ssn(self.val.validate_already_emp(input("SSN number: "),employee_list))
         emp.set_name(self.val.validate_name(input("Name: ")))
         emp.set_address(self.val.validate_home(input("Adress: ")))
         emp.set_home_phone(self.val.validate_phone_number(input("Home phone: ")))
