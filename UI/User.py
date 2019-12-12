@@ -415,11 +415,11 @@ class User:
         voyage.set_arriving_at(destination_place)
         voyage.set_flight_number_away("NA0500") #PLANE NUMBEEER!!!!!!!!!!!
         voyage.set_flight_number_home("NA0501")
-        depart = self.validate_date(input("Departure date (YYYY-MM-DD): ")) + "T" + self.validate_time(input("Departure time(HH:MM): "))
+        depart = self.validate_date(input("Departure date (YYYY-MM-DD): ")) + "T" + self.validate_time(input("Departure time(HH:MM): ")) + ":00"
         departure = dateutil.parser.parse(depart)
         voyage.set_departure(depart)
         one_way_flight_time = dateutil.parser.parse(dest.get_flight_time())
-        arrival = departure + timedelta(hours=one_way_flight_time.hour * 2 + 1, minutes=one_way_flight_time.minute)
+        arrival = departure + timedelta(hours=one_way_flight_time.hour * 2 + 1, minutes=one_way_flight_time.minute*2)
         voyage.set_arrival(arrival.isoformat())
         plane_list = self.ll.get_available_planes(departure,arrival)
         self.app.print_selection_list(plane_list)
@@ -667,29 +667,33 @@ class User:
     
     def get_all_plane(self):
         # The method will print out all airplanes in a list with certain information.
-        next_available = ''
-        the_plane = []
         plane_list = self.ll.get_all_airplanes()
-        voyage = self.ll.get_all_voyages()
-        list_of_planes = []
+        voyage_list = self.ll.get_all_voyages()
         self.app.print_list_plane()
-        voyage_list = []
-        list_of_voyages = []
         #self.app.print_all_planes()
-        print("{:<20}{:<13}{:<13}{:<13}".format("Registration Number","Plane Type","Model","Capacity"))
+        #print("{:<20}{:<13}{:<13}{:<13}".format("Registration Number","Plane Type","Model","Capacity"))
         #for plane in plane_list:
         #   self.app.print_list_plane_info(plane)
-        for plane in plane_list:
-            list_of_planes.append(plane.get_registration_number())
-        self.app.print_selection_list(list_of_planes)
-        action = int(input("Select an airplane: "))
-        reg_num = list_of_planes[action]
-        for line in voyage:
-            if line.get_aircraft_id() == reg_num:
-                voyage_list.append(line)
+        self.app.print_selection_list(plane_list)
+        index = int(input("Select an airplane: ")) - 1
+        plane = plane_list[index]
+        reg_num = plane.get_registration_number()
+        busy = 0
         for voyage in voyage_list:
-            voyages = self.ll.get_voyage_status(voyage)
-            list_of_voyages.append(voyages)
+            if voyage.get_aircraft_id() == reg_num:
+                status = self.ll.get_voyage_status(voyage)
+                if status == "On the way to the destination" or status == "On the way to Reykjavik":
+                    busy = 1
+                    self.app.print_in_air(plane,voyage,status) #Vantar bæta þetta fall
+                elif status == "Landed in destination":
+                    busy = 1
+                    self.app.print_plane_busy(plane,voyage,status) #Vantar bæta þetta fall
+        if busy == 0:
+            self.app.print_plane_available(plane) #Vantar bæta þetta fall
+
+            
+                    
+
         
     def airplane_menu(self,action):
         # The method will give you options in airplane menu, user has to choose number to deside what he want to do.
@@ -720,8 +724,6 @@ class User:
                 self.dest_menu(action)
             elif action == "4":
                 self.airplane_menu(action)
-            else:
-                print("Invalid input,")
         quit()
 
             
