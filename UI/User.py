@@ -104,7 +104,7 @@ class User:
         plane = Airplane()
         plane.set_registration_number(self.validate_reg(input("Registration number(TF-XXX): ")))
         self.app.print_add_plane_vol2()
-        option = int(input("Model: "))
+        option = self.validate_selection(input("Model: "),3)
         self.set_plane_model(plane,option)
         plane.set_active(1)
         self.ll.add_plane(plane)
@@ -162,10 +162,10 @@ class User:
         cabincrew_rank_list = ["Flight Service Manager", "Flight Attendant"]
         emp = Employee()
         emp.set_ssn(input("SSN number: "))
-        emp.set_name(input("Name: "))
+        emp.set_name(self.validate_name(input("Name: ")))
         emp.set_address(input("Adress: "))
-        emp.set_home_phone(input("Home phone: "))
-        emp.set_mobile_number(input("Mobile number: "))
+        emp.set_home_phone(self.validate_phone_number(input("Home phone: ")))
+        emp.set_mobile_number(self.validate_phone_number(input("Mobile number: ")))
         emp.set_email_address(input("Email: "))
         print("role:")
         self.app.print_selection_list(role_list)
@@ -726,8 +726,6 @@ class User:
                 self.dest_menu(action)
             elif action == "4":
                 self.airplane_menu(action)
-            else:
-                print("Invalid input,")
         quit()
 
             
