@@ -67,7 +67,6 @@ class User:
             splitted_name  = name_input.split(" ")
             name_len = len(splitted_name)
             for name in splitted_name:
-<<<<<<< HEAD
                 if name.isalpha():
                     counter =+ 1
                 else:
@@ -76,16 +75,7 @@ class User:
             if counter == name_len: 
                 name_repeater = False        
         return name_input.title()
-=======
-                print(name)
-                print(len(name))
-                try:
-                    name.isalpha()
-                    return splitted_name
-                except ValueError:
-                    print("bitch")
     
-
     def validate_phone_number(self,phone_number):
         true_check = True
         while true_check == True:
@@ -94,7 +84,6 @@ class User:
                 return phone_number
             else:
                 phone_number = input("Invalid input,  please re-enter (only integers) Emergency contact number:")
->>>>>>> dbdc224254d90b413e37d0d7f98ac96236159787
 
 
 
