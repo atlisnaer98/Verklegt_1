@@ -306,8 +306,8 @@ class User:
             self.app.print_get_all_employess_role(employee)
 
 
-    def get_working_emp_date_schedule(self,date):
-        time_voyage_list = self.ll.get_voyages_on_date(date)
+    def get_working_emp_date_schedule(self,from_date, to_date):
+        time_voyage_list = self.ll.get_voyages_on_date(from_date,to_date)
         employee_dict = self.ll.get_all_employees_dict()
         self.app.print_working_employee()
         print("{:<20}{:<20}{:<20}".format("Name","SSN","Destination"))
