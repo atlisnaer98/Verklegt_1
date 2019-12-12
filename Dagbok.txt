@@ -95,3 +95,17 @@ mánudagur - lokafundur:
 
 þriðjudagur morgunfundur:
 Ætlum að klára back og quit takkana ásamt því að reyna að fínpússa sem mest í dag.
+
+þriðjudagur- lokafundur:
+Náðum að klára að gera back og quit takkan, back lætur notandan fara á main menu. Erum komnir langt á leið með a-kröfur og b-kröfur.
+
+miðvikudagur - morgunfundur: 
+Í dag ætlum við að klára allar a-kröfur og halda áfram með þær b-kröfur sem við eigum eftir. Halda áfram að vinna í forritinu þannig við getum skilað
+því á föstudaginn.
+
+miðvikudagur - lokafundur:
+Náðum að klára allar nema eina a-kröfu, að búa til voyage. Við erum byrjaðir að útfæra hana en erum að reyna að tengja hana við allt forritið.
+Komumst langt á leið og náðum að gera b-kröfur líka. 
+
+fimmtudagur - morgunfundur:
+Ætlum að klára að gera síðustu a-kröfuna okkar og síðan að halda áfram að gera síðustu b-kröfurnar sem við eigum eftir.
