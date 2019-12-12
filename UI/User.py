@@ -413,14 +413,16 @@ class User:
         dest = dest_list[dest_number]
         destination_place = dest.get_destination()
         voyage.set_arriving_at(destination_place)
-        voyage.set_flight_number_away("NA0500") #PLANE NUMBEEER!!!!!!!!!!!
-        voyage.set_flight_number_home("NA0501")
         depart = self.validate_date(input("Departure date (YYYY-MM-DD): ")) + "T" + self.validate_time(input("Departure time(HH:MM): ")) + ":00"
         departure = dateutil.parser.parse(depart)
         voyage.set_departure(depart)
         one_way_flight_time = dateutil.parser.parse(dest.get_flight_time())
         arrival = departure + timedelta(hours=one_way_flight_time.hour * 2 + 1, minutes=one_way_flight_time.minute*2)
         voyage.set_arrival(arrival.isoformat())
+        away_number = "NA" + dest.get_flight_number() + self.ll.count_dest_flights(destination_place,"away",departure)
+        home_number = "NA" + dest.get_flight_number() + self.ll.count_dest_flights(destination_place,"home",departure)
+        voyage.set_flight_number_away(away_number)
+        voyage.set_flight_number_home(home_number)
         plane_list = self.ll.get_available_planes(departure,arrival)
         self.app.print_selection_list(plane_list)
         plane_number = int(input("Select an airplane: ")) - 1
