@@ -68,7 +68,7 @@ class User:
             name_len = len(splitted_name)
             for name in splitted_name:
                 if name.isalpha():
-                    counter =+ 1
+                    counter += 1
                 else:
                     name_input = input("The name has to only contain letters, please re-enter name: ")
                     break 
