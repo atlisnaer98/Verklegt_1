@@ -4,6 +4,7 @@ import dateutil.parser
 from datetime import timedelta
 from datetime import datetime
 from InformationLayerClasses.API import Data_main
+from Models.Destination import Destination
 class VoyageLL():
         
     def __init__(self, sending):
@@ -100,3 +101,24 @@ class VoyageLL():
                 return "0" + str(counter)
             else:
                 return str(counter)
+
+    def update_flight_nums(self):
+        voyage_list = self.dl.get_all_voyages()
+        dest_list = self.dl.get_all_dest()
+        for voyage in voyage_list:
+            dep_time = dateutil.parser.parse(voyage.get_departure())
+            for dest in dest_list:
+                if voyage.get_arriving_at() == dest.get_destination():
+                    away_number = "NA" + dest.get_flight_number() + self.count_dest_flights(voyage.get_arriving_at(),"away",dep_time)
+                    home_number = "NA" + dest.get_flight_number() + self.count_dest_flights(voyage.get_arriving_at(),"home",dep_time)
+                    voyage.set_flight_number_away(away_number)
+                    voyage.set_flight_number_home(home_number)
+        self.dl.update_voyage_file(voyage_list)
+
+    def get_departure(self):
+        voyage_list = self.dl.get_all_voyages()
+        departure_list = []
+        for voyage in voyage_list:
+            if voyage.get_departure() not in departure_list:
+                departure_list.append(voyage.get_departure())
+        return departure_list

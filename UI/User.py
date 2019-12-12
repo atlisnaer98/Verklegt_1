@@ -391,6 +391,8 @@ class User:
    
     def add_voyage(self):
         voyage = Voyage()
+        the_date = False
+        departure_list = self.ll.get_departure()
         voyage_list = self.ll.get_all_voyages()
         last_booking_ref = int(voyage_list[-1].get_booking_reference())
         voyage.set_booking_reference(last_booking_ref+1)
@@ -400,7 +402,12 @@ class User:
         dest = dest_list[dest_number]
         destination_place = dest.get_destination()
         voyage.set_arriving_at(destination_place)
-        depart = self.validate_date(input("Departure date (YYYY-MM-DD): ")) + "T" + self.val.validate_time(input("Departure time(HH:MM): ")) + ":00"
+        while the_date == False:
+            depart = self.validate_date(input("Departure date (YYYY-MM-DD): ")) + "T" + self.val.validate_time(input("Departure time(HH:MM): ")) + ":00"
+            if depart in departure_list:
+                print("Time not available, please enter another time")
+            else:
+                the_date = True
         departure = dateutil.parser.parse(depart)
         voyage.set_departure(depart)
         one_way_flight_time = dateutil.parser.parse(dest.get_flight_time())
@@ -416,6 +423,7 @@ class User:
         plane = plane_list[plane_number].get_registration_number()
         voyage.set_aircraft_id(plane)
         self.ll.add_voyage(voyage)
+        #self.ll.update_flight_nums()
             
     def change_voyage(self):
         #self.app.print_change_voyage()                     Búa til þetta method í apperance
