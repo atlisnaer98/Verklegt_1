@@ -312,9 +312,8 @@ class User:
                     if counter == len(time_voyage_list):
                         print("No employee has been assigned to a voyage on that date")
                 else:
-                    if counter == 5:
-                        print("{:<20}{:<20}{:<20}".format("Name","SSN","Destination"))
-                        self.app.print_working_emps(voyage,employee_dict)
+                    print("{:<20}{:<20}{:<20}".format("Name","SSN","Destination"))
+                    self.app.print_working_emps(voyage,employee_dict)
 
             
     def add_voyage(self):
