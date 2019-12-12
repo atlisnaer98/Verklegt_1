@@ -533,7 +533,8 @@ class User:
                 if action =="1":
                     self.get_voyages_for_single_date()
                 elif action == "2":
-                    ID = self.val.validate_ssn(input("Enter ID number"))#ef ekki í fyrirtækinu     self.validate_ssn(
+                    employee_list = self.ll.get_all_employees()
+                    ID = self.val.validate_existing_emp(input("Enter SSN number: "),employee_list)
                     self.get_voyages_for_employee(ID)
                 elif action == "3":
                     self.get_voyages_for_timeperiod()
