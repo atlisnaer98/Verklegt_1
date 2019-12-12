@@ -121,7 +121,7 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(CNE))
         print(DASH*LENGTH)
-        print("Please input necessary information:")
+        #print("Please input necessary information:")
         #Input upplýsingar
 
     def print_show_schedule(self):
@@ -251,6 +251,7 @@ class Appearance:
         print(DASH*LENGTH)
         print("{}".format(DOE))
         print("{:>10} {:<30}{} {} ".format('[1]', DATE, '[2]',E ))
+        print("{:>10} {:<30}".format('[3]', 'time period'))
     
     def print_voyage_list_with_crew(self, voyage,status):
         print("{:<20}{:<20}{:<20}".format(voyage.get_booking_reference(), voyage.get_arriving_at(),status))
@@ -361,3 +362,5 @@ class Appearance:
         employee_dict[voyage.get_fa1()].get_name(),voyage.get_fa1(),voyage.get_arriving_at(),
         employee_dict[voyage.get_fa2()].get_name(),voyage.get_fa2(),voyage.get_arriving_at()))
     
+
+    print_voyage_selection

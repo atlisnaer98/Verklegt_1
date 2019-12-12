@@ -34,14 +34,12 @@ class User:
         self.ll.add_dest(dest)
 
     def get_all_dest(self):
-        dest_obj = self.ll.get_all_dest()
-        self.app.print_get_all_dest()
         print("{:<20}{:<20}{:<20}".format("Airport","Country","Distance(km)"))
-        for destination in dest_obj:
-            #sting = str(line)
-            #lis = sting.split(",")
-            #print("{:<20}{:<20}{:<20}".format(lis[2], lis[1], lis[4]+'km')) 
-            self.app.print_list_dest_info(destination)
+        dest_obj = self.ll.get_all_dest()
+        for line in dest_obj:
+            sting = str(line)
+            lis = sting.split(",")
+            print("{:<20}{:<20}{:<20}".format(lis[2], lis[1], lis[4]+'km'))              #Nota model föllin og færa í apperance
     
     def add_plane(self):
         plane = Airplane()
@@ -314,9 +312,8 @@ class User:
                     if counter == len(time_voyage_list):
                         print("No employee has been assigned to a voyage on that date")
                 else:
-                    if counter == 5:
-                        print("{:<20}{:<20}{:<20}".format("Name","SSN","Destination"))
-                        self.app.print_working_emps(voyage,employee_dict)
+                    print("{:<20}{:<20}{:<20}".format("Name","SSN","Destination"))
+                    self.app.print_working_emps(voyage,employee_dict)
 
             
     def add_voyage(self):
@@ -365,7 +362,7 @@ class User:
         voyage_list = self.ll.get_all_voyages()
         employee_list = self.ll.get_all_employees()
         airplane_list = self.ll.get_all_airplanes()
-        print("{:<20}{:<20}{:<20}\n{}".format("Booking","Destination:","Departure:","referance:"))
+        print("{}{:>15}{:>20}".format("Booking referance","Destination","Departure"))
         for voyage in voyage_list:
             if voyage.get_captain() == "" or voyage.get_copilot() == "" or voyage.get_fsm() == "":
                 highest_selection = int(voyage.get_booking_reference())
@@ -569,8 +566,6 @@ class User:
 
     
     def change_plane_status(self,action): #VINNA Í ÞESSU og nota þenna!
-        # The method will print out all airplanes in a list with information if the airplane is active or inactive.
-        # You are able to make airplane active or inactive in this method.
         airplane_list = self.ll.get_all_airplanes()
         #app.fall(airplane_list) svipað fall og print selection list
         self.app.print_change_plane_status(airplane_list)
@@ -583,9 +578,7 @@ class User:
                 print()
         self.main_menu()
     
-
     def get_all_plane(self):
-        # The method will print out all airplanes in a list with certain information.
         plane_list = self.ll.get_all_airplanes()
         self.app.print_list_plane
         #self.app.print_all_planes()
