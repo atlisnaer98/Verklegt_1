@@ -1,14 +1,16 @@
 ssn,name,address,home_phone,mobile_phone,email_address,role,rank,licence,active
 3009907461,William Carillo,Flensborgarvegur 8,5541748,8935131,William@nan.is,Pilot,Captain,NAFokkerF100,1
-2910858778,Virginia Ho,Flensborgarvegur 6,5648745,7785241,Virginia@nan.is,Pilot,Captain,NABAE146,1
 2706838569,Gerard Nelson,Furuvegur 2,5846252,7865423,Gerard@nan.is,Pilot,Captain,NAFokkerF100,1
+2410876598,Nan Gage,Vegavegur 4,0,8642564,Nan@nan.is,Pilot,Copilot,NAFokkerF100,1
+1111111119,Gussi Thor,Bankastraeti 5,5812345,9876543,gussi@b5.is,Pilot,Captain,NAFokkerF100,0
+2701886957,Ferard Nelson,Furuvegur 2,5846252,7865423,Ferard@nan.is,Pilot,Copilot,NAFokkerF100,1
+2910858778,Virginia Ho,Flensborgarvegur 6,5648745,7785241,Virginia@nan.is,Pilot,Captain,NABAE146,1
 2209955782,Allen Ley,Fallegurvegur 69,5642312,8640210,Allen@nan.is,Pilot,Captain,NABAE146,1
 2907675667,Felecia Moye,Fallvegur 21,0,8987898,Felecia@nan.is,Pilot,Captain,NABAE146,1
-1309797899,Tyler Anderson,Fallvegur 9,0,8785464,Tyler@nan.is,Pilot,Captain,NAFokkerF28,1
-2410876598,Nan Gage,Vegavegur 4,0,8642564,Nan@nan.is,Pilot,Copilot,NAFokkerF100,1
 2211658134,Charla Johnson,Veravegur 9,5543121,8984562,Charla@nan.is,Pilot,Copilot,NABAE146,1
 2504939263,Sam Preciado,Flotturvegur 7,5562435,8985623,Sam@nan.is,Pilot,Copilot,NABAE146,1
 1900769521,Jasmine Hagadone,Flottastivegur 10,0,7458656,Jasmine@nan.is,Pilot,Copilot,NABAE146,1
+1309797899,Tyler Anderson,Fallvegur 9,0,8785464,Tyler@nan.is,Pilot,Captain,NAFokkerF28,1
 2500812671,Anna Phillips,Menntavegur 1,0,8785456,Anna@nan.is,Pilot,Copilot,NAFokkerF28,1
 1309927223,Patricia Bates,Menntavegur 3,0,6877854,Patricia@nan.is,Pilot,Copilot,NAFokkerF28,1
 1600904199,Sherry Walker,Menntavegur 5,0,7456546,Sherry@nan.is,Cabincrew,Flight Service Manager,N/A,1
@@ -26,13 +28,11 @@ ssn,name,address,home_phone,mobile_phone,email_address,role,rank,licence,active
 1103647756,Wilma Horne,Myroad 2,0,8797875,Wilma@nan.is,Cabincrew,Flight Attendant,N/A,1
 2807755841,Bernard Carr,Myroad 9,0,8855221,Bernard@nan.is,Cabincrew,Flight Attendant,N/A,1
 0409907212,Sara Davis,Myroad 23,0,7745421,Sara@nan.is,Cabincrew,Flight Attendant,N/A,1
-1103912131,Robert Swope,Ilikeroads 2,0,6654558,Robert@nan.is,Cabincrew,Flight Attendant,N/A,1
+1103912131,Robert Swope,I love UNI,5511964,6628787,robbi@wowair.is,Cabincrew,Flight Attendant,N/A,0
 2801645554,John Iversen,Iloveroads 2,0,6546898,John@nan.is,Cabincrew,Flight Attendant,N/A,1
 1501681497,Rhonda Forman,Iloveroadstoo 2,0,6987789,Rhonda@nan.is,Cabincrew,Flight Attendant,N/A,1
 1811813379,Melissa Paquette,Iloveroadsmore 2,0,6666689,Melissa@nan.is,Cabincrew,Flight Attendant,N/A,1
 0505942924,Carlton Chan,Ihateroads 12,0,8745654,Carlton@nan.is,Cabincrew,Flight Attendant,N/A,1
 1110732819,Arthur Karr,Choochoo 22,0,8989585,Arthur@nan.is,Cabincrew,Flight Attendant,N/A,1
-2602806942,Teresa Thruman,dabontheroad 2,0,9989587,Teresa@nan.is,Cabincrew,Flight Attendant,N/A,1
+2602806942,Teresa Thruman,Menntavegur 1,6614540,5812345,god@play.is,Cabincrew,Flight Attendant,N/A,0
 1107951952,Elizabeth Mcfadden,wowroad 1,0,8684845,Elizabeth@nan.is,Cabincrew,Flight Attendant,N/A,1
-1111111119,Gussi Thor,Huldubraut 8,5812345,9876543,Gussi_gaur@gussi.is,Pilot,Captain,NAFokkerF100,1
-2701886957,Ferard Nelson,Furuvegur 2,5846252,7865423,Ferard@nan.is,Pilot,Copilot,NAFokkerF100,1
