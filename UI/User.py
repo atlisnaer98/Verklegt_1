@@ -35,7 +35,6 @@ class User:
         dest.set_name_of_contact(self.val.validate_name(input("Emergency contact: ")))
         dest.set_emergency_phone_number(self.val.validate_phone_number(input("Emergency contact number: ")))
         dest.set_flight_number(self.ll.get_dest_flight_number())
-<<<<<<< HEAD
         self.ll.add_dest(dest)
 
     def validate_distance(self,distance_input):
@@ -91,10 +90,6 @@ class User:
             else:
                 phone_number = input("Invalid input,  please re-enter (only integers) Emergency contact number:")
 
-=======
-        self.ll.add_dest(dest)      
-    
->>>>>>> cabcede8df4cc4c7dcade1e150746935e980e75f
     def get_all_dest(self):
         # The method will print out all listed destinations, the output will be Airport, Country and Distance from Reykjavik in km.
         dest_obj = self.ll.get_all_dest()
