@@ -23,6 +23,7 @@ class User:
         pass
 
     def add_dest(self):
+        # The method will add destinations and ask for needed information
         dest = Destination()
         dest.set_destination(input("Destination: "))
         dest.set_country(input("Country: "))
@@ -34,16 +35,15 @@ class User:
         self.ll.add_dest(dest)
 
     def get_all_dest(self):
+        # The method will print out all listed destinations, the output will be Airport, Country and Distance from Reykjavik in km.
         dest_obj = self.ll.get_all_dest()
         self.app.print_get_all_dest()
-        print("{:<20}{:<20}{:<20}".format("Airport","Country","Distance(km)"))
+        print("{:<20}{:<20}{:<20}".format("Airport:","Country:","Distance(km):"))
         for destination in dest_obj:
-            #sting = str(line)
-            #lis = sting.split(",")
-            #print("{:<20}{:<20}{:<20}".format(lis[2], lis[1], lis[4]+'km')) 
             self.app.print_list_dest_info(destination)
     
     def add_plane(self):
+        # The method will add new aircraft, you will have to give the plane a registration number and choose model, when model is choosen it will automacly put how many passenger can trave
         plane = Airplane()
         plane.set_registration_number(input("Registration number: "))
         self.app.print_add_plane_vol2()
@@ -72,7 +72,7 @@ class User:
     def get_all_employee(self):
         employee_list = self.ll.get_all_employees()
         self.app.print_get_all_employess()
-        print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
+        print("{:<20}{:<20}{:<20}".format("Name:","SSN:","Role:"))
         for employee in employee_list:
             self.app.print_get_all_employess_role(employee)
 
@@ -186,7 +186,7 @@ class User:
     def get_cabin_crew(self): #Laga og bæta 
         cabin_crew_list = self.ll.get_cabin_crew()
         self.app.print_get_all_cabincrew()
-        print("{:<20}{:<20}{:<20}".format("Name","SSN","Rank"))
+        print("{:<20}{:<20}{:<20}".format("Name:","SSN:","Rank:"))
         for employee in cabin_crew_list:
             #sting = str(line)
             #lis = sting.split(",")
@@ -295,7 +295,7 @@ class User:
 
     def get_available_emp_date_schedule(self,from_date,to_date):
         available_list = self.ll.get_emp_date_schedule(from_date,to_date)
-        print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
+        print("{:<20}{:<20}{:<20}".format("Name:","SSN:","Role:"))
         for emp in available_list:
             self.app.print_get_all_employess_role(emp)
 
@@ -315,7 +315,7 @@ class User:
                         print("No employee has been assigned to a voyage on that date")
                 else:
                     if counter == 5:
-                        print("{:<20}{:<20}{:<20}".format("Name","SSN","Destination"))
+                        print("{:<20}{:<20}{:<20}".format("Name:","SSN:","Destination:"))
                         self.app.print_working_emps(voyage,employee_dict)
 
             
@@ -610,12 +610,12 @@ class User:
     def main_menu(self,action = ""):
         while action not in QUIT:
             self.app.print_main_menu()
-            action = input("select an option: ") # muna að villutjékka þetta
+            action = input("Select an option: ") # muna að villutjékka þetta
             if action == "1":
                 self.employee_menu(action)  
             elif action == "2":
                 self.Voyage_menu(action)
-                action = input("select an option: ")
+                action = input("Select an option: ")
             elif action == "3": #DESTINATION
                 self.dest_menu(action)
             elif action == "4":
