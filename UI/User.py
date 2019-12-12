@@ -450,7 +450,7 @@ class User:
         voyage_list = self.ll.get_date_voyages(from_date,to_date)
         self.print_voyages_manned(voyage_list)
     
-    def get_voyages_for_timeperiod(self):
+    def get_voyages_for_timeperiod(self): #Þarf að vera valkostur fyrir þetta í apperance
         temp_date = input("Enter from date: YYYY-MM-DD:")                    
         from_date = dateutil.parser.parse(temp_date)
         temp_date = input("Enter to date: YYYY-MM-DD:")     
