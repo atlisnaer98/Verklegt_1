@@ -194,19 +194,19 @@ class User:
             self.app.print_get_all_employess_rank(employee)
 
     def get_pilots(self):
-        self.app.select_license()
-        license = ''
-        while license not in QUIT:
-            license = self.back_quit(license,4)
-            if license == '1':
-                license = 'NAFokkerF100'
-            elif license == '2':
-                license = 'NABAE146'
-            elif license == '3':
-                license = 'NAFokkerF28'
-            elif license == '4':
-                license = 'All'
-            pilot_list = self.ll.get_pilots(license)
+        self.app.select_licence()
+        licence = ''
+        while licence not in QUIT:
+            licence = self.back_quit(licence,4)
+            if licence == '1':
+                licence = 'NAFokkerF100'
+            elif licence == '2':
+                licence = 'NABAE146'
+            elif licence == '3':
+                licence = 'NAFokkerF28'
+            elif licence == '4':
+                licence = 'All'
+            pilot_list = self.ll.get_pilots(licence)
             print("{:<20}{:<20}{:<20}".format("Name","SSN","Licence"))
             for line in pilot_list:
                 sting = str(line)
@@ -293,21 +293,31 @@ class User:
             ID = input("Enter ID number: ")
             self.get_voyages_for_employee(ID)
 
-    def get_available_emp_date_schedule(self, date,action):
-        available_list = self.ll.get_emp_date_schedule(date,action)
+    def get_available_emp_date_schedule(self,from_date,to_date):
+        available_list = self.ll.get_emp_date_schedule(from_date,to_date)
         print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for emp in available_list:
             self.app.print_get_all_employess_role(emp)
 
 
     def get_working_emp_date_schedule(self,from_date, to_date):
+        counter = 0
         time_voyage_list = self.ll.get_voyages_on_date(from_date,to_date)
         employee_dict = self.ll.get_all_employees_dict()
         self.app.print_working_employee()
-        print("{:<20}{:<20}{:<20}".format("Name","SSN","Destination"))
-        for voyage in time_voyage_list:
-            print(str(voyage))
-            #self.app.print_working_emps(voyage,employee_dict)
+        if len(time_voyage_list) == 0:
+            print("There are no flights on this date")
+        else:
+            for voyage in time_voyage_list:
+                if len(voyage.get_captain()) < 1 and len(voyage.get_copilot()) < 1 and len(voyage.get_fsm()) < 1:
+                    counter += 1
+                    if counter == len(time_voyage_list):
+                        print("No employee has been assigned to a voyage on that date")
+                else:
+                    if counter == 5:
+                        print("{:<20}{:<20}{:<20}".format("Name","SSN","Destination"))
+                        self.app.print_working_emps(voyage,employee_dict)
+
             
     def add_voyage(self):
         voyage = Voyage()
@@ -351,7 +361,6 @@ class User:
                 self.ll.change_voyage(voyage_list,index,plane)
 
     def assign_crew(self):
-        available_fa = []
         self.app.print_assign_crew()
         voyage_list = self.ll.get_all_voyages()
         employee_list = self.ll.get_all_employees()
@@ -369,13 +378,22 @@ class User:
                 for airplane in airplane_list:
                     if voyage.get_aircraft_id() == airplane.get_registration_number():
                         licence = airplane.get_planeID()             
-                self.set_captain(voyage,employee_list,licence,)
+                self.set_captain(voyage,employee_list,licence)
+                self.save_crew(voyage,voyage_list,index)
                 self.set_copilot(voyage,employee_list,licence)
+                self.save_crew(voyage,voyage_list,index)
                 self.set_fsm(voyage,employee_list)
-                voyage.set_fa1(input("Flight attendant: "))
-                voyage.set_fa2(input("Flight attendat: "))
-                voyage_list[index] = voyage
-                self.ll.assign_crew(voyage_list)
+                self.save_crew(voyage,voyage_list,index)
+                fa1 = self.set_fa(voyage,employee_list)
+                voyage.set_fa1(fa1)
+                self.save_crew(voyage,voyage_list,index)
+                fa2 = self.set_fa(voyage,employee_list)
+                voyage.set_fa2(fa2)
+                self.save_crew(voyage,voyage_list,index)
+
+    def save_crew(self,voyage,voyage_list,index):
+        voyage_list[index] = voyage
+        self.ll.assign_crew(voyage_list)
 
     def clear_voyage_crew(self,voyage_list,index):
         voyage = voyage_list[index]
@@ -387,10 +405,14 @@ class User:
         voyage_list[index] = voyage
         self.ll.assign_crew(voyage_list)
 
-    def available_empoyees(self,voyage):
+    def available_employees(self,voyage):
         available_emp_list = []
-        voyage_date_from = dateutil.parser.parse(voyage.get_departure())
-        voyage_date_to = dateutil.parser.parse(voyage.get_arrival())
+        departure_time = dateutil.parser.parse(voyage.get_departure())
+        year,month,day = departure_time.year, departure_time.month, departure_time.day
+        voyage_date_from = datetime.datetime(year,month,day)
+        arrival_time = dateutil.parser.parse(voyage.get_arrival())
+        year,month,day = arrival_time.year, arrival_time.month, arrival_time.day
+        voyage_date_to = datetime.datetime(year,month,day) + timedelta(days=1)
         emp_obj = self.ll.get_emp_date_schedule(voyage_date_from,voyage_date_to)
         for emp in emp_obj:
             available_emp_list.append(emp.get_ssn())
@@ -398,7 +420,7 @@ class User:
 
     def set_captain(self,voyage,employee_list,licence):
         available_captain_list = []
-        available_emp_list = self.available_empoyees(voyage)   
+        available_emp_list = self.available_employees(voyage)   
         for captain in employee_list:
             if captain.get_rank() == "Captain" and captain.get_activity() == "1" and licence == captain.get_licence() and captain.get_ssn() in available_emp_list:
                 available_captain_list.append(captain.get_name())
@@ -412,7 +434,7 @@ class User:
 
     def set_copilot(self,voyage,employee_list,licence):
         available_copilot_list = []
-        available_emp_list = self.available_empoyees(voyage)
+        available_emp_list = self.available_employees(voyage)
         for copilot in employee_list:
             if copilot.get_rank() == "Copilot" and copilot.get_activity() == "1" and licence == copilot.get_licence() and copilot.get_ssn() in available_emp_list:
                 available_copilot_list.append(copilot.get_name())
@@ -426,7 +448,7 @@ class User:
 
     def set_fsm(self,voyage,employee_list):
         available_fsm_list = []
-        available_emp_list = self.available_empoyees(voyage)
+        available_emp_list = self.available_employees(voyage)
         for fsm in employee_list:
             if fsm.get_rank() == "Flight Service Manager" and fsm.get_activity() =="1" and fsm.get_ssn() in available_emp_list:
                 available_fsm_list.append(fsm.get_name())
@@ -437,6 +459,20 @@ class User:
                 for emp in employee_list:
                     if emp.get_name() == available_fsm_list[fsm_index]:
                         voyage.set_fsm(emp.get_ssn())
+
+    def set_fa(self,voyage,employee_list):
+        available_fa_list = []
+        available_emp_list = self.available_employees(voyage)
+        for fa in employee_list:
+            if fa.get_rank() == "Flight Attendant" and fa.get_activity() =="1" and fa.get_ssn() in available_emp_list:
+                available_fa_list.append(fa.get_name())
+        self.app.print_selection_list(available_fa_list)
+        fa_selection = self.back_quit("",len(available_fa_list))
+        for fa_index in range(len(available_fa_list)):
+            if fa_index + 1 == int(fa_selection):
+                for emp in employee_list:
+                    if emp.get_name() == available_fa_list[fa_index]:
+                        return emp.get_ssn()
 
     def get_date_voyages(self, from_date, to_date):
         voyage_list = self.ll.get_date_voyages(from_date, to_date)
@@ -457,10 +493,10 @@ class User:
             #print(voyage.get_booking_reference())
             
     def Voyage_menu(self,action):
-        self.app.print_voyage_menu()
         action = ""
         while action not in QUIT:
-            action = input("select an option: ")
+            self.app.print_voyage_menu()
+            action = self.back_quit(action,4)
             if action == "1":
                 self.app.print_add_voyage()
                 self.add_voyage()
