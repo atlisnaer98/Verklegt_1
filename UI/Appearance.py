@@ -25,6 +25,7 @@ CNA = 'Create new Airplane'
 CV = 'Change voyage'
 A = 'Airplanes'
 AC = 'Assign crew'
+AD = "All destinations"
 E = "Employees"
 V = "Voyage"
 S = "Show schedule "
@@ -199,6 +200,12 @@ class Appearance:
         print("{:^60}".format(LD))
         print(DASH*LENGTH)
     
+    def print_get_all_dest(self):
+        print()
+        print(DASH*LENGTH)
+        print("{:^60}".format(AD))
+        print(DASH*LENGTH) 
+  
     def print_list_dest_info(self,dest):
         print("{:<20}{:<20}{:<20}".format(dest.get_airport(), dest.get_country(), dest.get_distance()+' km'))
 
