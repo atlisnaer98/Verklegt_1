@@ -282,7 +282,7 @@ class User:
         if action == '1':
             print("[1]Available     [2] Working")
             action = input("Select an option: ")
-            temp_date = input("Enter from date: YYYY-MM-DD:")
+            temp_date = self.validate_date(input("Enter from date: YYYY-MM-DD:"))
             from_date = dateutil.parser.parse(temp_date)
             to_date = from_date + timedelta(days=1)
             if action == '1':
@@ -331,7 +331,7 @@ class User:
         voyage.set_arriving_at(dest)
         voyage.set_flight_number_away("NA0500")
         voyage.set_flight_number_home("NA0501")
-        depart = input("Departure date (YYYY-MM-DD): ") + "T" + input("Departure time(HH:MM): ")
+        depart = self.validate_date(input("Departure date (YYYY-MM-DD): ")) + "T" + self.validate_time(input("Departure time(HH:MM): "))
         departure = dateutil.parser.parse(depart)
         voyage.set_departure(depart)
         arrival = departure + timedelta(hours=4)
@@ -342,7 +342,7 @@ class User:
         plane = plane_list[plane_number].get_registration_number()
         voyage.set_aircraft_id(plane)
         self.ll.add_voyage(voyage)
-
+            
     def change_voyage(self):
         #self.app.print_change_voyage()                     Búa til þetta method í apperance
         voyage_list = self.ll.get_all_voyages()
@@ -482,16 +482,46 @@ class User:
 
 #self.app.print_voy_lsfasldf(voyage_list,"Manned")
     def get_voyages_for_employee(self, ID):
-        temp_date = input("Enter from date: YYYY-MM-DD:")
+        temp_date = self.validate_date(input("Enter date from (YYYY-MM-DD):"))
         from_date= dateutil.parser.parse(temp_date)
-        temp_date = input("Enter to date: YYYY-MM-DD:")
+        temp_date = self.validate_date(input("Enter to date: YYYY-MM-DD:"))
         to_date= dateutil.parser.parse(temp_date) + timedelta(days=1)
         time_voyage_list = self.ll.get_date_voyages(from_date,to_date)
         voyage_list = self.ll.get_voyages_for_employee(ID,time_voyage_list)
         for voyage in voyage_list:
             self.app.print_voyage_info(voyage)
             #print(voyage.get_booking_reference())
-            
+
+    def validate_date(self,date_input):
+        date_repeater = True
+        while date_repeater == True:
+            try:
+                year = int(date_input[:4])
+                month = int(date_input[5:7])
+                day = int(date_input[8:10])
+                if year > 0 and date_input[4] == "-" and date_input[7] == "-" and month > 0 and month <= 12 and day > 0 and day < 31:
+                    print("rétt")
+                    return date_input
+                else:
+                    date_input = input("Invalid input, please re-enter (YYYY-MM-DD):")
+            except ValueError:
+                date_input = input("Invalid input, please re-enter (YYYY-MM-DD):")
+
+    def validate_time(self,time_input):
+        time_repeater = True
+        while time_repeater == True:
+            try:
+                hour = int(time_input[:2])
+                minute = int(time_input[4:6])
+                if hour >= 0 and hour <= 24 and minute >= 0 and minute <= 60 and time_input[0] == ":":
+                    print("rétt")
+                    return time_input
+                else:
+                    time_input = input("Invalid input, please re-enter (HH:MM): ")
+            except ValueError:
+                time_input = input("Invalid input, please re-enter (HH:MM): ")
+                
+
     def Voyage_menu(self,action):
         action = ""
         while action not in QUIT:

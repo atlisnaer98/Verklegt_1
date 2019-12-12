@@ -9,3 +9,6 @@ print(datetime.datetime(2019,11,2))
 #print(y)
 year,month,day = parseddate.year,parseddate.month,parseddate.day
 print(year)
+a = "2019-11-10"
+b = a[:3]
+print(b)
