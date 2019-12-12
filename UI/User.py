@@ -320,6 +320,7 @@ class User:
                     self.app.print_working_emps(voyage,employee_dict)
    
     def add_voyage(self):
+        #self.ll.update_flight_nums()
         voyage = Voyage()
         the_date = False
         departure_list = self.ll.get_departure()
@@ -333,7 +334,7 @@ class User:
         destination_place = dest.get_destination()
         voyage.set_arriving_at(destination_place)
         while the_date == False:
-            depart = self.validate_date(input("Departure date (YYYY-MM-DD): ")) + "T" + self.val.validate_time(input("Departure time(HH:MM): ")) + ":00"
+            depart = self.val.validate_date(input("Departure date (YYYY-MM-DD): ")) + "T" + self.val.validate_time(input("Departure time(HH:MM): ")) + ":00"
             if depart in departure_list:
                 print("Time not available, please enter another time")
             else:
@@ -353,7 +354,7 @@ class User:
         plane = plane_list[plane_number].get_registration_number()
         voyage.set_aircraft_id(plane)
         self.ll.add_voyage(voyage)
-        #self.ll.update_flight_nums()
+        self.ll.update_flight_nums()
             
     def change_voyage(self):
         self.app.print_change_voyage()
