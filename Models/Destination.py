@@ -11,7 +11,7 @@ class Destination():
         self.__flight_number = flight_number
 
     def __str__(self):
-        return "{},{},{},{},{},{},{},{}".format(self.__destination,self.__country, self.__airport, self.__flight_time, self.__distance, self.__name_of_contact, self.__emergency_phone_number)
+        return "{},{},{},{},{},{},{},{}".format(self.__destination,self.__country, self.__airport, self.__flight_time, self.__distance, self.__name_of_contact, self.__emergency_phone_number,self.__flight_number)
 
     def get_destination(self):
         return self.__destination
