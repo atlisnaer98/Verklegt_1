@@ -360,7 +360,7 @@ class User:
     def change_voyage(self):
         self.app.print_change_voyage()
         voyage_list = self.ll.get_all_voyages()
-        action = input("Enter booking reference: ")
+        action = self.val.validate_selection(input("Enter booking reference: "),len(voyage_list))
         for index in range(len(voyage_list)):
             voyage = voyage_list[index]
             if action == voyage.get_booking_reference():
@@ -370,7 +370,7 @@ class User:
                 plane_list = self.ll.get_available_planes(departure,arrival)
                 self.app.print_selection_list(plane_list)
                 plane_number = self.val.validate_selection(input("Select an airplane: "),len(plane_list))
-                plane = plane_list[plane_number].get_registration_number()
+                plane = plane_list[int(plane_number)].get_registration_number()
                 voyage.set_aircraft_id(plane)
                 self.ll.change_voyage(voyage_list,index,plane)
 
