@@ -73,6 +73,6 @@ class VoyageLL():
             if time_left < one_way_time + timedelta(hours=1) and time_left > one_way_time:
                 return "Landed in destination"
             else:
-                "In the air"
+                return "In the air"
         else:
             return "Invalid"
