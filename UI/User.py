@@ -334,7 +334,7 @@ class User:
         depart = self.validate_date(input("Departure date (YYYY-MM-DD): ")) + "T" + self.validate_time(input("Departure time(HH:MM): "))
         departure = dateutil.parser.parse(depart)
         voyage.set_departure(depart)
-        arrival = departure + timedelta(hours=4)
+        arrival = departure + timedelta(hours=4) #tímar LAGAGAGAGAGAGAGAG!!!!!
         voyage.set_arrival(arrival.isoformat())
         plane_list = self.ll.get_available_planes(departure,arrival)
         self.app.print_selection_list(plane_list)
