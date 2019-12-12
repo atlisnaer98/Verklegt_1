@@ -121,7 +121,7 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(CNE))
         print(DASH*LENGTH)
-        print("Please input necessary information:")
+        #print("Please input necessary information:")
         #Input upplýsingar
 
     def print_show_schedule(self):

@@ -36,7 +36,7 @@ class User:
     def get_all_dest(self):
         dest_obj = self.ll.get_all_dest()
         self.app.print_get_all_dest()
-        print("{:<20}{:<20}{:<20}".format("Airport","Country","Distance(km)"))
+        print("{:<20}{:<20}{:<20}".format("Airport:","Country:","Distance(km):"))
         for destination in dest_obj:
             #sting = str(line)
             #lis = sting.split(",")
@@ -77,6 +77,7 @@ class User:
             self.app.print_get_all_employess_role(employee)
 
     def add_employee(self):
+        self.app.print_create_employee()
         #self.app.print_add_employee()                          Búa til þetta í apperance
         plane_list = []
         role_list = ["Pilot","Cabincrew"]
