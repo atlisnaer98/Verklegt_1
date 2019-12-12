@@ -162,7 +162,7 @@ class User:
         cabincrew_rank_list = ["Flight Service Manager", "Flight Attendant"]
         emp = Employee()
         emp.set_ssn(input("SSN number: "))
-        emp.set_name(input("Name: ")
+        emp.set_name(input("Name: "))
         emp.set_address(input("Adress: "))
         emp.set_home_phone(input("Home phone: "))
         emp.set_mobile_number(input("Mobile number: "))
@@ -673,7 +673,7 @@ class User:
         plane_list = self.ll.get_all_airplanes()
         voyage = self.ll.get_all_voyages()
         list_of_planes = []
-        self.app.print_list_plane
+        self.app.print_list_plane()
         voyage_list = []
         list_of_voyages = []
         #self.app.print_all_planes()
@@ -688,7 +688,6 @@ class User:
         for line in voyage:
             if line.get_aircraft_id() == reg_num:
                 voyage_list.append(line)
-        
         for voyage in voyage_list:
             voyages = self.ll.get_voyage_status(voyage)
             list_of_voyages.append(voyages)
