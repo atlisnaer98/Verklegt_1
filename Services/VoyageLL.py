@@ -70,7 +70,7 @@ class VoyageLL():
             flight_time = whole_time - timedelta(hours=1)
             one_way_time = flight_time // 2
             time_left = arr_time - time
-            if time_left < one_way_time + 1 and time_left > one_way_time:
+            if time_left < one_way_time + timedelta(hours=1) and time_left > one_way_time:
                 return "Landed in destination"
             else:
                 "In the air"
