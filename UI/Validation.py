@@ -152,9 +152,23 @@ class Validation:
                     ssn_repeater = False
                 else:
                     print("The SSN has to be exactly 10 numbers,")
-                    ssn_input = input("please re-enter SSN:")
+                    ssn_input = input("please re-enter SSN: ")
             except ValueError:
                 print("The SSN can only contain numbers,")
-                ssn_input = input("please re-enter SSN:")
+                ssn_input = input("please re-enter SSN: ")
         return ssn_input
 
+    def validate_existing_emp(self,ssn_input,employee_list):
+        counter = 1
+        ssn_repeater = True
+        while ssn_repeater == True:
+            ssn_input = self.validate_ssn(ssn_input)
+            for emp in employee_list:
+                if emp.get_ssn == ssn_input:
+                    return ssn_input
+                else:
+                    counter += 1
+            if counter > len(employee_list):
+                print("This employee is not in the company,")
+                ssn_input = input("please re-enter SSN: ")
+            

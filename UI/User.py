@@ -145,7 +145,7 @@ class User:
         # The method will change employee information. The user is not able to change SSN number, Name, Rank or Role. 
         self.app.print_change_employee_info()
         employee_list = self.ll.get_all_employees()
-        action = input("Enter SSN number: ")
+        action = self.val.validate_existing_emp(input("Enter SSN number: "),employee_list)
         for index in range(len(employee_list)):
             emp = employee_list[index]
             if action == emp.get_ssn():
