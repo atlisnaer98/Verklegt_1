@@ -668,29 +668,33 @@ class User:
 
     def get_all_plane(self):
         # The method will print out all airplanes in a list with certain information.
-        next_available = ''
-        the_plane = []
         plane_list = self.ll.get_all_airplanes()
-        voyage = self.ll.get_all_voyages()
-        list_of_planes = []
+        voyage_list = self.ll.get_all_voyages()
         self.app.print_list_plane()
-        voyage_list = []
-        list_of_voyages = []
         #self.app.print_all_planes()
-        print("{:<20}{:<13}{:<13}{:<13}".format("Registration Number","Plane Type","Model","Capacity"))
+        #print("{:<20}{:<13}{:<13}{:<13}".format("Registration Number","Plane Type","Model","Capacity"))
         #for plane in plane_list:
         #   self.app.print_list_plane_info(plane)
-        for plane in plane_list:
-            list_of_planes.append(plane.get_registration_number())
         self.app.print_selection_list(list_of_planes)
-        action = int(input("Select an airplane: "))
-        reg_num = list_of_planes[action]
-        for line in voyage:
-            if line.get_aircraft_id() == reg_num:
-                voyage_list.append(line)
+        index = int(input("Select an airplane: ")) - 1
+        plane = plane_list[action]
+        reg_num = plane.get_registration_number()
+        busy = 0
         for voyage in voyage_list:
-            voyages = self.ll.get_voyage_status(voyage)
-            list_of_voyages.append(voyages)
+            if voyage.get_aircraft_id == reg_num:
+                status = self.ll.get_voyage_status(voyage)
+                if status == "On the way to the destination" or status == "On the way to Reykjavik":
+                    busy = 1
+                    self.app.print_in_air(plane,voyage,status) #Vantar þetta fall
+                elif status == "Landed in destination":
+                    busy = 1
+                    self.app.print_plane_busy(plane,voyage,status) #Vantar þetta fall
+        if busy == 0:
+            self.print_plane_available(plane) #Vantar þetta fall
+
+            
+                    
+
         
 
     
