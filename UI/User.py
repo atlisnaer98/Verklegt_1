@@ -24,14 +24,34 @@ class User:
 
     def add_dest(self):
         dest = Destination()
-        dest.set_destination(input("Destination: "))
-        dest.set_country(input("Country: "))
-        dest.set_airport(input("Airport(XXX): "))
+        dest.set_destination(self.validate_name(input("Destination: ")))
+        dest.set_country(self.validate_name(input("Country: ")))
+        dest.set_airport(self.validate_airport(input("Airport(XXX): ")))
         dest.set_flight_time(self.validate_time(input("Time of flight (HH:MM): ")))
         dest.set_distance(input("Distance: "))
         dest.set_name_of_contact(input("Emergency contact: "))
         dest.set_emergency_phone_number(input("Emergency contact number: "))
         self.ll.add_dest(dest)
+
+    def validate_airport(self,airport_input):
+        if len(airport_input) > 3 or len(airport_input) < 3:
+            pass
+
+    def validate_name(self,name_input):
+        splitted_name  = name_input.split(" ")
+        name_repeater = True
+        while name_repeater == True:
+            for name in splitted_name:
+                for letter in name:
+                    try:
+                        letter_test = int(letter)
+
+                    except ValueError:
+                        if letter not in string.punctuation:
+                            pass
+                        else:
+
+                
 
     def get_all_dest(self):
         dest_obj = self.ll.get_all_dest()
@@ -315,11 +335,10 @@ class User:
                     if counter == len(time_voyage_list):
                         print("No employee has been assigned to a voyage on that date")
                 else:
-                    if counter == 5:
-                        print("{:<20}{:<20}{:<20}".format("Name","SSN","Destination"))
-                        self.app.print_working_emps(voyage,employee_dict)
+                    print("{:<20}{:<20}{:<20}".format("Name","SSN","Destination"))
+                    self.app.print_working_emps(voyage,employee_dict)
 
-            
+        
     def add_voyage(self):
         voyage = Voyage()
         voyage_list = self.ll.get_all_voyages()
@@ -511,11 +530,13 @@ class User:
     def validate_time(self,time_input):
         time_repeater = True
         while time_repeater == True:
+            #time_input = str(time_input)
             try:
                 hour = int(time_input[:2])
                 minute = int(time_input[4:6])
-                if hour >= 0 and hour <= 24 and minute >= 0 and minute <= 60 and time_input[0] == ":":
+                if hour >= 0 and hour <= 24 and minute >= 0 and minute <= 60 and time_input[2] == ":":
                     print("rétt")
+                    #time_repeater = False
                     return time_input
                 else:
                     time_input = input("Invalid input, please re-enter (HH:MM): ")

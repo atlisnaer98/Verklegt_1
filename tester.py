@@ -33,3 +33,7 @@ print(timi)
 # to_date = datetime.datetime(year,month,day,hour,minute,0)
 
 # #print(to_date.day)
+
+name = 'Hvað segir þú gott'
+namesplit = name.split()
+print(namesplit)
