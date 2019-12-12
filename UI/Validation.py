@@ -159,10 +159,10 @@ class Validation:
         return ssn_input
 
     def validate_existing_emp(self,ssn_input,employee_list):
-        counter = 1
         ssn_repeater = True
         while ssn_repeater == True:
             ssn_input = self.validate_ssn(ssn_input)
+            counter = 1
             for emp in employee_list:
                 if emp.get_ssn == ssn_input:
                     return ssn_input
