@@ -700,6 +700,8 @@ class User:
                 self.dest_menu(action)
             elif action == "4":
                 self.airplane_menu(action)
+            else:
+                print("Invalid input,")
         quit()
 
             
