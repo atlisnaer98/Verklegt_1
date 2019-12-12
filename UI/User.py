@@ -675,22 +675,22 @@ class User:
         #print("{:<20}{:<13}{:<13}{:<13}".format("Registration Number","Plane Type","Model","Capacity"))
         #for plane in plane_list:
         #   self.app.print_list_plane_info(plane)
-        self.app.print_selection_list(list_of_planes)
+        self.app.print_selection_list(plane_list)
         index = int(input("Select an airplane: ")) - 1
-        plane = plane_list[action]
+        plane = plane_list[index]
         reg_num = plane.get_registration_number()
         busy = 0
         for voyage in voyage_list:
-            if voyage.get_aircraft_id == reg_num:
+            if voyage.get_aircraft_id() == reg_num:
                 status = self.ll.get_voyage_status(voyage)
                 if status == "On the way to the destination" or status == "On the way to Reykjavik":
                     busy = 1
-                    self.app.print_in_air(plane,voyage,status) #Vantar þetta fall
+                    self.app.print_in_air(plane,voyage,status) #Vantar bæta þetta fall
                 elif status == "Landed in destination":
                     busy = 1
-                    self.app.print_plane_busy(plane,voyage,status) #Vantar þetta fall
+                    self.app.print_plane_busy(plane,voyage,status) #Vantar bæta þetta fall
         if busy == 0:
-            self.print_plane_available(plane) #Vantar þetta fall
+            self.app.print_plane_available(plane) #Vantar bæta þetta fall
 
             
                     
