@@ -23,7 +23,7 @@ class User:
         pass
 
     def add_dest(self):
-        # The method will add destinations and ask for needed information
+        # The method will add destinations and ask for needed information as input to make a new destination.
         dest = Destination()
         dest.set_destination(self.validate_name(input("Destination: ")))
         dest.set_country(self.validate_name(input("Country: ")))
@@ -36,6 +36,7 @@ class User:
         self.ll.add_dest(dest)
 
     def validate_distance(self,distance_input):
+        # The method will check if the input of distance is valid, only number allowed. 
         distance_repeater = True
         while distance_repeater == True:
             try:
@@ -125,6 +126,7 @@ class User:
         return reg_input.upper()
 
     def set_plane_model(self,plane,option):
+        # The method will add certain information when certain number is chosen
         if option == 1:
             plane.set_planeID("NABAE146")
             plane.set_plane_type("BAE")
@@ -142,6 +144,7 @@ class User:
             plane.set_capacity(100)
 
     def get_all_employee(self):
+        # The method will print out all employess, the output will be theire name, social security number and theire role.
         employee_list = self.ll.get_all_employees()
         self.app.print_get_all_employess()
         print("{:<20}{:<20}{:<20}".format("Name:","SSN:","Role:"))
@@ -149,14 +152,17 @@ class User:
             self.app.print_get_all_employess_role(employee)
 
     def add_employee(self):
+        # The method will add new employee to the Crew.csv file. 
+        # User have to input SSN number, Name, Adress, Home and Mobile number, Email and chose role and rank for the employee.
+        # If pilot is chosen then the user has to enter a licence number for the aircraft that he is allowed to fly. 
         self.app.print_create_employee()
         plane_list = []
         role_list = ["Pilot","Cabincrew"]
         pilot_rank_list = ["Captain","Copilot"]
         cabincrew_rank_list = ["Flight Service Manager", "Flight Attendant"]
         emp = Employee()
-        emp.set_ssn(input("ID number: "))
-        emp.set_name(input("Name: "))
+        emp.set_ssn(input("SSN number: "))
+        emp.set_name(input("Name: ")
         emp.set_address(input("Adress: "))
         emp.set_home_phone(input("Home phone: "))
         emp.set_mobile_number(input("Mobile number: "))
@@ -218,9 +224,10 @@ class User:
                 action = input("Invalid input, please re-enter: ")
 
     def change_employee_info(self):
+        # The method will change employee information. The user is not able to change SSN number, Name, Rank or Role. 
         self.app.print_change_employee_info()
         employee_list = self.ll.get_all_employees()
-        action = input("Enter ID number: ")
+        action = input("Enter SSN number: ")
         for index in range(len(employee_list)):
             emp = employee_list[index]
             if action == emp.get_ssn():
@@ -243,6 +250,7 @@ class User:
                     self.employee_menu(action)
 
     def change_dest_info(self,action):
+        # The method will change destination information. User is only able to change Emergency contact and Emergency phonenumber.
         self.app.print_change_dest_info()
         dest_list = self.ll.get_all_dest()
         self.app.print_selection_list(dest_list)
@@ -259,17 +267,16 @@ class User:
                     changed = self.validate_phone_number(input("Enter new input: "))
                 self.ll.change_dest(dest_list,index,int(action),changed)
         
-    def get_cabin_crew(self): #Laga og bæta 
+    def get_cabin_crew(self):
+        # The method will print out all cabin crew employees, the output will be their Name, SSN number and Rank. 
         cabin_crew_list = self.ll.get_cabin_crew()
         self.app.print_get_all_cabincrew()
         print("{:<20}{:<20}{:<20}".format("Name:","SSN:","Rank:"))
         for employee in cabin_crew_list:
-            #sting = str(line)
-            #lis = sting.split(",")
-            #print("{:<20}{:<20}{:<20}".format(lis[1],lis[0],lis[7]))
             self.app.print_get_all_employess_rank(employee)
 
     def get_pilots(self):
+        # The method will print out all pilots, you can choose if you want all pilots or you want to print pilot with licence on surten aircraft.
         self.app.print_choose_aircraft()
         self.app.select_licence()
         licence = ''
@@ -661,8 +668,14 @@ class User:
 
     def get_all_plane(self):
         # The method will print out all airplanes in a list with certain information.
+        next_available = ''
+        the_plane = []
         plane_list = self.ll.get_all_airplanes()
+        voyage = self.ll.get_all_voyages()
+        list_of_planes = []
         self.app.print_list_plane
+        voyage_list = []
+        list_of_voyages = []
         #self.app.print_all_planes()
         print("{:<20}{:<13}{:<13}{:<13}".format("Registration Number","Plane Type","Model","Capacity"))
         #for plane in plane_list:
@@ -670,6 +683,16 @@ class User:
         for plane in plane_list:
             list_of_planes.append(plane.get_registration_number())
         self.app.print_selection_list(list_of_planes)
+        action = int(input("Select an airplane: "))
+        reg_num = list_of_planes[action]
+        for line in voyage:
+            if line.get_aircraft_id() == reg_num:
+                voyage_list.append(line)
+        
+        for voyage in voyage_list:
+            voyages = self.ll.get_voyage_status(voyage)
+            list_of_voyages.append(voyages)
+        
 
     
     def airplane_menu(self,action):
