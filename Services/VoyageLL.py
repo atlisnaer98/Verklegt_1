@@ -73,6 +73,30 @@ class VoyageLL():
             if time_left < one_way_time + timedelta(hours=1) and time_left > one_way_time:
                 return "Landed in destination"
             else:
-                return "In the air"
+                if time_left < one_way_time:
+                    return "On the way to Reykjavik"
+                else:
+                    return "On the way to the destination"
         else:
             return "Invalid"
+
+    def count_dest_flights(self,dest,place,date):
+        voyage_list = self.dl.get_all_voyages()
+        voyage_list_today = self.get_voyages_on_date(date)
+        counter = 0
+        for voyage in voyage_list_today:
+            if dest == voyage.get_arriving_at():
+                counter += 2
+        if place == "away":
+            if counter < 1:
+                return "00"
+            elif counter < 10:
+                return "0" + str(counter)
+            else:
+                return str(counter)
+        elif place == "home":
+            counter += 1
+            if counter < 10:
+                return "0" + str(counter)
+            else:
+                return str(counter)
