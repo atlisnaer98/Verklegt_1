@@ -149,7 +149,7 @@ class User:
         action = input("Enter ID number: ")
         for index in range(len(employee_list)):
             emp = employee_list[index]
-            if action == emp.get_ID_number():
+            if action == emp.get_ssn():
                 self.app.print_changing_employee_information(emp)
                 print("Would you like to change any information?")
                 self.app.print_yes_no()
@@ -291,8 +291,8 @@ class User:
             ID = input("Enter ID number: ")
             self.get_voyages_for_employee(ID)
 
-    def get_available_emp_date_schedule(self, date,action):
-        available_list = self.ll.get_emp_date_schedule(date,action)
+    def get_available_emp_date_schedule(self,from_date,to_date):
+        available_list = self.ll.get_emp_date_schedule(from_date,to_date)
         print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for emp in available_list:
             self.app.print_get_all_employess_role(emp)
