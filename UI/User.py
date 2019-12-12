@@ -68,7 +68,7 @@ class User:
             name_len = len(splitted_name)
             for name in splitted_name:
                 if name.isalpha():
-                    counter =+ 1
+                    counter += 1
                 else:
                     name_input = input("The name has to only contain letters, please re-enter name: ")
                     break 
@@ -298,7 +298,8 @@ class User:
         action_test = True
         self.app.back_quit()
         while action_test == True:
-            action = input("Select an option: ")
+            action = input("\nSelect an option:")
+            print()
             try:
                 if int(action) > 0 and int(action) < limit+1:
                     action_test = False
@@ -341,7 +342,7 @@ class User:
         if action == '1':
             self.app.print_employee_available_or_working()
             action = self.back_quit(action, 2)
-            temp_date = self.validate_date(input("Enter from date: YYYY-MM-DD:"))
+            temp_date = self.validate_date(input("Enter from date (YYYY-MM-DD):"))
             from_date = dateutil.parser.parse(temp_date)
             to_date = from_date + timedelta(days=1)
             if action == '1':
@@ -544,7 +545,7 @@ class User:
     def get_voyages_for_employee(self, ID):
         temp_date = self.validate_date(input("Enter date from (YYYY-MM-DD):"))
         from_date= dateutil.parser.parse(temp_date)
-        temp_date = self.validate_date(input("Enter to date: YYYY-MM-DD:"))
+        temp_date = self.validate_date(input("Enter to date (YYYY-MM-DD):"))
         to_date= dateutil.parser.parse(temp_date) + timedelta(days=1)
         time_voyage_list = self.ll.get_date_voyages(from_date,to_date)
         voyage_list = self.ll.get_voyages_for_employee(ID,time_voyage_list)
@@ -572,7 +573,6 @@ class User:
                 hour = int(time_input[:2])
                 minute = int(time_input[4:])
                 if hour >= 0 and hour <= 24 and minute >= 0 and minute <= 60 and time_input[2] == ":":
-                    print("rétt")
                     #time_repeater = False
                     return time_input
                 else:
@@ -593,11 +593,11 @@ class User:
                 self.assign_crew()
             elif action == "3":
                 self.app.print_voyage_selection()
-                action = input("select an option: ")
+                action = self.back_quit(action,3)
                 if action =="1":
                     self.get_voyages_for_single_date()
                 elif action == "2":
-                    ID = input("Enter ID number")
+                    ID = input("Enter ID number")#ef ekki í fyrirtækinu     self.validate_ssn(
                     self.get_voyages_for_employee(ID)
                 elif action == "3":
                     self.get_voyages_for_timeperiod()
@@ -605,16 +605,16 @@ class User:
                 self.change_voyage()
     
     def get_voyages_for_single_date(self):
-        the_date = input("Enter date: YYYY-MM-DD:")                    
+        the_date = self.validate_date(input("Enter date (YYYY-MM-DD): "))                    
         from_date = dateutil.parser.parse(the_date)
         to_date = from_date + timedelta(days=1)
         voyage_list = self.ll.get_date_voyages(from_date,to_date)
         self.print_voyages_manned_and_status(voyage_list)
     
     def get_voyages_for_timeperiod(self): #Þarf að vera valkostur fyrir þetta í apperance
-        temp_date = input("Enter from date: YYYY-MM-DD:")                    
+        temp_date = self.validate_date(input("Enter from date (YYYY-MM-DD): "))                    
         from_date = dateutil.parser.parse(temp_date)
-        temp_date = input("Enter to date: YYYY-MM-DD:")     
+        temp_date = self.validate_date(input("Enter to date (YYYY-MM-DD): "))     
         to_date = dateutil.parser.parse(temp_date)
         voyage_list = self.ll.get_date_voyages(from_date,to_date)
         self.print_voyages_manned_and_status(voyage_list)
