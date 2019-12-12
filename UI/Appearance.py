@@ -274,7 +274,7 @@ class Appearance:
         
 
     def print_voyage_selection_list(self,voyage):
-        print("[{}]{:<17}{}{:<10}{}".format(voyage.get_booking_reference(),"",voyage.get_arriving_at(),"",voyage.get_departure()))
+        print("{:<20}{:<20}{:<20}".format("["+ voyage.get_booking_reference()+ "]",voyage.get_arriving_at(),voyage.get_departure()))
 
     def print_change_voyage(self):
         print(DASH*LENGTH)

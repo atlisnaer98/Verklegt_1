@@ -363,7 +363,7 @@ class User:
         voyage_list = self.ll.get_all_voyages()
         employee_list = self.ll.get_all_employees()
         airplane_list = self.ll.get_all_airplanes()
-        print("{}{:>15}{:>20}".format("Booking referance","Destination","Departure"))
+        print("{:<20}{:<20}{:<20}\n{}".format("Booking","Destination:","Departure:","referance:"))
         for voyage in voyage_list:
             if voyage.get_captain() == "" or voyage.get_copilot() == "" or voyage.get_fsm() == "":
                 highest_selection = int(voyage.get_booking_reference())
