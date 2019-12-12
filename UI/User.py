@@ -39,17 +39,22 @@ class User:
 
     def validate_name(self,name_input):
         splitted_name  = name_input.split(" ")
-        name_repeater = True
-        while name_repeater == True:
+        # name_repeater = True
+        # print(len(splitted_name))
+        counter = 0
+        print(len(splitted_name))
+        while counter != len(splitted_name):
             for name in splitted_name:
+                counter += 1
+                print(counter)
+
                 for letter in name:
                     try:
-                        letter_test = int(letter)
+                        letter.isalpha()
+                        
 
                     except ValueError:
-                        if letter not in string.punctuation:
-                            pass
-                        else:
+                        print("bitch")
 
                 
 
