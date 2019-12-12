@@ -356,8 +356,6 @@ class User:
                 self.ll.change_voyage(voyage_list,index,plane)
 
     def assign_crew(self):
-        available_copilot_list = []
-        available_fsm = []
         available_fa = []
         self.app.print_assign_crew()
         voyage_list = self.ll.get_all_voyages()
@@ -365,33 +363,47 @@ class User:
         airplane_list = self.ll.get_all_airplanes()
         print("{}{:>15}{:>20}".format("Booking referance","Destination","Departure"))
         for voyage in voyage_list:
-            if voyage.get_captain() == "":
+            if voyage.get_captain() == "" or voyage.get_copilot() == "" or voyage.get_fsm() == "":
                 highest_selection = int(voyage.get_booking_reference())
                 self.app.print_voyage_selection_list(voyage)
         action = self.back_quit("",highest_selection)
         for index in range(len(voyage_list)):
             voyage = voyage_list[index]
-            if action == voyage.get_booking_reference():            
-                self.set_captain(voyage,airplane_list,employee_list)
-                voyage.set_copilot(input("Copilot: "))
-                voyage.set_fsm(input("Flight service manager: "))
+            if action == voyage.get_booking_reference():
+                self.clear_voyage_crew(voyage_list,index)
+                for airplane in airplane_list:
+                    if voyage.get_aircraft_id() == airplane.get_registration_number():
+                        licence = airplane.get_planeID()             
+                self.set_captain(voyage,employee_list,licence,)
+                self.set_copilot(voyage,employee_list,licence)
+                self.set_fsm(voyage,employee_list)
                 voyage.set_fa1(input("Flight attendant: "))
                 voyage.set_fa2(input("Flight attendat: "))
                 voyage_list[index] = voyage
                 self.ll.assign_crew(voyage_list)
 
-    def set_captain(self,voyage,airplane_list,employee_list):
+    def clear_voyage_crew(self,voyage_list,index):
+        voyage = voyage_list[index]
+        voyage.set_captain("")
+        voyage.set_copilot("")
+        voyage.set_fsm("")
+        voyage.set_fa1("")
+        voyage.set_fa2("")
+        voyage_list[index] = voyage
+        self.ll.assign_crew(voyage_list)
+
+    def available_empoyees(self,voyage):
         available_emp_list = []
-        available_captain_list = []
         voyage_date_from = dateutil.parser.parse(voyage.get_departure())
         voyage_date_to = dateutil.parser.parse(voyage.get_arrival())
         emp_obj = self.ll.get_emp_date_schedule(voyage_date_from,voyage_date_to)
         for emp in emp_obj:
             available_emp_list.append(emp.get_ssn())
-        for airplane in airplane_list:
-            if voyage.get_aircraft_id() == airplane.get_registration_number():
-                licence = airplane.get_planeID()
-                print(licence) 
+        return available_emp_list
+
+    def set_captain(self,voyage,employee_list,licence):
+        available_captain_list = []
+        available_emp_list = self.available_empoyees(voyage)   
         for captain in employee_list:
             if captain.get_rank() == "Captain" and captain.get_activity() == "1" and licence == captain.get_licence() and captain.get_ssn() in available_emp_list:
                 available_captain_list.append(captain.get_name())
@@ -402,6 +414,34 @@ class User:
                 for emp in employee_list:
                     if emp.get_name() == available_captain_list[captain_index]:
                         voyage.set_captain(emp.get_ssn())
+
+    def set_copilot(self,voyage,employee_list,licence):
+        available_copilot_list = []
+        available_emp_list = self.available_empoyees(voyage)
+        for copilot in employee_list:
+            if copilot.get_rank() == "Copilot" and copilot.get_activity() == "1" and licence == copilot.get_licence() and copilot.get_ssn() in available_emp_list:
+                available_copilot_list.append(copilot.get_name())
+        self.app.print_selection_list(available_copilot_list)
+        copilot_selection = self.back_quit("",len(available_copilot_list))
+        for copilot_index in range(len(available_copilot_list)):
+            if copilot_index+1 == int(copilot_selection):
+                for emp in employee_list:
+                    if emp.get_name() == available_copilot_list[copilot_index]:
+                        voyage.set_copilot(emp.get_ssn())
+
+    def set_fsm(self,voyage,employee_list):
+        available_fsm_list = []
+        available_emp_list = self.available_empoyees(voyage)
+        for fsm in employee_list:
+            if fsm.get_rank() == "Flight Service Manager" and fsm.get_activity() =="1" and fsm.get_ssn() in available_emp_list:
+                available_fsm_list.append(fsm.get_name())
+        self.app.print_selection_list(available_fsm_list)
+        fsm_selection = self.back_quit("",len(available_fsm_list))
+        for fsm_index in range(len(available_fsm_list)):
+            if fsm_index + 1 == int(fsm_selection):
+                for emp in employee_list:
+                    if emp.get_name() == available_fsm_list[fsm_index]:
+                        voyage.set_fsm(emp.get_ssn())
 
     def get_date_voyages(self, from_date, to_date):
         voyage_list = self.ll.get_date_voyages(from_date, to_date)
