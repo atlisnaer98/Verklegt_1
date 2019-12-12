@@ -30,7 +30,7 @@ class User:
         dest.set_flight_time(self.validate_time(input("Time of flight (HH:MM): ")))
         dest.set_distance(self.validate_distance(input("Distance: ")))
         dest.set_name_of_contact(input("Emergency contact: "))
-        dest.set_emergency_phone_number(input("Emergency contact number: "))
+        dest.set_emergency_phone_number(self.validate_phone_number(input("Emergency contact number: ")))
         self.ll.add_dest(dest)
 
     def validate_distance(self,distance_input):
@@ -74,6 +74,18 @@ class User:
                     return splitted_name
                 except ValueError:
                     print("bitch")
+    
+
+    def validate_phone_number(self,phone_number):
+        true_check = True
+        while true_check == True:
+            if phone_number.isdigit():
+                true_check = False
+                return phone_number
+            else:
+                phone_number = input("Invalid input,  please re-enter (only integers) Emergency contact number:")
+
+
 
                 
 
@@ -225,7 +237,10 @@ class User:
                 dest = dest_list[index]
                 self.app.print_dest_info(dest)
                 action = self.back_quit(action,len(dest_list))
-                changed = input("Enter new input: ")
+                if action == '1':
+                    changed = self.validate_name(input("Enter new input: "))
+                elif action == '2':
+                    changed = self.validate_phone_number(input("Enter new input: "))
                 self.ll.change_dest(dest_list,index,int(action),changed)
         
     def get_cabin_crew(self): #Laga og bæta 

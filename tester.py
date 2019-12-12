@@ -34,13 +34,17 @@ from datetime import datetime
 
 # #print(to_date.day)
 
-name = 'Hvað1 segir þú gott'
+name = 'Hvað! segir1 þú gott'
+if name.isalpha():
+    print("")
+
+
 namesplit = name.split()
 
 
-for i in namesplit:
-    print(i)
-    if i.isalpha():
-        print('yes')
-    else:
-        print('cunt')
+
+num = '21313123 sdf'
+if num.isdigit():
+    print("cunt")
+
+
