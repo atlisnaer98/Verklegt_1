@@ -105,7 +105,7 @@ class User:
         plane.set_registration_number(self.validate_reg(input("Registration number(TF-XXX): ")))
         self.app.print_add_plane_vol2()
         option = self.validate_selection(input("Model: "),3)
-        self.set_plane_model(plane,option)
+        self.set_plane_model(plane,int(option))
         plane.set_active(1)
         self.ll.add_plane(plane)
 
