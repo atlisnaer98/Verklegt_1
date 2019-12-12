@@ -97,7 +97,7 @@ class User:
         emp.set_home_phone(self.val.validate_phone_number(input("Home phone: ")))
         emp.set_mobile_number(self.val.validate_phone_number(input("Mobile number: ")))
         emp.set_email_address(self.val.validate_email(input("Email: ")))
-        print("role:")
+        print("Role: ")
         self.app.print_selection_list(role_list)
         role_input = input("Select a role: ")
         role_selection = self.val.validate_selection(role_input,2)

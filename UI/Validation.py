@@ -98,7 +98,7 @@ class Validation:
                 true_condition = False
                 return email_address
             except ValueError:
-                email_address = input("invalid input, pleaes re-enter email address")
+                email_address = input("Invalid input, pleaes re-enter email address: ")
 
     def validate_selection(self,action,limit):
         validation = True
@@ -157,5 +157,4 @@ class Validation:
                 print("The SSN can only contain numbers,")
                 ssn_input = input("please re-enter SSN:")
         return ssn_input
-
 
