@@ -37,59 +37,6 @@ class User:
         dest.set_flight_number(self.ll.get_dest_flight_number())
         self.ll.add_dest(dest)
 
-    def validate_distance(self,distance_input):
-        # The method will check if the input of distance is valid, only number allowed. 
-        distance_repeater = True
-        while distance_repeater == True:
-            try:
-                if int(distance_input) <= 0:
-                    distance_input = input("Invalid input, please re-enter distance: ")
-                else:
-                    return distance_input
-            except ValueError:
-                distance_input = input("Invalid input, please re-enter distance: ")
-
-    def validate_airport(self,airport_input):
-        # The method checks the airport is validate. User is only allowed to enter letters. It is invalid if user put in for example numbers. 
-        airport_repeater = True
-        numb_list = ["0","1","2","3","4","5","6","7","8","9"]
-        while airport_repeater == True:
-            if len(airport_input) > 3 or len(airport_input) < 3:
-                airport_input = input("Invalid input, please re-enter airport(XXX)")
-            else:
-                for letter in airport_input:
-                    if letter in numb_list or letter in string.punctuation:
-                        airport_input = input("Invalid input, please re-enter airport(XXX)")
-                    else:
-                        return airport_input.upper()
-
-    def validate_name(self,name_input):
-        # The method will check if the name is validate, user can only put in letters to proceed. 
-        counter = 0
-        name_repeater = True
-        while name_repeater == True:
-            splitted_name  = name_input.split(" ")
-            name_len = len(splitted_name)
-            for name in splitted_name:
-                if name.isalpha():
-                    counter += 1
-                else:
-                    name_input = input("The name has to only contain letters, please re-enter name: ")
-                    break 
-            if counter == name_len: 
-                name_repeater = False        
-        return name_input.title()
-    
-    def validate_phone_number(self,phone_number):
-        # The method will check if the user put in number as a phone number. 
-        true_check = True
-        while true_check == True:
-            if phone_number.isdigit():
-                true_check = False
-                return phone_number
-            else:
-                phone_number = input("Invalid input,  please re-enter (only integers) Emergency contact number:")
-
     def get_all_dest(self):
         # The method will print out all listed destinations, the output will be Airport, Country and Distance from Reykjavik in km.
         dest_obj = self.ll.get_all_dest()
@@ -134,8 +81,6 @@ class User:
         for employee in employee_list:
             self.app.print_get_all_employess_role(employee)
 
-    
-
     def add_employee(self):
         # The method will add new employee to the Crew.csv file. 
         # User have to input SSN number, Name, Adress, Home and Mobile number, Email and chose role and rank for the employee.
@@ -154,7 +99,8 @@ class User:
         emp.set_email_address(self.val.validate_email(input("Email: ")))
         print("role:")
         self.app.print_selection_list(role_list)
-        role_selection = self.val.validate_selection(input("Select a role: "),2)
+        role_input = input("Select a role: ")
+        role_selection = self.val.validate_selection(role_input,2)
         for role_index in range(len(role_list)):
             if role_selection == str(role_index+1) and int(role_selection)==1:
                 role_selection = role_list[role_index]
@@ -164,7 +110,8 @@ class User:
                 selected_rank_list = cabincrew_rank_list
         emp.set_role(role_selection)
         self.app.print_selection_list(selected_rank_list)
-        rank_selection = self.val.validate_selection(input("select a rank: "),2)
+        rank_input = input("select a rank: ")
+        rank_selection = self.val.validate_selection(rank_input,2)
         if role_selection == "Cabincrew":
             if rank_selection == "1":
                 rank_selection = "Flight Service Manager"
@@ -294,7 +241,7 @@ class User:
         action_test = True
         self.app.back_quit()
         while action_test == True:
-            action = input("\nSelect an option:")
+            action = input("\nSelect an option: ")
             print()
             try:
                 if int(action) > 0 and int(action) < limit+1:
@@ -376,6 +323,8 @@ class User:
    
     def add_voyage(self):
         voyage = Voyage()
+        the_date = False
+        departure_list = self.ll.get_departure()
         voyage_list = self.ll.get_all_voyages()
         last_booking_ref = int(voyage_list[-1].get_booking_reference())
         voyage.set_booking_reference(last_booking_ref+1)
@@ -385,7 +334,12 @@ class User:
         dest = dest_list[dest_number]
         destination_place = dest.get_destination()
         voyage.set_arriving_at(destination_place)
-        depart = self.val.validate_date(input("Departure date (YYYY-MM-DD): ")) + "T" + self.val.validate_time(input("Departure time(HH:MM): ")) + ":00"
+        while the_date == False:
+            depart = self.validate_date(input("Departure date (YYYY-MM-DD): ")) + "T" + self.val.validate_time(input("Departure time(HH:MM): ")) + ":00"
+            if depart in departure_list:
+                print("Time not available, please enter another time")
+            else:
+                the_date = True
         departure = dateutil.parser.parse(depart)
         voyage.set_departure(depart)
         one_way_flight_time = dateutil.parser.parse(dest.get_flight_time())
@@ -401,6 +355,7 @@ class User:
         plane = plane_list[plane_number].get_registration_number()
         voyage.set_aircraft_id(plane)
         self.ll.add_voyage(voyage)
+        #self.ll.update_flight_nums()
             
     def change_voyage(self):
         self.app.print_change_voyage()

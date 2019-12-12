@@ -91,3 +91,9 @@ class LLApi:
         
     def count_dest_flights(self,dest,place,time):
         return self.vLL.count_dest_flights(dest,place,time)
+
+    def update_flight_nums(self):
+        return self.vLL.update_flight_nums()
+    
+    def get_departure(self):
+        return self.vLL.get_departure()
