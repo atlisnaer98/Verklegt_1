@@ -48,29 +48,12 @@ class User:
     def add_plane(self):
         # The method will add new aircraft, you will have to give the plane a registration number and choose model, when model is choosen it will automacly put how many passenger can trave
         plane = Airplane()
-        plane.set_registration_number(self.validate_reg(input("Registration number(TF-XXX): ")))
+        plane.set_registration_number(self.val.validate_reg(input("Registration number(TF-XXX): ")))
         self.app.print_add_plane_vol2()
-        option = self.validate_selection(input("Model: "),3)
+        option = self.val.validate_selection(input("Model: "),3)
         self.set_plane_model(plane,int(option))
         plane.set_active(1)
         self.ll.add_plane(plane)
-
-    def validate_reg(self,reg_input):
-        # The method will check if the registration number is valid. The number has to start with TF- to be valid and contain 3 letters.
-        reg_repeater = True
-        while reg_repeater == True:
-            if reg_input[:3] != "TF-":
-                print("""The registration number has to start with "TF-""")
-                reg_input = input("please re-enter: ")
-            else:
-                last_three = reg_input.split("-")
-                for name in last_three[1:]:
-                    if name.isalpha():
-                        reg_repeater = False
-                    else:
-                        reg_input = input("Invalid input, please re-enter:")
-                    break
-        return reg_input.upper()
 
     def set_plane_model(self,plane,option):
         # The method will add certain information when certain number is chosen
@@ -98,35 +81,7 @@ class User:
         for employee in employee_list:
             self.app.print_get_all_employess_role(employee)
 
-    def validate_ssn(self,ssn_input):
-        ssn_repeater = True
-        while ssn_repeater == True:
-            try:
-                if int(ssn_input) > 0 and len(ssn_input) == 10:
-                    ssn_repeater = False
-                else:
-                    print("The SSN has to be exactly 10 numbers,")
-                    ssn_input = input("please re-enter SSN:")
-            except ValueError:
-                print("The SSN can only contain numbers,")
-                ssn_input = input("please re-enter SSN:")
-        return ssn_input
-
-    def validate_home(self,address_input):
-        address_repeater = True
-        while address_repeater == True:
-            counter = 0
-            for letter in address_input:
-                if  letter in string.punctuation:
-                    print("The home address can only contain numbers and letters,")
-                    address_input = input("Please re-enter address: ")
-                    counter = 0
-                else:
-                    counter += 1
-            if counter == len(address_input):
-                address_repeater = False
-        return address_input
-
+    
 
     def add_employee(self):
         # The method will add new employee to the Crew.csv file. 
@@ -138,15 +93,15 @@ class User:
         pilot_rank_list = ["Captain","Copilot"]
         cabincrew_rank_list = ["Flight Service Manager", "Flight Attendant"]
         emp = Employee()
-        emp.set_ssn(self.validate_ssn(input("SSN number: ")))
+        emp.set_ssn(self.val.validate_ssn(input("SSN number: ")))
         emp.set_name(self.val.validate_name(input("Name: ")))
-        emp.set_address(self.validate_home(input("Adress: ")))
+        emp.set_address(self.val.validate_home(input("Adress: ")))
         emp.set_home_phone(self.val.validate_phone_number(input("Home phone: ")))
         emp.set_mobile_number(self.val.validate_phone_number(input("Mobile number: ")))
-        emp.set_email_address(input("Email: "))
+        emp.set_email_address(self.val.validate_email(input("Email: ")))
         print("role:")
         self.app.print_selection_list(role_list)
-        role_selection = self.validate_selection(input("Select a role: "),2)
+        role_selection = self.val.validate_selection(input("Select a role: "),2)
         for role_index in range(len(role_list)):
             if role_selection == str(role_index+1) and int(role_selection)==1:
                 role_selection = role_list[role_index]
@@ -156,7 +111,7 @@ class User:
                 selected_rank_list = cabincrew_rank_list
         emp.set_role(role_selection)
         self.app.print_selection_list(selected_rank_list)
-        rank_selection = self.validate_selection(input("select a rank: "),2)
+        rank_selection = self.val.validate_selection(input("select a rank: "),2)
         if role_selection == "Cabincrew":
             if rank_selection == "1":
                 rank_selection = "Flight Service Manager"
@@ -178,36 +133,13 @@ class User:
             plane_selection = "N/A"
         elif role_selection == "Pilot":
             self.app.print_selection_list(plane_list)
-            plane_selection = self.validate_selection(input("Select a licence: "),len(plane_list))
+            plane_selection = self.val.validate_selection(input("Select a licence: "),len(plane_list))
             for selected_numb in range(len(plane_list)):
                 if plane_selection == str(selected_numb+1):
                     plane_selection = plane_list[selected_numb]
         emp.set_licence(plane_selection)
         emp.set_activity(1)
         self.ll.add_employee(emp)
-
-    def validate_email(self, email_address):
-        first, last = email_address.split('@')
-        if '@' in email_address and False == first.isdigit() and False == last.isdigit():
-            if first.isalpha() or first in '.':
-                if last.isalpha() or '.' in last:
-                    return email_address
-                else:
-                    email_address = input("invalid input, please re-enter:")
-                email_address = input("invalid input, please re-enter:")
-        else:
-            email_address = input("invalid input, please re-enter:")
-
-
-    def validate_selection(self,action,limit):
-        validation = True
-        while validation == True:
-            try:
-                if int(action) > 0 and int(action) < limit+1:
-                    validation = False
-                    return action
-            except ValueError:
-                action = input("Invalid input, please re-enter: ")
 
     def change_employee_info(self):
         # The method will change employee information. The user is not able to change SSN number, Name, Rank or Role. 
@@ -223,7 +155,7 @@ class User:
                 change_selection = self.back_quit(action,2)
                 if change_selection == "1":
                     self.app.print_changing_employee_information(emp)
-                    option = self.validate_selection(input("What do you want to change? "),5)
+                    option = self.val.validate_selection(input("What do you want to change? "),5)
                     if int(option) == 5:
                         changed = ""
                         self.ll.change_employee(employee_list,index,int(option),changed)
@@ -354,7 +286,7 @@ class User:
         if action == '1':
             self.app.print_employee_available_or_working()
             action = self.back_quit(action, 2)
-            temp_date = self.validate_date(input("Enter from date (YYYY-MM-DD):"))
+            temp_date = self.val.validate_date(input("Enter from date (YYYY-MM-DD):"))
             from_date = dateutil.parser.parse(temp_date)
             to_date = from_date + timedelta(days=1)
             if action == '1':
@@ -400,7 +332,7 @@ class User:
         dest = dest_list[dest_number]
         destination_place = dest.get_destination()
         voyage.set_arriving_at(destination_place)
-        depart = self.validate_date(input("Departure date (YYYY-MM-DD): ")) + "T" + self.val.validate_time(input("Departure time(HH:MM): ")) + ":00"
+        depart = self.val.validate_date(input("Departure date (YYYY-MM-DD): ")) + "T" + self.val.validate_time(input("Departure time(HH:MM): ")) + ":00"
         departure = dateutil.parser.parse(depart)
         voyage.set_departure(depart)
         one_way_flight_time = dateutil.parser.parse(dest.get_flight_time())
@@ -556,27 +488,13 @@ class User:
 
 #self.app.print_voy_lsfasldf(voyage_list,"Manned")
     def get_voyages_for_employee(self, ID):
-        temp_date = self.validate_date(input("Enter date from (YYYY-MM-DD):"))
+        temp_date = self.val.validate_date(input("Enter date from (YYYY-MM-DD):"))
         from_date= dateutil.parser.parse(temp_date)
-        temp_date = self.validate_date(input("Enter to date (YYYY-MM-DD):"))
+        temp_date = self.val.validate_date(input("Enter to date (YYYY-MM-DD):"))
         to_date= dateutil.parser.parse(temp_date) + timedelta(days=1)
         time_voyage_list = self.ll.get_date_voyages(from_date,to_date)
         voyage_list = self.ll.get_voyages_for_employee(ID,time_voyage_list)
         self.print_voyages_manned_and_status(voyage_list)
-
-    def validate_date(self,date_input):
-        date_repeater = True
-        while date_repeater == True:
-            try:
-                year = int(date_input[:4])
-                month = int(date_input[5:7])
-                day = int(date_input[8:10])
-                if year > 0 and date_input[4] == "-" and date_input[7] == "-" and month > 0 and month <= 12 and day > 0 and day < 31:
-                    return date_input
-                else:
-                    date_input = input("Invalid input, please re-enter (YYYY-MM-DD):")
-            except ValueError:
-                date_input = input("Invalid input, please re-enter (YYYY-MM-DD):")
 
     def Voyage_menu(self,action):
         action = ""
@@ -602,16 +520,16 @@ class User:
                 self.change_voyage()
     
     def get_voyages_for_single_date(self):
-        the_date = self.validate_date(input("Enter date (YYYY-MM-DD): "))                    
+        the_date = self.val.validate_date(input("Enter date (YYYY-MM-DD): "))                    
         from_date = dateutil.parser.parse(the_date)
         to_date = from_date + timedelta(days=1)
         voyage_list = self.ll.get_date_voyages(from_date,to_date)
         self.print_voyages_manned_and_status(voyage_list)
     
     def get_voyages_for_timeperiod(self): #Þarf að vera valkostur fyrir þetta í apperance
-        temp_date = self.validate_date(input("Enter from date (YYYY-MM-DD): "))                    
+        temp_date = self.val.validate_date(input("Enter from date (YYYY-MM-DD): "))                    
         from_date = dateutil.parser.parse(temp_date)
-        temp_date = self.validate_date(input("Enter to date (YYYY-MM-DD): "))     
+        temp_date = self.val.validate_date(input("Enter to date (YYYY-MM-DD): "))     
         to_date = dateutil.parser.parse(temp_date)
         voyage_list = self.ll.get_date_voyages(from_date,to_date)
         self.print_voyages_manned_and_status(voyage_list)

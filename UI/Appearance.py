@@ -384,7 +384,7 @@ class Appearance:
     def print_in_air(self,plane,voyage,status):
         print("\nPlane ID: {}\nStatus: {}\nFlight number: {}\n".format(plane.get_registration_number(),status,voyage.get_flight_number_away()))
 
-    def print_plane_busy(plane,voyage,status):
+    def print_plane_busy(self,plane,voyage,status):
         print("\nPlane ID: {}\nPlane Type: {}\nPlane model: {}\nDestination: {}\n".format(plane.get_registration_number(),plane.get_plane_type(),plane.get_model(),voyage.get_arriving_at()))
 
     def print_plane_available(self,plane):
