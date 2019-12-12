@@ -303,7 +303,6 @@ class User:
         time_voyage_list = self.ll.get_voyages_on_date(from_date,to_date)
         employee_dict = self.ll.get_all_employees_dict()
         self.app.print_working_employee()
-<<<<<<< HEAD
         if len(time_voyage_list) == 0:
             print("There are no flights on this date")
         else:
@@ -317,12 +316,6 @@ class User:
                         print("{:<20}{:<20}{:<20}".format("Name","SSN","Destination"))
                         self.app.print_working_emps(voyage,employee_dict)
 
-=======
-        print("{:<20}{:<20}{:<20}".format("Name","SSN","Destination"))
-        for voyage in time_voyage_list:
-            print(str(voyage))
-            #self.app.print_working_emps(voyage,employee_dict)
->>>>>>> 78c76bf3f832335c1b300bf8a076110cddac3ba9
             
     def add_voyage(self):
         voyage = Voyage()
