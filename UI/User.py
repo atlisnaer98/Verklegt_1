@@ -331,7 +331,7 @@ class User:
         dest_list = self.ll.get_all_dest()
         self.app.print_selection_list(dest_list)
         dest_number = self.val.validate_selection(input("Please select destination: "),len(dest_list))
-        dest = dest_list[dest_number]
+        dest = dest_list[int(dest_number)]
         destination_place = dest.get_destination()
         voyage.set_arriving_at(destination_place)
         while the_date == False:
