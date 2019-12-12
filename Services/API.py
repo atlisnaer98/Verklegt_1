@@ -32,6 +32,9 @@ class LLApi:
 
     def change_dest(self,dest_list,index,option,changed):
         self.dLL.change_dest(dest_list,index,option,changed)
+
+    def get_dest_flight_number(self):
+        return self.dLL.get_flight_number()
     
     def get_all_employees(self):
         return self.eLL.get_all_employees()

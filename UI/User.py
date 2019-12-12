@@ -32,6 +32,7 @@ class User:
         dest.set_distance(self.validate_distance(input("Distance: ")))
         dest.set_name_of_contact(self.validate_name(input("Emergency contact: ")))
         dest.set_emergency_phone_number(self.validate_phone_number(input("Emergency contact number: ")))
+        dest.set_flight_number(self.ll.get_dest_flight_number())
         self.ll.add_dest(dest)
 
     def validate_distance(self,distance_input):

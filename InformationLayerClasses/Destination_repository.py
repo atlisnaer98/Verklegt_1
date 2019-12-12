@@ -1,6 +1,6 @@
 from Models.Destination import Destination
 import csv
-HEADER = "Destination,country,airport,flight time (one-way),distance from Reykjavik,contact,contact phonenumber"
+HEADER = "Destination,country,airport,flight time (one-way),distance from Reykjavik,contact,contact phonenumber,flight number"
 class Destination_repository():
 
     def __init__(self):
@@ -21,7 +21,7 @@ class Destination_repository():
             reader = csv.DictReader(destinations)
             #next(reader)
             for line in reader:
-                dest = Destination(line["Destination"], line["country"], line["airport"], line["flight time (one-way)"], line["distance from Reykjavik"], line["contact"], line["contact phonenumber"])
+                dest = Destination(line["Destination"], line["country"], line["airport"], line["flight time (one-way)"], line["distance from Reykjavik"], line["contact"], line["contact phonenumber"],line["flight number"])
                 lis.append(dest)
         return lis
 
