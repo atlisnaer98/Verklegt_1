@@ -306,7 +306,8 @@ class User:
             elif action == '2':
                 self.get_working_emp_date_schedule(from_date,to_date)
         elif action == '2':
-            ID = input("Enter ID number: ")
+            employee_list = self.ll.get_all_employees()
+            ID = self.val.validate_existing_emp(input("Enter SSN number: "),employee_list)
             self.get_voyages_for_employee(ID)
 
     def get_available_emp_date_schedule(self,from_date,to_date):
