@@ -322,11 +322,11 @@ class User:
 
 
     def show_emp_schedule(self, action):
-        print("[1]Date     [2] Employee")
-        action = input("Select an option: ")
+        self.app.print_employee_schedule()
+        action = self.back_quit(action, 2)
         if action == '1':
-            print("[1]Available     [2] Working")
-            action = input("Select an option: ")
+            self.app.print_employee_available_or_working()
+            action = self.back_quit(action, 2)
             temp_date = self.validate_date(input("Enter from date: YYYY-MM-DD:"))
             from_date = dateutil.parser.parse(temp_date)
             to_date = from_date + timedelta(days=1)
