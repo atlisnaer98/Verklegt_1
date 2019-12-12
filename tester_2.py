@@ -7,3 +7,5 @@ print(datetime.datetime(2019,11,2))
 #x = datetime.datetime(parseddate)
 #y = x.date
 #print(y)
+year,month,day = parseddate.year,parseddate.month,parseddate.day
+print(year)
