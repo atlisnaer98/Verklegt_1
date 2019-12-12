@@ -28,14 +28,36 @@ class User:
         dest.set_country(self.validate_name(input("Country: ")))
         dest.set_airport(self.validate_airport(input("Airport(XXX): ")))
         dest.set_flight_time(self.validate_time(input("Time of flight (HH:MM): ")))
-        dest.set_distance(input("Distance: "))
+        dest.set_distance(self.validate_distance(input("Distance: ")))
         dest.set_name_of_contact(input("Emergency contact: "))
         dest.set_emergency_phone_number(input("Emergency contact number: "))
         self.ll.add_dest(dest)
 
+    def validate_distance(self,distance_input):
+        distance_repeater = True
+        while distance_repeater == True:
+            try:
+                if int(distance_input) <= 0:
+                    distance_input = input("Invalid input, please re-enter distance: ")
+                else:
+                    return distance_input
+            except ValueError:
+                distance_input = input("Invalid input, please re-enter distance: ")
+
     def validate_airport(self,airport_input):
-        if len(airport_input) > 3 or len(airport_input) < 3:
-            pass
+        airport_repeater = True
+        numb_list = ["0","1","2","3","4","5","6","7","8","9"]
+        while airport_repeater == True:
+            if len(airport_input) > 3 or len(airport_input) < 3:
+                airport_input = input("Invalid input, please re-enter airport(XXX)")
+            else:
+                for letter in airport_input:
+                    if letter in numb_list or letter in string.punctuation:
+                        airport_input = input("Invalid input, please re-enter airport(XXX)")
+                    else:
+                        return airport_input.upper()
+
+            
 
     def validate_name(self,name_input):
         splitted_name  = name_input.split(" ")
@@ -535,7 +557,7 @@ class User:
             #time_input = str(time_input)
             try:
                 hour = int(time_input[:2])
-                minute = int(time_input[4:6])
+                minute = int(time_input[4:])
                 if hour >= 0 and hour <= 24 and minute >= 0 and minute <= 60 and time_input[2] == ":":
                     print("rétt")
                     #time_repeater = False
