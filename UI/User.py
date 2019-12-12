@@ -331,7 +331,7 @@ class User:
         dest_list = self.ll.get_all_dest()
         self.app.print_selection_list(dest_list)
         dest_number = self.val.validate_selection(input("Please select destination: "),len(dest_list))
-        dest = dest_list[dest_number]
+        dest = dest_list[int(dest_number)]
         destination_place = dest.get_destination()
         voyage.set_arriving_at(destination_place)
         while the_date == False:
@@ -351,8 +351,8 @@ class User:
         voyage.set_flight_number_home(home_number)
         plane_list = self.ll.get_available_planes(departure,arrival)
         self.app.print_selection_list(plane_list)
-        plane_number = int(input("Select an airplane: ")) - 1
-        plane = plane_list[plane_number].get_registration_number()
+        plane_number = self.val.validate_selection(input("Select an airplane: "),len(plane_list))
+        plane = plane_list[int(plane_number)].get_registration_number()
         voyage.set_aircraft_id(plane)
         self.ll.add_voyage(voyage)
         #self.ll.update_flight_nums()
@@ -360,7 +360,7 @@ class User:
     def change_voyage(self):
         self.app.print_change_voyage()
         voyage_list = self.ll.get_all_voyages()
-        action = input("Enter booking reference: ")
+        action = self.val.validate_selection(input("Enter booking reference: "),len(voyage_list))
         for index in range(len(voyage_list)):
             voyage = voyage_list[index]
             if action == voyage.get_booking_reference():
@@ -369,8 +369,8 @@ class User:
                 arrival = dateutil.parser.parse(voyage.get_arrival())
                 plane_list = self.ll.get_available_planes(departure,arrival)
                 self.app.print_selection_list(plane_list)
-                plane_number = int(input("Select an airplane: ")) - 1
-                plane = plane_list[plane_number].get_registration_number()
+                plane_number = self.val.validate_selection(input("Select an airplane: "),len(plane_list))
+                plane = plane_list[int(plane_number)].get_registration_number()
                 voyage.set_aircraft_id(plane)
                 self.ll.change_voyage(voyage_list,index,plane)
 
