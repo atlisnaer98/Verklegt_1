@@ -34,14 +34,12 @@ class User:
         self.ll.add_dest(dest)
 
     def get_all_dest(self):
+        print("{:<20}{:<20}{:<20}".format("Airport","Country","Distance(km)"))
         dest_obj = self.ll.get_all_dest()
-        self.app.print_get_all_dest()
-        print("{:<20}{:<20}{:<20}".format("Airport:","Country:","Distance(km):"))
-        for destination in dest_obj:
-            #sting = str(line)
-            #lis = sting.split(",")
-            #print("{:<20}{:<20}{:<20}".format(lis[2], lis[1], lis[4]+'km')) 
-            self.app.print_list_dest_info(destination)
+        for line in dest_obj:
+            sting = str(line)
+            lis = sting.split(",")
+            print("{:<20}{:<20}{:<20}".format(lis[2], lis[1], lis[4]+'km'))              #Nota model föllin og færa í apperance
     
     def add_plane(self):
         plane = Airplane()
@@ -282,7 +280,7 @@ class User:
         if action == '1':
             print("[1]Available     [2] Working")
             action = input("Select an option: ")
-            temp_date = input("Enter from date: YYYY-MM-DD:")
+            temp_date = self.validate_date(input("Enter from date: YYYY-MM-DD:"))
             from_date = dateutil.parser.parse(temp_date)
             to_date = from_date + timedelta(days=1)
             if action == '1':
@@ -314,9 +312,8 @@ class User:
                     if counter == len(time_voyage_list):
                         print("No employee has been assigned to a voyage on that date")
                 else:
-                    if counter == 5:
-                        print("{:<20}{:<20}{:<20}".format("Name","SSN","Destination"))
-                        self.app.print_working_emps(voyage,employee_dict)
+                    print("{:<20}{:<20}{:<20}".format("Name","SSN","Destination"))
+                    self.app.print_working_emps(voyage,employee_dict)
 
             
     def add_voyage(self):
@@ -331,10 +328,10 @@ class User:
         voyage.set_arriving_at(dest)
         voyage.set_flight_number_away("NA0500")
         voyage.set_flight_number_home("NA0501")
-        depart = input("Departure date (YYYY-MM-DD): ") + "T" + input("Departure time(HH:MM): ")
+        depart = self.validate_date(input("Departure date (YYYY-MM-DD): ")) + "T" + self.validate_time(input("Departure time(HH:MM): "))
         departure = dateutil.parser.parse(depart)
         voyage.set_departure(depart)
-        arrival = departure + timedelta(hours=4)
+        arrival = departure + timedelta(hours=4) #tímar LAGAGAGAGAGAGAGAG!!!!!
         voyage.set_arrival(arrival.isoformat())
         plane_list = self.ll.get_available_planes(departure,arrival)
         self.app.print_selection_list(plane_list)
@@ -342,7 +339,7 @@ class User:
         plane = plane_list[plane_number].get_registration_number()
         voyage.set_aircraft_id(plane)
         self.ll.add_voyage(voyage)
-
+            
     def change_voyage(self):
         #self.app.print_change_voyage()                     Búa til þetta method í apperance
         voyage_list = self.ll.get_all_voyages()
@@ -365,7 +362,7 @@ class User:
         voyage_list = self.ll.get_all_voyages()
         employee_list = self.ll.get_all_employees()
         airplane_list = self.ll.get_all_airplanes()
-        print("{:<20}{:<20}{:<20}\n{}".format("Booking","Destination:","Departure:","referance:"))
+        print("{}{:>15}{:>20}".format("Booking referance","Destination","Departure"))
         for voyage in voyage_list:
             if voyage.get_captain() == "" or voyage.get_copilot() == "" or voyage.get_fsm() == "":
                 highest_selection = int(voyage.get_booking_reference())
@@ -482,16 +479,46 @@ class User:
 
 #self.app.print_voy_lsfasldf(voyage_list,"Manned")
     def get_voyages_for_employee(self, ID):
-        temp_date = input("Enter from date: YYYY-MM-DD:")
+        temp_date = self.validate_date(input("Enter date from (YYYY-MM-DD):"))
         from_date= dateutil.parser.parse(temp_date)
-        temp_date = input("Enter to date: YYYY-MM-DD:")
+        temp_date = self.validate_date(input("Enter to date: YYYY-MM-DD:"))
         to_date= dateutil.parser.parse(temp_date) + timedelta(days=1)
         time_voyage_list = self.ll.get_date_voyages(from_date,to_date)
         voyage_list = self.ll.get_voyages_for_employee(ID,time_voyage_list)
         for voyage in voyage_list:
             self.app.print_voyage_info(voyage)
             #print(voyage.get_booking_reference())
-            
+
+    def validate_date(self,date_input):
+        date_repeater = True
+        while date_repeater == True:
+            try:
+                year = int(date_input[:4])
+                month = int(date_input[5:7])
+                day = int(date_input[8:10])
+                if year > 0 and date_input[4] == "-" and date_input[7] == "-" and month > 0 and month <= 12 and day > 0 and day < 31:
+                    print("rétt")
+                    return date_input
+                else:
+                    date_input = input("Invalid input, please re-enter (YYYY-MM-DD):")
+            except ValueError:
+                date_input = input("Invalid input, please re-enter (YYYY-MM-DD):")
+
+    def validate_time(self,time_input):
+        time_repeater = True
+        while time_repeater == True:
+            try:
+                hour = int(time_input[:2])
+                minute = int(time_input[4:6])
+                if hour >= 0 and hour <= 24 and minute >= 0 and minute <= 60 and time_input[0] == ":":
+                    print("rétt")
+                    return time_input
+                else:
+                    time_input = input("Invalid input, please re-enter (HH:MM): ")
+            except ValueError:
+                time_input = input("Invalid input, please re-enter (HH:MM): ")
+                
+
     def Voyage_menu(self,action):
         action = ""
         while action not in QUIT:
@@ -539,8 +566,6 @@ class User:
 
     
     def change_plane_status(self,action): #VINNA Í ÞESSU og nota þenna!
-        # The method will print out all airplanes in a list with information if the airplane is active or inactive.
-        # You are able to make airplane active or inactive in this method.
         airplane_list = self.ll.get_all_airplanes()
         #app.fall(airplane_list) svipað fall og print selection list
         self.app.print_change_plane_status(airplane_list)
@@ -553,9 +578,7 @@ class User:
                 print()
         self.main_menu()
     
-
     def get_all_plane(self):
-        # The method will print out all airplanes in a list with certain information.
         plane_list = self.ll.get_all_airplanes()
         self.app.print_list_plane
         #self.app.print_all_planes()
