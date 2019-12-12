@@ -370,8 +370,10 @@ class User:
                 self.set_captain(voyage,employee_list,licence,)
                 self.set_copilot(voyage,employee_list,licence)
                 self.set_fsm(voyage,employee_list)
-                voyage.set_fa1(input("Flight attendant: "))
-                voyage.set_fa2(input("Flight attendat: "))
+                fa1 = self.set_fa(voyage,employee_list)
+                fa2 = self.set_fa(voyage,employee_list)
+                voyage.set_fa1(fa1)
+                voyage.set_fa2(fa2)
                 voyage_list[index] = voyage
                 self.ll.assign_crew(voyage_list)
 
@@ -435,7 +437,21 @@ class User:
             if fsm_index + 1 == int(fsm_selection):
                 for emp in employee_list:
                     if emp.get_name() == available_fsm_list[fsm_index]:
-                        voyage.set_fsm(emp.get_ssn())
+                        return emp.get_ssn()
+
+    def set_fa(self,voyage,employee_list):
+        available_fa_list = []
+        available_emp_list = self.available_employees(voyage)
+        for fa in employee_list:
+            if fa.get_rank() == "Flight Attendant" and fa.get_activity() =="1" and fa.get_ssn() in available_emp_list:
+                available_fa_list.append(fa.get_name())
+        self.app.print_selection_list(available_fa_list)
+        fa_selection = self.back_quit("",len(available_fa_list))
+        for fa_index in range(len(available_fa_list)):
+            if fa_index + 1 == int(fa_selection):
+                for emp in employee_list:
+                    if emp.get_name() == available_fa_list[fa_index]:
+                        voyage.set_fa(emp.get_ssn())
 
     def get_date_voyages(self, from_date, to_date):
         voyage_list = self.ll.get_date_voyages(from_date, to_date)
