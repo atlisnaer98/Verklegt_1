@@ -31,7 +31,7 @@ class User:
         dest.set_flight_time(self.validate_time(input("Time of flight (HH:MM): ")))
         dest.set_distance(self.validate_distance(input("Distance: ")))
         dest.set_name_of_contact(input("Emergency contact: "))
-        dest.set_emergency_phone_number(input("Emergency contact number: "))
+        dest.set_emergency_phone_number(self.validate_phone_number(input("Emergency contact number: ")))
         self.ll.add_dest(dest)
 
     def validate_distance(self,distance_input):
@@ -67,6 +67,7 @@ class User:
             splitted_name  = name_input.split(" ")
             name_len = len(splitted_name)
             for name in splitted_name:
+<<<<<<< HEAD
                 if name.isalpha():
                     counter =+ 1
                 else:
@@ -75,6 +76,25 @@ class User:
             if counter == name_len: 
                 name_repeater = False        
         return name_input.title()
+=======
+                print(name)
+                print(len(name))
+                try:
+                    name.isalpha()
+                    return splitted_name
+                except ValueError:
+                    print("bitch")
+    
+
+    def validate_phone_number(self,phone_number):
+        true_check = True
+        while true_check == True:
+            if phone_number.isdigit():
+                true_check = False
+                return phone_number
+            else:
+                phone_number = input("Invalid input,  please re-enter (only integers) Emergency contact number:")
+>>>>>>> dbdc224254d90b413e37d0d7f98ac96236159787
 
 
 
@@ -227,7 +247,10 @@ class User:
                 dest = dest_list[index]
                 self.app.print_dest_info(dest)
                 action = self.back_quit(action,len(dest_list))
-                changed = input("Enter new input: ")
+                if action == '1':
+                    changed = self.validate_name(input("Enter new input: "))
+                elif action == '2':
+                    changed = self.validate_phone_number(input("Enter new input: "))
                 self.ll.change_dest(dest_list,index,int(action),changed)
         
     def get_cabin_crew(self): #Laga og bæta 
@@ -373,14 +396,16 @@ class User:
         dest_list = self.ll.get_all_dest()
         self.app.print_selection_list(dest_list)
         dest_number = int(input("Please select destination: ")) - 1
-        dest = dest_list[dest_number].get_destination()
-        voyage.set_arriving_at(dest)
+        dest = dest_list[dest_number]
+        destination_place = dest.get_destination()
+        voyage.set_arriving_at(destination_place)
         voyage.set_flight_number_away("NA0500") #PLANE NUMBEEER!!!!!!!!!!!
         voyage.set_flight_number_home("NA0501")
         depart = self.validate_date(input("Departure date (YYYY-MM-DD): ")) + "T" + self.validate_time(input("Departure time(HH:MM): "))
         departure = dateutil.parser.parse(depart)
         voyage.set_departure(depart)
-        arrival = departure + timedelta(hours=4) #tímar LAGAGAGAGAGAGAGAG!!!!!
+        one_way_flight_time = dateutil.parser.parse(dest.get_flight_time())
+        arrival = departure + timedelta(hours=one_way_flight_time.hour * 2 + 1, minutes=one_way_flight_time.minute)
         voyage.set_arrival(arrival.isoformat())
         plane_list = self.ll.get_available_planes(departure,arrival)
         self.app.print_selection_list(plane_list)
