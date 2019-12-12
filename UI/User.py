@@ -77,57 +77,49 @@ class User:
     def add_employee(self):
         #self.app.print_add_employee()                          Búa til þetta í apperance
         plane_list = []
-        job_title_list = ["Pilot","Cabincrew"]
+        role_list = ["Pilot","Cabincrew"]
         pilot_rank_list = ["Captain","Copilot"]
         cabincrew_rank_list = ["Flight Service Manager", "Flight Attendant"]
         emp = Employee()
         emp.set_ssn(input("ID number: "))
-        emp.set_name.validate_name(input("Name: "))
+        emp.set_name(input("Name: "))
         emp.set_address(input("Adress: "))
         emp.set_home_phone(input("Home phone: "))
         emp.set_mobile_number(input("Mobile number: "))
         emp.set_email_address(input("Email: "))
-        print("Job title:")
-        self.app.print_selection_list(job_title_list)
-        job_title_selection = self.validate_selection(input("Select a job title: "),2)
-        for job_title_index in range(len(job_title_list)):
-            if job_title_selection == str(job_title_index+1) and int(job_title_selection)==1:
-                job_title_selection = job_title_list[job_title_index]
+        print("role:")
+        self.app.print_selection_list(role_list)
+        role_selection = self.validate_selection(input("Select a role: "),2)
+        for role_index in range(len(role_list)):
+            if role_selection == str(role_index+1) and int(role_selection)==1:
+                role_selection = role_list[role_index]
                 selected_rank_list = pilot_rank_list
-            elif job_title_selection == str(job_title_index+1) and int(job_title_selection)==2:
-                job_title_selection = job_title_list[job_title_index]
+            elif role_selection == str(role_index+1) and int(role_selection)==2:
+                role_selection = role_list[role_index]
                 selected_rank_list = cabincrew_rank_list
-        """
-        if job_title_selection == "1":
-            job_title_selection = "Pilot"
-            selected_rank_list = pilot_rank_list
-        elif job_title_selection == "2":
-            job_title_selection = "Cabincrew"
-            selected_rank_list = cabincrew_rank_list"""
-        emp.set_job_title(job_title_selection)
+        emp.set_role(role_selection)
         self.app.print_selection_list(selected_rank_list)
         rank_selection = self.validate_selection(input("select a rank: "),2)
-        if job_title_selection == "Cabincrew":
+        if role_selection == "Cabincrew":
             if rank_selection == "1":
                 rank_selection = "Flight Service Manager"
             elif rank_selection == "2":
                 rank_selection = "Flight Attendant"
-        elif job_title_selection == "Pilot":
+        elif role_selection == "Pilot":
             if rank_selection == "1":
                 rank_selection = "Captain"
             elif rank_selection == "2":
                 rank_selection = "Copilot"
         emp.set_rank(rank_selection)
-
         airplane_obj = self.ll.get_all_airplanes()
         for index in range(len(airplane_obj)):
             plane = airplane_obj[index]
             plane_type = plane.get_planeID()
             if plane_type not in plane_list:
                 plane_list.append(plane_type)
-        if job_title_selection == "Cabincrew":
+        if role_selection == "Cabincrew":
             plane_selection = "N/A"
-        elif job_title_selection == "Pilot":
+        elif role_selection == "Pilot":
             self.app.print_selection_list(plane_list)
             plane_selection = self.validate_selection(input("Select a licence: "),len(plane_list))
             for selected_numb in range(len(plane_list)):
@@ -303,7 +295,7 @@ class User:
         available_list = self.ll.get_emp_date_schedule(date,action)
         print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for emp in available_list:
-            self.app.print_get_all_employess_role(employee)
+            self.app.print_get_all_employess_role(emp)
 
 
     def get_working_emp_date_schedule(self,from_date, to_date):
