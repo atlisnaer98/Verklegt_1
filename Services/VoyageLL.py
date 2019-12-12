@@ -51,8 +51,14 @@ class VoyageLL():
     def change_voyage(self,voyage_list,index,plane):
         voyage = voyage_list[index]
         voyage.set_aircraft_id(plane)
+        voyage = self.clear_crew(voyage)
         voyage_list[index] = voyage
         self.dl.update_voyage_file(voyage_list)
+
+    def clear_crew(self,voyage):
+        voyage.set_captain("")
+        voyage.set_copilot("")
+        return voyage
 
     def get_crew(self,voyage):
         crew = [voyage.get_captain(), voyage.get_copilot(), voyage.get_fsm(), voyage.get_fa1(), voyage.get_fa2()]
