@@ -61,13 +61,22 @@ class User:
             
 
     def validate_name(self,name_input):
-        splitted_name  = name_input.split(" ")
-        # name_repeater = True
-        # print(len(splitted_name))
         counter = 0
-        letter_count = 0
-        while counter != len(splitted_name):
+        name_repeater = True
+        while name_repeater == True:
+            splitted_name  = name_input.split(" ")
+            name_len = len(splitted_name)
             for name in splitted_name:
+<<<<<<< HEAD
+                if name.isalpha():
+                    counter =+ 1
+                else:
+                    name_input = input("The name has to only contain letters, please re-enter name: ")
+                    break 
+            if counter == name_len: 
+                name_repeater = False        
+        return name_input.title()
+=======
                 print(name)
                 print(len(name))
                 try:
@@ -85,6 +94,7 @@ class User:
                 return phone_number
             else:
                 phone_number = input("Invalid input,  please re-enter (only integers) Emergency contact number:")
+>>>>>>> dbdc224254d90b413e37d0d7f98ac96236159787
 
 
 
@@ -386,14 +396,16 @@ class User:
         dest_list = self.ll.get_all_dest()
         self.app.print_selection_list(dest_list)
         dest_number = int(input("Please select destination: ")) - 1
-        dest = dest_list[dest_number].get_destination()
-        voyage.set_arriving_at(dest)
+        dest = dest_list[dest_number]
+        destination_place = dest.get_destination()
+        voyage.set_arriving_at(destination_place)
         voyage.set_flight_number_away("NA0500") #PLANE NUMBEEER!!!!!!!!!!!
         voyage.set_flight_number_home("NA0501")
         depart = self.validate_date(input("Departure date (YYYY-MM-DD): ")) + "T" + self.validate_time(input("Departure time(HH:MM): "))
         departure = dateutil.parser.parse(depart)
         voyage.set_departure(depart)
-        arrival = departure + timedelta(hours=4) #tímar LAGAGAGAGAGAGAGAG!!!!!
+        one_way_flight_time = dateutil.parser.parse(dest.get_flight_time())
+        arrival = departure + timedelta(hours=one_way_flight_time.hour * 2 + 1, minutes=one_way_flight_time.minute)
         voyage.set_arrival(arrival.isoformat())
         plane_list = self.ll.get_available_planes(departure,arrival)
         self.app.print_selection_list(plane_list)
@@ -650,8 +662,11 @@ class User:
         self.app.print_list_plane
         #self.app.print_all_planes()
         print("{:<20}{:<13}{:<13}{:<13}".format("Registration Number","Plane Type","Model","Capacity"))
+        #for plane in plane_list:
+        #   self.app.print_list_plane_info(plane)
         for plane in plane_list:
-            self.app.print_list_plane_info(plane)
+            list_of_planes.append(plane.get_registration_number())
+        self.app.print_selection_list(list_of_planes)
 
     
     def airplane_menu(self,action):
