@@ -77,57 +77,49 @@ class User:
     def add_employee(self):
         #self.app.print_add_employee()                          Búa til þetta í apperance
         plane_list = []
-        job_title_list = ["Pilot","Cabincrew"]
+        role_list = ["Pilot","Cabincrew"]
         pilot_rank_list = ["Captain","Copilot"]
         cabincrew_rank_list = ["Flight Service Manager", "Flight Attendant"]
         emp = Employee()
         emp.set_ssn(input("ID number: "))
-        emp.set_name.validate_name(input("Name: "))
+        emp.set_name(input("Name: "))
         emp.set_address(input("Adress: "))
         emp.set_home_phone(input("Home phone: "))
         emp.set_mobile_number(input("Mobile number: "))
         emp.set_email_address(input("Email: "))
-        print("Job title:")
-        self.app.print_selection_list(job_title_list)
-        job_title_selection = self.validate_selection(input("Select a job title: "),2)
-        for job_title_index in range(len(job_title_list)):
-            if job_title_selection == str(job_title_index+1) and int(job_title_selection)==1:
-                job_title_selection = job_title_list[job_title_index]
+        print("role:")
+        self.app.print_selection_list(role_list)
+        role_selection = self.validate_selection(input("Select a role: "),2)
+        for role_index in range(len(role_list)):
+            if role_selection == str(role_index+1) and int(role_selection)==1:
+                role_selection = role_list[role_index]
                 selected_rank_list = pilot_rank_list
-            elif job_title_selection == str(job_title_index+1) and int(job_title_selection)==2:
-                job_title_selection = job_title_list[job_title_index]
+            elif role_selection == str(role_index+1) and int(role_selection)==2:
+                role_selection = role_list[role_index]
                 selected_rank_list = cabincrew_rank_list
-        """
-        if job_title_selection == "1":
-            job_title_selection = "Pilot"
-            selected_rank_list = pilot_rank_list
-        elif job_title_selection == "2":
-            job_title_selection = "Cabincrew"
-            selected_rank_list = cabincrew_rank_list"""
-        emp.set_job_title(job_title_selection)
+        emp.set_role(role_selection)
         self.app.print_selection_list(selected_rank_list)
         rank_selection = self.validate_selection(input("select a rank: "),2)
-        if job_title_selection == "Cabincrew":
+        if role_selection == "Cabincrew":
             if rank_selection == "1":
                 rank_selection = "Flight Service Manager"
             elif rank_selection == "2":
                 rank_selection = "Flight Attendant"
-        elif job_title_selection == "Pilot":
+        elif role_selection == "Pilot":
             if rank_selection == "1":
                 rank_selection = "Captain"
             elif rank_selection == "2":
                 rank_selection = "Copilot"
         emp.set_rank(rank_selection)
-
         airplane_obj = self.ll.get_all_airplanes()
         for index in range(len(airplane_obj)):
             plane = airplane_obj[index]
             plane_type = plane.get_planeID()
             if plane_type not in plane_list:
                 plane_list.append(plane_type)
-        if job_title_selection == "Cabincrew":
+        if role_selection == "Cabincrew":
             plane_selection = "N/A"
-        elif job_title_selection == "Pilot":
+        elif role_selection == "Pilot":
             self.app.print_selection_list(plane_list)
             plane_selection = self.validate_selection(input("Select a licence: "),len(plane_list))
             for selected_numb in range(len(plane_list)):
@@ -303,16 +295,17 @@ class User:
         available_list = self.ll.get_emp_date_schedule(date,action)
         print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for emp in available_list:
-            self.app.print_get_all_employess_role(employee)
+            self.app.print_get_all_employess_role(emp)
 
 
-    def get_working_emp_date_schedule(self,date):
-        time_voyage_list = self.ll.get_voyages_on_date(date)
+    def get_working_emp_date_schedule(self,from_date, to_date):
+        time_voyage_list = self.ll.get_voyages_on_date(from_date,to_date)
         employee_dict = self.ll.get_all_employees_dict()
         self.app.print_working_employee()
         print("{:<20}{:<20}{:<20}".format("Name","SSN","Destination"))
         for voyage in time_voyage_list:
-            self.app.print_working_emps(voyage,employee_dict)
+            print(str(voyage))
+            #self.app.print_working_emps(voyage,employee_dict)
             
     def add_voyage(self):
         voyage = Voyage()
@@ -356,8 +349,6 @@ class User:
                 self.ll.change_voyage(voyage_list,index,plane)
 
     def assign_crew(self):
-        available_copilot_list = []
-        available_fsm = []
         available_fa = []
         self.app.print_assign_crew()
         voyage_list = self.ll.get_all_voyages()
@@ -365,33 +356,47 @@ class User:
         airplane_list = self.ll.get_all_airplanes()
         print("{}{:>15}{:>20}".format("Booking referance","Destination","Departure"))
         for voyage in voyage_list:
-            if voyage.get_captain() == "":
+            if voyage.get_captain() == "" or voyage.get_copilot() == "" or voyage.get_fsm() == "":
                 highest_selection = int(voyage.get_booking_reference())
                 self.app.print_voyage_selection_list(voyage)
         action = self.back_quit("",highest_selection)
         for index in range(len(voyage_list)):
             voyage = voyage_list[index]
-            if action == voyage.get_booking_reference():            
-                self.set_captain(voyage,airplane_list,employee_list)
-                voyage.set_copilot(input("Copilot: "))
-                voyage.set_fsm(input("Flight service manager: "))
+            if action == voyage.get_booking_reference():
+                self.clear_voyage_crew(voyage_list,index)
+                for airplane in airplane_list:
+                    if voyage.get_aircraft_id() == airplane.get_registration_number():
+                        licence = airplane.get_planeID()             
+                self.set_captain(voyage,employee_list,licence,)
+                self.set_copilot(voyage,employee_list,licence)
+                self.set_fsm(voyage,employee_list)
                 voyage.set_fa1(input("Flight attendant: "))
                 voyage.set_fa2(input("Flight attendat: "))
                 voyage_list[index] = voyage
                 self.ll.assign_crew(voyage_list)
 
-    def set_captain(self,voyage,airplane_list,employee_list):
+    def clear_voyage_crew(self,voyage_list,index):
+        voyage = voyage_list[index]
+        voyage.set_captain("")
+        voyage.set_copilot("")
+        voyage.set_fsm("")
+        voyage.set_fa1("")
+        voyage.set_fa2("")
+        voyage_list[index] = voyage
+        self.ll.assign_crew(voyage_list)
+
+    def available_empoyees(self,voyage):
         available_emp_list = []
-        available_captain_list = []
         voyage_date_from = dateutil.parser.parse(voyage.get_departure())
         voyage_date_to = dateutil.parser.parse(voyage.get_arrival())
         emp_obj = self.ll.get_emp_date_schedule(voyage_date_from,voyage_date_to)
         for emp in emp_obj:
             available_emp_list.append(emp.get_ssn())
-        for airplane in airplane_list:
-            if voyage.get_aircraft_id() == airplane.get_registration_number():
-                licence = airplane.get_planeID()
-                print(licence) 
+        return available_emp_list
+
+    def set_captain(self,voyage,employee_list,licence):
+        available_captain_list = []
+        available_emp_list = self.available_empoyees(voyage)   
         for captain in employee_list:
             if captain.get_rank() == "Captain" and captain.get_activity() == "1" and licence == captain.get_licence() and captain.get_ssn() in available_emp_list:
                 available_captain_list.append(captain.get_name())
@@ -402,6 +407,34 @@ class User:
                 for emp in employee_list:
                     if emp.get_name() == available_captain_list[captain_index]:
                         voyage.set_captain(emp.get_ssn())
+
+    def set_copilot(self,voyage,employee_list,licence):
+        available_copilot_list = []
+        available_emp_list = self.available_empoyees(voyage)
+        for copilot in employee_list:
+            if copilot.get_rank() == "Copilot" and copilot.get_activity() == "1" and licence == copilot.get_licence() and copilot.get_ssn() in available_emp_list:
+                available_copilot_list.append(copilot.get_name())
+        self.app.print_selection_list(available_copilot_list)
+        copilot_selection = self.back_quit("",len(available_copilot_list))
+        for copilot_index in range(len(available_copilot_list)):
+            if copilot_index+1 == int(copilot_selection):
+                for emp in employee_list:
+                    if emp.get_name() == available_copilot_list[copilot_index]:
+                        voyage.set_copilot(emp.get_ssn())
+
+    def set_fsm(self,voyage,employee_list):
+        available_fsm_list = []
+        available_emp_list = self.available_empoyees(voyage)
+        for fsm in employee_list:
+            if fsm.get_rank() == "Flight Service Manager" and fsm.get_activity() =="1" and fsm.get_ssn() in available_emp_list:
+                available_fsm_list.append(fsm.get_name())
+        self.app.print_selection_list(available_fsm_list)
+        fsm_selection = self.back_quit("",len(available_fsm_list))
+        for fsm_index in range(len(available_fsm_list)):
+            if fsm_index + 1 == int(fsm_selection):
+                for emp in employee_list:
+                    if emp.get_name() == available_fsm_list[fsm_index]:
+                        voyage.set_fsm(emp.get_ssn())
 
     def get_date_voyages(self, from_date, to_date):
         voyage_list = self.ll.get_date_voyages(from_date, to_date)
@@ -451,7 +484,7 @@ class User:
         voyage_list = self.ll.get_date_voyages(from_date,to_date)
         self.print_voyages_manned(voyage_list)
     
-    def get_voyages_for_timeperiod(self):
+    def get_voyages_for_timeperiod(self): #Þarf að vera valkostur fyrir þetta í apperance
         temp_date = input("Enter from date: YYYY-MM-DD:")                    
         from_date = dateutil.parser.parse(temp_date)
         temp_date = input("Enter to date: YYYY-MM-DD:")     
