@@ -25,13 +25,17 @@ class User:
     def add_dest(self):
         dest = Destination()
         dest.set_destination(self.validate_name(input("Destination: ")))
-        dest.set_country(input("Country: "))
-        dest.set_airport(input("Airport(XXX): "))
+        dest.set_country(self.validate_name(input("Country: ")))
+        dest.set_airport(self.validate_airport(input("Airport(XXX): ")))
         dest.set_flight_time(self.validate_time(input("Time of flight (HH:MM): ")))
         dest.set_distance(input("Distance: "))
         dest.set_name_of_contact(input("Emergency contact: "))
         dest.set_emergency_phone_number(input("Emergency contact number: "))
         self.ll.add_dest(dest)
+
+    def validate_airport(self,airport_input):
+        if len(airport_input) > 3 or len(airport_input) < 3:
+            pass
 
     def validate_name(self,name_input):
         splitted_name  = name_input.split(" ")
