@@ -164,7 +164,7 @@ class Validation:
             ssn_input = self.validate_ssn(ssn_input)
             counter = 1
             for emp in employee_list:
-                if emp.get_ssn == ssn_input:
+                if emp.get_ssn() == ssn_input:
                     return ssn_input
                 else:
                     counter += 1
