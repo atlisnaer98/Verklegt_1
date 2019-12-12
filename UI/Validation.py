@@ -106,9 +106,12 @@ class Validation:
         validation = True
         while validation == True:
             try:
-                if int(action) > 0 and int(action) < limit+1:
+                temp_action = int(action)
+                if temp_action > 0 and temp_action < limit+1:
                     validation = False
                     return action
+                else:
+                    action = input("Invalid input, please re-enter: ")
             except ValueError:
                 action = input("Invalid input, please re-enter: ")
 

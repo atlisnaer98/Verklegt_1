@@ -99,7 +99,8 @@ class User:
         emp.set_email_address(self.val.validate_email(input("Email: ")))
         print("role:")
         self.app.print_selection_list(role_list)
-        role_selection = self.val.validate_selection(input("Select a role: "),2)
+        role_input = input("Select a role: ")
+        role_selection = self.val.validate_selection(role_input,2)
         for role_index in range(len(role_list)):
             if role_selection == str(role_index+1) and int(role_selection)==1:
                 role_selection = role_list[role_index]
@@ -109,7 +110,8 @@ class User:
                 selected_rank_list = cabincrew_rank_list
         emp.set_role(role_selection)
         self.app.print_selection_list(selected_rank_list)
-        rank_selection = self.val.validate_selection(input("select a rank: "),2)
+        rank_input = input("select a rank: ")
+        rank_selection = self.val.validate_selection(rank_input,2)
         if role_selection == "Cabincrew":
             if rank_selection == "1":
                 rank_selection = "Flight Service Manager"
