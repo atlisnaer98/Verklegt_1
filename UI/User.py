@@ -30,8 +30,8 @@ class User:
         dest.set_airport(self.validate_airport(input("Airport(XXX): ")))
         dest.set_flight_time(self.validate_time(input("Time of flight (HH:MM): ")))
         dest.set_distance(self.validate_distance(input("Distance: ")))
-        dest.set_name_of_contact(input("Emergency contact: "))
-        dest.set_emergency_phone_number(input("Emergency contact number: "))
+        dest.set_name_of_contact(self.validate_name(input("Emergency contact: ")))
+        dest.set_emergency_phone_number(self.validate_phone_number(input("Emergency contact number: ")))
         self.ll.add_dest(dest)
 
     def validate_distance(self,distance_input):
@@ -61,20 +61,31 @@ class User:
             
 
     def validate_name(self,name_input):
-        splitted_name  = name_input.split(" ")
-        # name_repeater = True
-        # print(len(splitted_name))
         counter = 0
-        letter_count = 0
-        while counter != len(splitted_name):
+        name_repeater = True
+        while name_repeater == True:
+            splitted_name  = name_input.split(" ")
+            name_len = len(splitted_name)
             for name in splitted_name:
-                print(name)
-                print(len(name))
-                try:
-                    name.isalpha()
-                    return splitted_name
-                except ValueError:
-                    print("bitch")
+                if name.isalpha():
+                    counter =+ 1
+                else:
+                    name_input = input("The name has to only contain letters, please re-enter name: ")
+                    break 
+            if counter == name_len: 
+                name_repeater = False        
+        return name_input.title()
+    
+    def validate_phone_number(self,phone_number):
+        true_check = True
+        while true_check == True:
+            if phone_number.isdigit():
+                true_check = False
+                return phone_number
+            else:
+                phone_number = input("Invalid input,  please re-enter (only integers) Emergency contact number:")
+
+
 
                 
 
@@ -225,7 +236,10 @@ class User:
                 dest = dest_list[index]
                 self.app.print_dest_info(dest)
                 action = self.back_quit(action,len(dest_list))
-                changed = input("Enter new input: ")
+                if action == '1':
+                    changed = self.validate_name(input("Enter new input: "))
+                elif action == '2':
+                    changed = self.validate_phone_number(input("Enter new input: "))
                 self.ll.change_dest(dest_list,index,int(action),changed)
         
     def get_cabin_crew(self): #Laga og bæta 
@@ -371,14 +385,16 @@ class User:
         dest_list = self.ll.get_all_dest()
         self.app.print_selection_list(dest_list)
         dest_number = int(input("Please select destination: ")) - 1
-        dest = dest_list[dest_number].get_destination()
-        voyage.set_arriving_at(dest)
+        dest = dest_list[dest_number]
+        destination_place = dest.get_destination()
+        voyage.set_arriving_at(destination_place)
         voyage.set_flight_number_away("NA0500") #PLANE NUMBEEER!!!!!!!!!!!
         voyage.set_flight_number_home("NA0501")
         depart = self.validate_date(input("Departure date (YYYY-MM-DD): ")) + "T" + self.validate_time(input("Departure time(HH:MM): "))
         departure = dateutil.parser.parse(depart)
         voyage.set_departure(depart)
-        arrival = departure + timedelta(hours=4) #tímar LAGAGAGAGAGAGAGAG!!!!!
+        one_way_flight_time = dateutil.parser.parse(dest.get_flight_time())
+        arrival = departure + timedelta(hours=one_way_flight_time.hour * 2 + 1, minutes=one_way_flight_time.minute)
         voyage.set_arrival(arrival.isoformat())
         plane_list = self.ll.get_available_planes(departure,arrival)
         self.app.print_selection_list(plane_list)
@@ -544,7 +560,6 @@ class User:
                 month = int(date_input[5:7])
                 day = int(date_input[8:10])
                 if year > 0 and date_input[4] == "-" and date_input[7] == "-" and month > 0 and month <= 12 and day > 0 and day < 31:
-                    print("rétt")
                     return date_input
                 else:
                     date_input = input("Invalid input, please re-enter (YYYY-MM-DD):")
@@ -635,8 +650,11 @@ class User:
         self.app.print_list_plane
         #self.app.print_all_planes()
         print("{:<20}{:<13}{:<13}{:<13}".format("Registration Number","Plane Type","Model","Capacity"))
+        #for plane in plane_list:
+        #   self.app.print_list_plane_info(plane)
         for plane in plane_list:
-            self.app.print_list_plane_info(plane)
+            list_of_planes.append(plane.get_registration_number())
+        self.app.print_selection_list(list_of_planes)
 
     
     def airplane_menu(self,action):

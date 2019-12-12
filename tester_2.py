@@ -12,3 +12,8 @@ print(year)
 a = "2019-11-10"
 b = a[:3]
 print(b)
+
+dep_time = dateutil.parser.parse("2019-11-30T0:00:00")
+arr_time = dateutil.parser.parse("2019-11-30T0:10:00")
+time = arr_time - dep_time
+print(time//2)
