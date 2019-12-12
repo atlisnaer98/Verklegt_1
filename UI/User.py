@@ -560,7 +560,6 @@ class User:
                 month = int(date_input[5:7])
                 day = int(date_input[8:10])
                 if year > 0 and date_input[4] == "-" and date_input[7] == "-" and month > 0 and month <= 12 and day > 0 and day < 31:
-                    print("rétt")
                     return date_input
                 else:
                     date_input = input("Invalid input, please re-enter (YYYY-MM-DD):")
