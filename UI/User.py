@@ -30,7 +30,7 @@ class User:
         dest.set_airport(self.validate_airport(input("Airport(XXX): ")))
         dest.set_flight_time(self.validate_time(input("Time of flight (HH:MM): ")))
         dest.set_distance(self.validate_distance(input("Distance: ")))
-        dest.set_name_of_contact(input("Emergency contact: "))
+        dest.set_name_of_contact(self.validate_name(input("Emergency contact: ")))
         dest.set_emergency_phone_number(self.validate_phone_number(input("Emergency contact number: ")))
         self.ll.add_dest(dest)
 
