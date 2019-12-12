@@ -20,7 +20,7 @@ class Validation:
         airport_repeater = True
         numb_list = ["0","1","2","3","4","5","6","7","8","9"]
         while airport_repeater == True:
-            if len(airport_input) > 3 or len(airport_input) < 3:
+            if len(airport_input) ==3:
                 airport_input = input("Invalid input, please re-enter airport(XXX)")
             else:
                 counter = 0
@@ -58,7 +58,7 @@ class Validation:
                 true_check = False
                 return phone_number
             else:
-                phone_number = input("Invalid input,  please re-enter (only integers) Emergency contact number:")
+                phone_number = input("Invalid input,  please re-enter (only integers) phone number:")
 
     def validate_time(self,time_input):
         time_repeater = True
@@ -91,24 +91,25 @@ class Validation:
         return address_input
 
     def validate_email(self, email_address):
-        first, last = email_address.split('@')
-        if '@' in email_address and False == first.isdigit() and False == last.isdigit():
-            if first.isalpha() or first in '.':
-                if last.isalpha() or '.' in last:
-                    return email_address
-                else:
-                    email_address = input("invalid input, please re-enter:")
-                email_address = input("invalid input, please re-enter:")
-        else:
-            email_address = input("invalid input, please re-enter:")
+        true_condition = True
+        while true_condition == True:
+            try:
+                first, last = email_address.split('@')
+                true_condition = False
+                return email_address
+            except ValueError:
+                email_address = input("Invalid input, pleaes re-enter email address: ")
 
     def validate_selection(self,action,limit):
         validation = True
         while validation == True:
             try:
-                if int(action) > 0 and int(action) < limit+1:
+                temp_action = int(action)
+                if temp_action > 0 and temp_action < limit+1:
                     validation = False
                     return action
+                else:
+                    action = input("Invalid input, please re-enter: ")
             except ValueError:
                 action = input("Invalid input, please re-enter: ")
 
@@ -119,7 +120,7 @@ class Validation:
                 year = int(date_input[:4])
                 month = int(date_input[5:7])
                 day = int(date_input[8:10])
-                if year > 0 and date_input[4] == "-" and date_input[7] == "-" and month > 0 and month <= 12 and day > 0 and day < 31:
+                if year > 0 and date_input[4] == "-" and date_input[7] == "-" and month > 0 and month <= 12 and day > 0 and day < 32:
                     return date_input
                 else:
                     date_input = input("Invalid input, please re-enter (YYYY-MM-DD):")
@@ -136,7 +137,7 @@ class Validation:
             else:
                 last_three = reg_input.split("-")
                 for name in last_three[1:]:
-                    if name.isalpha():
+                    if name.isalpha() and len(last_three) == 3:
                         reg_repeater = False
                     else:
                         reg_input = input("Invalid input, please re-enter:")
@@ -151,10 +152,23 @@ class Validation:
                     ssn_repeater = False
                 else:
                     print("The SSN has to be exactly 10 numbers,")
-                    ssn_input = input("please re-enter SSN:")
+                    ssn_input = input("please re-enter SSN: ")
             except ValueError:
                 print("The SSN can only contain numbers,")
-                ssn_input = input("please re-enter SSN:")
+                ssn_input = input("please re-enter SSN: ")
         return ssn_input
 
-
+    def validate_existing_emp(self,ssn_input,employee_list):
+        counter = 1
+        ssn_repeater = True
+        while ssn_repeater == True:
+            ssn_input = self.validate_ssn(ssn_input)
+            for emp in employee_list:
+                if emp.get_ssn == ssn_input:
+                    return ssn_input
+                else:
+                    counter += 1
+            if counter > len(employee_list):
+                print("This employee is not in the company,")
+                ssn_input = input("please re-enter SSN: ")
+            
