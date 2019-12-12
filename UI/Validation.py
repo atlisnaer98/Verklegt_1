@@ -66,7 +66,7 @@ class Validation:
             #time_input = str(time_input)
             try:
                 hour = int(time_input[:2])
-                minute = int(time_input[4:])
+                minute = int(time_input[3:])
                 if hour >= 0 and hour <= 24 and minute >= 0 and minute <= 60 and time_input[2] == ":":
                     #time_repeater = False
                     return time_input

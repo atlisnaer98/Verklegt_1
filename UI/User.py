@@ -173,7 +173,7 @@ class User:
                         changed = self.val.validate_email(input("Enter new email: "))
                         self.ll.change_employee(employee_list,index,int(option),changed)
                         self.employee_menu(action)
-                    elif int(option) == 5:
+                    elif int(option) == 5: #activity
                         changed = ""
                         self.ll.change_employee(employee_list,index,int(option),changed)
                         self.employee_menu(action)
@@ -192,9 +192,9 @@ class User:
                 dest = dest_list[index]
                 self.app.print_dest_info(dest)
                 action = self.back_quit(action,len(dest_list))
-                if action == '1':
+                if action == '1': #change emergency contact
                     changed = self.val.validate_name(input("Enter new input: "))
-                elif action == '2':
+                elif action == '2': #change emergency phone number
                     changed = self.val.validate_phone_number(input("Enter new input: "))
                 self.ll.change_dest(dest_list,index,int(action),changed)
         
@@ -588,7 +588,7 @@ class User:
         self.app.print_list_plane()
         self.app.print_selection_list(plane_list)
         index = self.val.validate_selection(input("Select an airplane: "), len(plane_list))
-        plane = plane_list[int(index)]
+        plane = plane_list[int(index)-1]
         reg_num = plane.get_registration_number()
         date = dateutil.parser.parse(self.val.validate_date(input("Date (YYYY-MM-DD): ")) + "T" + self.val.validate_time(input("Time(HH:MM): ")) + ":00")
         busy = 0
