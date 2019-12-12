@@ -61,20 +61,22 @@ class User:
             
 
     def validate_name(self,name_input):
-        splitted_name  = name_input.split(" ")
-        # name_repeater = True
-        # print(len(splitted_name))
         counter = 0
-        letter_count = 0
-        while counter != len(splitted_name):
+        name_repeater = True
+        while name_repeater == True:
+            splitted_name  = name_input.split(" ")
+            name_len = len(splitted_name)
             for name in splitted_name:
-                print(name)
-                print(len(name))
-                try:
-                    name.isalpha()
-                    return splitted_name
-                except ValueError:
-                    print("bitch")
+                if name.isalpha():
+                    counter =+ 1
+                else:
+                    name_input = input("The name has to only contain letters, please re-enter name: ")
+                    break 
+            if counter == name_len: 
+                name_repeater = False        
+        return name_input.title()
+
+
 
                 
 
@@ -635,8 +637,11 @@ class User:
         self.app.print_list_plane
         #self.app.print_all_planes()
         print("{:<20}{:<13}{:<13}{:<13}".format("Registration Number","Plane Type","Model","Capacity"))
+        #for plane in plane_list:
+        #   self.app.print_list_plane_info(plane)
         for plane in plane_list:
-            self.app.print_list_plane_info(plane)
+            list_of_planes.append(plane.get_registration_number())
+        self.app.print_selection_list(list_of_planes)
 
     
     def airplane_menu(self,action):
