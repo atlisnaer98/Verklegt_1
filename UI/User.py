@@ -647,8 +647,14 @@ class User:
 
     def get_all_plane(self):
         # The method will print out all airplanes in a list with certain information.
+        next_available = ''
+        the_plane = []
         plane_list = self.ll.get_all_airplanes()
+        voyage = self.ll.get_all_voyages()
+        list_of_planes = []
         self.app.print_list_plane
+        voyage_list = []
+        list_of_voyages = []
         #self.app.print_all_planes()
         print("{:<20}{:<13}{:<13}{:<13}".format("Registration Number","Plane Type","Model","Capacity"))
         #for plane in plane_list:
@@ -656,6 +662,16 @@ class User:
         for plane in plane_list:
             list_of_planes.append(plane.get_registration_number())
         self.app.print_selection_list(list_of_planes)
+        action = int(input("Select an airplane: "))
+        reg_num = list_of_planes[action]
+        for line in voyage:
+            if line.get_aircraft_id() == reg_num:
+                voyage_list.append(line)
+        
+        for voyage in voyage_list:
+            voyages = self.ll.get_voyage_status(voyage)
+            list_of_voyages.append(voyages)
+        
 
     
     def airplane_menu(self,action):
@@ -682,7 +698,7 @@ class User:
             elif action == "2":
                 self.Voyage_menu(action)
                 action = input("Select an option: ")
-                elif action == "3": #DESTINATION
+            elif action == "3": #DESTINATION
                 self.dest_menu(action)
             elif action == "4":
                 self.airplane_menu(action)
