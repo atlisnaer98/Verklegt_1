@@ -574,8 +574,8 @@ class User:
         #for plane in plane_list:
         #   self.app.print_list_plane_info(plane)
         self.app.print_selection_list(plane_list)
-        index = int(input("Select an airplane: ")) - 1
-        plane = plane_list[index]
+        index = self.val.validate_selection(input("Select an airplane: "), len(plane_list))
+        plane = plane_list[int(index)]
         reg_num = plane.get_registration_number()
         busy = 0
         for voyage in voyage_list:
