@@ -81,12 +81,13 @@ class VoyageLL():
         else:
             return "Invalid"
 
-    def count_dest_flights(self,dest,place,date):
+    def count_dest_flights(self,dest,place,date,start = 0):
         voyage_list = self.dl.get_all_voyages()
         voyage_list_today = self.get_voyages_on_date(date)
-        counter = 0
+        counter = start
         for voyage in voyage_list_today:
-            if dest == voyage.get_arriving_at():
+            voy_time = dateutil.parser.parse(voyage.get_departure())
+            if dest == voyage.get_arriving_at() and date > voy_time:
                 counter += 2
         if place == "away":
             if counter < 1:
@@ -105,12 +106,21 @@ class VoyageLL():
     def update_flight_nums(self):
         voyage_list = self.dl.get_all_voyages()
         dest_list = self.dl.get_all_dest()
-        for voyage in voyage_list:
-            dep_time = dateutil.parser.parse(voyage.get_departure())
-            for dest in dest_list:
+        for dest in dest_list:
+            start = 0
+            for voyage in voyage_list:
+                voy_time = dateutil.parser.parse(voyage.get_departure())
                 if voyage.get_arriving_at() == dest.get_destination():
-                    away_number = "NA" + dest.get_flight_number() + self.count_dest_flights(voyage.get_arriving_at(),"away",dep_time)
-                    home_number = "NA" + dest.get_flight_number() + self.count_dest_flights(voyage.get_arriving_at(),"home",dep_time)
+                    start = 0
+                    voyage_list_today = self.get_voyages_on_date(voy_time)
+                    for voyage_2 in voyage_list_today:
+                        voy2_time = dateutil.parser.parse(voyage_2.get_departure())
+                        if voy_time > voy2_time and voyage_2.get_arriving_at() == dest.get_destination():
+                            start += 2
+                    away_string = self.to_string(start,"away")
+                    home_string = self.to_string(start,"home")
+                    away_number = "NA" + dest.get_flight_number() + away_string
+                    home_number = "NA" + dest.get_flight_number() + home_string
                     voyage.set_flight_number_away(away_number)
                     voyage.set_flight_number_home(home_number)
         self.dl.update_voyage_file(voyage_list)
@@ -122,3 +132,19 @@ class VoyageLL():
             if voyage.get_departure() not in departure_list:
                 departure_list.append(voyage.get_departure())
         return departure_list
+
+    def to_string(self,start,place):
+        counter = start
+        if place == "away":
+            if counter < 1:
+                return "00"
+            elif counter < 10:
+                return "0" + str(counter)
+            else:
+                return str(counter)
+        elif place == "home":
+            counter += 1
+            if counter < 10:
+                return "0" + str(counter)
+            else:
+                return str(counter)
