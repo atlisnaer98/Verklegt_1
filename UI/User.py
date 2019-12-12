@@ -25,14 +25,58 @@ class User:
     def add_dest(self):
         # The method will add destinations and ask for needed information
         dest = Destination()
-        dest.set_destination(input("Destination: "))
-        dest.set_country(input("Country: "))
-        dest.set_airport(input("Airport(XXX): "))
+        dest.set_destination(self.validate_name(input("Destination: ")))
+        dest.set_country(self.validate_name(input("Country: ")))
+        dest.set_airport(self.validate_airport(input("Airport(XXX): ")))
         dest.set_flight_time(self.validate_time(input("Time of flight (HH:MM): ")))
-        dest.set_distance(input("Distance: "))
+        dest.set_distance(self.validate_distance(input("Distance: ")))
         dest.set_name_of_contact(input("Emergency contact: "))
         dest.set_emergency_phone_number(input("Emergency contact number: "))
         self.ll.add_dest(dest)
+
+    def validate_distance(self,distance_input):
+        distance_repeater = True
+        while distance_repeater == True:
+            try:
+                if int(distance_input) <= 0:
+                    distance_input = input("Invalid input, please re-enter distance: ")
+                else:
+                    return distance_input
+            except ValueError:
+                distance_input = input("Invalid input, please re-enter distance: ")
+
+    def validate_airport(self,airport_input):
+        airport_repeater = True
+        numb_list = ["0","1","2","3","4","5","6","7","8","9"]
+        while airport_repeater == True:
+            if len(airport_input) > 3 or len(airport_input) < 3:
+                airport_input = input("Invalid input, please re-enter airport(XXX)")
+            else:
+                for letter in airport_input:
+                    if letter in numb_list or letter in string.punctuation:
+                        airport_input = input("Invalid input, please re-enter airport(XXX)")
+                    else:
+                        return airport_input.upper()
+
+            
+
+    def validate_name(self,name_input):
+        splitted_name  = name_input.split(" ")
+        # name_repeater = True
+        # print(len(splitted_name))
+        counter = 0
+        letter_count = 0
+        while counter != len(splitted_name):
+            for name in splitted_name:
+                print(name)
+                print(len(name))
+                try:
+                    name.isalpha()
+                    return splitted_name
+                except ValueError:
+                    print("bitch")
+
+                
 
     def get_all_dest(self):
         # The method will print out all listed destinations, the output will be Airport, Country and Distance from Reykjavik in km.
@@ -152,11 +196,12 @@ class User:
         for index in range(len(employee_list)):
             emp = employee_list[index]
             if action == emp.get_ssn():
-                self.app.print_changing_employee_information(emp)
+                self.app.print_employee_information(emp)
                 print("Would you like to change any information?")
                 self.app.print_yes_no()
                 change_selection = self.back_quit(action,2)
                 if change_selection == "1":
+                    self.app.print_changing_employee_information(emp)
                     option = int(input("What do you want to change? "))
                     if option == 5:
                         changed = ""
@@ -314,11 +359,10 @@ class User:
                     if counter == len(time_voyage_list):
                         print("No employee has been assigned to a voyage on that date")
                 else:
-                    if counter == 5:
-                        print("{:<20}{:<20}{:<20}".format("Name:","SSN:","Destination:"))
-                        self.app.print_working_emps(voyage,employee_dict)
+                    print("{:<20}{:<20}{:<20}".format("Name","SSN","Destination"))
+                    self.app.print_working_emps(voyage,employee_dict)
 
-            
+        
     def add_voyage(self):
         voyage = Voyage()
         voyage_list = self.ll.get_all_voyages()
@@ -510,11 +554,13 @@ class User:
     def validate_time(self,time_input):
         time_repeater = True
         while time_repeater == True:
+            #time_input = str(time_input)
             try:
                 hour = int(time_input[:2])
-                minute = int(time_input[4:6])
-                if hour >= 0 and hour <= 24 and minute >= 0 and minute <= 60 and time_input[0] == ":":
+                minute = int(time_input[4:])
+                if hour >= 0 and hour <= 24 and minute >= 0 and minute <= 60 and time_input[2] == ":":
                     print("rétt")
+                    #time_repeater = False
                     return time_input
                 else:
                     time_input = input("Invalid input, please re-enter (HH:MM): ")
@@ -547,7 +593,7 @@ class User:
     
     def get_voyages_for_single_date(self):
         the_date = input("Enter date: YYYY-MM-DD:")                    
-        from_date= dateutil.parser.parse(the_date)
+        from_date = dateutil.parser.parse(the_date)
         to_date = from_date + timedelta(days=1)
         voyage_list = self.ll.get_date_voyages(from_date,to_date)
         self.print_voyages_manned(voyage_list)
@@ -558,14 +604,15 @@ class User:
         temp_date = input("Enter to date: YYYY-MM-DD:")     
         to_date = dateutil.parser.parse(temp_date)
         voyage_list = self.ll.get_date_voyages(from_date,to_date)
-        self.print_voyages_manned(voyage_list)
+        self.print_voyages_manned_and_status(voyage_list)
 
-    def print_voyages_manned(self,voyage_list):
+    def print_voyages_manned_and_status(self,voyage_list):
         for voyage in voyage_list:
+            status = self.ll.get_voyage_status(voyage)
             if len(voyage.get_captain()) == 10 and len(voyage.get_copilot()) == 10 and len(voyage.get_fsm()) == 10:
-                self.app.print_voyage_list_with_crew(voyage,"Manned")
+                self.app.print_voyage_list_with_crew(voyage,"Manned",status)
             else:
-                self.app.print_voyage_list_with_crew(voyage,"Unmanned")
+                self.app.print_voyage_list_with_crew(voyage,"Unmanned",status)
 
     
     def change_plane_status(self,action): #VINNA Í ÞESSU og nota þenna!

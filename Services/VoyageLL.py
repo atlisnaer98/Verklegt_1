@@ -2,6 +2,7 @@ from Models.Voyage import Voyage
 import datetime
 import dateutil.parser
 from datetime import timedelta
+from datetime import datetime
 from InformationLayerClasses.API import Data_main
 class VoyageLL():
         
@@ -55,3 +56,16 @@ class VoyageLL():
     def get_crew(self,voyage):
         crew = [voyage.get_captain(), voyage.get_copilot(), voyage.get_fsm(), voyage.get_fa1(), voyage.get_fa2()]
         return crew
+
+    def get_voyage_status(self,voyage):
+        time = datetime.now()
+        dep_time = dateutil.parser.parse(voyage.get_departure())
+        arr_time = dateutil.parser.parse(voyage.get_arrival())
+        if arr_time < time: #The voyage is over
+            return "Over"
+        elif dep_time > time: #The voyage has not started
+            return "Not started"
+        elif dep_time < time and arr_time > time: #The voyage is in progress
+            return "In progress"
+        else:
+            return "Invalid"

@@ -22,14 +22,25 @@ from datetime import datetime
 # else:
 #     print("suck a tit")
     
-import datetime
+# import datetime
 
-timi = datetime.datetime.now()
+# timi = datetime.datetime.now()
 
-print(timi)
+# print(timi)
 
 
 # year,month,day,hour,minute = 2019,12,20,6,0
 # to_date = datetime.datetime(year,month,day,hour,minute,0)
 
 # #print(to_date.day)
+
+name = 'Hvað1 segir þú gott'
+namesplit = name.split()
+
+
+for i in namesplit:
+    print(i)
+    if i.isalpha():
+        print('yes')
+    else:
+        print('cunt')
