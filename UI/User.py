@@ -700,6 +700,4 @@ class User:
                 self.airplane_menu(action)
         quit()
 
-:)
-
-            
+#:)
