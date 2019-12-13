@@ -3,6 +3,7 @@ from Services.DestinationLL import DestinationLL
 from Services.EmployeeLL import EmployeeLL
 from Services.VoyageLL import VoyageLL
 from InformationLayerClasses.API import Data_main
+from Services.Validation import Validation
 
 class LLApi:
     def __init__(self):
@@ -11,6 +12,7 @@ class LLApi:
         self.dLL = DestinationLL(self.dl)
         self.eLL = EmployeeLL(self.dl)
         self.vLL = VoyageLL(self.dl)
+        self.valLL = Validation()
 
     def get_all_airplanes(self):
         return self.aLL.get_all_airplanes()
@@ -96,3 +98,48 @@ class LLApi:
     
     def get_departure(self):
         return self.vLL.get_departure()
+
+    def validate_distance(self,distance_input):
+        return self.valLL.validate_distance(distance_input)
+    
+    def validate_airport(self,airport_input):
+        return self.valLL.validate_airport(airport_input)
+    
+    def validate_name(self,name_input):
+        return self.valLL.validate_name(name_input)
+    
+    def validate_phone_number(self,phone_number):
+        return self.valLL.validate_phone_number(phone_number)
+    
+    def validate_time(self,time_input):
+        return self.valLL.validate_time(time_input)
+
+    def validate_home(self,address_input):
+        return self.valLL.validate_home(address_input)
+    
+    def validate_email(self, email_address):
+        return self.valLL.validate_email(email_address)
+
+    def validate_selection(self,action,limit):
+        return self.valLL.validate_selection(action,limit)
+    
+    def validate_date(self,date_input):
+        return self.valLL.validate_date(date_input)
+    
+    def validate_reg(self,reg_input):
+        return self.valLL.validate_reg(reg_input)
+    
+    def validate_existing_reg(self,reg_input,plane_list):
+        return self.valLL.validate_existing_reg(reg_input,plane_list)
+    
+    def validate_ssn(self,ssn_input):
+        return self.valLL.validate_ssn(ssn_input)
+
+    def validate_existing_emp(self,ssn_input,employee_list):
+        return self.valLL.validate_existing_emp(ssn_input,employee_list)
+    
+    def validate_already_emp(self,ssn_input,employee_list):
+        return self.valLL.validate_already_emp(ssn_input,employee_list)
+    
+    def validate_dest(self,dest_input,dest_list):
+        return self.valLL.validate_dest
