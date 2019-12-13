@@ -36,6 +36,9 @@ class LLApi:
     def get_dest_flight_number(self):
         return self.dLL.get_flight_number()
 
+    def get_pop_dest(self):
+        return self.dLL.get_pop_dest()
+
     def get_all_employees(self):
         return self.eLL.get_all_employees()
 

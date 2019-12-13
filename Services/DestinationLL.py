@@ -1,5 +1,6 @@
 from Models.Destination import Destination
 from InformationLayerClasses.API import Data_main
+from Services.VoyageLL import VoyageLL
 class DestinationLL():
    
     def __init__(self, sending):
@@ -10,6 +11,9 @@ class DestinationLL():
         
     def get_all_dest(self):
         return self.dl.get_all_dest()
+
+    def get_pop_dest(self):
+        dest_list
 
     def change_dest(self,dest_list,index,option,changed):
         dest = dest_list[index]
