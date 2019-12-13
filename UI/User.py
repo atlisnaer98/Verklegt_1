@@ -42,9 +42,10 @@ class User:
         # The method will print out all listed destinations, the output will be Airport, Country and Distance from Reykjavik in km.
         dest_obj = self.ll.get_all_dest()
         self.app.print_get_all_dest()
-        print("{:<20}{:<20}{:<20}".format("Airport:","Country:","Distance(km):"))
+        print("\n{:<20}{:<20}{:<20}".format("Airport:","Country:","Distance(km):\n"))
         for destination in dest_obj:
             self.app.print_list_dest_info(destination)
+        print()
     
     def add_plane(self):
         # The method will add new aircraft, you will have to give the plane a registration number and choose model, when model is choosen it will automacly put how many passenger can trave
@@ -55,6 +56,7 @@ class User:
         self.set_plane_model(plane,int(option))
         plane.set_active(1)
         self.ll.add_plane(plane)
+        print("You have created an airplane")
 
     def set_plane_model(self,plane,option):
         # The method will add certain information when certain number is chosen
@@ -200,6 +202,7 @@ class User:
                 elif action == '2': #change emergency phone number
                     changed = self.val.validate_phone_number(input("Enter new input: "))
                 self.ll.change_dest(dest_list,index,int(action),changed)
+                print("\nYou have changed emergency contact information")
         
     def get_cabin_crew(self):
         # The method will print out all cabin crew employees, the output will be their Name, SSN number and Rank. 
@@ -254,7 +257,7 @@ class User:
                 self.change_dest_info(action)
             elif action == "3": #list dest
                 self.get_all_dest()
-                action = self.back_quit(action,3)
+                action = self.back_quit(action,0)
             elif action in BACK:
                 return action
                     
@@ -622,8 +625,8 @@ class User:
 
     def airplane_menu(self,action):
         # The method will give you options in airplane menu, user has to choose number to deside what he want to do.
-        self.app.print_airplane_menu()
         while action not in QUIT:
+            self.app.print_airplane_menu()
             action = self.back_quit(action,3)
             if action == "1":
                 self.app.print_add_plane()

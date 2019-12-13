@@ -137,10 +137,11 @@ class Validation:
             else:
                 last_three = reg_input.split("-")
                 for name in last_three[1:]:
-                    if name.isalpha() and len(last_three) == 3:
+                    if name.isalpha() and len(name) == 3:
                         reg_repeater = False
                     else:
                         reg_input = input("Invalid input, please re-enter:")
+                        break
                     break
         return reg_input.upper()
 

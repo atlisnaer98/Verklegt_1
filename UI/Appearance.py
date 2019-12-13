@@ -344,20 +344,20 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(A))
         print(DASH*LENGTH)
-        print("{:>10} {:<30}{} {} ".format('[1]', C, '[2]', CS))
-        print("{:>10} {} ".format('[3]', LA ))
+        print("\n{:>10} {:<30}{} {} \n".format('[1]', C, '[2]', CS))
+        print("{:>10} {} \n".format('[3]', LA ))
     
     def print_add_plane(self):
         print(DASH*LENGTH)
         print("{:^60}".format(CNA))
         print(DASH*LENGTH)
-        print("Please select the registration number and aircraft model")
+        print("\nPlease select the registration number and aircraft model\n")
         
     
     def print_add_plane_vol2(self):
-        print("Aircraft models:")
-        print("{:>10} {:<30}{} {} ".format('[1]', BAE146, '[2]', F28))
-        print("{:>10} {} ".format('[3]', F100 ))
+        print("\nAircraft models:")
+        print("\n{:>10} {:<30}{} {} ".format('[1]', BAE146, '[2]', F28))
+        print("\n{:>10} {} \n".format('[3]', F100 ))
         
  
         
