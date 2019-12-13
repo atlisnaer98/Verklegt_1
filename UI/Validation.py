@@ -145,6 +145,21 @@ class Validation:
                     break
         return reg_input.upper()
 
+    def validate_existing_reg(self,reg_input,plane_list):
+        # here we use validate reg to check if the input is valid and then we check wether the reg numb is already in the company
+        existing_planes = []
+        for plane in plane_list:
+            existing_planes.append(plane.get_registration_number())
+        reg_repeater = True
+        while reg_repeater == True:
+            reg_input = self.validate_reg(reg_input)
+            if reg_input in existing_planes:
+                print("This registration number already exist,")
+                reg_input = input("please re-enter: ")
+            else:
+                return reg_input
+
+
     def validate_ssn(self,ssn_input):
         ssn_repeater = True
         while ssn_repeater == True:
