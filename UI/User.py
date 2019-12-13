@@ -369,9 +369,10 @@ class User:
                     self.app.print_working_emps(voyage,employee_dict)
    
     def add_voyage(self):
+        """Asks the user for inputs to create a Voyage"""
         voyage = Voyage()
         the_date = False
-        departure_list = self.ll.get_departure()
+        departure_list = self.ll.get_departure() #
         voyage_list = self.ll.get_all_voyages()
         last_booking_ref = int(voyage_list[-1].get_booking_reference())
         voyage.set_booking_reference(last_booking_ref+1)
@@ -412,7 +413,6 @@ class User:
         for index in range(len(voyage_list)):
             voyage = voyage_list[index]
             if action == voyage.get_booking_reference():
-                #self.app.print_changing_voyage_information(voyage)
                 departure = dateutil.parser.parse(voyage.get_departure())
                 arrival = dateutil.parser.parse(voyage.get_arrival())
                 plane_list = self.ll.get_available_planes(departure,arrival)

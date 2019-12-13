@@ -8,20 +8,22 @@ class Airplane_repository:
         self.__airplanes = []
 
     def add_plane(self, plane):
+        """Adds a plane to the CSV file"""
         with open("./DATA/Aircraft.csv", "a", newline="") as airplanes:
             airplanes.write("{}\n".format(str(plane)))
 
     def get_airplane(self):
-        lis = []
+        """Reads the Aircraft CSV file and returns a list whith all planes """
+        lis = [] #list of planes
         with open("./DATA/Aircraft.csv", "r", newline="") as aircraft:
             reader = csv.DictReader(aircraft)
-            #next(reader)
-            for line in reader:
+            for line in reader: #each line is a plane
                 plane = Airplane(line["planeInsignia"], line["planeTypeId"],line["planeType"],line["model"],line["capacity"],line["active"])
-                lis.append(plane)
+                lis.append(plane) #adds the plane to a list
         return lis
 
     def update_plane_file(self,plane_list):
+        """Reads a list and uses it to rewrite the whole aircraft CSV file"""
         with open("./DATA/Aircraft.csv", "w+", newline="") as planes:
             planes.write("{}\n".format(HEADER))
             for plane in plane_list:
