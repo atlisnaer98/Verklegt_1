@@ -330,7 +330,7 @@ class User:
         if action == '1':
             self.app.print_employee_available_or_working()
             action = self.back_quit(action, 2)
-            temp_date = self.val.validate_date(input("Enter from date (YYYY-MM-DD):"))
+            temp_date = self.val.validate_date(input("Enter date (YYYY-MM-DD):"))
             from_date = dateutil.parser.parse(temp_date)
             to_date = from_date + timedelta(days=1)
             if action == '1':
