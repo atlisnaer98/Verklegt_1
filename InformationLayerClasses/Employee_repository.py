@@ -51,24 +51,6 @@ class Employee_repository:
         with open("./DATA/Crew.csv","r",newline="") as all_crew:
             reader = csv.DictReader(all_crew)
             for line in reader:
-                lis = []
-                lis.append(line["name"])
-                lis.append(line["address"])
-                lis.append(line["home_phone"])
-                lis.append(line["mobile_phone"])
-                lis.append(line["email_address"])
-                lis.append(line["role"])
-                lis.append(line["rank"])
-                lis.append(line["licence"])
-                lis.append(line["active"])
-                all_employee_dict[line["ssn"]] = lis
-        return all_employee_dict
-
-    def get_all_employees_dict(self):
-        all_employee_dict = {}
-        with open("./DATA/Crew.csv","r",newline="") as all_crew:
-            reader = csv.DictReader(all_crew)
-            for line in reader:
                 emp = Employee(line["ssn"], line["name"], line["address"], line["home_phone"],line["mobile_phone"], line["email_address"], line["role"], line["rank"], line["licence"], line["active"])
                 all_employee_dict[line["ssn"]] = emp
         return all_employee_dict
