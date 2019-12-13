@@ -316,7 +316,7 @@ class Appearance:
             activity = "Active"
         elif activity == "0":
             activity = "Inactive"
-        print("[{}] {}\t{}".format(numb,selected,activity))
+        print("{:<15}{:<15}{:<15}".format("["+str(numb)+"]",selected,activity))
 
     def print_assign_crew(self):
         print(DASH*LENGTH)
@@ -367,6 +367,8 @@ class Appearance:
         print(DASH*LENGTH)
         print()
         counter = 0
+        print("{:<15}{:<15}{:<15}".format("Select", "Registration","Activity:"))
+        print("{:<15}{:<15}\n".format("number:", "number:"))
         for plane in airplane_list:
             counter += 1
             plane_reg = plane.get_registration_number()
@@ -378,8 +380,8 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(LA))
         print(DASH*LENGTH)
-
-
+        print()
+        print("Select an airplane to see availability at\na specific date and time:")
     
     def print_list_plane_info(self,plane):
         print("{:<20}{:<13}{:<13}{:<13}".format(plane.get_registration_number(), plane.get_plane_type(), plane.get_model(), plane.get_capacity()))
