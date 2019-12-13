@@ -207,3 +207,11 @@ class Validation:
                 dest_input = input("please re-enter destination: ")
             else:
                 return dest_input
+
+    def validate_period(self,from_date,to_date):
+        repeater = True
+        if from_date < to_date:
+            repeater = False
+        elif from_date > to_date:
+            print("\nInvalid input, to date has to be after the from date\n")
+        return repeater
