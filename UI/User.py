@@ -547,11 +547,14 @@ class User:
 
 #self.app.print_voy_lsfasldf(voyage_list,"Manned")
     def get_voyages_for_employee(self, ID):
-        temp_date = self.ll.validate_date(input("Enter date from (YYYY-MM-DD):"))
-        from_date= dateutil.parser.parse(temp_date)
-        temp_date = self.ll.validate_date(input("Enter to date (YYYY-MM-DD):")) # það kemur error ef þessi dagsetning er lægri en from date
-        to_date= dateutil.parser.parse(temp_date) + timedelta(days=1)
-        time_voyage_list = self.ll.get_date_voyages(from_date,to_date)
+        repeater = True
+        while repeater == True:
+            temp_date = self.ll.validate_date(input("Enter date from (YYYY-MM-DD):"))
+            from_date= dateutil.parser.parse(temp_date)
+            temp_date = self.ll.validate_date(input("Enter to date (YYYY-MM-DD):")) # það kemur error ef þessi dagsetning er lægri en from date
+            to_date= dateutil.parser.parse(temp_date) + timedelta(days=1)
+            time_voyage_list = self.ll.get_date_voyages(from_date,to_date)
+            repeater = self.ll.validate_period(from_date,to_date)
         voyage_list = self.ll.get_voyages_for_employee(ID,time_voyage_list)
         self.print_voyages_manned_and_status(voyage_list)
 
@@ -587,10 +590,13 @@ class User:
         self.print_voyages_manned_and_status(voyage_list)
     
     def get_voyages_for_timeperiod(self):
-        temp_date = self.ll.validate_date(input("Enter from date (YYYY-MM-DD): "))                    
-        from_date = dateutil.parser.parse(temp_date)
-        temp_date = self.ll.validate_date(input("Enter to date (YYYY-MM-DD): "))     
-        to_date = dateutil.parser.parse(temp_date) + timedelta(days=1)
+        repeater = True
+        while repeater == True:
+            temp_date = self.ll.validate_date(input("Enter from date (YYYY-MM-DD): "))                    
+            from_date = dateutil.parser.parse(temp_date)
+            temp_date = self.ll.validate_date(input("Enter to date (YYYY-MM-DD): "))     
+            to_date = dateutil.parser.parse(temp_date) + timedelta(days=1)
+            repeater = self.ll.validate_period(from_date,to_date)
         voyage_list = self.ll.get_date_voyages(from_date,to_date)
         self.print_voyages_manned_and_status(voyage_list)
 
