@@ -6,30 +6,22 @@ class Destination_repository():
     def __init__(self):
         self.__destination = []
 
-    """def add_destination(self,new_dest):
-        with open("./DATA/Destination.csv", "a+") as f_object:
-            country = new_dest.get_country()
-            airport = new_dest.get_airport()
-            flight_time = new_dest.get_flight_time()
-            distance = new_dest.get_distance()
-            name_of_contact = new_dest.get_name_of_contact()
-            emergency_phone_number = new_dest.get_emergency_phone_number()
-            """
     def get_all_dest(self):
-        lis = []
+        "Reads the whole csv file and returns a list of destination clases"
+        lis = [] #list of destinations
         with open("./DATA/Destination.csv", "r", newline="") as destinations:
             reader = csv.DictReader(destinations)
-            #next(reader)
-            for line in reader:
+            for line in reader: #Creates a dest class for each line of the csv file
                 dest = Destination(line["Destination"], line["country"], line["airport"], line["flight time (one-way)"], line["distance from Reykjavik"], line["contact"], line["contact phonenumber"],line["flight number"])
-                lis.append(dest)
+                lis.append(dest) #appends the destination to a list
         return lis
 
-    def add_dest(self,dest):
+    def add_dest(self,dest): #Adds a new destination to the CSV file
         with open("./DATA/Destination.csv", "a", newline="") as destinations:
             destinations.write("{}\n".format(str(dest)))
 
     def update_dest_file(self, dest_list):
+        """Uses a list to rewrite the CSV file where each line is a destiantion""" 
         with open("./DATA/Destination.csv", "w+", newline="") as destinations:
             destinations.write("{}\n".format(HEADER))
             for dest in dest_list:
