@@ -5,7 +5,6 @@ from Models.Voyage import Voyage
 import csv
 from Services.API import LLApi
 from UI.Appearance import Appearance
-from UI.Validation import Validation
 import datetime
 import dateutil.parser
 from datetime import timedelta
@@ -19,7 +18,6 @@ class User:
     def __init__(self):
         self.ll = LLApi()
         self.app = Appearance()
-        self.val = Validation()
 
     def start(self):
         pass
@@ -28,13 +26,13 @@ class User:
         # The method will add destinations and ask for needed information as input to make a new destination.
         dest = Destination()
         dest_list = self.ll.get_all_dest()
-        dest.set_destination(self.val.validate_dest(input("Destination: "),dest_list))
-        dest.set_country(self.val.validate_name(input("Country: ")))
-        dest.set_airport(self.val.validate_airport(input("Airport(XXX): ")))
-        dest.set_flight_time(self.val.validate_time(input("Time of flight (HH:MM): ")))
-        dest.set_distance(self.val.validate_distance(input("Distance: ")))
-        dest.set_name_of_contact(self.val.validate_name(input("Emergency contact: ")))
-        dest.set_emergency_phone_number(self.val.validate_phone_number(input("Emergency contact number: ")))
+        dest.set_destination(self.ll.validate_dest(input("Destination: "),dest_list))
+        dest.set_country(self.ll.validate_name(input("Country: ")))
+        dest.set_airport(self.ll.validate_airport(input("Airport(XXX): ")))
+        dest.set_flight_time(self.ll.validate_time(input("Time of flight (HH:MM): ")))
+        dest.set_distance(self.ll.validate_distance(input("Distance: ")))
+        dest.set_name_of_contact(self.ll.validate_name(input("Emergency contact: ")))
+        dest.set_emergency_phone_number(self.ll.validate_phone_number(input("Emergency contact number: ")))
         dest.set_flight_number(self.ll.get_dest_flight_number())
         self.ll.add_dest(dest)
 
@@ -51,9 +49,9 @@ class User:
         # The method will add new aircraft, you will have to give the plane a registration number and choose model, when model is choosen it will automacly put how many passenger can trave
         plane = Airplane()
         plane_list = self.ll.get_all_airplanes()
-        plane.set_registration_number(self.val.validate_existing_reg(input("Registration number(TF-XXX): "),plane_list))
+        plane.set_registration_number(self.ll.validate_existing_reg(input("Registration number(TF-XXX): "),plane_list))
         self.app.print_add_plane_vol2()
-        option = self.val.validate_selection(input("Model: "),3)
+        option = self.ll.validate_selection(input("Model: "),3)
         self.set_plane_model(plane,int(option))
         plane.set_active(1)
         self.ll.add_plane(plane)
@@ -98,16 +96,16 @@ class User:
         cabincrew_rank_list = ["Flight Service Manager", "Flight Attendant"]
         emp = Employee()
         employee_list = self.ll.get_all_employees()
-        emp.set_ssn(self.val.validate_already_emp(input("SSN number: "),employee_list))
-        emp.set_name(self.val.validate_name(input("Name: ")))
-        emp.set_address(self.val.validate_home(input("Adress: ")))
-        emp.set_home_phone(self.val.validate_phone_number(input("Home phone: ")))
-        emp.set_mobile_number(self.val.validate_phone_number(input("Mobile number: ")))
-        emp.set_email_address(self.val.validate_email(input("Email: ")))
+        emp.set_ssn(self.ll.validate_already_emp(input("SSN number: "),employee_list))
+        emp.set_name(self.ll.validate_name(input("Name: ")))
+        emp.set_address(self.ll.validate_home(input("Adress: ")))
+        emp.set_home_phone(self.ll.validate_phone_number(input("Home phone: ")))
+        emp.set_mobile_number(self.ll.validate_phone_number(input("Mobile number: ")))
+        emp.set_email_address(self.ll.validate_email(input("Email: ")))
         print("Role: ")
         self.app.print_selection_list(role_list)
         role_input = input("Select a role: ")
-        role_selection = self.val.validate_selection(role_input,2)
+        role_selection = self.ll.validate_selection(role_input,2)
         for role_index in range(len(role_list)):
             if role_selection == str(role_index+1) and int(role_selection)==1:
                 role_selection = role_list[role_index]
@@ -118,7 +116,7 @@ class User:
         emp.set_role(role_selection)
         self.app.print_selection_list(selected_rank_list)
         rank_input = input("select a rank: ")
-        rank_selection = self.val.validate_selection(rank_input,2)
+        rank_selection = self.ll.validate_selection(rank_input,2)
         if role_selection == "Cabincrew":
             if rank_selection == "1":
                 rank_selection = "Flight Service Manager"
@@ -140,7 +138,7 @@ class User:
             plane_selection = "N/A"
         elif role_selection == "Pilot":
             self.app.print_selection_list(plane_list)
-            plane_selection = self.val.validate_selection(input("Select a licence: "),len(plane_list))
+            plane_selection = self.ll.validate_selection(input("Select a licence: "),len(plane_list))
             for selected_numb in range(len(plane_list)):
                 if plane_selection == str(selected_numb+1):
                     plane_selection = plane_list[selected_numb]
@@ -153,7 +151,7 @@ class User:
         # The method will change employee information. The user is not able to change SSN number, Name, Rank or Role. 
         self.app.print_change_employee_info()
         employee_list = self.ll.get_all_employees()
-        action = self.val.validate_existing_emp(input("Enter SSN number: "),employee_list)
+        action = self.ll.validate_existing_emp(input("Enter SSN number: "),employee_list)
         for index in range(len(employee_list)):
             emp = employee_list[index]
             if action == emp.get_ssn():
@@ -163,21 +161,21 @@ class User:
                 change_selection = self.back_quit(action,2)
                 if change_selection == "1":
                     self.app.print_changing_employee_information(emp)
-                    option = self.val.validate_selection(input("What do you want to change? "),5)
+                    option = self.ll.validate_selection(input("What do you want to change? "),5)
                     if int(option) == 1: #address
-                        changed = self.val.validate_home(input("Enter new address: "))
+                        changed = self.ll.validate_home(input("Enter new address: "))
                         self.ll.change_employee(employee_list,index,int(option),changed)
                         self.employee_menu(action)
                     elif int(option) == 2: #home phone
-                        changed = self.val.validate_phone_number(input("Enter new home phone: "))
+                        changed = self.ll.validate_phone_number(input("Enter new home phone: "))
                         self.ll.change_employee(employee_list,index,int(option),changed)
                         self.employee_menu(action)
                     elif int(option) == 3: #mobile phone
-                        changed = self.val.validate_phone_number(input("Enter new mobile number: "))
+                        changed = self.ll.validate_phone_number(input("Enter new mobile number: "))
                         self.ll.change_employee(employee_list,index,int(option),changed)
                         self.employee_menu(action)
                     elif int(option) == 4: #email address
-                        changed = self.val.validate_email(input("Enter new email: "))
+                        changed = self.ll.validate_email(input("Enter new email: "))
                         self.ll.change_employee(employee_list,index,int(option),changed)
                         self.employee_menu(action)
                     elif int(option) == 5: #activity
@@ -200,9 +198,9 @@ class User:
                 self.app.print_dest_info(dest)
                 action = self.back_quit(action,len(dest_list))
                 if action == '1': #change emergency contact
-                    changed = self.val.validate_name(input("Enter new input: "))
+                    changed = self.ll.validate_name(input("Enter new input: "))
                 elif action == '2': #change emergency phone number
-                    changed = self.val.validate_phone_number(input("Enter new input: "))
+                    changed = self.ll.validate_phone_number(input("Enter new input: "))
                 self.ll.change_dest(dest_list,index,int(action),changed)
                 print("\nYou have changed emergency contact information")
         
@@ -330,7 +328,7 @@ class User:
         if action == '1':
             self.app.print_employee_available_or_working()
             action = self.back_quit(action, 2)
-            temp_date = self.val.validate_date(input("Enter date (YYYY-MM-DD):"))
+            temp_date = self.ll.validate_date(input("Enter date (YYYY-MM-DD):"))
             from_date = dateutil.parser.parse(temp_date)
             to_date = from_date + timedelta(days=1)
             if action == '1':
@@ -339,7 +337,7 @@ class User:
                 self.get_working_emp_date_schedule(from_date,to_date)
         elif action == '2':
             employee_list = self.ll.get_all_employees()
-            ID = self.val.validate_existing_emp(input("Enter SSN number: "),employee_list)
+            ID = self.ll.validate_existing_emp(input("Enter SSN number: "),employee_list)
             self.get_voyages_for_employee(ID)
 
     def get_available_emp_date_schedule(self,from_date,to_date):
@@ -371,7 +369,6 @@ class User:
                     self.app.print_working_emps(voyage,employee_dict)
    
     def add_voyage(self):
-        #self.ll.update_flight_nums()
         voyage = Voyage()
         the_date = False
         departure_list = self.ll.get_departure()
@@ -379,13 +376,13 @@ class User:
         last_booking_ref = int(voyage_list[-1].get_booking_reference())
         voyage.set_booking_reference(last_booking_ref+1)
         dest_list = self.ll.get_all_dest()
-        self.app.print_selection_list(dest_list[1:])
-        dest_number = self.val.validate_selection(input("Please select destination: "),len(dest_list)-1)
-        dest = dest_list[int(dest_number)]
+        self.app.print_selection_list(dest_list)
+        dest_number = self.ll.validate_selection(input("Please select destination: "),len(dest_list))
+        dest = dest_list[int(dest_number)-1]
         destination_place = dest.get_destination()
         voyage.set_arriving_at(destination_place)
         while the_date == False:
-            depart = self.val.validate_date(input("Departure date (YYYY-MM-DD): ")) + "T" + self.val.validate_time(input("Departure time(HH:MM): ")) + ":00"
+            depart = self.ll.validate_date(input("Departure date (YYYY-MM-DD): ")) + "T" + self.ll.validate_time(input("Departure time(HH:MM): ")) + ":00"
             if depart in departure_list:
                 print("Time not available, please enter another time")
             else:
@@ -401,7 +398,7 @@ class User:
         voyage.set_flight_number_home(home_number)
         plane_list = self.ll.get_available_planes(departure,arrival)
         self.app.print_selection_list(plane_list)
-        plane_number = self.val.validate_selection(input("Select an airplane: "),len(plane_list))
+        plane_number = self.ll.validate_selection(input("Select an airplane: "),len(plane_list))
         plane = plane_list[int(plane_number)-1].get_registration_number()
         voyage.set_aircraft_id(plane)
         self.ll.add_voyage(voyage)
@@ -411,7 +408,7 @@ class User:
     def change_voyage(self):
         self.app.print_change_voyage()
         voyage_list = self.ll.get_all_voyages()
-        action = self.val.validate_selection(input("Enter booking reference: "),len(voyage_list))
+        action = self.ll.validate_selection(input("Enter booking reference: "),len(voyage_list))
         for index in range(len(voyage_list)):
             voyage = voyage_list[index]
             if action == voyage.get_booking_reference():
@@ -420,7 +417,7 @@ class User:
                 arrival = dateutil.parser.parse(voyage.get_arrival())
                 plane_list = self.ll.get_available_planes(departure,arrival)
                 self.app.print_selection_list(plane_list)
-                plane_number = self.val.validate_selection(input("Select an airplane: "),len(plane_list))
+                plane_number = self.ll.validate_selection(input("Select an airplane: "),len(plane_list))
                 plane = plane_list[int(plane_number)-1].get_registration_number()
                 voyage.set_aircraft_id(plane)
                 self.ll.change_voyage(voyage_list,index,plane)
@@ -550,9 +547,9 @@ class User:
 
 #self.app.print_voy_lsfasldf(voyage_list,"Manned")
     def get_voyages_for_employee(self, ID):
-        temp_date = self.val.validate_date(input("Enter date from (YYYY-MM-DD):"))
+        temp_date = self.ll.validate_date(input("Enter date from (YYYY-MM-DD):"))
         from_date= dateutil.parser.parse(temp_date)
-        temp_date = self.val.validate_date(input("Enter to date (YYYY-MM-DD):")) # það kemur error ef þessi dagsetning er lægri en from date
+        temp_date = self.ll.validate_date(input("Enter to date (YYYY-MM-DD):")) # það kemur error ef þessi dagsetning er lægri en from date
         to_date= dateutil.parser.parse(temp_date) + timedelta(days=1)
         time_voyage_list = self.ll.get_date_voyages(from_date,to_date)
         voyage_list = self.ll.get_voyages_for_employee(ID,time_voyage_list)
@@ -575,7 +572,7 @@ class User:
                     self.get_voyages_for_single_date()
                 elif action == "2":
                     employee_list = self.ll.get_all_employees()
-                    ID = self.val.validate_existing_emp(input("Enter SSN number: "),employee_list)
+                    ID = self.ll.validate_existing_emp(input("Enter SSN number: "),employee_list)
                     self.get_voyages_for_employee(ID)
                 elif action == "3":
                     self.get_voyages_for_timeperiod()
@@ -583,16 +580,16 @@ class User:
                 self.change_voyage() #ÞAÐ ER HÆGT AÐ VELJA GAMALT BOOKING REFERANCE
                         
     def get_voyages_for_single_date(self):
-        the_date = self.val.validate_date(input("Enter date (YYYY-MM-DD): "))                    
+        the_date = self.ll.validate_date(input("Enter date (YYYY-MM-DD): "))                    
         from_date = dateutil.parser.parse(the_date)
         to_date = from_date + timedelta(days=1)
         voyage_list = self.ll.get_date_voyages(from_date,to_date)
         self.print_voyages_manned_and_status(voyage_list)
     
     def get_voyages_for_timeperiod(self):
-        temp_date = self.val.validate_date(input("Enter from date (YYYY-MM-DD): "))                    
+        temp_date = self.ll.validate_date(input("Enter from date (YYYY-MM-DD): "))                    
         from_date = dateutil.parser.parse(temp_date)
-        temp_date = self.val.validate_date(input("Enter to date (YYYY-MM-DD): "))     
+        temp_date = self.ll.validate_date(input("Enter to date (YYYY-MM-DD): "))     
         to_date = dateutil.parser.parse(temp_date) + timedelta(days=1)
         voyage_list = self.ll.get_date_voyages(from_date,to_date)
         self.print_voyages_manned_and_status(voyage_list)
@@ -626,10 +623,10 @@ class User:
         voyage_list = self.ll.get_all_voyages()
         self.app.print_list_plane()
         self.app.print_selection_list(plane_list)
-        index = self.val.validate_selection(input("Select an airplane: "), len(plane_list))
+        index = self.ll.validate_selection(input("Select an airplane: "), len(plane_list))
         plane = plane_list[int(index)-1]
         reg_num = plane.get_registration_number()
-        date = dateutil.parser.parse(self.val.validate_date(input("Date (YYYY-MM-DD): ")) + "T" + self.val.validate_time(input("Time(HH:MM): ")) + ":00")
+        date = dateutil.parser.parse(self.ll.validate_date(input("Date (YYYY-MM-DD): ")) + "T" + self.ll.validate_time(input("Time(HH:MM): ")) + ":00")
         busy = 0
         for voyage in voyage_list:
             if voyage.get_aircraft_id() == reg_num:

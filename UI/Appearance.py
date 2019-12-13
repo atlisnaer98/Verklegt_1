@@ -178,9 +178,6 @@ class Appearance:
         .format(emp.get_address(), emp.get_home_phone(), emp.get_mobile_number(),
         emp.get_email_address(), emp.get_activity()))
 
-    def print_employee_list(self):
-        pass
-
     def print_get_all_employess(self):
         print()
         print(DASH*LENGTH)
