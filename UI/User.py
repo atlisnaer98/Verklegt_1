@@ -147,6 +147,7 @@ class User:
         emp.set_licence(plane_selection)
         emp.set_activity(1)
         self.ll.add_employee(emp)
+        print("\nYou have created a new employee\n")
 
     def change_employee_info(self):
         # The method will change employee information. The user is not able to change SSN number, Name, Rank or Role. 
