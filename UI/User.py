@@ -614,14 +614,17 @@ class User:
         for voyage in voyage_list:
             if voyage.get_aircraft_id() == reg_num:
                 status = self.ll.get_voyage_status(voyage,date)
-                if status == "On the way to the destination" or status == "On the way to Reykjavik":
+                if status == "On the way to the destination":
                     busy = 1
-                    self.app.print_in_air(plane,voyage,status) #Vantar bæta þetta fall
+                    self.app.print_in_air_away(plane,voyage,status)
+                elif status == "On the way to Reykjavik":
+                    busy = 1
+                    self.app.print_in_air_home(plane,voyage,status)
                 elif status == "Landed in destination":
                     busy = 1
-                    self.app.print_plane_busy(plane,voyage,status) #Vantar bæta þetta fall
+                    self.app.print_plane_busy(plane,voyage,status)
         if busy == 0:
-            self.app.print_plane_available(plane) #Vantar bæta þetta fall
+            self.app.print_plane_available(plane)
 
     def airplane_menu(self,action):
         # The method will give you options in airplane menu, user has to choose number to deside what he want to do.

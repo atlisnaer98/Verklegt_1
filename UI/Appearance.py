@@ -412,11 +412,14 @@ class Appearance:
         employee_dict[voyage.get_fa2()].get_name(),voyage.get_fa2(),voyage.get_arriving_at()))
     
 
-    def print_in_air(self,plane,voyage,status):
-        print("\nPlane ID: {}\nStatus: {}\nFlight number: {}\n".format(plane.get_registration_number(),status,voyage.get_flight_number_away()))
+    def print_in_air_away(self,plane,voyage,status):
+        print("\nPlane ID: {}\nPlane Type: {}\nPlane model: {}\nStatus: {}\nDestination: {}\nFlight number: {}\nAvailable again: {}\n".format(plane.get_registration_number(),plane.get_plane_type(),plane.get_model(),status,voyage.get_arriving_at(),voyage.get_flight_number_away(),voyage.get_arrival()))
+
+    def print_in_air_home(self,plane,voyage,status):
+        print("\nPlane ID: {}\nPlane Type: {}\nPlane model: {}\nStatus: {}\nDestination: {}\nFlight number: {}\nAvailable again: {}\n".format(plane.get_registration_number(),plane.get_plane_type(),plane.get_model(),status,voyage.get_arriving_at(),voyage.get_flight_number_away(),voyage.get_arrival()))
 
     def print_plane_busy(self,plane,voyage,status):
-        print("\nPlane ID: {}\nPlane Type: {}\nPlane model: {}\nDestination: {}\n".format(plane.get_registration_number(),plane.get_plane_type(),plane.get_model(),voyage.get_arriving_at()))
+        print("\nPlane ID: {}\nPlane Type: {}\nPlane model: {}\nStatus: {}\nDestination: {}\nAvailable again: {}\n".format(plane.get_registration_number(),plane.get_plane_type(),plane.get_model(),status,voyage.get_arriving_at(),voyage.get_arrival()))
 
     def print_plane_available(self,plane):
         print("\nPlane ID: {}\nPlane Type: {}\nPlane model: {}\nPlane is available\n".format(plane.get_registration_number(),plane.get_plane_type(),plane.get_model()))
