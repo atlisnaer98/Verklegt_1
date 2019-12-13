@@ -23,7 +23,7 @@ class User:
         pass
 
     def add_dest(self):
-        # The method will add destinations and ask for needed information as input to make a new destination.
+        '''The method will add destinations and ask for needed information as input to make a new destination.'''
         dest = Destination()
         dest_list = self.ll.get_all_dest()
         dest.set_destination(self.ll.validate_dest(input("Destination: "),dest_list))
@@ -37,7 +37,7 @@ class User:
         self.ll.add_dest(dest)
 
     def get_all_dest(self):
-        # The method will print out all listed destinations, the output will be Airport, Country and Distance from Reykjavik in km.
+        '''The method will print out all listed destinations, the output will be Airport, Country and Distance from Reykjavik in km.'''
         dest_obj = self.ll.get_all_dest()
         self.app.print_get_all_dest()
         print("\n{:<20}{:<20}{:<20}".format("Airport:","Country:","Distance(km):\n"))
@@ -46,7 +46,7 @@ class User:
         print()
     
     def add_plane(self):
-        # The method will add new aircraft, you will have to give the plane a registration number and choose model, when model is choosen it will automacly put how many passenger can trave
+        '''The method will add new aircraft, you will have to give the plane a registration number and choose model, when model is choosen it will automacly put how many passenger can trave'''
         plane = Airplane()
         plane_list = self.ll.get_all_airplanes()
         plane.set_registration_number(self.ll.validate_existing_reg(input("Registration number(TF-XXX): "),plane_list))
@@ -58,7 +58,7 @@ class User:
         print("You have created an airplane")
 
     def set_plane_model(self,plane,option):
-        # The method will add certain information when certain number is chosen
+        '''The method will add certain information when certain number is chosen'''
         if option == 1:
             plane.set_planeID("NABAE146")
             plane.set_plane_type("BAE")
@@ -76,7 +76,7 @@ class User:
             plane.set_capacity(100)
 
     def get_all_employee(self):
-        # The method will print out all employess, the output will be theire name, social security number and theire role.
+        '''The method will print out all employess, the output will be theire name, social security number and theire role.'''
         employee_list = self.ll.get_all_employees()
         self.app.print_get_all_employess()
         print()
@@ -86,9 +86,9 @@ class User:
             self.app.print_get_all_employess_role(employee)
 
     def add_employee(self):
-        # The method will add new employee to the Crew.csv file. 
-        # User have to input SSN number, Name, Adress, Home and Mobile number, Email and chose role and rank for the employee.
-        # If pilot is chosen then the user has to enter a licence number for the aircraft that he is allowed to fly. 
+        '''The method will add new employee to the Crew.csv file. 
+        User have to input SSN number, Name, Adress, Home and Mobile number, Email and chose role and rank for the employee.
+        If pilot is chosen then the user has to enter a licence number for the aircraft that he is allowed to fly. '''
         self.app.print_create_employee()
         plane_list = []
         role_list = ["Pilot","Cabincrew"]
@@ -148,7 +148,7 @@ class User:
         print("\nYou have created a new employee\n")
 
     def change_employee_info(self):
-        # The method will change employee information. The user is not able to change SSN number, Name, Rank or Role. 
+        '''The method will change employee information. The user is not able to change SSN number, Name, Rank or Role. '''
         self.app.print_change_employee_info()
         employee_list = self.ll.get_all_employees()
         action = self.ll.validate_existing_emp(input("Enter SSN number: "),employee_list)
@@ -186,7 +186,7 @@ class User:
                     self.employee_menu(action)
 
     def change_dest_info(self,action):
-        # The method will change destination information. User is only able to change Emergency contact and Emergency phonenumber.
+        '''The method will change destination information. User is only able to change Emergency contact and Emergency phonenumber.'''
         self.app.print_change_dest_info()
         dest_list = self.ll.get_all_dest()
         self.app.print_selection_list(dest_list)
@@ -205,7 +205,7 @@ class User:
                 print("\nYou have changed emergency contact information")
         
     def get_cabin_crew(self):
-        # The method will print out all cabin crew employees, the output will be their Name, SSN number and Rank. 
+        '''The method will print out all cabin crew employees, the output will be their Name, SSN number and Rank. '''
         cabin_crew_list = self.ll.get_cabin_crew()
         self.app.print_get_all_cabincrew()
         print()
@@ -216,7 +216,7 @@ class User:
         print()
 
     def get_pilots(self):
-        # The method will print out all pilots, you can choose if you want all pilots or you want to print pilot with licence on surten aircraft.
+        '''The method will print out all pilots, you can choose if you want all pilots or you want to print pilot with licence on surten aircraft.'''
         self.app.print_choose_aircraft()
         self.app.select_licence()
         licence = ''
@@ -243,7 +243,7 @@ class User:
         self.app.picture()
 
     def dest_menu(self,action):
-        # The method will give you options in destinations menu, user has to choose number to deside what he want to do.
+        '''The method will give you options in destinations menu, user has to choose number to deside what he want to do.'''
         while action not in QUIT:
             self.app.print_dest_menu()
             action = self.back_quit(action,4)
@@ -280,6 +280,7 @@ class User:
         return high_dest, high_counter
 
     def back_quit(self,action,limit):
+        ''' we used this a templet for the back and quit'''
         action_test = True
         self.app.back_quit()
         while action_test == True:
@@ -300,7 +301,7 @@ class User:
                     print("Invalid input,")
 
     def employee_menu(self,action):
-        # The method will give you options in employee menu, user has to choose number to deside what he want to do.
+        '''The method will give you options in employee menu, user has to choose number to deside what he want to do.'''
         self.app.print_employee_menu()
         while action not in QUIT:
             action = self.back_quit(action,4)
@@ -322,7 +323,7 @@ class User:
                     self.get_cabin_crew()
 
     def show_emp_schedule(self, action):
-        # The method will show you employee schedule. User has to choose between to give Date og SSN number as a input.
+        '''The method will show you employee schedule. User has to choose between to give Date og SSN number as a input.'''
         self.app.print_employee_schedule()
         action = self.back_quit(action, 2)
         if action == '1':
@@ -341,7 +342,7 @@ class User:
             self.get_voyages_for_employee(ID)
 
     def get_available_emp_date_schedule(self,from_date,to_date):
-        # The method will print out all available employees, their SSN number and role
+        ''' The method will print out all available employees, their SSN number and role'''
         available_list = self.ll.get_emp_date_schedule(from_date,to_date)
         print()
         print("{:<20}{:<20}{:<20}".format("Name:","SSN:","Role:"))
@@ -350,6 +351,7 @@ class User:
             self.app.print_get_all_employess_role(emp)
 
     def get_working_emp_date_schedule(self,from_date, to_date):
+        '''prints out all the employees that are working during a specific time period '''
         counter = 0
         time_voyage_list = self.ll.get_voyages_on_date(from_date,to_date)
         employee_dict = self.ll.get_all_employees_dict()
@@ -407,6 +409,7 @@ class User:
         print("\nYou have created a new voyage")
             
     def change_voyage(self):
+        ''' allows the user to change information about a voyage'''
         self.app.print_change_voyage()
         voyage_list = self.ll.get_all_voyages()
         action = self.ll.validate_selection(input("Enter booking reference: "),len(voyage_list))
@@ -424,6 +427,7 @@ class User:
         print("\nYou have changed the airplane on the voyage,\ntherefor the crew has been cleared")
 
     def assign_crew(self):
+        ''' allows the user to assign crew to a specific voyage'''
         self.app.print_assign_crew()
         voyage_list = self.ll.get_all_voyages()
         employee_list = self.ll.get_all_employees()
@@ -457,10 +461,13 @@ class User:
                 print("You have assigned a crew")
 
     def save_crew(self,voyage,voyage_list,index):
+        '''saves the employee to voyage so if the user quits in the middle
+        the voyage still contains that one employee the user chose '''
         voyage_list[index] = voyage
         self.ll.assign_crew(voyage_list)
 
     def clear_voyage_crew(self,voyage_list,index):
+        ''' clears all the crew on a specific voyage if the plane is changed'''
         voyage = voyage_list[index]
         voyage.set_captain("")
         voyage.set_copilot("")
@@ -471,6 +478,7 @@ class User:
         self.ll.assign_crew(voyage_list)
 
     def available_employees(self,voyage):
+        ''' returns a list of all available employees the user can assign to a voyage'''
         available_emp_list = []
         departure_time = dateutil.parser.parse(voyage.get_departure())
         year,month,day = departure_time.year, departure_time.month, departure_time.day
@@ -484,6 +492,8 @@ class User:
         return available_emp_list
 
     def set_captain(self,voyage,employee_list,licence):
+        ''' sets captain to a specific voyage the user has chosen
+        only available captins can be chosen'''
         available_captain_list = []
         available_emp_list = self.available_employees(voyage)   
         for captain in employee_list:
@@ -498,6 +508,8 @@ class User:
                         voyage.set_captain(emp.get_ssn())
 
     def set_copilot(self,voyage,employee_list,licence):
+        ''' sets copilot to a specific voyage the user has chosen
+        only available captins can be chosen'''
         available_copilot_list = []
         available_emp_list = self.available_employees(voyage)
         for copilot in employee_list:
@@ -512,6 +524,8 @@ class User:
                         voyage.set_copilot(emp.get_ssn())
 
     def set_fsm(self,voyage,employee_list):
+        ''' sets fsm to a specific voyage the user has chosen
+        only available captins can be chosen'''
         available_fsm_list = []
         available_emp_list = self.available_employees(voyage)
         for fsm in employee_list:
@@ -526,6 +540,8 @@ class User:
                         voyage.set_fsm(emp.get_ssn())
 
     def set_fa(self,voyage,employee_list):
+        ''' sets fa to a specific voyage the user has chosen
+        only available captins can be chosen'''
         available_fa_list = []
         available_emp_list = self.available_employees(voyage)
         for fa in employee_list:
@@ -540,18 +556,18 @@ class User:
                         return emp.get_ssn()
 
     def get_date_voyages(self, from_date, to_date):
+        '''fetches and prints out all the voyages during a specific time period'''
         voyage_list = self.ll.get_date_voyages(from_date, to_date)
-        #print("{:<20}{:<20}{:<20}".format("Name","SSN","Role"))
         for voyage in voyage_list:
             print(voyage.get_booking_reference())
 
-#self.app.print_voy_lsfasldf(voyage_list,"Manned")
     def get_voyages_for_employee(self, ID):
+        '''fetches and prints out all the voyages and information about them and if they are fully manned or not '''
         repeater = True
         while repeater == True:
             temp_date = self.ll.validate_date(input("Enter date from (YYYY-MM-DD):"))
             from_date= dateutil.parser.parse(temp_date)
-            temp_date = self.ll.validate_date(input("Enter to date (YYYY-MM-DD):")) # það kemur error ef þessi dagsetning er lægri en from date
+            temp_date = self.ll.validate_date(input("Enter to date (YYYY-MM-DD):")) 
             to_date= dateutil.parser.parse(temp_date) + timedelta(days=1)
             time_voyage_list = self.ll.get_date_voyages(from_date,to_date)
             repeater = self.ll.validate_period(from_date,to_date)
@@ -559,6 +575,7 @@ class User:
         self.print_voyages_manned_and_status(voyage_list)
 
     def Voyage_menu(self,action):
+        ''' platform for the menu that appears for the user if it selects voyage on the main menu'''
         action = ""
         while action not in QUIT:
             self.app.print_voyage_menu()
@@ -583,6 +600,7 @@ class User:
                 self.change_voyage() #ÞAÐ ER HÆGT AÐ VELJA GAMALT BOOKING REFERANCE
                         
     def get_voyages_for_single_date(self):
+        '''fetches all the voyages on a single date and prints them out for the user'''
         the_date = self.ll.validate_date(input("Enter date (YYYY-MM-DD): "))                    
         from_date = dateutil.parser.parse(the_date)
         to_date = from_date + timedelta(days=1)
@@ -590,6 +608,7 @@ class User:
         self.print_voyages_manned_and_status(voyage_list)
     
     def get_voyages_for_timeperiod(self):
+        '''prints out all the voyages for a specific timeperiod and their status if they are manned or not '''
         repeater = True
         while repeater == True:
             temp_date = self.ll.validate_date(input("Enter from date (YYYY-MM-DD): "))                    
@@ -601,6 +620,7 @@ class User:
         self.print_voyages_manned_and_status(voyage_list)
 
     def print_voyages_manned_and_status(self,voyage_list):
+        ''' prints out allt he voyages and their status if they are manned or not'''
         date = datetime.datetime.now()
         for voyage in voyage_list:
             status = self.ll.get_voyage_status(voyage,date)
@@ -610,8 +630,8 @@ class User:
                 self.app.print_voyage_list_with_crew(voyage,"Unmanned",status)
 
     def change_plane_status(self,action):
-        # The method will print out all airplanes in a list with information if the airplane is active or inactive.
-        # You are able to make airplane active or inactive in this method.
+        '''The method will print out all airplanes in a list with information if the airplane is active or inactive.
+        # You are able to make airplane active or inactive in this method.'''
         airplane_list = self.ll.get_all_airplanes()
         #app.fall(airplane_list) svipað fall og print selection list
         self.app.print_change_plane_status(airplane_list)
@@ -623,8 +643,8 @@ class User:
         self.main_menu()
     
     def get_all_plane(self):
-        # The method will print out all airplanes in a list with certain information. 
-        # The output will tell you if the plain is heading or landed in the destination or in Reykjavik.
+        '''The method will print out all airplanes in a list with certain information. 
+        # The output will tell you if the plain is heading or landed in the destination or in Reykjavik.'''
         plane_list = self.ll.get_all_airplanes()
         voyage_list = self.ll.get_all_voyages()
         self.app.print_list_plane()
@@ -650,7 +670,7 @@ class User:
             self.app.print_plane_available(plane)
 
     def airplane_menu(self,action):
-        # The method will give you options in airplane menu, user has to choose number to deside what he want to do.
+        '''The method will give you options in airplane menu, user has to choose number to deside what he want to do.'''
         while action not in QUIT:
             self.app.print_airplane_menu()
             action = self.back_quit(action,3)
@@ -679,5 +699,7 @@ class User:
             elif action == "4":
                 self.airplane_menu(action)
         quit()
+
+:)
 
             
