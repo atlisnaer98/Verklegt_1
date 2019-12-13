@@ -12,12 +12,15 @@ class EmployeeLL():
         self.vLL = VoyageLL(sending)
     
     def get_all_employees(self):
+        ''' Calls the data layer and returns a list of all the employees in the company '''
         return self.dl.get_all_employee()
 
     def get_all_employees_dict(self):
+        ''' Calls the data layer and returns a dictionary of all the employees in the company '''
         return self.dl.get_all_employees_dict()
 
     def get_employee(self, action):
+        '''Compares the SSN input by the user and sees if it matches the SSN of an existing employee working for the company'''
         employee_list = []
         all_employee_list = self.dl.get_all_employee()
         for emp in all_employee_list:
@@ -27,9 +30,12 @@ class EmployeeLL():
         return employee_list
 
     def add_employee(self,emp):
+        ''' forwards the information input by the user about a new employee and creates a new employee'''
         self.dl.add_employee(emp)
 
     def change_employee(self,employee_list,index,option,changed):
+        '''Changes a specific information about the employee selected by the user, forwards the information
+        to the dl where the information is changed'''
         emp = employee_list[index]
         if option == 1:
             emp.set_address(changed)
@@ -59,6 +65,7 @@ class EmployeeLL():
         self.dl.update_employee_file(employee_list)
 
     def get_cabin_crew(self):
+        '''Fetches a list of cabin crew from the data layer'''
         cabin_crew_list = []
         all_employee_list = self.dl.get_all_employee()
         for emp in all_employee_list:
@@ -68,6 +75,7 @@ class EmployeeLL():
         return cabin_crew_list
     
     def get_pilots(self, license):
+        ''' fetches a list of pilots from the data layer'''
         pilot_list = []
         all_employee_list = self.dl.get_all_employee()
         for emp in all_employee_list:
@@ -81,6 +89,8 @@ class EmployeeLL():
 
 
     def get_date_schedule(self,from_date,to_date):
+        '''fetches a list of all voyages and compares all of them to the timperiod input by the user and returns
+        only the voyages that are within that timeframe and sees'''
         temp_list = []
         all_voyage_list = self.dl.get_all_voyages() 
         for voyage in all_voyage_list:
@@ -92,6 +102,7 @@ class EmployeeLL():
         return final_list
 
     def available_employees(self, voyage_list):
+        ''' fetches a list of all employees and checks what employees are available for a specific voyage'''
         all_employees = self.get_all_employees()
         list_of_available = []
         list_of_working = []

@@ -7,9 +7,11 @@ class DestinationLL():
         self.dl = sending
 
     def add_dest(self, dest):
+        ''' forwards the information about a new destination to the data layer where the new destination is created'''
         self.dl.add_dest(dest) 
         
-    def get_all_dest(self): #Returns a list of all destinations
+    def get_all_dest(self):
+        '''Returns a list of all destinations'''
         return self.dl.get_all_dest()
 
     def change_dest(self,dest_list,index,option,changed):
@@ -24,7 +26,8 @@ class DestinationLL():
         dest_list[index] = dest
         self.dl.update_dest_file(dest_list) #Updates the CSV file
 
-    def get_flight_number(self): #Creates a specific number to use in flights to a location
+    def get_flight_number(self):
+        '''Creates a specific number to use in flights to a location'''
         dest_list = self.dl.get_all_dest()
         last_flight_numb = int(dest_list[-1].get_flight_number()) #Gets the last number and  then adds 1
         next_flight_numb = last_flight_numb + 1 
