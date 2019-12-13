@@ -49,6 +49,7 @@ class VoyageLL():
         self.dl.update_voyage_file(voyage_list)
 
     def change_voyage(self,voyage_list,index,plane):
+        #changes the voyage and then updates the voyage file
         voyage = voyage_list[index]
         voyage.set_aircraft_id(plane)
         voyage = self.clear_crew(voyage)
@@ -64,7 +65,8 @@ class VoyageLL():
         crew = [voyage.get_captain(), voyage.get_copilot(), voyage.get_fsm(), voyage.get_fa1(), voyage.get_fa2()]
         return crew
 
-    def get_voyage_status(self,voyage,date):
+    def get_voyage_status(self,voyage,date): 
+        #Gets the status of the voyage based on the current time
         time = date
         dep_time = dateutil.parser.parse(voyage.get_departure())
         arr_time = dateutil.parser.parse(voyage.get_arrival())
@@ -79,7 +81,7 @@ class VoyageLL():
             time_left = arr_time - time
             if time_left < one_way_time + timedelta(hours=1) and time_left > one_way_time:
                 return "Landed in destination"
-            else:
+            else: #Is in the air
                 if time_left < one_way_time:
                     return "On the way to Reykjavik"
                 else:
@@ -110,6 +112,7 @@ class VoyageLL():
                 return str(counter)
 
     def update_flight_nums(self):
+        """"Rewrites the whole  """
         voyage_list = self.dl.get_all_voyages()
         dest_list = self.dl.get_all_dest()
         for dest in dest_list:
