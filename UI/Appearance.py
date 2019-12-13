@@ -3,16 +3,9 @@ from Models.Employee import Employee
 from Models.Airplane import Airplane
 from Models.Voyage import Voyage
 
-
-
 DASH = "-"
 LENGTH = 60
-#Len af forritinu er 54!!!
-# hastag = "#"
 
-
-# Role = "Select a Role"
-# option = "Select an option"
 M = "Menu"
 D = "Destination"
 C = 'Create'
@@ -53,21 +46,11 @@ AC = "Active"
 IAC = "Inactive"
 W = "Working"
 MP = "Show most popular"
-
-
 B = "[B] Back"
 Q = "[Q] Quit"
 EMPTY = ''
 
 
-# print(DASH*LENGTH)
-# print("{:>30} ".format(M))
-# print(DASH*LENGTH)
-# print("{} {:<30}{} {} ".format('[1]', E, '[2]', V))
-# print("{} {:<30}{} {} ".format('[3]', D, '[4]', L))
-# print("{:<16} {}".format(empty, DASH*24))
-# print("{:<18} {} {} {} {} ".format(empty, '[B]',B, '[Q]',Q))
-# print("{:<16} {}".format(empty, DASH*24))
 class Appearance:
     def __init__(self):
         pass
@@ -136,8 +119,7 @@ class Appearance:
         print("{:^60}".format(CNE))
         print(DASH*LENGTH)
         print()
-        #print("Please input necessary information:")
-        #Input upplýsingar
+
 
     def print_show_schedule(self):
         print(DASH*LENGTH)
@@ -256,7 +238,7 @@ class Appearance:
         print()
         print("Please input necessary information:")
         print()
-        # Input Upplýsingar
+
 
 
     def print_change_dest_info(self):
@@ -281,7 +263,7 @@ class Appearance:
         print("{:^60}".format(CNV))
         print(DASH*LENGTH)
         print("Please input necessary information:")
-        #Input upplýsingar
+
 
     def print_voyage_info(self, voyage):
         print("Booking Refrence: {}\nDestination: {}\nDeparture Time: {}\nArrival Time: {}\n".format(voyage.get_booking_reference(), voyage.get_arriving_at(),voyage.get_departure(),voyage.get_arrival()))
@@ -304,8 +286,6 @@ class Appearance:
             lis = sting.split(",")
             numb = i+1
             selected = lis[0]
-            #self.app.print_selection_list(numb,dest)
-            #print("[{}] {}".format(numb,dest))
             print("[{}] {}".format(numb,selected))
         print()
         
@@ -402,7 +382,7 @@ class Appearance:
         print("{:^60}".format("Working employee schedule"))
         print(DASH*LENGTH)
     
-    def print_working_emps(self, voyage,employee_dict): #Laga þetta fyrir GÍSLA og HELGA, Nafn, KT og Dest
+    def print_working_emps(self, voyage,employee_dict):
         print("\n{:<20}{:<20}{:<20}\n{:<20}{:<20}{:<20}\n{:<20}{:<20}{:<20}\n{:<20}{:<20}{:<20}\n{:<20}{:<20}{:<20}\n".format(employee_dict[voyage.get_captain()].get_name(),voyage.get_captain(),voyage.get_arriving_at(),
         employee_dict[voyage.get_copilot()].get_name(),voyage.get_copilot(),voyage.get_arriving_at(),
         employee_dict[voyage.get_fsm()].get_name(),voyage.get_fsm(),voyage.get_arriving_at(),
