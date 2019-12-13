@@ -79,16 +79,6 @@ class EmployeeLL():
         
         return pilot_list
 
-    # def check_id_in_voyage(self, voyage_list, ID):
-    #     ''' LANGAR AÐ KALLA Í ÞETTA FALL ÚR FALLINU GET_SCHEDULE EN ÞAÐ VIRKAR EKKI'''
-    #     employee_list = []
-    #     for line in voyage_list:
-    #         sting = str(line)
-    #         lis = sting.split(',')
-    #         if ID in line:
-    #             employee_list.append(lis)
-    #     return employee_list
-
 
     def get_date_schedule(self,from_date,to_date):
         temp_list = []
