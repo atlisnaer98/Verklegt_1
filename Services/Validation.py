@@ -65,8 +65,13 @@ class Validation:
         time_repeater = True
         while time_repeater == True:
             try:
+                hour = int(time_input[:2])
+                minute = int(time_input[3:])
                 dateutil.parser.parse(time_input)
-                return time_input
+                if hour >= 0 and hour <= 24 and minute >= 0 and minute <= 60 and time_input[2] == ":":
+                    return time_input
+                else:
+                    time_input = input("Invalid input, please re-enter (HH:MM): ")
             except ValueError:
                 time_input = input("Invalid input, please re-enter (HH:MM): ")
 
@@ -112,8 +117,16 @@ class Validation:
         date_repeater = True
         while date_repeater == True:
             try:
-                dateutil.parser.parse(date_input)
-                return date_input
+                year = int(date_input[:4])
+                month = int(date_input[5:7])
+                day = int(date_input[8:10])
+                date = dateutil.parser.parse(date_input)
+                if year > 1999 and date_input[4] == "-" and date_input[7] == "-" and month > 0 and month <= 12 and day > 0 and day < 32:
+                    return date_input
+                elif year < 2000:
+                    date_input = input("Invalid input, please enter date after the year 2000:")
+                else:
+                    date_input = input("Invalid input, please re-enter (YYYY-MM-DD):")
             except ValueError:
                 date_input = input("Invalid input, please re-enter (YYYY-MM-DD):")
 
