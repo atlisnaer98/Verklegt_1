@@ -369,7 +369,6 @@ class User:
                     self.app.print_working_emps(voyage,employee_dict)
    
     def add_voyage(self):
-        #self.ll.update_flight_nums()
         voyage = Voyage()
         the_date = False
         departure_list = self.ll.get_departure()
