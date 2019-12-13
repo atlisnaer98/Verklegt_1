@@ -1,5 +1,6 @@
 from Models.Destination import Destination
 from InformationLayerClasses.API import Data_main
+from Services.VoyageLL import VoyageLL
 class DestinationLL():
    
     def __init__(self, sending):

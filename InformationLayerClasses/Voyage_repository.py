@@ -36,7 +36,7 @@ class Voyage_repository:
                     counter +=1
                     voyages = Voyage(counter,line["flightNumber"],line["flightNumber"],line["arrivingAt"],line["departure"],line["arrival"],line["aircraftID"],line["captain"],line["copilot"],line["fsm"],line["fa1"],line["fa2"])
                     all_voyages_list.append(voyages)
-        return all_voyages_list
+        return all_voyages_list , counter
 
     def add_all_upcoming_flights(self,all_voyages,counter): #Was used to create the Voyage.csv file
         all_voyages_list = all_voyages

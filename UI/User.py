@@ -50,7 +50,8 @@ class User:
     def add_plane(self):
         # The method will add new aircraft, you will have to give the plane a registration number and choose model, when model is choosen it will automacly put how many passenger can trave
         plane = Airplane()
-        plane.set_registration_number(self.val.validate_reg(input("Registration number(TF-XXX): ")))
+        plane_list = self.ll.get_all_airplanes()
+        plane.set_registration_number(self.val.validate_existing_reg(input("Registration number(TF-XXX): "),plane_list))
         self.app.print_add_plane_vol2()
         option = self.val.validate_selection(input("Model: "),3)
         self.set_plane_model(plane,int(option))
@@ -146,6 +147,7 @@ class User:
         emp.set_licence(plane_selection)
         emp.set_activity(1)
         self.ll.add_employee(emp)
+        print("\nYou have created a new employee\n")
 
     def change_employee_info(self):
         # The method will change employee information. The user is not able to change SSN number, Name, Rank or Role. 
@@ -246,7 +248,7 @@ class User:
         # The method will give you options in destinations menu, user has to choose number to deside what he want to do.
         while action not in QUIT:
             self.app.print_dest_menu()
-            action = self.back_quit(action,3)
+            action = self.back_quit(action,4)
             if action == "1": #create new dest
                 self.app.print_add_dest()
                 self.add_dest()
@@ -255,12 +257,30 @@ class User:
                 self.dest_menu(action)
             elif action == "2": #change dest
                 self.change_dest_info(action)
-            elif action == "3": #list dest
+            elif action == "4": #list dest
                 self.get_all_dest()
                 action = self.back_quit(action,0)
+            elif action == "3": #Most popular
+                most_pop_dest, num_of_voyages = self.get_pop_dest()
+                self.app.get_pop_dest(most_pop_dest,num_of_voyages)
             elif action in BACK:
                 return action
-                    
+
+    def get_pop_dest(self):
+        high_counter = 0
+        high_dest = Destination()
+        voyage_list = self.ll.get_all_voyages()
+        dest_list = self.ll.get_all_dest()
+        for dest in dest_list:
+            counter = 0
+            for voyage in voyage_list:
+                if voyage.get_arriving_at() == dest.get_destination():
+                    counter += 1
+            if counter > high_counter:
+                high_counter = counter
+                high_dest = dest
+        return high_dest, high_counter
+
     def back_quit(self,action,limit):
         action_test = True
         self.app.back_quit()
@@ -310,7 +330,7 @@ class User:
         if action == '1':
             self.app.print_employee_available_or_working()
             action = self.back_quit(action, 2)
-            temp_date = self.val.validate_date(input("Enter from date (YYYY-MM-DD):"))
+            temp_date = self.val.validate_date(input("Enter date (YYYY-MM-DD):"))
             from_date = dateutil.parser.parse(temp_date)
             to_date = from_date + timedelta(days=1)
             if action == '1':
@@ -359,9 +379,9 @@ class User:
         last_booking_ref = int(voyage_list[-1].get_booking_reference())
         voyage.set_booking_reference(last_booking_ref+1)
         dest_list = self.ll.get_all_dest()
-        self.app.print_selection_list(dest_list)
-        dest_number = self.val.validate_selection(input("Please select destination: "),len(dest_list))
-        dest = dest_list[int(dest_number)-1]
+        self.app.print_selection_list(dest_list[1:])
+        dest_number = self.val.validate_selection(input("Please select destination: "),len(dest_list)-1)
+        dest = dest_list[int(dest_number)]
         destination_place = dest.get_destination()
         voyage.set_arriving_at(destination_place)
         while the_date == False:
@@ -561,7 +581,7 @@ class User:
                     self.get_voyages_for_timeperiod()
             elif action == "4":
                 self.change_voyage() #ÞAÐ ER HÆGT AÐ VELJA GAMALT BOOKING REFERANCE
-    
+                        
     def get_voyages_for_single_date(self):
         the_date = self.val.validate_date(input("Enter date (YYYY-MM-DD): "))                    
         from_date = dateutil.parser.parse(the_date)
@@ -569,7 +589,7 @@ class User:
         voyage_list = self.ll.get_date_voyages(from_date,to_date)
         self.print_voyages_manned_and_status(voyage_list)
     
-    def get_voyages_for_timeperiod(self): #Þarf að vera valkostur fyrir þetta í apperance
+    def get_voyages_for_timeperiod(self):
         temp_date = self.val.validate_date(input("Enter from date (YYYY-MM-DD): "))                    
         from_date = dateutil.parser.parse(temp_date)
         temp_date = self.val.validate_date(input("Enter to date (YYYY-MM-DD): "))     
@@ -614,14 +634,17 @@ class User:
         for voyage in voyage_list:
             if voyage.get_aircraft_id() == reg_num:
                 status = self.ll.get_voyage_status(voyage,date)
-                if status == "On the way to the destination" or status == "On the way to Reykjavik":
+                if status == "On the way to the destination":
                     busy = 1
-                    self.app.print_in_air(plane,voyage,status) #Vantar bæta þetta fall
+                    self.app.print_in_air_away(plane,voyage,status)
+                elif status == "On the way to Reykjavik":
+                    busy = 1
+                    self.app.print_in_air_home(plane,voyage,status)
                 elif status == "Landed in destination":
                     busy = 1
-                    self.app.print_plane_busy(plane,voyage,status) #Vantar bæta þetta fall
+                    self.app.print_plane_busy(plane,voyage,status)
         if busy == 0:
-            self.app.print_plane_available(plane) #Vantar bæta þetta fall
+            self.app.print_plane_available(plane)
 
     def airplane_menu(self,action):
         # The method will give you options in airplane menu, user has to choose number to deside what he want to do.
