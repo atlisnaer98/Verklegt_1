@@ -370,40 +370,40 @@ class User:
    
     def add_voyage(self):
         """Asks the user for inputs to create a Voyage"""
-        voyage = Voyage()
+        voyage = Voyage() #Here it crates the voyage and then adds information into the voyage
         the_date = False
-        departure_list = self.ll.get_departure() #
-        voyage_list = self.ll.get_all_voyages()
-        last_booking_ref = int(voyage_list[-1].get_booking_reference())
-        voyage.set_booking_reference(last_booking_ref+1)
-        dest_list = self.ll.get_all_dest()
-        self.app.print_selection_list(dest_list[1:])
+        departure_list = self.ll.get_departure() #Gets a list of departures
+        voyage_list = self.ll.get_all_voyages() #Gets a list of all voyages
+        last_booking_ref = int(voyage_list[-1].get_booking_reference()) # Gets the last booking reference
+        voyage.set_booking_reference(last_booking_ref+1) #Adds one to the last booking reference and it as the next reference
+        dest_list = self.ll.get_all_dest() # Gets a list of all destinations
+        self.app.print_selection_list(dest_list[1:]) #Shows a list of all the available destination excluding reykjavik
         dest_number = self.ll.validate_selection(input("Please select destination: "),len(dest_list[1:]))
-        dest = dest_list[int(dest_number)]
+        dest = dest_list[int(dest_number)] 
         destination_place = dest.get_destination()
-        voyage.set_arriving_at(destination_place)
+        voyage.set_arriving_at(destination_place)#Adds the destination to the voyage
         while the_date == False:
             depart = self.ll.validate_date(input("Departure date (YYYY-MM-DD): ")) + "T" + self.ll.validate_time(input("Departure time(HH:MM): ")) + ":00"
             if depart in departure_list:
                 print("Time not available, please enter another time")
             else:
                 the_date = True
-        departure = dateutil.parser.parse(depart)
-        voyage.set_departure(depart)
+        departure = dateutil.parser.parse(depart) 
+        voyage.set_departure(depart) #Sets the departure time that the user inputed
         one_way_flight_time = dateutil.parser.parse(dest.get_flight_time())
         arrival = departure + timedelta(hours=one_way_flight_time.hour * 2 + 1, minutes=one_way_flight_time.minute*2)
-        voyage.set_arrival(arrival.isoformat())
+        voyage.set_arrival(arrival.isoformat()) #Calculates the arrivial time based on the departure time and the destinaion
         away_number = "NA" + dest.get_flight_number() + self.ll.count_dest_flights(destination_place,"away",departure)
         home_number = "NA" + dest.get_flight_number() + self.ll.count_dest_flights(destination_place,"home",departure)
-        voyage.set_flight_number_away(away_number)
+        voyage.set_flight_number_away(away_number) #Sets the flight numbers of the voyage
         voyage.set_flight_number_home(home_number)
         plane_list = self.ll.get_available_planes(departure,arrival)
         self.app.print_selection_list(plane_list)
         plane_number = self.ll.validate_selection(input("Select an airplane: "),len(plane_list))
         plane = plane_list[int(plane_number)-1].get_registration_number()
-        voyage.set_aircraft_id(plane)
+        voyage.set_aircraft_id(plane) #Sets the plane used in the voyage
         self.ll.add_voyage(voyage)
-        self.ll.update_flight_nums()
+        self.ll.update_flight_nums() # Updates flight numbers of all voyages to new ones
         print("\nYou have created a new voyage")
             
     def change_voyage(self):
