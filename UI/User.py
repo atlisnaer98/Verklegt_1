@@ -563,7 +563,7 @@ class User:
                     self.get_voyages_for_timeperiod()
             elif action == "4":
                 self.change_voyage() #ÞAÐ ER HÆGT AÐ VELJA GAMALT BOOKING REFERANCE
-    
+                        
     def get_voyages_for_single_date(self):
         the_date = self.val.validate_date(input("Enter date (YYYY-MM-DD): "))                    
         from_date = dateutil.parser.parse(the_date)
