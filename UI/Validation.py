@@ -1,4 +1,5 @@
 import string
+import dateutil.parser
 
 class Validation:
     def __init__(self):
@@ -126,6 +127,9 @@ class Validation:
                     date_input = input("Invalid input, please re-enter (YYYY-MM-DD):")
             except ValueError:
                 date_input = input("Invalid input, please re-enter (YYYY-MM-DD):")
+            except parser.ParserError:
+                print('yess')
+
 
     def validate_reg(self,reg_input):
         # The method will check if the registration number is valid. The number has to start with TF- to be valid and contain 3 letters.
