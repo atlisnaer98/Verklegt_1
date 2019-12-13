@@ -27,7 +27,8 @@ class User:
     def add_dest(self):
         # The method will add destinations and ask for needed information as input to make a new destination.
         dest = Destination()
-        dest.set_destination(self.val.validate_name(input("Destination: ")))
+        dest_list = self.ll.get_all_dest()
+        dest.set_destination(self.val.validate_dest(input("Destination: "),dest_list))
         dest.set_country(self.val.validate_name(input("Country: ")))
         dest.set_airport(self.val.validate_airport(input("Airport(XXX): ")))
         dest.set_flight_time(self.val.validate_time(input("Time of flight (HH:MM): ")))
@@ -248,7 +249,6 @@ class User:
                 self.add_dest()
                 print()
                 print("You have created a new destination!")
-                print()
                 self.dest_menu(action)
             elif action == "2": #change dest
                 self.change_dest_info(action)
@@ -401,6 +401,7 @@ class User:
                 plane = plane_list[int(plane_number)-1].get_registration_number()
                 voyage.set_aircraft_id(plane)
                 self.ll.change_voyage(voyage_list,index,plane)
+        print("\nYou have changed the airplane on the voyage,\ntherefor the crew has been cleared")
 
     def assign_crew(self):
         self.app.print_assign_crew()
@@ -556,7 +557,7 @@ class User:
                 elif action == "3":
                     self.get_voyages_for_timeperiod()
             elif action == "4":
-                self.change_voyage()
+                self.change_voyage() #ÞAÐ ER HÆGT AÐ VELJA GAMALT BOOKING REFERANCE
     
     def get_voyages_for_single_date(self):
         the_date = self.val.validate_date(input("Enter date (YYYY-MM-DD): "))                    

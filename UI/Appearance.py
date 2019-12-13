@@ -218,8 +218,8 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(D))
         print(DASH*LENGTH)
-        print("{:>10} {:<30}{} {} ".format('[1]', C, '[2]', CH))
-        print("{:>10} {} ".format('[3]', LD ))
+        print("\n{:>10} {:<30}{} {} ".format('[1]', C, '[2]', CH))
+        print("\n{:>10} {} \n".format('[3]', LD ))
 
     def print_dest_info(self,dest_list):
         print("\nDestination: {}\nCountry: {}\nAirport(XXX): {}\nflight time(one-way, HH:MM): {}\nDistance from Reykjavik: {}\nContact: {}\nContact phonenumber(+xxx...): {}"
@@ -255,7 +255,9 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(CND))
         print(DASH*LENGTH)
+        print()
         print("Please input necessary information:")
+        print()
         # Input Upplýsingar
 
 

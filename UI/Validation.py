@@ -20,7 +20,7 @@ class Validation:
         airport_repeater = True
         numb_list = ["0","1","2","3","4","5","6","7","8","9"]
         while airport_repeater == True:
-            if len(airport_input) ==3:
+            if len(airport_input) != 3:
                 airport_input = input("Invalid input, please re-enter airport(XXX)")
             else:
                 counter = 0
@@ -183,7 +183,20 @@ class Validation:
             ssn_input = self.validate_ssn(ssn_input)
             if ssn_input in employees_in_company:
                 print("This employee is already in the company,")
-                ssn_input = input("please re-enter SSN:")
+                ssn_input = input("please re-enter SSN: ")
             else:
                 return ssn_input
             
+    def validate_dest(self,dest_input,dest_list):
+        #checks if the destination is already in the data
+        taken_dest_list = []
+        dest_repeater = True
+        for dest in dest_list:
+            taken_dest_list.append(dest.get_destination())
+        while dest_repeater == True:
+            dest_input = self.validate_name(dest_input)
+            if dest_input in taken_dest_list:
+                print("\nThis destination is already in the system,")
+                dest_input = input("please re-enter destination: ")
+            else:
+                return dest_input
