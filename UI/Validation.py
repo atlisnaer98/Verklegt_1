@@ -1,5 +1,5 @@
 import string
-
+import dateutil.parser
 class Validation:
     def __init__(self):
         pass
@@ -63,15 +63,9 @@ class Validation:
     def validate_time(self,time_input):
         time_repeater = True
         while time_repeater == True:
-            #time_input = str(time_input)
             try:
-                hour = int(time_input[:2])
-                minute = int(time_input[3:])
-                if hour >= 0 and hour <= 24 and minute >= 0 and minute <= 60 and time_input[2] == ":":
-                    #time_repeater = False
-                    return time_input
-                else:
-                    time_input = input("Invalid input, please re-enter (HH:MM): ")
+                dateutil.parser.parse(time_input)
+                return time_input
             except ValueError:
                 time_input = input("Invalid input, please re-enter (HH:MM): ")
 
@@ -117,15 +111,11 @@ class Validation:
         date_repeater = True
         while date_repeater == True:
             try:
-                year = int(date_input[:4])
-                month = int(date_input[5:7])
-                day = int(date_input[8:10])
-                if year > 0 and date_input[4] == "-" and date_input[7] == "-" and month > 0 and month <= 12 and day > 0 and day < 32:
-                    return date_input
-                else:
-                    date_input = input("Invalid input, please re-enter (YYYY-MM-DD):")
+                dateutil.parser.parse(date_input)
+                return date_input
             except ValueError:
                 date_input = input("Invalid input, please re-enter (YYYY-MM-DD):")
+
 
     def validate_reg(self,reg_input):
         # The method will check if the registration number is valid. The number has to start with TF- to be valid and contain 3 letters.

@@ -52,6 +52,7 @@ F28 = "Fokker F28"
 AC = "Active"
 IAC = "Inactive"
 W = "Working"
+MP = "Show most popular"
 
 
 B = "[B] Back"
@@ -219,7 +220,7 @@ class Appearance:
         print("{:^60}".format(D))
         print(DASH*LENGTH)
         print("\n{:>10} {:<30}{} {} ".format('[1]', C, '[2]', CH))
-        print("\n{:>10} {} \n".format('[3]', LD ))
+        print("\n{:>10} {:<30}{} {} ".format('[3]', MP, '[4]', LD))
 
     def print_dest_info(self,dest_list):
         print("\nDestination: {}\nCountry: {}\nAirport(XXX): {}\nflight time(one-way, HH:MM): {}\nDistance from Reykjavik: {}\nContact: {}\nContact phonenumber(+xxx...): {}"
@@ -423,3 +424,6 @@ class Appearance:
 
     def print_plane_available(self,plane):
         print("\nPlane ID: {}\nPlane Type: {}\nPlane model: {}\nPlane is available\n".format(plane.get_registration_number(),plane.get_plane_type(),plane.get_model()))
+
+    def get_pop_dest(self,dest,counter):
+        print("\nMost popular destination: {}\nNumber of assigned voyages: {}\n".format(dest.get_destination(),counter))

@@ -3,7 +3,7 @@ ssn,name,address,home_phone,mobile_phone,email_address,role,rank,licence,active
 2706838569,Gerard Nelson,Furuvegur 2,5846252,7865423,Gerard@nan.is,Pilot,Captain,NAFokkerF100,1
 2410876598,Nan Gage,Vegavegur 4,0,8642564,Nan@nan.is,Pilot,Copilot,NAFokkerF100,1
 1111111119,Gussi Thor,Bankastraeti 5,5812345,9876543,gussi@b5.is,Pilot,Captain,NAFokkerF100,0
-2701886957,Ferard Nelson,Furuvegur 2,5846252,7865423,Ferard@nan.is,Pilot,Copilot,NAFokkerF100,1
+2701886957,Ferard Nelson,Furuvegur 2,5846252,7865425,Ferard@nan.is,Pilot,Copilot,NAFokkerF100,1
 2910858778,Virginia Ho,Flensborgarvegur 6,5648745,7785241,Virginia@nan.is,Pilot,Captain,NABAE146,1
 2209955782,Allen Ley,Fallegurvegur 69,5642312,8640210,Allen@nan.is,Pilot,Captain,NABAE146,1
 2907675667,Felecia Moye,Fallvegur 21,0,8987898,Felecia@nan.is,Pilot,Captain,NABAE146,1
@@ -36,3 +36,4 @@ ssn,name,address,home_phone,mobile_phone,email_address,role,rank,licence,active
 1110732819,Arthur Karr,Choochoo 22,0,8989585,Arthur@nan.is,Cabincrew,Flight Attendant,N/A,1
 2602806942,Teresa Thruman,Menntavegur 1,6614540,5812345,god@play.is,Cabincrew,Flight Attendant,N/A,0
 1107951952,Elizabeth Mcfadden,wowroad 1,0,8684845,Elizabeth@nan.is,Cabincrew,Flight Attendant,N/A,1
+1701728949,Herard Nelson,Furuvegur 2,5846252,7865424,Herard@nan.is,Cabincrew,Flight Attendant,N/A,1
