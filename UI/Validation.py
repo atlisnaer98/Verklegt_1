@@ -54,7 +54,7 @@ class Validation:
     def validate_phone_number(self,phone_number):
         true_check = True
         while true_check == True:
-            if phone_number.isdigit():
+            if phone_number.isdigit() and len(phone_number) < 16 and len(phone_number) > 2:
                 true_check = False
                 return phone_number
             else:
