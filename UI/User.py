@@ -376,9 +376,9 @@ class User:
         last_booking_ref = int(voyage_list[-1].get_booking_reference())
         voyage.set_booking_reference(last_booking_ref+1)
         dest_list = self.ll.get_all_dest()
-        self.app.print_selection_list(dest_list)
-        dest_number = self.ll.validate_selection(input("Please select destination: "),len(dest_list))
-        dest = dest_list[int(dest_number)-1]
+        self.app.print_selection_list(dest_list[1:])
+        dest_number = self.ll.validate_selection(input("Please select destination: "),len(dest_list[1:]))
+        dest = dest_list[int(dest_number)]
         destination_place = dest.get_destination()
         voyage.set_arriving_at(destination_place)
         while the_date == False:
