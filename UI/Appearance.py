@@ -423,3 +423,6 @@ class Appearance:
 
     def print_plane_available(self,plane):
         print("\nPlane ID: {}\nPlane Type: {}\nPlane model: {}\nPlane is available\n".format(plane.get_registration_number(),plane.get_plane_type(),plane.get_model()))
+
+    def get_pop_dest(self,dest,counter):
+        print("\nMost popular destination: {}\nNumber of assigned voyages: {}\n".format(dest.get_destination(),counter))

@@ -248,7 +248,7 @@ class User:
         # The method will give you options in destinations menu, user has to choose number to deside what he want to do.
         while action not in QUIT:
             self.app.print_dest_menu()
-            action = self.back_quit(action,3)
+            action = self.back_quit(action,4)
             if action == "1": #create new dest
                 self.app.print_add_dest()
                 self.add_dest()
@@ -261,9 +261,25 @@ class User:
                 self.get_all_dest()
                 action = self.back_quit(action,0)
             elif action == "4": #Most popular
-                pop_dest = self.ll.get_pop_dest()
+                most_pop_dest, num_of_voyages = self.get_pop_dest()
+                self.app.get_pop_dest(most_pop_dest,num_of_voyages)
             elif action in BACK:
                 return action
+
+    def get_pop_dest(self):
+        high_counter = 0
+        high_dest = Destination()
+        voyage_list = self.ll.get_all_voyages()
+        dest_list = self.ll.get_all_dest()
+        for dest in dest_list:
+            counter = 0
+            for voyage in voyage_list:
+                if voyage.get_arriving_at() == dest.get_destination():
+                    counter += 1
+            if counter > high_counter:
+                high_counter = counter
+                high_dest = dest
+        return high_dest, high_counter
 
     def back_quit(self,action,limit):
         action_test = True

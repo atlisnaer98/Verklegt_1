@@ -12,9 +12,6 @@ class DestinationLL():
     def get_all_dest(self):
         return self.dl.get_all_dest()
 
-    def get_pop_dest(self):
-        dest_list
-
     def change_dest(self,dest_list,index,option,changed):
         dest = dest_list[index]
         if option == 1:
