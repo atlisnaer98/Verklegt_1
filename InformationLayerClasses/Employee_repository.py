@@ -5,8 +5,6 @@ import csv
 HEADER = "ssn,name,address,home_phone,mobile_phone,email_address,role,rank,licence,active"
 class Employee_repository:
 
-    
-
     def get_all_employees(self):
         """gets all the crew member"""
         all_employee_list = []
@@ -47,22 +45,6 @@ class Employee_repository:
             employees.write("{}\n".format(HEADER))
             for emp in emp_list:
                 employees.write("{}\n".format(str(emp)))
-
-    def change_employee_attribute(self):
-        ''' changes a specific attribute for an employee'''
-        pass
-
-    def get_available_employees(self):
-        '''returns a list of all available employees on a specific date'''
-        pass
-
-    def get_unavailable_employees(self):
-        '''returns a list of all employees working on a specific date and the destination'''
-        pass
-
-    def employee_working_schedudule(self):
-        '''returns working schedule for a specific employee for a specific week'''
-        pass
 
     def get_all_employees_dict(self):
         all_employee_dict = {}

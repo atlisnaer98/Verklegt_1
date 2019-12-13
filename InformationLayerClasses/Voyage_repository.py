@@ -4,8 +4,6 @@ import csv
 HEADER = "bookingReference,flightNumberAway,flightNumberHome,arrivingAt,departure,arrival,aircraftID,captain,copilot,fsm,fa1,fa2"
 class Voyage_repository:
 
-    
-
     def update_voyage_file(self,voyage_list):
         with open("./DATA/Voyage.csv", "w+", newline="") as voyages:
             voyages.write("{}\n".format(HEADER))
