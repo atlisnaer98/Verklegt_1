@@ -115,8 +115,6 @@ class Validation:
                 return date_input
             except ValueError:
                 date_input = input("Invalid input, please re-enter (YYYY-MM-DD):")
-            except parser.ParserError:
-                print('yess')
 
 
     def validate_reg(self,reg_input):
