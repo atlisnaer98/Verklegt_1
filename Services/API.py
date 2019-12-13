@@ -142,7 +142,7 @@ class LLApi:
         return self.valLL.validate_already_emp(ssn_input,employee_list)
     
     def validate_dest(self,dest_input,dest_list):
-        return self.valLL.validate_dest
+        return self.valLL.validate_dest(dest_input,dest_list)
 
     def validate_period(self,from_date,to_date):
         return self.valLL.validate_period(from_date,to_date)
