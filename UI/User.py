@@ -578,7 +578,7 @@ class User:
         self.print_voyages_manned_and_status(voyage_list)
 
     def print_voyages_manned_and_status(self,voyage_list):
-        date = datetime.now()
+        date = datetime.datetime.now()
         for voyage in voyage_list:
             status = self.ll.get_voyage_status(voyage,date)
             if len(voyage.get_captain()) == 10 and len(voyage.get_copilot()) == 10 and len(voyage.get_fsm()) == 10:
