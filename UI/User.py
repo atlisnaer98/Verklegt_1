@@ -383,7 +383,7 @@ class User:
         voyage.set_aircraft_id(plane)
         self.ll.add_voyage(voyage)
         self.ll.update_flight_nums()
-        print("\nYou have created a new voyage\n")
+        print("\nYou have created a new voyage")
             
     def change_voyage(self):
         self.app.print_change_voyage()
@@ -407,11 +407,12 @@ class User:
         voyage_list = self.ll.get_all_voyages()
         employee_list = self.ll.get_all_employees()
         airplane_list = self.ll.get_all_airplanes()
-        print("{:<20}{:<20}{:<20}\n{}".format("Booking","Destination:","Departure:","referance:"))
+        print("\n{:<20}{:<20}{:<20}\n{}\n".format("Booking","Destination:","Departure:","referance:"))
         for voyage in voyage_list:
             if voyage.get_captain() == "" or voyage.get_copilot() == "" or voyage.get_fsm() == "":
                 highest_selection = int(voyage.get_booking_reference())
                 self.app.print_voyage_selection_list(voyage)
+        print()
         action = self.back_quit("",highest_selection)
         for index in range(len(voyage_list)):
             voyage = voyage_list[index]
@@ -432,6 +433,7 @@ class User:
                 fa2 = self.set_fa(voyage,employee_list)
                 voyage.set_fa2(fa2)
                 self.save_crew(voyage,voyage_list,index)
+                print("You have assigned a crew")
 
     def save_crew(self,voyage,voyage_list,index):
         voyage_list[index] = voyage

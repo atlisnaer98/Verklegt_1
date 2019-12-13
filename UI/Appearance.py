@@ -290,9 +290,9 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(S))
         print(DASH*LENGTH)
-        print("{}".format(DOE))
-        print("{:>10} {:<30}{} {} ".format('[1]', DATE, '[2]',E ))
-        print("{:>10} {:<30}".format('[3]', 'time period'))
+        print("\n{}\n".format(DOE))
+        print("{:>10} {:<30}{} {} \n".format('[1]', DATE, '[2]',E ))
+        print("{:>10} {:<30}\n".format('[3]', 'time period'))
     
     def print_voyage_list_with_crew(self, voyage,manned,status):
         print("Booking Refrence: {}\nDestination: {}\nFlight number away: {}\nFlight number home: {}\nDeparture Time: {}\nArrival Time: {}\nStatus: {}\nUn/Manned: {}\n".format(voyage.get_booking_reference(), voyage.get_arriving_at(),voyage.get_flight_number_away(),voyage.get_flight_number_home(),voyage.get_departure(),voyage.get_arrival(),status,manned))
