@@ -257,10 +257,10 @@ class User:
                 self.dest_menu(action)
             elif action == "2": #change dest
                 self.change_dest_info(action)
-            elif action == "3": #list dest
+            elif action == "4": #list dest
                 self.get_all_dest()
                 action = self.back_quit(action,0)
-            elif action == "4": #Most popular
+            elif action == "3": #Most popular
                 most_pop_dest, num_of_voyages = self.get_pop_dest()
                 self.app.get_pop_dest(most_pop_dest,num_of_voyages)
             elif action in BACK:
