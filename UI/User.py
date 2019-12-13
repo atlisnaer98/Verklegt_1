@@ -77,7 +77,9 @@ class User:
         # The method will print out all employess, the output will be theire name, social security number and theire role.
         employee_list = self.ll.get_all_employees()
         self.app.print_get_all_employess()
+        print()
         print("{:<20}{:<20}{:<20}".format("Name:","SSN:","Role:"))
+        print()
         for employee in employee_list:
             self.app.print_get_all_employess_role(employee)
 
@@ -202,9 +204,12 @@ class User:
         # The method will print out all cabin crew employees, the output will be their Name, SSN number and Rank. 
         cabin_crew_list = self.ll.get_cabin_crew()
         self.app.print_get_all_cabincrew()
+        print()
         print("{:<20}{:<20}{:<20}".format("Name:","SSN:","Rank:"))
+        print()
         for employee in cabin_crew_list:
             self.app.print_get_all_employess_rank(employee)
+        print()
 
     def get_pilots(self):
         # The method will print out all pilots, you can choose if you want all pilots or you want to print pilot with licence on surten aircraft.
@@ -223,9 +228,12 @@ class User:
                 licence = 'All'
             pilot_list = self.ll.get_pilots(licence)
             self.app.print_get_all_pilots()
+            print()
             print("{:<20}{:<13}{:<13}{:<13}".format("Name:","SSN:","Licence:","Model:"))
+            print()
             for employee in pilot_list:
                 self.app.print_get_all_pilot_rank_and_licence(employee)
+            print()
 
     def printing_picture(self):
         self.app.picture()
@@ -314,7 +322,9 @@ class User:
     def get_available_emp_date_schedule(self,from_date,to_date):
         # The method will print out all available employees, their SSN number and role
         available_list = self.ll.get_emp_date_schedule(from_date,to_date)
+        print()
         print("{:<20}{:<20}{:<20}".format("Name:","SSN:","Role:"))
+        print()
         for emp in available_list:
             self.app.print_get_all_employess_role(emp)
 
@@ -332,7 +342,9 @@ class User:
                     if counter == len(time_voyage_list):
                         print("No employee has been assigned to a voyage on that date")
                 else:
+                    print()
                     print("{:<20}{:<20}{:<20}".format("Name","SSN","Destination"))
+                    print()
                     self.app.print_working_emps(voyage,employee_dict)
    
     def add_voyage(self):
@@ -371,6 +383,7 @@ class User:
         voyage.set_aircraft_id(plane)
         self.ll.add_voyage(voyage)
         self.ll.update_flight_nums()
+        print("\nYou have created a new voyage\n")
             
     def change_voyage(self):
         self.app.print_change_voyage()

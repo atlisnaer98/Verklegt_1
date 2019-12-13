@@ -97,32 +97,44 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(M))
         print(DASH*LENGTH)
+        print()
         print("{:>10} {:<30}{} {}".format('[1]',E,'[2]',V))
+        print()
         print("{:>10} {:<30}{} {}".format('[3]',D,'[4]',A))
+        print()
         print("{:15}{}".format(EMPTY,DASH*30))
         print("{:^60}".format(Q))
         print("{:15}{}".format(EMPTY,DASH*30))
+        print()
  
 
     def print_employee_menu(self):
+        print()
         print(DASH*LENGTH)
         print("{:^60}".format(E))
         print(DASH*LENGTH)
+        print()
         print("{:>10} {:<30}{} {} ".format('[1]', C, '[2]', CH))
+        print()
         print("{:>10} {:<30}{} {} ".format('[3]', S, '[4]', L))
+        print()
 
     def print_select_employee_menu(self):
         print(DASH*LENGTH)
         print("{:^60}".format(E))
         print(DASH*LENGTH)
+        print()
         print("{:>10} {:<30}{} {} ".format('[1]', GA, '[2]', GP))
+        print()
         print("{:>10} {:<30}".format('[3]', GC, ))
+        print()
 
 
     def print_create_employee(self):
         print(DASH*LENGTH)
         print("{:^60}".format(CNE))
         print(DASH*LENGTH)
+        print()
         #print("Please input necessary information:")
         #Input upplýsingar
 
@@ -130,6 +142,7 @@ class Appearance:
         print(DASH*LENGTH)
         print("{:^60}".format(S))
         print(DASH*LENGTH)
+        print()
         
     
     def print_change_employee_info(self):
@@ -143,9 +156,16 @@ class Appearance:
     
     def print_employee_schedule(self):
         print("{:>10} {:<30}{} {} ".format('[1]', DATE, '[2]', EM))
+        print()
     
     def print_employee_available_or_working(self):
+        print()
+        print(DASH*LENGTH)
+        print()
+        print("Are you looking for available or working employees?")
+        print()
         print("{:>10} {:<30}{} {} ".format('[1]', AV ,'[2]', W))
+        print()
 
     def print_employee_information(self, emp):
         print("\nID Number: {}\nName: {}\nJob title: {}\nRank: {}\nLicence: {}\nAddress: {}\nHome phone: {}\nMobile number: {}\nEmail address: {}\nActivity: {}\n"
@@ -176,7 +196,6 @@ class Appearance:
         print("{:<20}{:<13}{:<13}{:<13}".format(employee.get_name(), employee.get_ssn(), employee.get_rank(), employee.get_licence()))
 
     def print_choose_aircraft(self):
-        print()
         print(DASH*LENGTH)
         print("{:^60}".format("Choose Aircraft Model"))
         print(DASH*LENGTH)  
@@ -247,11 +266,15 @@ class Appearance:
         print(DASH*LENGTH)
 
     def print_voyage_menu(self):
+        print()
         print(DASH*LENGTH)
         print("{:^60}".format(V))
         print(DASH*LENGTH)
+        print()
         print("{:>10} {:<30}{} {} ".format('[1]', C, '[2]', ASS))
-        print("{:>10} {:<30}{} {}".format('[3]', LV, '[4]',CV ))   
+        print()
+        print("{:>10} {:<30}{} {}".format('[3]', LV, '[4]',CV ))
+        print()
 
     def print_add_voyage(self):
         print(DASH*LENGTH)
@@ -360,11 +383,15 @@ class Appearance:
         print("{:<20}{:<13}{:<13}{:<13}".format(plane.get_registration_number(), plane.get_plane_type(), plane.get_model(), plane.get_capacity()))
         
     def print_yes_no(self):
-        print("{:>5} {:<27}{} {} ".format('[1]', "Yes", '[2]',"No" ))
+        print()
+        print("{:>10} {:<30}{} {} ".format('[1]', "Yes", '[2]',"No" ))
+        print()
 
     def select_licence(self):
-        print("{:>5} {:<27}{} {} ".format('[1]', "NAFokkerF100", '[2]',"NABAE146" ))
-        print("{:>5} {:<27}{} {} ".format('[3]', "NAFokkerF28", '[4]',"All Pilots" ))
+        print()
+        print("{:>10} {:<30}{} {} ".format('[1]', "NAFokkerF100", '[2]',"NABAE146" ))
+        print()
+        print("{:>10} {:<30}{} {} ".format('[3]', "NAFokkerF28", '[4]',"All Pilots" ))
         print()
         
     def print_working_employee(self):
