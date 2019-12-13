@@ -111,7 +111,7 @@ class EmployeeLL():
                 crew = self.vLL.get_crew(voyage)
                 if ssn in crew and employee not in list_of_working:
                     list_of_working.append(employee)
-            if employee not in list_of_working:
+            if employee not in list_of_working and employee.get_activity() == 1:
                 list_of_available.append(employee)
         return list_of_available
             

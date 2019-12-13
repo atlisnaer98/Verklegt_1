@@ -54,7 +54,6 @@ class LLApi:
     def get_pilots(self, license):
         return self.eLL.get_pilots(license)
 
-    
     def get_all_voyages(self):
         return self.vLL.get_all_voyages()
 
