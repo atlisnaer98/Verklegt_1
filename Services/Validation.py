@@ -20,11 +20,11 @@ class Validation:
     def validate_airport(self,airport_input):
         airport_repeater = True
         numb_list = ["0","1","2","3","4","5","6","7","8","9"]
+        counter = 0
         while airport_repeater == True:
             if len(airport_input) != 3:
                 airport_input = input("Invalid input, please re-enter airport(XXX)")
             else:
-                counter = 0
                 for letter in airport_input:
                     if letter in numb_list or letter in string.punctuation:
                         airport_input = input("Invalid input, please re-enter airport(XXX)")
